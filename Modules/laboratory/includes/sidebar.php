@@ -14,23 +14,104 @@
         <h2>Laboratory</h2>
         <ul>
             <li><a href="" class="menu-link"> Dashboard</a></li>
+            <!-- Laboratories -->
+            <li class="nav-item">
+                <a class="menu-link collapsed d-flex justify-content-between align-items-center"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseUtilities"
+                aria-expanded="false"
+                aria-controls="collapseUtilities">
+                    <span>Laboratories</span>
+                    <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                </a>
+
+                <div id="collapseUtilities"
+                    class="collapse"
+                    data-bs-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 px-3 rounded shadow-sm w-100">
+                        <h6 class="px-3 text-muted small">Option:</h6>
+
+                        <a class="dropdown-item menu-link text-dark" href="#">Physics Lab</a>
+                        <a class="dropdown-item menu-link text-dark" href="#">Psychology Lab</a>
+                        <a class="dropdown-item menu-link text-dark" href="#">HE Lab</a>
+
+                        <!-- Crim Lab with Submenu -->
+                        <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse"
+                        href="#collapseCrim"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseCrim">
+                            <span>Crim Lab</span>
+                            <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                        </a>
+
+                        <div class="collapse ps-2" id="collapseCrim">
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Finger Print Lab</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Crime Scene Lab</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Ballistics Lab</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Questions Document Lab</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Chemistry Lab</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Defense & Tactics Lab</a>
+                        </div>
+
+                        <!-- IT Lab with Submenu -->
+                        <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"
+                            data-bs-toggle="collapse"
+                            href="#collapseIT"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="collapseIT">
+                            <span>IT Lab</span>
+                            <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                        </a>
+
+                        <div class="collapse ps-2" id="collapseIT">
+                             <a href="#" class="dropdown-item menu-link small fw-light text-dark">Ballistics Room</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Ballistics Room</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Fingerprint Room</a>
+                            <a href="#" class="dropdown-item menu-link small fw-light text-dark">Investigation</a>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+
+            <!-- Reports -->
+            <li class="nav-item">
+                <a class="menu-link collapsed d-flex justify-content-between align-items-center"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseReports"
+                aria-expanded="false"
+                aria-controls="collapseReporta">
+                    <span>Reports</span>
+                    <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                </a>
+
+                <div id="collapsereports"
+                    class="collapse"
+                    data-bs-parent="#accordionSidebar">
+
+                    <div class="bg-white py-2 px-3 rounded shadow-sm w-100">
+                        <h6 class="px-3 text-muted small">Option:</h6>
+
+                        <a class="dropdown-item menu-link text-dark" href="#">Inventory Reports</a>
+                        <a class="dropdown-item menu-link text-dark" href="#">Damaged Equipment</a>
+                        <a class="dropdown-item menu-link text-dark" href="#">Laboratory Usage</a>
+                        <a class="dropdown-item menu-link text-dark" href="#">Monthly Schedule</a>
+                    </div> 
+                </div>           
+            </li>
+
             <li><a href="" class="menu-link">Users</a></li>
             <li><a href="" class="menu-link">Schedule</a></li>
-            <li><a href="" class="menu-link">Laboratories</a></li>
             <li><a href="" class="menu-link">Reports</a></li>
-
-            <div class="">
-                <button class="menu-link" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Laboratories
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
-                </ul>
-            </div>
-            
         </ul>
+
 
         <div class="sidebar-header">
         </div>
