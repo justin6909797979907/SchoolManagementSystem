@@ -11,13 +11,22 @@
             <h1>Username</h1>
             <p class="user-id">SAMPLEID123456789</p>
         </div>
-        <h2>Laboratory Dashboard</h2>
+        <h2>Laboratory</h2>
         <ul>
-            <li><a href="" class="menu-link"> Dashboard Overview</a></li>
-            <li><a href="" class="menu-link">Module 1</a></li>
-            <li><a href="" class="menu-link">Module 2</a></li>
-            <li><a href="" class="menu-link">Module 3</a></li>
-            <li><a href="" class="menu-link">Module 4</a></li>
-            <li><a href="" class="menu-link">Module 5</a></li>
+            <li><a href="" class="menu-link"> Dashboard</a></li>
+            <li><a href="" class="menu-link">Users</a></li>
+            <li><a href="" class="menu-link">Schedule</a></li>
+            <li><a href="" class="menu-link">Laboratories</a></li>
+            <li><a href="" class="menu-link">Reports</a></li>
+
+            
+        </ul>
+
+        <div class="sidebar-header">
+        </div>
+
+        <ul>
+            <li><a href="#" class="menu-link">Settings</a></li>
+            <li><a href="#" class="menu-link">Lagout</a></li>
         </ul>
 </aside>
