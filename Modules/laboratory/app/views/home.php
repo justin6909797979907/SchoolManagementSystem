@@ -1,6 +1,8 @@
 <?php include 'includes/sidebar.php'; ?>
 <?php include 'includes/header.php'; ?>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <main class="main-content">
     <div class="">
         <div id="wrapper">
@@ -144,36 +146,37 @@
                         </div>
 
                         <!-- Content Row -->
-
                         <div class="row">
 
                             <!-- Area Chart -->
                             <div class="col-xl-8 col-lg-7">
                                 <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Overview</h6>
-                                        <div class="dropdown no-arrow">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                        <h6 class="m-0 fw-bold text-primary">Overview</h6>
+
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-light"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v text-gray-400"></i>
                                             </a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink">
-                                                <div class="dropdown-header">Dropdown Header:</div>
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
+
+                                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                                <li>
+                                                    <h6 class="dropdown-header">Dropdown Header</h6>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <!-- Card Body -->
+
                                     <div class="card-body">
-                                        <div class="chart-area">
-                                            <canvas id="myAreaChart"></canvas>
-                                        </div>
+                                        <canvas id="myAreaChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -181,44 +184,48 @@
                             <!-- Pie Chart -->
                             <div class="col-xl-4 col-lg-5">
                                 <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                        <div class="dropdown no-arrow">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                        <h6 class="m-0 fw-bold text-primary">Sources</h6>
+
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-light"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v text-gray-400"></i>
                                             </a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink">
-                                                <div class="dropdown-header">Dropdown Header:</div>
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
+
+                                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                                <li>
+                                                    <h6 class="dropdown-header">Dropdown Header</h6>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <!-- Card Body -->
+
                                     <div class="card-body">
-                                        <div class="chart-pie pt-4 pb-2">
-                                            <canvas id="myPieChart"></canvas>
-                                        </div>
-                                        <div class="mt-4 text-center small">
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-primary"></i> Direct
+                                        <canvas id="myPieChart"></canvas>
+
+                                        <div class="mt-2 text-center small">
+                                            <span class="me-2">
+                                                <i class="fas fa-circle text-primary"></i> Barrowed
                                             </span>
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-success"></i> Social
+                                            <span class="me-2">
+                                                <i class="fas fa-circle text-success"></i> Damage Equipment
                                             </span>
-                                            <span class="mr-2">
-                                                <i class="fas fa-circle text-info"></i> Referral
+                                            <span class="me-2">
+                                                <i class="fas fa-circle text-info"></i> Available
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <!-- Content Row -->
@@ -362,11 +369,8 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                                     </div>
                                     <div class="card-body">
-                                        <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                            CSS bloat and poor page performance. Custom CSS classes are used to create
-                                            custom components and custom utility classes.</p>
-                                        <p class="mb-0">Before working with this theme, you should become familiar with the
-                                            Bootstrap framework, especially the utility classes.</p>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptas, fugiat minima odio repellendus recusandae ex quas laudantium, suscipit ipsam nam architecto qui dignissimos. Explicabo necessitatibus ullam voluptates temporibus totam?</p>
+                                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, eius ipsa! Hic quae aperiam iste perspiciatis, magni reprehenderit officiis ut rerum nihil quia, impedit, dolorum voluptatibus cum. Corporis, quam voluptas.</p>
                                     </div>
                                 </div>
                             </div>
@@ -382,4 +386,5 @@
     </div>
 </main>
 
+<script src="js/dashboard.js"></script>
 <?php include 'includes/footer.php'; ?>

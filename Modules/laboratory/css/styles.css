@@ -449,3 +449,16 @@ a[aria-expanded="true"] .dropdown-icon {
     padding-right: 10px;
 }
 
+.card {
+    border: none;
+    border-radius: 0.75rem;
+}
+
+.card-header {
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+canvas {
+    max-height: 320px;
+}
