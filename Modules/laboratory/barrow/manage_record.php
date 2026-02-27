@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
 
 <main class="main-content">
-    <div class="container">
+    <div class="container-fluid px-4">
         <div class="container mt-4">
-            <div class="card shadow-sm card shadow-sm border-0 border-top border-4 border-dark">
+            <div class="card shadow-lg card shadow-sm border-0 border-top border-4 border-secondary p-3">
                 <div class="card-body">
 
                     <h4 class="card-header-title mb-4">Add New Borrow Record</h4>

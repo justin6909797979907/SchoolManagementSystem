@@ -4,8 +4,8 @@
 
 
 <main class="main-content">
-    <div class="container">
-        <div class="container mt-4 card shadow-sm border-0 border-top border-4 border-dark">
+    <div class="container-fluid px-4">
+        <div class="container mt-4 card shadow-sm border-0 border-top border-4 border-secondary">
             <h3 class="mb-3">Borrow Record</h3>
             <div class="card shadow-sm">
 
