@@ -33,9 +33,53 @@
                 <div class="bg-white py-2 px-3 rounded shadow-sm w-100">
                     <h6 class="px-3 text-muted small">Option:</h6>
 
-                    <a class="dropdown-item menu-link text-dark" href="#">Physics Lab</a>
-                    <a class="dropdown-item menu-link text-dark" href="#">Psychology Lab</a>
-                    <a class="dropdown-item menu-link text-dark" href="#">HE Lab</a>
+                    <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse"
+                        href="#collapsePhysics"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapsePhysics">
+                        <span>Physics Lab</span>
+                        <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                    </a>
+
+                    <div class="collapse ps-3" id="collapsePhysics">
+                        <a href="#" class="dropdown-item menu-link small text-dark">Inventory</a>
+                        <a href="#" class="dropdown-item menu-link small text-dark">Damages</a>
+                        <a href="#" class="dropdown-item menu-link small text-dark">Barrows</a>
+                    </div>
+                    
+                    <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse"
+                        href="#collapsePsychology"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapsePsychology">
+                        <span>Psychology Lab</span>
+                        <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                    </a>
+
+                    <div class="collapse ps-3" id="collapsePsychology">
+                        <a href="#" class="dropdown-item menu-link small text-dark">Inventory</a>
+                        <a href="#" class="dropdown-item menu-link small text-dark">Damages</a>
+                        <a href="#" class="dropdown-item menu-link small text-dark">Barrows</a>
+                    </div>
+
+                    <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse"
+                        href="#collapseHE"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseHE">
+                        <span>HE Lab</span>
+                        <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                    </a>
+
+                    <div class="collapse ps-3" id="collapseHE">
+                        <a href="#" class="dropdown-item menu-link small text-dark">Inventory</a>
+                        <a href="#" class="dropdown-item menu-link small text-dark">Damages</a>
+                        <a href="#" class="dropdown-item menu-link small text-dark">Barrows</a>
+                    </div>
 
                     <!-- Crim Lab with Submenu -->
                     <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"
