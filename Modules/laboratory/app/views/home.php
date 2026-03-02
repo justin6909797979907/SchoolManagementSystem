@@ -26,13 +26,14 @@
 
                             <!-- Schedule today -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card shadow h-100 py-2 border-start border-1 border-primary">
+                                <div class="card border-start border-primary shadow h-100 py-2">
                                     <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
+                                        <div class="row align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Today's Schedule</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Nothing</div>
+                                                <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+                                                    Today's Schedule
+                                                </div>
+                                                <div class="h5 mb-0 fw-bold text-gray-800">Nothing</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -44,13 +45,14 @@
 
                             <!-- total lab -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card shadow h-100 py-2 border-start border-1 border-success">
+                                <div class="card border-start border-success shadow h-100 py-2">
                                     <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
+                                        <div class="row align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Total Laboratories</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">11 Lab.</div>
+                                                <div class="text-xs fw-bold text-success text-uppercase mb-1">
+                                                    Total Laboratories
+                                                </div>
+                                                <div class="h5 mb-0 fw-bold text-gray-800">11 Lab.</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="bi bi-hospital-fill fa-2x text-gray-300"></i>
@@ -61,18 +63,18 @@
                             </div>
 
                             <!-- Pending report -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card shadow h-100 py-2 border-start border-1 border-danger">
+                             <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-start border-danger shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
-                                            <div class="col me-2">
+                                            <div class="col mr-2">
                                                 <div class="text-xs fw-bold text-danger text-uppercase mb-1">
-                                                    Pending Report
+                                                    Reports
                                                 </div>
-                                                <div class="h5 mb-0 fw-bold text-gray-800">11 Lab</div>
+                                                <div class="h5 mb-0 fw-bold text-gray-800">Nothing</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="bi bi-exclamation-circle-fill fs-1 text-gray-300"></i>
+                                                <i class="bi bi-exclamation-circle-fill fa-2x text-gray-300"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -81,13 +83,14 @@
 
                             <!-- Active user -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card shadow h-100 py-2 border-start border-1 border-info">
+                                <div class="card border-start border-info shadow h-100 py-2">
                                     <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
+                                        <div class="row align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                    Active User</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">10 Active</div>
+                                                <div class="text-xs fw-bold text-info text-uppercase mb-1">
+                                                    Active User
+                                                </div>
+                                                <div class="h5 mb-0 fw-bold text-gray-800">10 Active Users</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="bi bi-people-fill fa-2x text-gray-300"></i>
@@ -97,17 +100,18 @@
                                 </div>
                             </div>
 
+
                             <!-- task -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card shadow h-100 py-2 border-start border-1 border-dark">
+                                <div class="card border-start border-secondary shadow h-100 py-2">
                                     <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
+                                        <div class="row align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Tasks
+                                                <div class="text-xs fw-bold text-uppercase mb-1">Tasks
                                                 </div>
-                                                <div class="row no-gutters align-items-center">
+                                                <div class="row align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                        <div class="h5 mb-0 mr-3 fw-bold text-uppercase mb-1">50%</div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="progress progress-sm mr-2">
@@ -128,16 +132,17 @@
 
                             <!-- Pending Requests Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card shadow h-100 py-2 border-start border-1 border-warning">
+                                <div class="card border-start border-warning shadow h-100 py-2">
                                     <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
+                                        <div class="row align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                    Pending Requests</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                <div class="text-xs fw-bold text-warning text-uppercase mb-1">
+                                                    Pending Requests
+                                                </div>
+                                                <div class="h5 mb-0 fw-bold text-gray-800">18</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                             </div>
                                         </div>
                                     </div>

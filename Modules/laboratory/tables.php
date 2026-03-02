@@ -3,17 +3,17 @@
 
 
 <main class="main-content">
-    <div class="container">
+    <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">IT Laboratory</h1>
         <p class="mb-4">Equipment List</p>
 
-        <div class="card mb-4">
-            <div class="card-header">
+        <div class="card shadow-lg border-0 border-top border-4 border-secondary mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <i class="fas fa-table me-1"></i>
                 Laboratory Equipment
             </div>
             <div class="card-body">
-                <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="labEquipmentTable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>

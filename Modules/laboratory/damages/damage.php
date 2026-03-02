@@ -7,7 +7,7 @@
         <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
         <p class="mb-4">Barrowed Equipment</p>
 
-        <div class="card shadow-sm border-0 border-top border-4 border-secondary mb-4">
+        <div class="card shadow-lg border-0 border-top border-4 border-secondary mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i> Barrowed Equipment
