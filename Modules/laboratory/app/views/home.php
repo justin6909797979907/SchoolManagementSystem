@@ -36,7 +36,7 @@
                                                 <div class="h5 mb-0 fw-bold text-gray-800">Nothing</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                <i class="fas fa-calendar fa-2x text-muted"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
                                                 <div class="h5 mb-0 fw-bold text-gray-800">11 Lab.</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="bi bi-hospital-fill fa-2x text-gray-300"></i>
+                                                <i class="bi bi-hospital-fill fa-2x text-muted"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                                 <div class="h5 mb-0 fw-bold text-gray-800">Nothing</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="bi bi-exclamation-circle-fill fa-2x text-gray-300"></i>
+                                                <i class="bi bi-exclamation-circle-fill fa-2x text-muted"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                                 <div class="h5 mb-0 fw-bold text-gray-800">10 Active Users</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="bi bi-people-fill fa-2x text-gray-300"></i>
+                                                <i class="bi bi-people-fill fa-2x text-muted"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                <i class="fas fa-clipboard-list fa-2x text-muted"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                                 <div class="h5 mb-0 fw-bold text-gray-800">18</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                <i class="fas fa-calendar fa-2x text-muted"></i>
                                             </div>
                                         </div>
                                     </div>
