@@ -2,12 +2,13 @@
 <?php include '../includes/header.php'; ?>
 <link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
 
+
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
         <p class="mb-4">Barrowed Equipment</p>
 
-        <div class="card shadow-lg border-0 border-top border-4 border-secondary mb-4">
+        <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i> Barrowed Equipment
@@ -45,9 +46,12 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="view.php?id=1"><i class="fas fa-eye me-2"></i>View</a></li>
-                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editDamageModal">
-                                            <i class="fas fa-plus me-1"></i> Edit
+                                        <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDamageModal">
+                                            <i class="fas fa-edit me-2"></i> Edit
                                         </button>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
                                         <li><a class="dropdown-item text-danger" href="delete.php?id=1" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fas fa-trash me-2"></i>Delete</a></li>
                                     </ul>
                                 </div>

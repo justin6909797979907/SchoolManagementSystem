@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
 
 
-
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
@@ -59,6 +58,7 @@
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
+                                        <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
