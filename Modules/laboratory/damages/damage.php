@@ -45,7 +45,9 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="view.php?id=1"><i class="fas fa-eye me-2"></i>View</a></li>
-                                        <li><a class="dropdown-item" href="edit.php?id=1"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editDamageModal">
+                                            <i class="fas fa-plus me-1"></i> Edit
+                                        </button>
                                         <li><a class="dropdown-item text-danger" href="delete.php?id=1" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fas fa-trash me-2"></i>Delete</a></li>
                                     </ul>
                                 </div>
@@ -59,55 +61,10 @@
 </main>
 
 <!-- Add New Damage Modal -->
-<div class="modal fade" id="addDamageModal" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
+<?php require __DIR__ . '/add-damage-modal.php'; ?>
 
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    <i class="fas fa-plus-square me-2"></i> Add New Damage
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body">
-                <form action="store_damage.php" method="POST">
-
-                    <div class="mb-3">
-                        <label class="form-label">Item</label>
-                        <select class="form-select" name="item_id" required>
-                            <option value="">Please select item here</option>
-                            <option value="1">Microscope</option>
-                            <option value="2">Beaker</option>
-                            <option value="3">Test Tube</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" name="description" rows="4" required></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Status</label>
-                        <select class="form-select" name="status">
-                            <option value="Unfixed" selected>Unfixed</option>
-                            <option value="Fixed">Fixed</option>
-                        </select>
-                    </div>
-
-            </div>
-
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
-
-            </form>
-
-        </div>
-    </div>
-</div>
+<!-- Edit Damage Modal -->
+<?php require __DIR__ . '/edit-damage-modal.php'; ?>
 
 <script src="../js/pagination.js"></script>
 <?php include '../includes/footer.php'; ?>
