@@ -6,12 +6,12 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
-        <p class="mb-4">Barrowed Equipment</p>
+        <p class="mb-4">Damage Equipment</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
-                    <i class="fas fa-table me-1"></i> Barrowed Equipment
+                    <i class="fas fa-table me-1"></i> Damage Equipment
                 </div>
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
@@ -19,7 +19,7 @@
             </div>
 
             <div class="card-body">
-                <table id="barrowedTable" class="table table-striped table-bordered table-hover" style="width:100%">
+                <table id="damageTable" class="table table-striped table-bordered table-hover" style="width:100%">
                     <thead class="table-light">
                         <tr>
                             <th>ID</th>
