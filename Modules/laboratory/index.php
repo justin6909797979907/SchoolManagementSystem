@@ -8,8 +8,6 @@ $basePath = BASE_URL;
 $uri = trim(str_replace($basePath, '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
 
 
-
-
 switch ($uri) {
 
     case '':
@@ -17,7 +15,20 @@ switch ($uri) {
         $controller = new HomeController();
         $controller->index();
         break;
+    
+    case 'damages':
+        require_once __DIR__ . '/app/controllers/DamageController.php';
+        $controller = new DamageController();
+        $controller->index();
+        break;
         
+    case 'burrow':
+
+        require_once __DIR__ . '/app/controllers/BurrowController.php';
+        $controller = new BurrowController();
+        $controller->index();
+        break;
+
     default:
         http_response_code(404);
         echo "404 Not Found";

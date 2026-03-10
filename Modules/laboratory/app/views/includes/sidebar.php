@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <div class="school-logo">
-        <img src="assets/bcp-logo.png" alt="School Logo">
+        <img src="<?= BASE_URL ?>/assets/bcp-logo.png" alt="School Logo">
         <div class="sidebar-icons">
             <i class="fa-regular fa-bell"></i>
             <i class="fa-regular fa-circle-user"></i>
@@ -13,7 +13,7 @@
     </div>
     <h2>Laboratory</h2>
     <ul>
-        <li><a href="" class="menu-link <?php echo CURRENT_URI == 'laboratory' ? 'active' : '' ?>">Dashboard</a></li>
+        <li><a href="<?= BASE_URL ?>" class="menu-link <?php echo CURRENT_URI == 'laboratory'? "active" :  "" ?>">Dashboard</a></li>
         <!-- Laboratories -->
         <li class="nav-item">
             <a class="menu-link collapsed d-flex justify-content-between align-items-center"
@@ -44,9 +44,9 @@
                     </a>
 
                     <div class="collapse ps-3" id="collapsePhysics">
-                        <a href="#" class="dropdown-item menu-link small text-dark">Inventory</a>
-                        <a href="#" class="dropdown-item menu-link small text-dark">Damages</a>
-                        <a href="#" class="dropdown-item menu-link small text-dark">Barrows</a>
+                        <a href="" class="dropdown-item menu-link small text-dark">Inventory</a>
+                        <a href="<?= BASE_URL ?>/damages" class="dropdown-item menu-link small text-dark <?php echo CURRENT_URI == 'damages'? "active" :  "" ?>">Damages</a>
+                        <a href="<?= BASE_URL ?>/burrow" class="dropdown-item menu-link small text-dark <?php echo CURRENT_URI == 'burrow'? "active" :  "" ?>">Barrows</a>
                     </div>
                     
                     <a class="dropdown-item menu-link text-dark d-flex justify-content-between align-items-center collapsed"

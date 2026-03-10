@@ -1,12 +1,13 @@
-<?php include '../includes/sidebar.php'; ?>
-<?php include '../includes/header.php'; ?>
+<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
+<?php include  __DIR__ .'/../includes/header.php'; ?>
+
 <link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
 
 
 <main class="main-content">
     <div class="container-fluid px-4">
-        <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
-        <p class="mb-4">Barrowed Equipment</p>
+        <h1 class="h3 mb-2 text-gray-800">Laboratoriess</h1>
+        <p class="mb-4">laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -70,5 +71,5 @@
 <!-- Edit Damage Modal -->
 <?php require __DIR__ . '/edit-damage-modal.php'; ?>
 
-<script src="../js/pagination.js"></script>
-<?php include '../includes/footer.php'; ?>
+<script src="<?= BASE_URL ?>/js/pagination.js"></script>
+<?php include  __DIR__ .'/../includes/footer.php'; ?>
