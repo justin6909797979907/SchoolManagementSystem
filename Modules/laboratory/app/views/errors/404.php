@@ -1,5 +1,6 @@
-<?php include __DIR__ . '/../../../includes/header.php'; ?>
-<?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
+<?php include  __DIR__ .'/../includes/header.php'; ?>
+<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
+
 
 <style>
 .error-404{
@@ -38,4 +39,4 @@
 
 </div>
 
-<?php include __DIR__ . '/../../../includes/footer.php'; ?>
+<?php include  __DIR__ .'/../includes/footer.php'; ?>
