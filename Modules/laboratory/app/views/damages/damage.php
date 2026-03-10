@@ -6,13 +6,8 @@
 
 <main class="main-content">
     <div class="container-fluid px-4">
-<<<<<<< HEAD
-        <h1 class="h3 mb-2 text-gray-800">Laboratoriess</h1>
-        <p class="mb-4">laboratory</p>
-=======
         <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
         <p class="mb-4">Damage Equipment</p>
->>>>>>> 3d5ca3f41d1de78d1afbe604ce669e8da92f0096
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
