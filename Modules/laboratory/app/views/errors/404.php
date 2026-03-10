@@ -19,7 +19,7 @@
 <div class="d-flex flex-column min-vh-100 mt-5">
 
     <div class="container-fluid flex-grow-1">
-        <div class="d-flex flex-column justify-content-center align-items-center text-center h-100">
+        <div class="d-flex flex-column justify-content-center align-items-center text-center  h-100">
 
             <div class="error-404">404</div>
 
