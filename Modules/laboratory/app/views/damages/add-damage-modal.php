@@ -10,21 +10,26 @@
             </div>
 
             <div class="modal-body">
-                <form action="store_damage.php" method="POST">
+                <form action="<?= BASE_URL ?>/damages/create" method="POST">
 
                     <div class="mb-3">
                         <label class="form-label">Item</label>
-                        <select class="form-select" name="item_id" required>
+                        <select class="form-select" name="item" required>
                             <option value="">Please select item here</option>
-                            <option value="1">Microscope</option>
-                            <option value="2">Beaker</option>
-                            <option value="3">Test Tube</option>
+                            <option value="Microscope">Microscope</option>
+                            <option value="Beaker">Beaker</option>
+                            <option value="Test Tube">Test Tube</option>
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Description</label>
                         <textarea class="form-control" name="description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Code</label>
+                        <input type="text" class="form-control" name="code" required>
                     </div>
 
                     <div class="mb-3">

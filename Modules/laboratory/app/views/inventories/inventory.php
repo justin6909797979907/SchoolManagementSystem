@@ -1,5 +1,5 @@
-<?php include 'includes/sidebar.php'; ?>
-<?php include 'includes/header.php'; ?>
+<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
+<?php include  __DIR__ .'/../includes/header.php'; ?>
 
 
 <main class="main-content">
@@ -54,4 +54,4 @@
         });
     });
 </script>
-<?php include 'includes/footer.php'; ?>
+<?php include  __DIR__ .'/../includes/footer.php'; ?>

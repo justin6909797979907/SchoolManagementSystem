@@ -14,17 +14,19 @@
                 <div>
                     <i class="fas fa-table me-1"></i> Damage Equipment
                 </div>
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
+                <button class="btn btn-primary btn-sm" id="CreateDamageBtn">
                     <i class="fas fa-plus me-1"></i> Create New
                 </button>
             </div>
+
+
+              
 
             <div class="card-body">
                 <table id="damageTable" class="table table-striped table-bordered table-hover" style="width:100%">
                     <thead class="table-light">
                         <tr>
                             <th>ID</th>
-                            <th>Date Created</th>
                             <th>Category</th>
                             <th>Code</th>
                             <th>Status</th>
@@ -32,13 +34,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                            <?php  foreach ($users as $user) { ?>
                         <tr>
-                            <td>1</td>
-                            <td>2024-03-27 14:25</td>
-                            <td>Optical</td>
-                            <td>OP-001</td>
+
+                        
+                                    <td><?= $user['id'] ?></td>
+                                    <td><?= $user['category'] ?> </td>
+                                    <td><?= $user['code'] ?></td>
                             <td>
-                                <span class="badge bg-success">Fixed</span>
+                                <span class="badge bg-success"><?= $user['status'] ?></span>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -46,7 +50,7 @@
                                         Action
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="view.php?id=1"><i class="fas fa-eye me-2"></i>View</a></li>
+                                        <li><button class="dropdown-item viewDamageBtn"  data-id="<?= $user['id'] ?>"><i class="fas fa-eye me-2"></i>View</button></li>
                                         <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDamageModal">
                                             <i class="fas fa-edit me-2"></i> Edit
                                         </button>
@@ -56,8 +60,9 @@
                                         <li><a class="dropdown-item text-danger" href="delete.php?id=1" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fas fa-trash me-2"></i>Delete</a></li>
                                     </ul>
                                 </div>
-                            </td>
+                            </td>                          
                         </tr>
+                         <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -71,5 +76,9 @@
 <!-- Edit Damage Modal -->
 <?php require __DIR__ . '/edit-damage-modal.php'; ?>
 
-<script src="<?= BASE_URL ?>/js/pagination.js"></script>
+<!-- View Damage Modal -->
+<?php require __DIR__ . '/view-damage-modal.php'; ?>
+
+<script><?php  echo BASE_URL; ?></script>
+<script src="<?= BASE_URL ?>/js/damage.js"></script>
 <?php include  __DIR__ .'/../includes/footer.php'; ?>
