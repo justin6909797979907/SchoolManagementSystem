@@ -6,7 +6,7 @@ class Database {
     public static function connect() {
         if (!self::$instance) {
             self::$instance = new PDO(
-                "mysql:host=localhost;dbname=lab_system;charset=utf8",
+                "mysql:host=localhost;dbname=school;charset=utf8",
                 "root",
                 ""
             );
