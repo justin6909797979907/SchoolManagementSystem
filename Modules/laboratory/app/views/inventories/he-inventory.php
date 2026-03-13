@@ -5,7 +5,7 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
-        <p class="mb-4">Physics Laboratory</p>
+        <p class="mb-4">HE Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="card-body">
-                <table id="psyEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="heEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -36,7 +36,7 @@
                             <td>
                                 <img src="projector.png" class="img-fluid rounded" style="max-width: 100px;">
                             </td>
-                            <td>Optical</td>
+                            <td>Oven</td>
                             <td>10</td>
                             <td>5</td>
                             <td>
@@ -76,13 +76,13 @@
     </div>
 </main>
 
-<?php require __DIR__ . '/add-inventory-modal.php'; ?>
-<?php require __DIR__ . '/view-inventory-modal.php'; ?>
-<?php require __DIR__ . '/edit-inventory-modal.php'; ?>
+<?php require __DIR__ . '/heAdd-inventory-modal.php'; ?>
+<?php require __DIR__ . '/heView-inventory-modal.php'; ?>
+<?php require __DIR__ . '/heEdit-inventory-modal.php'; ?>
 
 <script>
     $(document).ready(function() {
-        $('#psyEquipmentTable').DataTable({
+        $('#heEquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
