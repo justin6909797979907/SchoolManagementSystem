@@ -60,7 +60,7 @@
 
                     <div class="collapse ps-3" id="collapsePsychology">
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory'? "active" :  "" ?>">Inventory</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Damages</a>
+                        <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage'? "active" :  "" ?>">Damages</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Barrows</a>
                     </div>
 
