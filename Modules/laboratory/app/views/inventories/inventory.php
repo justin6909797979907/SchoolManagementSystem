@@ -1,5 +1,5 @@
-<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
-<?php include  __DIR__ .'/../includes/header.php'; ?>
+<?php include  __DIR__ . '/../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../includes/header.php'; ?>
 
 
 <main class="main-content">
@@ -14,7 +14,7 @@
                     Inventory
                 </div>
 
-                <a href="create.php" class="btn btn-primary btn-sm">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -46,16 +46,18 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="edit.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
-                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
@@ -74,6 +76,10 @@
     </div>
 </main>
 
+<?php require __DIR__ . '/add-inventory-modal.php'; ?>
+<?php require __DIR__ . '/view-inventory-modal.php'; ?>
+<?php require __DIR__ . '/edit-inventory-modal.php'; ?>
+
 <script>
     $(document).ready(function() {
         $('#psyEquipmentTable').DataTable({
@@ -82,4 +88,4 @@
         });
     });
 </script>
-<?php include  __DIR__ .'/../includes/footer.php'; ?>
+<?php include  __DIR__ . '/../includes/footer.php'; ?>
