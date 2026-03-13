@@ -1,5 +1,5 @@
-<?php include  __DIR__ . '/../includes/sidebar.php'; ?>
-<?php include  __DIR__ . '/../includes/header.php'; ?>
+<?php include  __DIR__ . '/../../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../../includes/header.php'; ?>
 
 
 <main class="main-content">
@@ -14,9 +14,9 @@
                     Inventory
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
-                    <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                <button class="btn btn-primary btn-sm" id="createNewBtn">
+                    <i class="fas fa-plus me-1"></i> Create News
+                </button>
             </div>
             <div class="card-body">
                 <table id="heEquipmentTable" class="table table-striped table-bordered" style="width:100%">
@@ -31,14 +31,16 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                    <?php foreach( $inventories as $inventory )  { ?>
                         <tr>
-                            <td>1</td>
+                            <td><?= $inventory['id'] ?></td>
                             <td>
-                                <img src="projector.png" class="img-fluid rounded" style="max-width: 100px;">
+                                <img src="<?= BASE_URL ?>/public/<?= $inventory['item_img'] ?>" class="img-fluid rounded" style="max-width: 100px;">
                             </td>
-                            <td>Oven</td>
-                            <td>10</td>
-                            <td>5</td>
+                            <td><?= $inventory['category'] ?></td>
+                            <td><?= $inventory['total'] ?></td>
+                            <td><?= $inventory['available'] ?></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -46,28 +48,27 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </a>
+                                            <button class="dropdown-item heViewBtn" data-id="<?= $inventory['id'] ?>">
+                                                 <i class="fas fa-eye me-2"></i> View
+                                            </button>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <button class="dropdown-item heEdit" data-id="<?= $inventory['id'] ?>">
                                                 <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
-                                                onclick="return confirm('Are you sure you want to delete this record?')">
-                                                <i class="fas fa-trash me-2"></i> Delete
-                                            </a>
+                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $inventory['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
                                         </li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
+
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
@@ -76,9 +77,9 @@
     </div>
 </main>
 
-<?php require __DIR__ . '/heAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/heView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/heEdit-inventory-modal.php'; ?>
+<?php require __DIR__ . '/add-inventory-modal.php'; ?>
+<?php require __DIR__ . '/view-inventory-modal.php'; ?>
+<?php require __DIR__ . '/edit-inventory-modal.php'; ?>
 
 <script>
     $(document).ready(function() {
@@ -88,4 +89,8 @@
         });
     });
 </script>
-<?php include  __DIR__ . '/../includes/footer.php'; ?>
+
+<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script src="<?= BASE_URL ?>/js/heInventory.js"></script>
+
+<?php include  __DIR__ . '/../../includes/footer.php'; ?>

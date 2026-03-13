@@ -3,7 +3,7 @@
         <div class="modal-content">
 
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Create Equipment</h5>
+                <h5 class="modal-title">Create Equipments</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 

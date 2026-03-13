@@ -7,15 +7,13 @@ class DamageController
         require __DIR__ . '/../../config/database.php';
         
         
-        try {
+     try {
             $db = Database::connect();
 
             $stmt = $db->prepare("SELECT * FROM damage");
             $stmt->execute();
 
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
 
             require __DIR__ . '/../views/damages/damage.php';
 

@@ -61,7 +61,7 @@ CreateDamageBtn.addEventListener("click", function() {
              modal.show();
 
 
-              fetch(`${BASE_URL}/damages/view/${id}`)
+              fetch(`${BASE_URL}/damages/edit/${id}`)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('damage_id').value = data.id
