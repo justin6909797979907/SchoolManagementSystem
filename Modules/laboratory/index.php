@@ -37,6 +37,10 @@ switch ($segments[0] ?? '') {
             $controller->edit($segments[2]);
         }
 
+         elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->destroy($segments[2]);
+        }
+
          elseif ($segments[1] === 'update') {
             $controller->update();
         }

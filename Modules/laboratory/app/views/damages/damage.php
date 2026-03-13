@@ -55,7 +55,7 @@
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item text-danger" href="delete.php?id=1" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                        <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $user['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
                                     </ul>
                                 </div>
                             </td>                          
