@@ -26,7 +26,7 @@
                     </p>
 
                     <p class="mb-2">
-                        <strong class="text-secondary">Item Code</strong><br>
+                        <strong class="text-secondary" id="damage_code">Item Code</strong><br>
                     </p>
 
                     <p class="mb-2">

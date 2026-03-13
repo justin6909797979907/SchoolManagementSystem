@@ -79,6 +79,6 @@
 <!-- View Damage Modal -->
 <?php require __DIR__ . '/view-damage-modal.php'; ?>
 
-<script><?php  echo BASE_URL; ?></script>
+<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
 <script src="<?= BASE_URL ?>/js/damage.js"></script>
 <?php include  __DIR__ .'/../includes/footer.php'; ?>
