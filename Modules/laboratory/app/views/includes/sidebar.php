@@ -12,7 +12,7 @@
         <p class="user-id">SAMPLEID123456789</p>
     </div>
     <h2>Laboratory</h2>
-    <ul>
+    <ul id="accordionSidebar">
         <li><a href="<?= BASE_URL ?>" class="menu-link <?php echo CURRENT_URI == 'laboratory'? "active" :  "" ?>">Dashboard</a></li>
         <!-- Laboratories -->
         <li class="nav-item">
@@ -30,7 +30,7 @@
                 class="collapse"
                 data-bs-parent="#accordionSidebar">
 
-                <div class="py-2 px-3 rounded shadow-sm w-100">
+                <div class="py-2 px-3 rounded shadow-sm w-100 accordionSidebar-inner">
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
                         data-bs-toggle="collapse"
