@@ -50,6 +50,12 @@ switch ($uri) {
         $controller->index();
         break;
 
+    case 'settings':
+        require_once __DIR__ . '/app/controllers/SettingsController.php';
+        $controller = new SettingsController();
+        $controller->index();
+        break;
+
 
     default:
         http_response_code(404);
