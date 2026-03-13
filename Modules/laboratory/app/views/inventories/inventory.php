@@ -4,39 +4,67 @@
 
 <main class="main-content">
     <div class="container-fluid px-4">
-        <h1 class="h3 mb-2 text-gray-800">IT Laboratory</h1>
-        <p class="mb-4">Equipment List</p>
+        <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
+        <p class="mb-4">Psychology Laboratory</p>
 
-        <div class="card shadow-lg border-0 border-top border-4 border-secondary mb-4">
+        <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <i class="fas fa-table me-1"></i>
-                Laboratory Equipment
+                <div>
+                    <i class="fas fa-table me-1"></i>
+                    Inventory
+                </div>
+
+                <a href="create.php" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> Create New
+                </a>
             </div>
             <div class="card-body">
-                <table id="labEquipmentTable" class="table table-striped table-bordered">
+                <table id="psyEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Photo</th>
                             <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Status</th>
+                            <th>total</th>
+                            <th>Available</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Microscope</td>
+                            <td>
+                                <img src="projector.png" class="img-fluid rounded" style="max-width: 100px;">
+                            </td>
                             <td>Optical</td>
                             <td>10</td>
-                            <td>Available</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Centrifuge</td>
-                            <td>Mechanical</td>
                             <td>5</td>
-                            <td>In Use</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="view.php?id=1">
+                                                <i class="fas fa-eye me-2"></i> View
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="edit.php?id=1">
+                                                <i class="fas fa-edit me-2"></i> Edit
+                                            </a>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
+                                                onclick="return confirm('Are you sure you want to delete this record?')">
+                                                <i class="fas fa-trash me-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,7 +76,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#labEquipmentTable').DataTable({
+        $('#psyEquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
