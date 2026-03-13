@@ -147,6 +147,35 @@ class DamageController
     }
 }
 
+    public function destroy($id)
+    {
+
+        header('Content-Type: application/json');
+
+         require __DIR__ . '/../../config/database.php';
+        
+    
+        try {
+            $db = Database::connect();
+
+            $stmt = $db->prepare("DELETE FROM damage WHERE id = :id");
+            $stmt->execute([':id' => $id]);
+
+            echo json_encode([
+                'success' => true,
+                'message' => 'Damage deleted successfully'
+            ]);
+
+        } catch(PDOException $e) {
+            echo json_encode([
+                'success' => false,
+                'error' => $e->getMessage()
+            ]);
+        }
+
+
+    }
+
 
 
 

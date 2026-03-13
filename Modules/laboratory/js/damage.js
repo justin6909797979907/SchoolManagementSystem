@@ -1,6 +1,7 @@
 let CreateDamageBtn = document.getElementById("CreateDamageBtn");
 let viewButtons = document.querySelectorAll(".viewDamageBtn");
 let editButton = document.querySelectorAll(".editDamageBtn");
+let deleteBtn = document.querySelectorAll(".deleteBtn");
 
 
 CreateDamageBtn.addEventListener("click", function() {
@@ -26,6 +27,18 @@ CreateDamageBtn.addEventListener("click", function() {
                     document.getElementById("damage_code").textContent = data.code;
                     document.getElementById("damage_category").textContent = data.category;
                     document.getElementById("damage_description").textContent = data.description;
+                    document.getElementById("damage_status").textContent = data.status;
+                    
+                    let statusEl = document.getElementById("damage_status")
+
+                    if (data.status === "Fixed") {
+                        statusEl.classList.remove("bg-danger");
+                        statusEl.classList.add("bg-success");
+                    } else {
+                        statusEl.classList.remove("bg-success");
+                        statusEl.classList.add("bg-danger");
+                    }
+
                 })
                 .catch(error => {
                     console.error('Error fetching damage details:', error);
@@ -69,7 +82,6 @@ CreateDamageBtn.addEventListener("click", function() {
     });
 
 
-   // 2️⃣ Form submit handler (AJAX update)
 document.getElementById('editDamageForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -99,6 +111,33 @@ document.getElementById('editDamageForm').addEventListener('submit', function(e)
         err => console.error('Error updating damage:', err)
     );
 });
+
+    // deletion 
+
+    deleteBtn.forEach( button => {
+
+        button.addEventListener('click', function() {
+
+            let id = this.getAttribute("data-id");
+
+        if(confirm("Are you sure you want to delete this damage?")) {
+            fetch(`${BASE_URL}/damages/delete/${id}`, {
+                method: "POST"
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success){
+                   location.reload()
+                } else {
+                    alert("Error: " + data.error);
+                }
+            })
+            .catch(err => console.error('Error deleting damage:', err));
+        }
+    });
+
+
+    })
 
 
 
