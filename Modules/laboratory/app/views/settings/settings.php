@@ -162,9 +162,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    const BASE_URL = "<?php echo BASE_URL ?>"
-</script>
-<script src="<?php echo BASE_URL ?>/js/activity.js"></script>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
