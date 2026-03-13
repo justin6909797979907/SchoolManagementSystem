@@ -56,6 +56,9 @@ class DamageController
 
     public function view($id)
     {
+
+         header('Content-Type: application/json');
+
         require __DIR__ . '/../../config/database.php';
 
         try {
@@ -75,4 +78,77 @@ class DamageController
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
- }
+
+    public function edit($id)
+    {
+
+        header('Content-Type: application/json');
+        require __DIR__ . '/../../config/database.php';
+
+         try {
+            $db = Database::connect();
+            $stmt = $db->prepare("SELECT * FROM damage WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $damage = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($damage) {
+                echo json_encode($damage);
+            } else {
+                echo json_encode(['error' => 'Damage not found']);
+            }
+        } catch (PDOException $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+
+    }
+
+    
+    public function update() {
+    header('Content-Type: application/json');
+
+    require __DIR__ . '/../../config/database.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+       $id = $_POST['id'] ?? null;
+        $item = $_POST['edit_item'] ?? '';
+        $description = $_POST['edit_description'] ?? '';
+        $status = $_POST['edit_status'] ?? '';
+        $code = $_POST['edit_code'] ?? ''; 
+
+        try {
+            $db = Database::connect();
+
+            $stmt = $db->prepare("
+                UPDATE damage
+                SET category = :category,
+                    code = :code,
+                    description = :description,
+                    status = :status
+                WHERE id = :id
+            ");
+
+            $stmt->execute([
+                ':category' => $item,
+                ':code' => $code,
+                ':description' => $description,
+                ':status' => $status,
+                ':id' => $id
+            ]);
+
+            echo json_encode(['success' => true, 'message' => 'Damage updated successfully']);
+
+        } catch (PDOException $e) {
+            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+        }
+    }
+}
+
+
+
+
+}
+

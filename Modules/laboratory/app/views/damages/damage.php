@@ -36,13 +36,11 @@
                     <tbody>
                             <?php  foreach ($users as $user) { ?>
                         <tr>
-
-                        
                                     <td><?= $user['id'] ?></td>
                                     <td><?= $user['category'] ?> </td>
                                     <td><?= $user['code'] ?></td>
                             <td>
-                                <span class="badge bg-success"><?= $user['status'] ?></span>
+                                    <span class="badge <?= $user['status'] === 'Fixed' ? 'bg-success' : 'bg-danger' ?>"><?= $user['status'] ?></span>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -51,7 +49,7 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><button class="dropdown-item viewDamageBtn"  data-id="<?= $user['id'] ?>"><i class="fas fa-eye me-2"></i>View</button></li>
-                                        <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDamageModal">
+                                        <button class="dropdown-item editDamageBtn" data-id="<?= $user['id'] ?>">
                                             <i class="fas fa-edit me-2"></i> Edit
                                         </button>
                                         <li>

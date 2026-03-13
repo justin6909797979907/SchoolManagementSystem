@@ -33,6 +33,14 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         }
 
+         elseif ($segments[1] === 'edit' && isset($segments[2])) {
+            $controller->edit($segments[2]);
+        }
+
+         elseif ($segments[1] === 'update') {
+            $controller->update();
+        }
+
         break;
 
     case 'inventory':

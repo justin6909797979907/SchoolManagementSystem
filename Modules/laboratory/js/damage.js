@@ -1,5 +1,7 @@
 let CreateDamageBtn = document.getElementById("CreateDamageBtn");
- const viewButtons = document.querySelectorAll(".viewDamageBtn");
+let viewButtons = document.querySelectorAll(".viewDamageBtn");
+let editButton = document.querySelectorAll(".editDamageBtn");
+
 
 CreateDamageBtn.addEventListener("click", function() {
     let addDamageModal = new bootstrap.Modal(document.getElementById("addDamageModal"));
@@ -12,17 +14,11 @@ CreateDamageBtn.addEventListener("click", function() {
 
             let id = this.getAttribute("data-id");
 
-        
-            // open modal
             let modal = new bootstrap.Modal(document.getElementById('viewDamageModal'));
             modal.show();
 
-            // example: set id inside modal
             document.getElementById("damage_id").value = id;
-
-
-                // Fetch damage details using AJAX\
-            
+      
             fetch(`${BASE_URL}/damages/view/${id}`)
                 .then(response => response.json())
                 .then(data => {
@@ -38,3 +34,77 @@ CreateDamageBtn.addEventListener("click", function() {
 
         });
     });
+
+    // edit modal 
+
+
+    editButton.forEach( button => {
+
+            button.addEventListener('click',function(){
+
+             let id = this.getAttribute("data-id");
+
+             let modal = new bootstrap.Modal(document.getElementById('editDamageModal'));
+             modal.show();
+
+
+              fetch(`${BASE_URL}/damages/view/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('damage_id').value = data.id
+                    document.getElementById('item').value = data.category;
+                    document.getElementById("description").value = data.description;
+                    document.getElementById('status').value = data.status;
+                      document.getElementById('code').value = data.code;
+                })
+                .catch(error => {
+                    console.error('Error fetching damage details:', error);
+                });
+            
+            });
+
+
+
+           
+    });
+
+
+   // 2️⃣ Form submit handler (AJAX update)
+document.getElementById('editDamageForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch(`${BASE_URL}/damages/update`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            const modalEl = document.getElementById('editDamageModal');
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            modal.hide();
+
+            location.reload();
+
+        } else {
+            alert('Error: ' + data.error);
+        }
+
+
+    })
+    .catch(
+        
+        err => console.error('Error updating damage:', err)
+    );
+});
+
+
+
+
+
+  
+
+
+   
