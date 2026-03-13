@@ -1,42 +1,48 @@
-
-<div class="modal fade" tabindex="-1" id="viewDamageModal" >
+<div class="modal fade" id="viewDamageModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content shadow">
 
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title">
-                    <i class="fas fa-th-large me-2"></i>Damage Details
+                    <i class="fas fa-exclamation-triangle me-2"></i>Damage Details
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
 
-            <div class="modal-body text-center">
+            <div class="modal-body">
 
-                <img src="projector.png" class="img-fluid mb-4" style="max-width:180px;">
+                <div class="text-center mb-4">
+                    <img src="projector.png" class="img-fluid rounded border p-2" style="max-width:160px;">
+                </div>
 
-                <div class="text-start px-3">
+                <div class="row g-3">
 
-                    <p class="mb-2">
-                        <strong class="text-secondary" id="damage_id">Code</strong><br>
-                    </p>
+                    <div class="col-12">
+                        <small class="text-muted">Code</small>
+                        <div class="fw-semibold" id="damage_id">DMG-001</div>
+                    </div>
 
-                    <p class="mb-2">
-                        <strong class="text-secondary" id="damage_category">Category</strong><br>
-                        
-                    </p>
+                    <div class="col-12">
+                        <small class="text-muted">Category</small>
+                        <div class="fw-semibold" id="damage_category">Projector</div>
+                    </div>
 
-                    <p class="mb-2">
-                        <strong class="text-secondary" id="damage_code">Item Code</strong><br>
-                    </p>
+                    <div class="col-12">
+                        <small class="text-muted">Item Code</small>
+                        <div class="fw-semibold" id="damage_code">PRJ-00012</div>
+                    </div>
 
-                    <p class="mb-2">
-                        <strong class="text-secondary" id="damage_description">Description</strong><br>
-                    </p>
+                    <div class="col-12">
+                        <small class="text-muted">Description</small>
+                        <div class="fw-semibold" id="damage_description">
+                            Lens cracked and projector not turning on.
+                        </div>
+                    </div>
 
-                    <p class="mb-2">
-                        <strong class="text-secondary">Status</strong><br>
-                        <span class="badge bg-danger">Unfixed</span>
-                    </p>
+                    <div class="col-12">
+                        <small class="text-muted">Status</small><br>
+                        <span class="badge bg-danger px-3 py-2">Unfixed</span>
+                    </div>
 
                 </div>
 
