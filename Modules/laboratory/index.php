@@ -86,6 +86,11 @@ switch ($segments[0] ?? '') {
         
     break;
 
+    case 'psycho-damage':
+        require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
+        (new PsychoDmgController())->index();
+        break;
+        
     default:
         http_response_code(404);
         require_once __DIR__ . '/app/views/errors/404.php';
