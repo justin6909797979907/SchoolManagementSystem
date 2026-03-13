@@ -41,7 +41,8 @@
 
                     <div class="col-12">
                         <small class="text-muted">Status</small><br>
-                        <span class="badge bg-danger px-3 py-2">Unfixed</span>
+                        <span class="badge bg-danger px-3 py-2" id="damage_status"></span>
+                        
                     </div>
 
                 </div>

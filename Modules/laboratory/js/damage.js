@@ -27,6 +27,18 @@ CreateDamageBtn.addEventListener("click", function() {
                     document.getElementById("damage_code").textContent = data.code;
                     document.getElementById("damage_category").textContent = data.category;
                     document.getElementById("damage_description").textContent = data.description;
+                    document.getElementById("damage_status").textContent = data.status;
+                    
+                    let statusEl = document.getElementById("damage_status")
+
+                    if (data.status === "Fixed") {
+                        statusEl.classList.remove("bg-danger");
+                        statusEl.classList.add("bg-success");
+                    } else {
+                        statusEl.classList.remove("bg-success");
+                        statusEl.classList.add("bg-danger");
+                    }
+
                 })
                 .catch(error => {
                     console.error('Error fetching damage details:', error);
