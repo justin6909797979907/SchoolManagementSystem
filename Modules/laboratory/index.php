@@ -7,58 +7,40 @@ session_start();
 $basePath = BASE_URL;
 $uri = trim(str_replace($basePath, '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
 
-switch ($uri) {
+$segments = explode('/', $uri); 
+
+switch ($segments[0] ?? '') {
 
     case '':
         require_once __DIR__ . '/app/controllers/HomeController.php';
-        $controller = new HomeController();
-        $controller->index();
+        (new HomeController())->index();
         break;
-    
+
     case 'damages':
+
         require_once __DIR__ . '/app/controllers/DamageController.php';
         $controller = new DamageController();
-        $controller->index();
-        break;
 
-    case 'damages/create':
-        require_once __DIR__ . '/app/controllers/DamageController.php';
-        $controller = new DamageController();
-        $controller->create();
-        break;
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
 
-      case 'damages/view/:id':
-        // require_once __DIR__ . '/app/controllers/DamageController.php';
-        // $controller = new DamageController();
-        // $controller->view($_GET['id']);
+        elseif ($segments[1] === 'create') {
+            $controller->create();
+        }
 
-        echo "hi";
+        elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        }
 
-        break;
-        
-    case 'burrow':
-
-        require_once __DIR__ . '/app/controllers/BurrowController.php';
-        $controller = new BurrowController();
-        $controller->index();
         break;
 
     case 'inventory':
-
         require_once __DIR__ . '/app/controllers/InventoryController.php';
-        $controller = new InventoryController();
-        $controller->index();
+        (new InventoryController())->index();
         break;
-
-    case 'settings':
-        require_once __DIR__ . '/app/controllers/SettingsController.php';
-        $controller = new SettingsController();
-        $controller->index();
-        break;
-
 
     default:
         http_response_code(404);
         require_once __DIR__ . '/app/views/errors/404.php';
-        break;
 }

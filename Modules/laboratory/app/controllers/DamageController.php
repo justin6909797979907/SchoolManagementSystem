@@ -23,11 +23,6 @@ class DamageController
             echo "Error: " . $e->getMessage();
         }
 
-
-
-
-
-
     }
 
     public function create()
@@ -63,25 +58,21 @@ class DamageController
     {
         require __DIR__ . '/../../config/database.php';
 
-        echo $id;
+        try {
+            $db = Database::connect();
+            $stmt = $db->prepare("SELECT * FROM damage WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-    //     try {
-    //         $db = Database::connect();
-    //         $stmt = $db->prepare("SELECT * FROM damage WHERE id = :id");
-    //         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    //         $stmt->execute();
+            $damage = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //         $damage = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //         if ($damage) {
-    //             echo json_encode($damage);
-    //         } else {
-    //             echo json_encode(['error' => 'Damage not found']);
-    //         }
-    //     } catch (PDOException $e) {
-    //         echo json_encode(['error' => $e->getMessage()]);
-    //     }
-    // }
+            if ($damage) {
+                echo json_encode($damage);
+            } else {
+                echo json_encode(['error' => 'Damage not found']);
+            }
+        } catch (PDOException $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
-
-}
+ }
