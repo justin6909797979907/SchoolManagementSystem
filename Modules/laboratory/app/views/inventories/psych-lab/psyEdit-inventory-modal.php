@@ -1,4 +1,4 @@
-<div class="modal fade" id="editModal" tabindex="-1">
+<div class="modal fade" id="psychEditModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -9,30 +9,25 @@
 
             <div class="modal-body">
 
-                <form action="update.php" method="POST" enctype="multipart/form-data">
+                <form id="editPsychForm">
 
-                    <input type="hidden" name="id" value="1">
+                   <input type="hidden" name="id" id="psych_edit_id">
 
                     <div class="row">
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Category</label>
-                            <input type="text" class="form-control" name="category" value="Optical">
+                            <input type="text" class="form-control" name="edit_category" id="psych_edit_category">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Total</label>
-                            <input type="number" class="form-control" name="total" value="10">
+                            <input type="number" class="form-control" name="edit_total" id="psych_edit_total" >
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Available</label>
-                            <input type="number" class="form-control" name="available" value="5">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Change Photo</label>
-                            <input type="file" class="form-control" name="photo">
+                            <input type="number" class="form-control" name="edit_available" id="psych_edit_available" >
                         </div>
 
                     </div>

@@ -9,7 +9,7 @@
 
             <div class="modal-body">
 
-                <form action="<?= BASE_URL ?>/he-inventory/create" method="POST" enctype="multipart/form-data">
+                <form action="<?= BASE_URL ?>/inventory/create" method="POST" enctype="multipart/form-data">
 
                     <div class="row">
 
@@ -30,7 +30,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Photo</label>
-                            <input type="file" class="form-control" name="image">
+                            <input type="file" class="form-control" name="item_img">
                         </div>
 
                     </div>

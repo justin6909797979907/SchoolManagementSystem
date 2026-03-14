@@ -1,4 +1,4 @@
-<div class="modal fade" id="createModal" tabindex="-1">
+<div class="modal fade" id="addPsychInventoryModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -9,7 +9,7 @@
 
             <div class="modal-body">
 
-                <form action="store.php" method="POST" enctype="multipart/form-data">
+                <form action="<?= BASE_URL ?>/psycho-inventory/create" method="POST" enctype="multipart/form-data">
 
                     <div class="row">
 
@@ -30,7 +30,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Photo</label>
-                            <input type="file" class="form-control" name="photo">
+                            <input type="file" class="form-control" name="item_img">
                         </div>
 
                     </div>

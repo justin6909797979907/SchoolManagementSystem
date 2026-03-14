@@ -9,30 +9,25 @@
 
             <div class="modal-body">
 
-                <form action="update.php" method="POST" enctype="multipart/form-data">
+                <form id="editPhysicForm">
 
-                    <input type="hidden" name="id" value="1">
+                    <input type="hidden" name="id" id="physic_edit_id" >
 
                     <div class="row">
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Category</label>
-                            <input type="text" class="form-control" name="category" value="Optical">
+                            <input type="text" class="form-control" name="edit_category" id="physic_edit_category">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Total</label>
-                            <input type="number" class="form-control" name="total" value="10">
+                            <input type="number" class="form-control" name="edit_total" id="physic_edit_total">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Available</label>
-                            <input type="number" class="form-control" name="available" value="5">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Change Photo</label>
-                            <input type="file" class="form-control" name="photo">
+                            <input type="number" class="form-control" name="edit_available" id="physic_edit_available">
                         </div>
 
                     </div>

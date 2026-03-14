@@ -1,4 +1,4 @@
-<div class="modal fade" id="viewModal" tabindex="-1">
+<div class="modal fade" id="psychViewModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -9,11 +9,18 @@
 
             <div class="modal-body text-center">
 
-                <img src="projector.png" class="img-fluid rounded mb-3" width="150">
+                <img src="projector.png" class="img-fluid rounded mb-3" width="150" id="image">
 
-                <p><strong>Category:</strong> Optical</p>
-                <p><strong>Total:</strong> 10</p>
-                <p><strong>Available:</strong> 5</p>
+                 <div class="text-center">
+                    <strong>Category:</strong>
+                     <div class="mb-2" id="category"></div>
+                    
+                     <strong>Total:</strong> 
+                     <div class="mb-2" id="total"></div>
+
+                     <strong>Available:</strong>
+                      <div class="mb-2" id="available"></div>
+                 </div>
 
             </div>
 
