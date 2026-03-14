@@ -4,8 +4,8 @@
 
 <main class="main-content">
     <div class="container-fluid px-4">
-        <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
-        <p class="mb-4">Barrows</p>
+        <h1 class="h3 mb-2 text-gray-800">Borrows</h1>
+        <p class="mb-4">Criminology Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">

@@ -147,6 +147,11 @@ switch ($segments[0] ?? '') {
         require_once __DIR__ . '/app/controllers/CrimBrwController.php';
         (new CrimBrwController())->index();
         break;
+
+     case 'crim-damage':
+        require_once __DIR__ . '/app/controllers/CrimDmgController.php';
+        (new CrimDmgController())->index();
+        break;    
         
         break;
     case 'psycho-damage':
