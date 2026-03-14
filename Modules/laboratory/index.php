@@ -120,7 +120,27 @@ switch ($segments[0] ?? '') {
 
     case 'crim-inventory':
         require_once __DIR__ . '/app/controllers/CrimInvController.php';
-        (new CrimInvController())->index();
+        $controller = new CrimInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+        elseif ($segments[1] === 'create') {
+            $controller->create();
+        }
+        
+        elseif ($segments[1] === 'view' && isset($segments[2])){
+            $controller->view($segments[2]);
+        }
+
+         elseif ($segments[1] === 'delete' && isset($segments[2])){
+            $controller->destroy($segments[2]);
+        }
+
+         elseif ($segments[1] === 'update'){
+            $controller->update();
+        }
         break;
 
     case 'crim-borrow':

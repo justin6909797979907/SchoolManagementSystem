@@ -11,29 +11,26 @@
 
                 <form id="editCrimForm">
 
-                    <input type="hidden" name="id" id="edit_id">
+                    <input type="hidden" name="id" id="crim_edit_id">
 
                     <div class="row">
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Category</label>
-                            <input type="text" class="form-control" name="edit_category" id="edit_category">
+                            <input type="text" class="form-control" name="edit_category" id="crim_edit_category">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Total</label>
-                            <input type="number" class="form-control" name="edit_total" id="edit_total">
+                            <input type="number" class="form-control" name="edit_total" id="crim_edit_total">
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Available</label>
-                            <input type="number" class="form-control" name="edit_available" id="edit_available">
+                            <input type="number" class="form-control" name="edit_available" id="crim_edit_available">
                         </div>
                         
-                        <div class="col-md-6 mb-3" style="pointer-events: none; opacity: 0.5;">
-                            <label class="form-label">Change Photo</label>
-                            <input type="file" class="form-control" name="photo">
-                        </div>
+                        
 
                     </div>
 
