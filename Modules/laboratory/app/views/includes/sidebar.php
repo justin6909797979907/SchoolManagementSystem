@@ -93,8 +93,8 @@
 
                     <div class="collapse ps-2 text-white" id="collapseCrim">
                         <a href="<?= BASE_URL ?>/crim-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crim-inventory'? "active" :  "" ?>">Inventory</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light">Damages</a>
                         <a href="<?= BASE_URL ?>/crim-borrow" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'crim-borrow'? "active" :  "" ?>">Borrows</a>
+                        <a href="<?= BASE_URL ?>/crim-damage" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'crim-damage'? "active" :  "" ?>">Damages</a>
                     </div>
 
                     <!-- IT Lab with Submenu -->
