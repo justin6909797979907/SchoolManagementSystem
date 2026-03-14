@@ -14,7 +14,7 @@
                     <i class="fas fa-table me-1"></i> Inventory
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="itAddBtn">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#itAddModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
