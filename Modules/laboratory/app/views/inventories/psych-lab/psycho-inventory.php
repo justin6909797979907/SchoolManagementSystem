@@ -1,5 +1,5 @@
-<?php include  __DIR__ . '/../includes/sidebar.php'; ?>
-<?php include  __DIR__ . '/../includes/header.php'; ?>
+<?php include  __DIR__ . '/../../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../../includes/header.php'; ?>
 
 
 <main class="main-content">
@@ -89,4 +89,4 @@
 <?php require __DIR__ . '/psyView-inventory-modal.php'; ?>
 <?php require __DIR__ . '/psyEdit-inventory-modal.php'; ?>
 
-<?php include  __DIR__ . '/../includes/footer.php'; ?>
+<?php include  __DIR__ . '/../../includes/footer.php'; ?>

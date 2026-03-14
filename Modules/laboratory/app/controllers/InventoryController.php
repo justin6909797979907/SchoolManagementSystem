@@ -10,7 +10,7 @@ class InventoryController {
     public function index()
     {
 
-        require __DIR__ . '/../views/inventories/inventory.php';
+        require __DIR__ . '/../views/inventories/physics/inventory.php';
 
     }
 

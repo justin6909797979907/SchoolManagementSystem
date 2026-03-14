@@ -10,7 +10,7 @@ class PsychoInvController {
     public function index()
     {
 
-        require __DIR__ . '/../views/inventories/psycho-inventory.php';
+        require __DIR__ . '/../views/inventories/psych-lab/psycho-inventory.php';
 
     }
 

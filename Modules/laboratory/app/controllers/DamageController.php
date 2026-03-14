@@ -16,6 +16,7 @@ class DamageController
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             require __DIR__ . '/../views/damages/damage.php';
+           
 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
