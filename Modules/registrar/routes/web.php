@@ -10,6 +10,7 @@ use App\Controllers\ActivityController;
 use App\Controllers\SchoolYearController;
 use App\Controllers\SemesterController;
 use App\Controllers\SubjectController;
+use App\Controllers\RoomController;
 use App\Helper\AiHelper;
 
 
@@ -109,6 +110,10 @@ use App\Helper\AiHelper;
     $r->get('/subject/all',[SubjectController::class,'allSubjects']);
     $r->post('/subject/store',[SubjectController::class,'store']);
     $r->post('/subject/delete',[SubjectController::class,'destroy']);
+
+// rooms 
+
+    $r->get('/room',[RoomController::class,'index']);
 
 // for all 
 
