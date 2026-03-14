@@ -109,7 +109,7 @@
                     </a>
 
                     <div class="collapse ps-2" id="collapseIT">
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Inventory</a>
+                         <a href="<?= BASE_URL ?>/it-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-inventory'? "active" :  "" ?>">Inventory</a>
                         <a href="#" class="dropdown-item menu-link small fw-light text-white">Damages</a>
                         <a href="#" class="dropdown-item menu-link small fw-light text-white">Borrows</a>
                     </div>

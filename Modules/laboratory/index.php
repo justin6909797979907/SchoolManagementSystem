@@ -148,10 +148,15 @@ switch ($segments[0] ?? '') {
         (new CrimBrwController())->index();
         break;
 
-     case 'crim-damage':
+     case 'it-inventory':
+        require_once __DIR__ . '/app/controllers/ItInventoryController.php';
+        (new ItInventoryController())->index();
+        break; 
+        
+    case 'crim-damage':
         require_once __DIR__ . '/app/controllers/CrimDmgController.php';
         (new CrimDmgController())->index();
-        break;    
+        break; 
         
         break;
     case 'psycho-damage':
