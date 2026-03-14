@@ -76,9 +76,7 @@
     </div>
 </main>
 
-<?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?>
+
 
 <script>
     $(document).ready(function() {
@@ -88,5 +86,9 @@
         });
     });
 </script>
+
+<?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
+<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
+<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?>
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>

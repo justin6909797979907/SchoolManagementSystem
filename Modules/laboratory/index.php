@@ -86,9 +86,12 @@ switch ($segments[0] ?? '') {
         (new CrimInvController())->index();
         break;
 
+    case 'crim-borrow':
+        require_once __DIR__ . '/app/controllers/CrimBrwController.php';
+        (new CrimBrwController())->index();
+        break;
         
-    break;
-
+        break;
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
         (new PsychoDmgController())->index();

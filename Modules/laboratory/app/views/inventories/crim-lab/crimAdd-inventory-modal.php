@@ -28,7 +28,7 @@
                             <input type="number" class="form-control" name="available">
                         </div>
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3" style="pointer-events: none; opacity: 0.5;">
                             <label class="form-label">Photo</label>
                             <input type="file" class="form-control" name="image">
                         </div>
