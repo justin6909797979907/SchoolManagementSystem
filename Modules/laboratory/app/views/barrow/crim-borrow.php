@@ -1,12 +1,11 @@
-<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
-<?php include  __DIR__ .'/../includes/header.php'; ?>
-<link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
+<?php include  __DIR__ . '/../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../includes/header.php'; ?>
 
 
 <main class="main-content">
     <div class="container-fluid px-4">
-        <h1 class="h3 mb-2 text-gray-800">Borrows</h1>
-        <p class="mb-4">Physics Laboratory</p>
+        <h1 class="h3 mb-2 text-gray-800">Laboratory</h1>
+        <p class="mb-4">Barrows</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -15,7 +14,7 @@
                     Barrow Equipment
                 </div>
 
-                <a href="create.php" class="btn btn-primary btn-sm">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBorrowModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -25,6 +24,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Borrower Name</th>
+                            <th>Lab Type</th>
                             <th>Quantity</th>
                             <th>Barrowed Date</th>
                             <th>Returned Date</th>
@@ -35,7 +35,8 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Test</td>
+                            <td>Juan</td>
+                            <td>Fingerprint Lab</td>
                             <td>5</td>
                             <td>2024-03-27</td>
                             <td>2024-03-27</td>
@@ -49,16 +50,19 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
+
                                         <li>
-                                            <a class="dropdown-item" href="edit.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
-                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
@@ -77,6 +81,8 @@
     </div>
 </main>
 
+
+
 <script>
     $(document).ready(function() {
         $('#labEquipmentTable').DataTable({
@@ -85,4 +91,9 @@
         });
     });
 </script>
-<?php include  __DIR__ .'/../includes/footer.php'; ?>
+
+<?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
+<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
+<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?>
+
+<?php include  __DIR__ . '/../includes/footer.php'; ?>
