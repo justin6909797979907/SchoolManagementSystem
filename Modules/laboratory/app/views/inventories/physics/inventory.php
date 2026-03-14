@@ -14,7 +14,7 @@
                     Inventory
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#phyAddModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -46,12 +46,12 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#viewModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phyViewModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#phyEditModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
@@ -76,9 +76,9 @@
     </div>
 </main>
 
-<?php require __DIR__ . '/add-inventory-modal.php'; ?>
-<?php require __DIR__ . '/view-inventory-modal.php'; ?>
-<?php require __DIR__ . '/edit-inventory-modal.php'; ?>
+<?php require __DIR__ . '/phyAdd-inventory-modal.php'; ?>
+<?php require __DIR__ . '/phyView-inventory-modal.php'; ?>
+<?php require __DIR__ . '/phyEdit-inventory-modal.php'; ?>
 
 <script>
     $(document).ready(function() {
