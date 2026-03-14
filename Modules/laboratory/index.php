@@ -49,12 +49,48 @@ switch ($segments[0] ?? '') {
 
     case 'inventory':
         require_once __DIR__ . '/app/controllers/InventoryController.php';
-        (new InventoryController())->index();
+       $controller = new InventoryController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+        elseif ($segments[1] === 'create'){
+            $controller->create();
+        }
+         elseif ($segments[1] === 'view' && isset($segments[2])){
+            $controller->view($segments[2]);
+        }
+          elseif ($segments[1] === 'delete' && isset($segments[2])){
+            $controller->destroy($segments[2]);
+        }
+
+         elseif ($segments[1] === 'update'){
+            $controller->update();
+        }
+
         break;
 
     case 'psycho-inventory':
         require_once __DIR__ . '/app/controllers/PsychoInvController.php';
-        (new PsychoInvController())->index();
+        $controller = new PsychoInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+        elseif ($segments[1] === 'create'){
+            $controller->create();
+        }
+         elseif ($segments[1] === 'view' && isset($segments[2])){
+            $controller->view($segments[2]);
+        }
+          elseif ($segments[1] === 'delete' && isset($segments[2])){
+            $controller->destroy($segments[2]);
+        }
+
+         elseif ($segments[1] === 'update'){
+            $controller->update();
+        }
+
         break;
 
    case 'he-inventory':
@@ -80,10 +116,31 @@ switch ($segments[0] ?? '') {
          elseif ($segments[1] === 'update'){
             $controller->update();
         }
+        
 
     case 'crim-inventory':
         require_once __DIR__ . '/app/controllers/CrimInvController.php';
-        (new CrimInvController())->index();
+        $controller = new CrimInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+        elseif ($segments[1] === 'create') {
+            $controller->create();
+        }
+        
+        elseif ($segments[1] === 'view' && isset($segments[2])){
+            $controller->view($segments[2]);
+        }
+
+         elseif ($segments[1] === 'delete' && isset($segments[2])){
+            $controller->destroy($segments[2]);
+        }
+
+         elseif ($segments[1] === 'update'){
+            $controller->update();
+        }
         break;
 
     case 'crim-borrow':
