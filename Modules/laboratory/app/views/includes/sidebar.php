@@ -45,7 +45,7 @@
                     <div class="collapse ps-3" id="collapsePhysics">
                         <a href="<?= BASE_URL ?>/inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'inventory'? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/damages" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'damages'? "active" :  "" ?>">Damages</a>
-                        <a href="<?= BASE_URL ?>/burrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'burrow'? "active" :  "" ?>">Barrows</a>
+                        <a href="<?= BASE_URL ?>/burrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'burrow'? "active" :  "" ?>">Borrows</a>
                     </div>
                     
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
@@ -61,7 +61,7 @@
                     <div class="collapse ps-3" id="collapsePsychology">
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory'? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage'? "active" :  "" ?>">Damages</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Barrows</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Borrows</a>
                     </div>
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
@@ -77,7 +77,7 @@
                     <div class="collapse ps-3" id="collapseHE">
                         <a href="<?= BASE_URL ?>/he-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he-inventory'? "active" :  "" ?>">Inventory</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Damages</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Barrows</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Borrows</a>
                     </div>
 
                     <!-- Crim Lab with Submenu -->
@@ -92,12 +92,9 @@
                     </a>
 
                     <div class="collapse ps-2 text-white" id="collapseCrim">
-                        <a href="#" class="dropdown-item menu-link small fw-light">Finger Print Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light">Crime Scene Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light">Ballistics Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light">Questions Document Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light">Chemistry Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light">Defense & Tactics Lab</a>
+                          <a href="<?= BASE_URL ?>/crim-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crim-inventory'? "active" :  "" ?>">Inventory</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light">Damages</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light">Borrows</a>
                     </div>
 
                     <!-- IT Lab with Submenu -->
@@ -112,9 +109,9 @@
                     </a>
 
                     <div class="collapse ps-2" id="collapseIT">
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">IT Laboratory 1</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">IT Laboratory 2</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">IT Laboratory 3</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Inventory</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Damages</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Borrows</a>
                     </div>
 
                 </div>

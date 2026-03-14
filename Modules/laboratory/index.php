@@ -81,7 +81,10 @@ switch ($segments[0] ?? '') {
             $controller->update();
         }
 
-
+    case 'crim-inventory':
+        require_once __DIR__ . '/app/controllers/CrimInvController.php';
+        (new CrimInvController())->index();
+        break;
 
         
     break;

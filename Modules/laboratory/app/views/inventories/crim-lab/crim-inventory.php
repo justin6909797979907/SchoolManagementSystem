@@ -1,47 +1,44 @@
-<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
-<?php include  __DIR__ .'/../includes/header.php'; ?>
-<link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
+<?php include  __DIR__ . '/../../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../../includes/header.php'; ?>
 
 
 <main class="main-content">
     <div class="container-fluid px-4">
-        <h1 class="h3 mb-2 text-gray-800">Borrows</h1>
-        <p class="mb-4">Physics Laboratory</p>
+        <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
+        <p class="mb-4">Criminology Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Barrow Equipment
+                    Inventory
                 </div>
 
-                <a href="create.php" class="btn btn-primary btn-sm">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#crimAddModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
             <div class="card-body">
-                <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="crimEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Borrower Name</th>
-                            <th>Quantity</th>
-                            <th>Barrowed Date</th>
-                            <th>Returned Date</th>
-                            <th>Status</th>
+                            <th>Photo</th>
+                            <th>Category</th>
+                            <th>total</th>
+                            <th>Available</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Test</td>
-                            <td>5</td>
-                            <td>2024-03-27</td>
-                            <td>2024-03-27</td>
                             <td>
-                                <span class="badge bg-success">Returned</span>
+                                <img src="projector.png" class="img-fluid rounded" style="max-width: 100px;">
                             </td>
+                            <td>Optical</td>
+                            <td>10</td>
+                            <td>5</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -49,16 +46,18 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="edit.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
-                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
@@ -77,12 +76,17 @@
     </div>
 </main>
 
+<?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
+<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
+<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?>
+
 <script>
     $(document).ready(function() {
-        $('#labEquipmentTable').DataTable({
+        $('#crimEquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
-<?php include  __DIR__ .'/../includes/footer.php'; ?>
+
+<?php include  __DIR__ . '/../../includes/footer.php'; ?>
