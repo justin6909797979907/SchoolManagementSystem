@@ -1,5 +1,5 @@
-<?php include  __DIR__ .'/../includes/sidebar.php'; ?>
-<?php include  __DIR__ .'/../includes/header.php'; ?>
+<?php include  __DIR__ .'/../../includes/sidebar.php'; ?>
+<?php include  __DIR__ .'/../../includes/header.php'; ?>
 
 <link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
 
@@ -16,7 +16,7 @@
                     Barrow Equipment
                 </div>
 
-                <a href="create.php" class="btn btn-primary btn-sm" id="psychoAddDamageBtn" data-bs-toggle="modal" data-bs-target="#psychoAddDamageModal">
+                <a class="btn btn-primary btn-sm" id="psychoAddDamageBtn">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -32,12 +32,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                         <?php  foreach ($users as $user) { ?>
                         <tr>
-                            <td>1</td>
-                            <td>Optical</td>
-                            <td>Lorem</td>
+                                    <td><?= $user['id'] ?></td>
+                                    <td><?= $user['category'] ?> </td>
+                                    <td><?= $user['code'] ?></td>
                             <td>
-                                <span class="badge bg-success">Returned</span>
+                                    <span class="badge <?= $user['status'] === 'Fixed' ? 'bg-success' : 'bg-danger' ?>"><?= $user['status'] ?></span>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -45,27 +46,19 @@
                                         Action
                                     </button>
                                     <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item viewPsychoDamageBtn"  data-id="<?= $user['id'] ?>"><i class="fas fa-eye me-2"></i>View</button></li>
+                                        <button class="dropdown-item editPsychoDamageBtn" data-id="<?= $user['id'] ?>">
+                                            <i class="fas fa-edit me-2"></i> Edit
+                                        </button>
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1" id="psychoViewDamageBtn" data-bs-toggle="modal" data-bs-target="#psychoViewDamageModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </a>
+                                            <hr class="dropdown-divider">
                                         </li>
-                                        <li>
-                                            <a class="dropdown-item" href="edit.php?id=1" id="psychoEditDamageBtn" data-bs-toggle="modal" data-bs-target="#psychoEditDamageModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
-                                        </li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li>
-                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
-                                                onclick="return confirm('Are you sure you want to delete this record?')">
-                                                <i class="fas fa-trash me-2"></i> Delete
-                                            </a>
-                                        </li>
+                                        <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $user['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
                                     </ul>
                                 </div>
-                            </td>
+                            </td>                          
                         </tr>
+                         <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -90,4 +83,8 @@
         });
     });
 </script>
-<?php include  __DIR__ .'/../includes/footer.php'; ?>
+
+<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script src="<?= BASE_URL ?>/js/psychDamage.js"></script>
+
+<?php include  __DIR__ .'/../../includes/footer.php'; ?>

@@ -19,7 +19,7 @@
 
                     <div class="col-12">
                         <small class="text-muted">Code</small>
-                        <div class="fw-semibold" id="damage_id">DMG-001</div>
+                        <div class="fw-semibold" id="damage_code"></div>
                     </div>
 
                     <div class="col-12">
