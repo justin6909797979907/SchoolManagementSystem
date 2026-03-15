@@ -11,7 +11,7 @@ class InventoryController {
           try {
                 $db = Database::connect();
 
-                $stmt = $db->prepare("SELECT * FROM physic_inventory");
+                $stmt = $db->prepare("SELECT * FROM lab_physic_inventory");
                 $stmt->execute();
 
                 $inventories = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ class InventoryController {
             $db = Database::connect();
 
             $stmt = $db->prepare("
-                INSERT INTO physic_inventory(category, total, available, item_img)
+                INSERT INTO lab_physic_inventory(category, total, available, item_img)
                 VALUES(:category, :total, :available, :image)
             ");
 
@@ -97,7 +97,7 @@ class InventoryController {
 
         try {
             $db = Database::connect();
-            $stmt = $db->prepare("SELECT * FROM physic_inventory WHERE id = :id");
+            $stmt = $db->prepare("SELECT * FROM lab_physic_inventory WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -171,7 +171,7 @@ class InventoryController {
         try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("DELETE FROM physic_inventory WHERE id = :id");
+            $stmt = $db->prepare("DELETE FROM lab_physic_inventory WHERE id = :id");
             $stmt->execute([':id' => $id]);
 
             echo json_encode([

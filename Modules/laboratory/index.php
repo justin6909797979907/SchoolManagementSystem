@@ -16,6 +16,19 @@ switch ($segments[0] ?? '') {
         (new HomeController())->index();
         break;
 
+     case 'borrow':
+
+        require_once __DIR__ . '/app/controllers/PhysBrwController.php';
+        $controller = new PhysBrwController();
+
+
+         if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+
+    break;
+
     case 'damages':
 
         require_once __DIR__ . '/app/controllers/DamageController.php';
@@ -156,6 +169,16 @@ switch ($segments[0] ?? '') {
     case 'crim-damage':
         require_once __DIR__ . '/app/controllers/CrimDmgController.php';
         (new CrimDmgController())->index();
+        break; 
+
+    case 'phys_borrow':
+        require_once __DIR__ . '/app/controllers/PhysBrwController.php';
+        (new PhysBrwController())->index();
+        break; 
+
+    case 'schedule':
+        require_once __DIR__ . '/app/controllers/ScheduleController.php';
+        (new ScheduleController())->index();
         break; 
         
         break;

@@ -14,7 +14,7 @@ class PsychoDmgController {
          try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("SELECT * FROM psych_damage");
+            $stmt = $db->prepare("SELECT * FROM lab_psych_damage");
             $stmt->execute();
 
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ class PsychoDmgController {
     
                 try {
                     $db = Database::connect();
-                    $stmt = $db->prepare("INSERT INTO psych_damage (category, code,description, status) VALUES (:category, :code, :description, :status)");
+                    $stmt = $db->prepare("INSERT INTO lab_psych_damage (category, code,description, status) VALUES (:category, :code, :description, :status)");
                     $stmt->bindParam(':category', $item);
                     $stmt->bindParam(':code', $code);
                     $stmt->bindParam(':description', $description);
@@ -67,7 +67,7 @@ class PsychoDmgController {
 
         try {
             $db = Database::connect();
-            $stmt = $db->prepare("SELECT * FROM psych_damage WHERE id = :id");
+            $stmt = $db->prepare("SELECT * FROM lab_psych_damage WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -101,7 +101,7 @@ class PsychoDmgController {
             $db = Database::connect();
 
             $stmt = $db->prepare("
-                UPDATE psych_damage
+                UPDATE lab_psych_damage
                 SET category = :category,
                     code = :code,
                     description = :description,
@@ -137,7 +137,7 @@ class PsychoDmgController {
         try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("DELETE FROM psych_damage WHERE id = :id");
+            $stmt = $db->prepare("DELETE FROM lab_psych_damage WHERE id = :id");
             $stmt->execute([':id' => $id]);
 
             echo json_encode([

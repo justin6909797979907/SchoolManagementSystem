@@ -7,7 +7,7 @@ use PDO;
 
 class Activity extends Model {
 
-    public $tableName = 'activity_log';
+    public $tableName = 'rgr_activity_log';
     public $primaryKey = 'id';
 
 

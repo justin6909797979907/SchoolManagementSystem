@@ -82,7 +82,7 @@
 
 
            let heEditModal = new bootstrap.Modal(document.getElementById('heEditModal'));
-            heEditModal.show();
+            heEditModal.hide();
 
             location.reload();
 

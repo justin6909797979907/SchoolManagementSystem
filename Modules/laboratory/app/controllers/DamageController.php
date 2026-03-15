@@ -10,7 +10,7 @@ class DamageController
      try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("SELECT * FROM damage");
+            $stmt = $db->prepare("SELECT * FROM lab_damage");
             $stmt->execute();
 
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -37,7 +37,7 @@ class DamageController
     
                 try {
                     $db = Database::connect();
-                    $stmt = $db->prepare("INSERT INTO damage (category, code,description, status) VALUES (:category, :code, :description, :status)");
+                    $stmt = $db->prepare("INSERT INTO lab_damage (category, code,description, status) VALUES (:category, :code, :description, :status)");
                     $stmt->bindParam(':category', $item);
                     $stmt->bindParam(':code', $code);
                     $stmt->bindParam(':description', $description);
@@ -62,7 +62,7 @@ class DamageController
 
         try {
             $db = Database::connect();
-            $stmt = $db->prepare("SELECT * FROM damage WHERE id = :id");
+            $stmt = $db->prepare("SELECT * FROM lab_damage WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -86,7 +86,7 @@ class DamageController
 
          try {
             $db = Database::connect();
-            $stmt = $db->prepare("SELECT * FROM damage WHERE id = :id");
+            $stmt = $db->prepare("SELECT * FROM lab_damage WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -122,7 +122,7 @@ class DamageController
             $db = Database::connect();
 
             $stmt = $db->prepare("
-                UPDATE damage
+                UPDATE lab_damage
                 SET category = :category,
                     code = :code,
                     description = :description,
@@ -157,7 +157,7 @@ class DamageController
         try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("DELETE FROM damage WHERE id = :id");
+            $stmt = $db->prepare("DELETE FROM lab_damage WHERE id = :id");
             $stmt->execute([':id' => $id]);
 
             echo json_encode([

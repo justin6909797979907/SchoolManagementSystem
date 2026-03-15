@@ -45,7 +45,7 @@
                     <div class="collapse ps-3" id="collapsePhysics">
                         <a href="<?= BASE_URL ?>/inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'inventory'? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/damages" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'damages'? "active" :  "" ?>">Damages</a>
-                        <a href="<?= BASE_URL ?>/burrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'burrow'? "active" :  "" ?>">Borrows</a>
+                        <a href="<?= BASE_URL ?>/borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'borrow'? "active" :  "" ?>">Borrows</a>
                     </div>
                     
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
