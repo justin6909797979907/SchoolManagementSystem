@@ -145,7 +145,7 @@
         </li>
 
         <li><a href="" class="menu-link">Users</a></li>
-        <li><a href="" class="menu-link">Schedule</a></li>
+         <a href="<?= BASE_URL ?>/schedule" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'schedule'? "active" :  "" ?>">Schedule</a>
         <li><a href="" class="menu-link">Reports</a></li>
     </ul>
 
