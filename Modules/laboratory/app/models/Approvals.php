@@ -76,4 +76,13 @@ class Approvals extends DatabaseTwo
 
         return $stmt->rowCount();
     }
+
+    public function delete(int $approvalId): bool
+    {
+        $stmt = $this->conn->prepare("
+        DELETE FROM sd_approvals 
+        WHERE approval_id = :approval_id
+    ");
+        return $stmt->execute([':approval_id' => $approvalId]);
+    }
 }

@@ -11,11 +11,13 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                         <div class="d-flex align-items-center gap-2">
-                            <select id="concern-filter" class="form-select form-select-sm" style="width: 120px;">
-                                <option value="all">All</option>
-                                <option value="open">Open</option>
-                                <option value="resolved">Resolved</option>
-                            </select>
+                            <form method="GET" class="d-inline-block">
+                                <select name="status" id="concern-filter" class="form-select form-select-sm" style="width: 120px;" onchange="this.form.submit()">
+                                    <option value="all" <?= ($status ?? 'all') === 'all' ? 'selected' : '' ?>>All</option>
+                                    <option value="open" <?= ($status ?? '') === 'open' ? 'selected' : '' ?>>Open</option>
+                                    <option value="resolved" <?= ($status ?? '') === 'resolved' ? 'selected' : '' ?>>Resolved</option>
+                                </select>
+                            </form>
                             <input class="form-control form-control-sm"
                                 id="concern-search"
                                 type="search"

@@ -43,7 +43,7 @@
                     </td>
                     <td>
                         <?php if (!empty($issue['file_path'])): ?>
-                            <a href="<?= BASE_URL . '/public/' . ltrim($issue['file_path'], '/') ?>"
+                            <a href="http://localhost/SchoolManagementSystem/Modules/laboratory/public/<?= ltrim($issue['file_path'], '/') ?>"
                                 class="btn btn-sm btn-outline-primary"
                                 target="_blank">
                                 View
@@ -53,7 +53,21 @@
                         <?php endif; ?>
                     </td>
                     <td class="text-center">
-                        <button class="btn btn-sm btn-success">Resolve</button>
+                        <?php if ($issue['status'] !== 'resolved'): ?>
+                            <form method="POST" action="concern-issue-tracking/resolve">
+                                <input type="hidden" name="issue_id" value="<?= $issue['issue_id'] ?>">
+                                <input type="hidden" name="status" value="resolved">
+                                <button type="submit" class="btn btn-sm btn-success">Resolve</button>
+                            </form>
+                        <?php else: ?>
+                            <span class="badge bg-success">Resolved</span>
+                        <?php endif; ?>
+                        <form method="POST" action="concern-issue-tracking/delete" class="d-inline">
+                            <input type="hidden" name="issue_id" value="<?= htmlspecialchars($issue['issue_id']) ?>">
+                            <button type="submit" class="btn btn-sm btn-danger mt-2">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>

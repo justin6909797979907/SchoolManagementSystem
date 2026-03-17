@@ -90,7 +90,7 @@ class ApprovalDecisionSupportController
             }
 
             $approvalId = $_POST['approval_id'] ?? null;
-            $action     = $_POST['action'] ?? null; 
+            $action     = $_POST['action'] ?? null;
             $remarks    = trim($_POST['remarks'] ?? null);
 
             if (!$approvalId || !in_array($action, ['approved', 'rejected'])) {
@@ -108,5 +108,28 @@ class ApprovalDecisionSupportController
 
         header("Location: " . $_SERVER['HTTP_REFERER']);
         exit;
+    }
+
+    public function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $approvalId = $_POST['approval_id'] ?? null;
+
+            if (!$approvalId) {
+                $_SESSION['error'] = "Invalid input. Approval ID is missing.";
+            } else {
+                $approvalsModel = new Approvals();
+                $deleted = $approvalsModel->delete((int)$approvalId);
+
+                if ($deleted) {
+                    $_SESSION['success'] = "Approval deleted successfully.";
+                } else {
+                    $_SESSION['error'] = "Failed to delete approval.";
+                }
+            }
+
+            header("Location: " . ($_SERVER['HTTP_REFERER'] ?? "index.php?url=approval-decision-support"));
+            exit;
+        }
     }
 }

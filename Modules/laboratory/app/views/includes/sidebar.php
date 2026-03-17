@@ -149,6 +149,7 @@
         <li><a href="" class="menu-link">Reports</a></li>
         <li><a href="<?= BASE_URL ?>/approval-decision-support" class="menu-link">Approval Decision Support</a></li>
         <li><a href="<?= BASE_URL ?>/concern-issue-tracking" class="menu-link">Concerns Issue Tracking</a></li>
+        <li><a href="<?= BASE_URL ?>/report-submission-management" class="menu-link">Report Submmision Management</a></li>
 
     </ul>
 

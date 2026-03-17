@@ -73,7 +73,12 @@
                                 data-id="<?= $approval['approval_id'] ?>" data-action="rejected">
                                 Reject
                             </button>
-                            <button class="btn btn-secondary btn-sm btn-delete" data-id="<?= $approval['approval_id'] ?>">Delete</button>
+                            <form method="POST" action="approval-decision-support/delete" class="d-inline">
+                                <input type="hidden" name="approval_id" value="<?= htmlspecialchars($approval['approval_id']) ?>">
+                                <button type="submit" class="btn btn-secondary btn-sm">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </td>
                 </tr>

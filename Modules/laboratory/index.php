@@ -176,16 +176,38 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'update-decision') {
             $controller->updateDecision();
-        }
+        } elseif ($segments[1] === 'delete') {
+            $controller->delete();
+        };
         break;
 
-    case 'concern-issue-tracking': 
+    case 'concern-issue-tracking':
         require_once __DIR__ . '/app/controllers/ConcernIssueTrackingController.php';
         $controller = new ConcernIssueTrackingController();
 
         if (!isset($segments[1])) {
             $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'resolve') {
+            $controller->resolve();
+        } elseif ($segments[1] === 'delete') {
+            $controller->delete();
         };
+        break;
+
+    case 'report-submission-management':
+        require_once __DIR__ . '/app/controllers/ReportSubmmisionManagementController.php';
+        $controller = new ReportSubmmisionManagementController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'delete') {
+            $controller->delete();
+        };
+        break;
 
     default:
         http_response_code(404);
