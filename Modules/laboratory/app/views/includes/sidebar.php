@@ -147,6 +147,7 @@
         <li><a href="" class="menu-link">Users</a></li>
          <a href="<?= BASE_URL ?>/schedule" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'schedule'? "active" :  "" ?>">Schedule</a>
         <li><a href="" class="menu-link">Reports</a></li>
+        <li><a href="<?= BASE_URL ?>/approval-decision-support" class="menu-link">Approval Decision Support</a></li>
     </ul>
 
 

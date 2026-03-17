@@ -23,7 +23,6 @@
         <div class="d-flex flex-column justify-content-center align-items-center text-center  h-100">
 
             <div class="error-404">404</div>
-
             <p class="fs-4 text-secondary mb-3">Page Not Found</p>
 
             <p class="text-muted mb-3">
