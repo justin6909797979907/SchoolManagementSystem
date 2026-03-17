@@ -1,13 +1,13 @@
 <?php
 
-require_once __DIR__ . '/core/Database.php';
+require_once __DIR__ . '/core/DatabaseTwo.php';
 
-class Departments extends Database
+class Departments extends DatabaseTwo
 {
     protected $table = 'sd_department';
     public function __construct()
     {
-        $this->conn = Database::getInstance()->getConnection();
+        $this->conn = DatabaseTwo::getInstance()->getConnection();
     }
 
     public function all()

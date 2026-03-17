@@ -1,6 +1,6 @@
 <?php
 
-class Database
+class DatabaseTwo
 {
     private static $instance = null;
     protected $conn;

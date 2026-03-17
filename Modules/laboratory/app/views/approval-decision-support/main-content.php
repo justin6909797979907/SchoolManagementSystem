@@ -28,24 +28,14 @@
             </div>
 
             <div class="card-body">
-
                 <div class="d-flex justify-content-end w-100 mb-2">
-
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApprovalDSModal">
                         ➕ Create
                     </button>
-
-                    <a href="index.php?url=approval-decision-support"
-                        class="btn btn-danger ms-2">
-                        Back
-                    </a>
-
                 </div>
-
                 <div class="table-responsive">
                     <?php require __DIR__ . '/table.php'; ?>
                 </div>
-
             </div>
 
         </div>

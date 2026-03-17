@@ -179,6 +179,13 @@ switch ($segments[0] ?? '') {
         }
         break;
 
+    case 'concern-issue-tracking': 
+        require_once __DIR__ . '/app/controllers/ConcernIssueTrackingController.php';
+        $controller = new ConcernIssueTrackingController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        };
 
     default:
         http_response_code(404);

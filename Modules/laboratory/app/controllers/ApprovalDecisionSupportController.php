@@ -90,7 +90,7 @@ class ApprovalDecisionSupportController
             }
 
             $approvalId = $_POST['approval_id'] ?? null;
-            $action     = $_POST['action'] ?? null; // 'approved' or 'rejected'
+            $action     = $_POST['action'] ?? null; 
             $remarks    = trim($_POST['remarks'] ?? null);
 
             if (!$approvalId || !in_array($action, ['approved', 'rejected'])) {
