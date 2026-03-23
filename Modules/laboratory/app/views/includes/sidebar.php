@@ -47,8 +47,8 @@
 
                     <div id="collapsePhysics" class="collapse ps-3" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'inventory' ? "active" :  "" ?>">Inventory</a>
-                        <a href="<?= BASE_URL ?>/damages" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'damages' ? "active" :  "" ?>">Damages</a>
-                        <a href="<?= BASE_URL ?>/borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'borrow' ? "active" :  "" ?>">Borrows</a>
+                        <a href="<?= BASE_URL ?>/damages" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'damages' ? "active" :  "" ?>">Damage</a>
+                        <a href="<?= BASE_URL ?>/borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'borrow' ? "active" :  "" ?>">Borrow</a>
                     </div>
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
@@ -63,8 +63,8 @@
 
                     <div class="collapse ps-3" id="collapsePsychology" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory' ? "active" :  "" ?>">Inventory</a>
-                        <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage' ? "active" :  "" ?>">Damages</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Borrows</a>
+                        <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage' ? "active" :  "" ?>">Damage</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
                     </div>
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
@@ -79,8 +79,8 @@
 
                     <div id="collapseHE" class="collapse ps-3" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/he-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he-inventory' ? "active" :  "" ?>">Inventory</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Damages</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Borrows</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
                     </div>
 
                     <!-- Crim Lab with Submenu -->
@@ -96,8 +96,8 @@
 
                     <div class="collapse ps-2 text-white" id="collapseCrim">
                         <a href="<?= BASE_URL ?>/crim-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crim-inventory' ? "active" :  "" ?>">Inventory</a>
-                        <a href="<?= BASE_URL ?>/crim-borrow" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'crim-borrow' ? "active" :  "" ?>">Borrows</a>
-                        <a href="<?= BASE_URL ?>/crim-damage" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'crim-damage' ? "active" :  "" ?>">Damages</a>
+                        <a href="<?= BASE_URL ?>/crim-borrow" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'crim-borrow' ? "active" :  "" ?>">Borrow</a>
+                        <a href="<?= BASE_URL ?>/crim-damage" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'crim-damage' ? "active" :  "" ?>">Damage</a>
                     </div> -->
 
                     <!-- Crim Lab with Submenu -->
@@ -124,8 +124,8 @@
 
                                 <div id="collapseCrim1" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crim-fingerprint-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="<?= BASE_URL ?>/crim-fingerprint-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crim-fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -140,8 +140,8 @@
 
                                 <div id="collapseCrim2" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crim-scene-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-scene-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="<?= BASE_URL ?>/crim-scene-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crim-scene-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -156,8 +156,8 @@
 
                                 <div id="collapseCrim3" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crim-ballistics-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-ballistics-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="<?= BASE_URL ?>/crim-ballistics-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crim-ballistics-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -172,8 +172,8 @@
 
                                 <div id="collapseCrim4" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crim-doc-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-doc-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="<?= BASE_URL ?>/crim-doc-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crim-doc-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -188,8 +188,8 @@
 
                                 <div id="collapseCrim5" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crim-chem-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-chem-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="<?= BASE_URL ?>/crim-chem-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crim-chem-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -204,8 +204,8 @@
 
                                 <div id="collapseCrim6" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crim-defense-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-defense-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="<?= BASE_URL ?>/crim-defense-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crim-defense-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -225,8 +225,8 @@
 
                     <div class="collapse ps-2" id="collapseIT">
                         <a href="<?= BASE_URL ?>/it-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-inventory' ? "active" :  "" ?>">Inventory</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Damages</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Borrows</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Damage</a>
+                        <a href="#" class="dropdown-item menu-link small fw-light text-white">Borrow</a>
                     </div> -->
 
                     <!-- IT Lab with Submenu -->
@@ -316,39 +316,42 @@
             </div>
         </div>
 
-        <!-- Reports -->
-        <div class="nav-item">
-            <a class="menu-link collapsed d-flex justify-content-between align-items-center"
-                href="#"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseReports"
-                aria-expanded="false"
-                aria-controls="collapseReporta">
-                <span>Reports</span>
-                <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
-            </a>
 
-            <div id="collapsereports"
-                class="collapse"
-                data-bs-parent="#accordionSidebar">
-
-                <div class="text-white py-2 px-3 rounded shadow-sm w-100">
-                    <a class="dropdown-item menu-link" href="#">Inventory Reports</a>
-                    <a class="dropdown-item menu-link" href="#">Damaged Equipment</a>
-                    <a class="dropdown-item menu-link" href="#">Laboratory Usage</a>
-                    <a class="dropdown-item menu-link" href="#">Monthly Schedule</a>
-                </div>
-            </div>
-        </div>
 
         <div><a href="" class="menu-link">Users</a></div>
         <a href="<?= BASE_URL ?>/schedule" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'schedule' ? "active" :  "" ?>">Schedule</a>
 
         <hr class="text-white">
-        <div class="text-white py-2 px-3 rounded shadow-sm w-100">Reports:</div>
+        <!-- <div class="text-white py-2 px-3 rounded shadow-sm w-100">Reports:</div>
         <div><a href="<?= BASE_URL ?>/approval-decision-support" class="menu-link">Approval Decision Support</a></div>
         <div><a href="<?= BASE_URL ?>/concern-issue-tracking" class="menu-link">Concerns Issue Tracking</a></div>
-        <div><a href="<?= BASE_URL ?>/report-submission-management" class="menu-link">Report Submmision Management</a></div>
+        <div><a href="<?= BASE_URL ?>/report-submission-management" class="menu-link">Report Submmision Management</a></div> -->
+
+        <!-- Reports -->
+        <a class="menu-link collapsed d-flex justify-content-between align-items-center"
+            href="#collapseReports"
+            data-bs-toggle="collapse"
+            aria-expanded="false">
+
+            <span>Reports</span>
+            <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+        </a>
+
+        <div id="collapseReports"
+            class="collapse"
+            data-bs-parent="#accordionSidebar">
+
+            <div class="text-white py-2 px-3 rounded w-100">
+                <a class="dropdown-item menu-link" href="#">Inventory Reports</a>
+                <a class="dropdown-item menu-link" href="#">Damage Reports</a>
+                <a class="dropdown-item menu-link" href="#">Laboratory Usage</a>
+                <a class="dropdown-item menu-link" href="#">Monthly Schedule</a>
+
+                <a href="<?= BASE_URL ?>/approval-decision-support" class="menu-link">Approval Decision Support</a>
+                <a href="<?= BASE_URL ?>/concern-issue-tracking" class="menu-link">Concerns Issue Tracking</a>
+                <a href="<?= BASE_URL ?>/report-submission-management" class="menu-link">Report Submission Management</a>
+            </div>
+        </div>
 
     </div>
 

@@ -3,7 +3,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<main class="main-content">
+<main class="main-content bg-light pb-5">
     <div class="">
         <div id="wrapper">
             <!-- Content Wrapper -->
@@ -15,18 +15,18 @@
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                            <h1 class="h3 mb-0 text-gray-800 fw-bold">Dashboard</h1>
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                         </div>
+                        <p class="text-muted small mb-4">Welcome back! Here's what's happening today.</p>
 
                         <!-- Content Row -->
                         <div class="row">
 
                             <!-- Schedule today -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-start border-primary shadow h-100 py-2">
+                                <div class="card border-0 border-start border-primary border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -45,7 +45,7 @@
 
                             <!-- total lab -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-start border-success shadow h-100 py-2">
+                                <div class="card border-0 border-start border-success border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -63,8 +63,8 @@
                             </div>
 
                             <!-- Pending report -->
-                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-start border-danger shadow h-100 py-2">
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card border-0 border-start border-danger border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -83,7 +83,7 @@
 
                             <!-- Active user -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-start border-info shadow h-100 py-2">
+                                <div class="card border-0 border-start border-info border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -103,7 +103,7 @@
 
                             <!-- task -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-start border-secondary shadow h-100 py-2">
+                                <div class="card border-0 border-start border-secondary border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -132,7 +132,7 @@
 
                             <!-- Pending Requests Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-start border-warning shadow h-100 py-2">
+                                <div class="card border-0 border-start border-warning border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -391,5 +391,21 @@
     </div>
 </main>
 
+
 <script src="js/dashboard.js"></script>
+<script>
+    gsap.utils.toArray(".card").forEach((card) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        });
+    });
+</script>
 <?php include 'includes/footer.php'; ?>
