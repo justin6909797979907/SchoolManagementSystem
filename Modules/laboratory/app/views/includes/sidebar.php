@@ -104,18 +104,113 @@
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
                         data-bs-toggle="collapse"
                         href="#collapseCrim"
-                        role="button">
+                        aria-expanded="false">
                         <span>Crim Lab</span>
-                        <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                        <i class="bi bi-chevron-right dropdown-icon"></i>
                     </a>
 
                     <div class="collapse ps-2" id="collapseCrim">
-                        <a href="#" class="dropdown-item menu-link small fw-light small text-white">Finger Print Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light small text-white">Crime Scene Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light small text-white">Ballistics Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light small text-white">Questions Document Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light small text-white">Chemistry Lab</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light small text-white">Defense & Tactics Lab</a>
+
+                        <!-- ACCORDION GROUP -->
+                        <div class="accordion" id="crimLabAccordion">
+
+                            <!-- Finger Print Lab -->
+                            <div class="accordion-item bg-transparent border-0">
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseCrim1">
+                                    <span>Finger Print Lab</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseCrim1" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
+                                    <a href="<?= BASE_URL ?>/crim-fingerprint-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crim-fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crim-fingerprint-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+                            </div>
+
+                            <!-- Crime Scene Lab -->
+                            <div class="accordion-item bg-transparent border-0">
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseCrim2">
+                                    <span>Crime Scene Lab</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseCrim2" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
+                                    <a href="<?= BASE_URL ?>/crim-scene-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crim-scene-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crim-scene-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+                            </div>
+
+                            <!-- Ballistics Lab -->
+                            <div class="accordion-item bg-transparent border-0">
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseCrim3">
+                                    <span>Ballistics Lab</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseCrim3" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
+                                    <a href="<?= BASE_URL ?>/crim-ballistics-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crim-ballistics-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crim-ballistics-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+                            </div>
+
+                            <!-- Questioned Document Lab -->
+                            <div class="accordion-item bg-transparent border-0">
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseCrim4">
+                                    <span>Questioned Document Lab</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseCrim4" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
+                                    <a href="<?= BASE_URL ?>/crim-doc-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crim-doc-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crim-doc-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+                            </div>
+
+                            <!-- Chemistry Lab -->
+                            <div class="accordion-item bg-transparent border-0">
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseCrim5">
+                                    <span>Chemistry Lab</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseCrim5" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
+                                    <a href="<?= BASE_URL ?>/crim-chem-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crim-chem-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crim-chem-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+                            </div>
+
+                            <!-- Defense & Tactics Lab -->
+                            <div class="accordion-item bg-transparent border-0">
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseCrim6">
+                                    <span>Defense & Tactics Lab</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseCrim6" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
+                                    <a href="<?= BASE_URL ?>/crim-defense-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crim-defense-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crim-defense-damage" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <!-- IT Lab with Submenu -->
@@ -136,20 +231,86 @@
                     </div> -->
 
                     <!-- IT Lab with Submenu -->
-                    <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
+                    <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
                         data-bs-toggle="collapse"
                         href="#collapseIT"
-                        role="button"
-                        aria-expanded="false"
-                        aria-controls="collapseIT">
+                        aria-expanded="false">
                         <span>IT Lab</span>
-                        <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
+                        <i class="bi bi-chevron-right dropdown-icon"></i>
                     </a>
 
                     <div class="collapse ps-2" id="collapseIT">
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">IT Lab 1</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">IT Lab 2</a>
-                        <a href="#" class="dropdown-item menu-link small fw-light text-white">IT Lab 3</a>
+
+                        <!-- ACCORDION GROUP -->
+                        <div class="accordion" id="itLabAccordion">
+
+                            <!-- LAB 1 -->
+                            <div class="accordion-item bg-transparent border-0">
+
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseIT1"
+                                    aria-expanded="false">
+                                    <span>IT Lab 1</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseIT1"
+                                    class="collapse ps-3"
+                                    data-bs-parent="#itLabAccordion">
+
+                                    <a href="<?= BASE_URL ?>/it-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-inventory' ? "active" :  "" ?>">Inventory</a>
+
+                                    <a href="<?= BASE_URL ?>/it-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-damage' ? "active" :  "" ?>">Damage</a>
+
+                                    <a href="<?= BASE_URL ?>/it-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-borrow' ? "active" :  "" ?>">Borrow</a>
+                                </div>
+
+                            </div>
+
+                            <!-- LAB 2 -->
+                            <div class="accordion-item bg-transparent border-0">
+
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white collapsed"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseIT2"
+                                    aria-expanded="false">
+                                    <span>IT Lab 2</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseIT2"
+                                    class="collapse ps-3"
+                                    data-bs-parent="#itLabAccordion">
+                                    <a href="#" class="dropdown-item small menu-link text-white">Inventory</a>
+                                    <a href="#" class="dropdown-item small menu-link text-white">Borrow</a>
+                                    <a href="#" class="dropdown-item small menu-link text-white">Damage</a>
+                                </div>
+
+                            </div>
+
+                            <!-- LAB 3 -->
+                            <div class="accordion-item bg-transparent border-0">
+
+                                <a class="dropdown-item menu-link d-flex justify-content-between align-items-center text-white"
+                                    data-bs-toggle="collapse"
+                                    href="#collapseIT3"
+                                    aria-expanded="false">
+                                    <span>IT Lab 3</span>
+                                    <i class="bi bi-chevron-right dropdown-icon"></i>
+                                </a>
+
+                                <div id="collapseIT3"
+                                    class="collapse ps-3"
+                                    data-bs-parent="#itLabAccordion">
+                                    <a href="#" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
