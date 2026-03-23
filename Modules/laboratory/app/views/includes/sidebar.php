@@ -45,7 +45,7 @@
                         <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
                     </a>
 
-                    <div class="collapse ps-3" id="collapsePhysics">
+                    <div id="collapsePhysics" class="collapse ps-3" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/damages" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'damages' ? "active" :  "" ?>">Damages</a>
                         <a href="<?= BASE_URL ?>/borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'borrow' ? "active" :  "" ?>">Borrows</a>
@@ -61,7 +61,7 @@
                         <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
                     </a>
 
-                    <div class="collapse ps-3" id="collapsePsychology">
+                    <div class="collapse ps-3" id="collapsePsychology" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage' ? "active" :  "" ?>">Damages</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Borrows</a>
@@ -77,7 +77,7 @@
                         <i class="bi bi-chevron-right dropdown-icon fs-6"></i>
                     </a>
 
-                    <div class="collapse ps-3" id="collapseHE">
+                    <div id="collapseHE" class="collapse ps-3" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/he-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Damages</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Borrows</a>
@@ -109,9 +109,8 @@
                         <i class="bi bi-chevron-right dropdown-icon"></i>
                     </a>
 
-                    <div class="collapse ps-2" id="collapseCrim">
+                    <div id="collapseCrim" class="collapse ps-3" data-bs-parent="#collapseUtilities">
 
-                        <!-- ACCORDION GROUP -->
                         <div class="accordion" id="crimLabAccordion">
 
                             <!-- Finger Print Lab -->
@@ -239,7 +238,7 @@
                         <i class="bi bi-chevron-right dropdown-icon"></i>
                     </a>
 
-                    <div class="collapse ps-2" id="collapseIT">
+                    <div id="collapseIT" class="collapse ps-3" data-bs-parent="#collapseUtilities">
 
                         <!-- ACCORDION GROUP -->
                         <div class="accordion" id="itLabAccordion">
