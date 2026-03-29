@@ -148,6 +148,12 @@ switch ($segments[0] ?? '') {
         (new ScheduleController())->index();
         break;
 
+    case 'it_damage':
+        require_once __DIR__ . '/app/controllers/ItDmgController.php';
+        $labId = $segments[2] ?? 1;
+        (new ItDmgController())->index($labId);
+        break;    
+
         break;
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
