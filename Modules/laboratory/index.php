@@ -152,7 +152,13 @@ switch ($segments[0] ?? '') {
         require_once __DIR__ . '/app/controllers/ItDmgController.php';
         $labId = $segments[2] ?? 1;
         (new ItDmgController())->index($labId);
-        break;    
+        break;
+        
+    case 'it_borrow':
+        require_once __DIR__ . '/app/controllers/ItBrwController.php';
+        $labId = $segments[2] ?? 1;
+        (new ItBrwController())->index($labId);
+        break; 
 
         break;
     case 'psycho-damage':

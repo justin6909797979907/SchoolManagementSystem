@@ -262,7 +262,7 @@
 
                                     <a href="<?= BASE_URL ?>/it_damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_damage' ? "active" :  "" ?>">Damage</a>
 
-                                    <a href="<?= BASE_URL ?>/it-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-borrow' ? "active" :  "" ?>">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/it_borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_borrow' ? "active" :  "" ?>">Borrow</a>
                                 </div>
 
                             </div>
