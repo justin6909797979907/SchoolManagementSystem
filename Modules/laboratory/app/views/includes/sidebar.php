@@ -124,7 +124,7 @@
                                 </a>
 
                                 <div id="collapseCrim1" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                    <a href="<?= BASE_URL ?>/crim-fingerprint-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                     <a href="<?= BASE_URL ?>/fingerprint-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprint_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-fingerprint-damage" class="dropdown-item menu-link small text-white">Damage</a>
                                     <a href="<?= BASE_URL ?>/crim-fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
@@ -140,7 +140,7 @@
                                 </a>
 
                                 <div id="collapseCrim2" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                    <a href="<?= BASE_URL ?>/crim-scene-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/crime-scene-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-scene-damage" class="dropdown-item menu-link small text-white">Damage</a>
                                     <a href="<?= BASE_URL ?>/crim-scene-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
