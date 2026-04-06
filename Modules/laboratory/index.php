@@ -157,6 +157,51 @@ switch ($segments[0] ?? '') {
 
         break;
 
+        
+
+    case 'balistic-inventory':
+        require_once __DIR__ . '/app/controllers/BalisticInvController.php';
+        $controller = new BalisticInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+        break;
+
+        
+
+    case 'questioned-inventory':
+        require_once __DIR__ . '/app/controllers/QuestionedInvController.php';
+        $controller = new QuestionedInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+        break;
+
+
+    case 'chemestry-inventory':
+        require_once __DIR__ . '/app/controllers/ChemestryInvController.php';
+        $controller = new ChemestryInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+        break;
+
+    case 'defense-inventory':
+        require_once __DIR__ . '/app/controllers/DefenseInvController.php';
+        $controller = new DefenseInvController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        }
+
+        break;
+
     case 'crim-borrow':
         require_once __DIR__ . '/app/controllers/CrimBrwController.php';
         (new CrimBrwController())->index();

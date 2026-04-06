@@ -156,7 +156,7 @@
                                 </a>
 
                                 <div id="collapseCrim3" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                    <a href="<?= BASE_URL ?>/crim-ballistics-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/balistic-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'balistic_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-ballistics-damage" class="dropdown-item menu-link small text-white">Damage</a>
                                     <a href="<?= BASE_URL ?>/crim-ballistics-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
@@ -172,7 +172,7 @@
                                 </a>
 
                                 <div id="collapseCrim4" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                    <a href="<?= BASE_URL ?>/crim-doc-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                     <a href="<?= BASE_URL ?>/questioned-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'questioned_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-doc-damage" class="dropdown-item menu-link small text-white">Damage</a>
                                     <a href="<?= BASE_URL ?>/crim-doc-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
@@ -188,7 +188,7 @@
                                 </a>
 
                                 <div id="collapseCrim5" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                    <a href="<?= BASE_URL ?>/crim-chem-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                     <a href="<?= BASE_URL ?>/chemestry-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'chemestry_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-chem-damage" class="dropdown-item menu-link small text-white">Damage</a>
                                     <a href="<?= BASE_URL ?>/crim-chem-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
@@ -204,7 +204,7 @@
                                 </a>
 
                                 <div id="collapseCrim6" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                    <a href="<?= BASE_URL ?>/crim-defense-inventory" class="dropdown-item menu-link small text-white">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/defense-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'defense_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-defense-damage" class="dropdown-item menu-link small text-white">Damage</a>
                                     <a href="<?= BASE_URL ?>/crim-defense-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
