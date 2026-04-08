@@ -124,9 +124,9 @@
                                 </a>
 
                                 <div id="collapseCrim1" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                     <a href="<?= BASE_URL ?>/fingerprint-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprint_inventory' ? "active" :  "" ?>">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-fingerprint-damage" class="dropdown-item menu-link small text-white">Damage</a>
-                                    <a href="<?= BASE_URL ?>/crim-fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/fingerprint-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprint_inventory' ? "active" :  "" ?>">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/fingerprint-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprint_damage' ? "active" :  "" ?>">Damage</a>
+                                    <a href="<?= BASE_URL ?>/fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
                                 </div>
                             </div>
 
@@ -141,8 +141,8 @@
 
                                 <div id="collapseCrim2" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crime-scene-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_inventory' ? "active" :  "" ?>">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-scene-damage" class="dropdown-item menu-link small text-white">Damage</a>
-                                    <a href="<?= BASE_URL ?>/crim-scene-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crime-scene-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_damage' ? "active" :  "" ?>">Damage</a>
+                                    <a href="<?= BASE_URL ?>/crime-scene-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_borrow' ? "active" :  "" ?>">Borrow</a>
                                 </div>
                             </div>
 
@@ -157,8 +157,8 @@
 
                                 <div id="collapseCrim3" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/balistic-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'balistic_inventory' ? "active" :  "" ?>">Inventory</a>
-                                    <a href="<?= BASE_URL ?>/crim-ballistics-damage" class="dropdown-item menu-link small text-white">Damage</a>
-                                    <a href="<?= BASE_URL ?>/crim-ballistics-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/balistic-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'balistic_damage' ? "active" :  "" ?>">Damage</a>
+                                    <a href="<?= BASE_URL ?>/balistic-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'balistic_borrow' ? "active" :  "" ?>">Borrow</a>
                                 </div>
                             </div>
 

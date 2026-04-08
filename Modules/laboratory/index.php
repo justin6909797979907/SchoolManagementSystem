@@ -239,7 +239,23 @@ switch ($segments[0] ?? '') {
         (new ItBrwController())->index($labId);
         break; 
 
+    case 'fingerprint-damage':
+        require_once __DIR__ . '/app/controllers/FingerprintDmgController.php';
+        (new FingerprintDmgController())->index();
         break;
+
+    case 'crime-scene-damage':
+        require_once __DIR__ . '/app/controllers/CrimeSceneDmgController.php';
+        (new CrimeSceneDmgController())->index();
+        break;
+        
+        
+    case 'balistic-damage':
+        require_once __DIR__ . '/app/controllers/BalisticDmgController.php';
+        (new BalisticDmgController())->index();
+
+        break;
+
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
         $controller = new PsychoDmgController();
