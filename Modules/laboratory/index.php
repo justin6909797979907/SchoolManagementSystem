@@ -283,7 +283,22 @@ switch ($segments[0] ?? '') {
     case 'defense-tactics-borrow':
         require_once __DIR__ . '/app/controllers/DefenseTacticsBrwController.php';
         (new DefenseTacticsBrwController())->index();
-        break;  
+        break;
+
+    case 'chemistry-damage':
+        require_once __DIR__ . '/app/controllers/ChemistryDmgController.php';
+        (new ChemistryDmgController())->index();
+        break;
+
+    case 'defense-tactics-damage':
+        require_once __DIR__ . '/app/controllers/DefenseTacticsDmgController.php';
+        (new DefenseTacticsDmgController())->index();
+        break;
+
+    case 'question-document-damage':
+        require_once __DIR__ . '/app/controllers/QuestionDocumentDmgController.php';
+        (new QuestionDocumentDmgController())->index();
+        break;
 
 
     case 'psycho-damage':

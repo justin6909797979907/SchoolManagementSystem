@@ -4,7 +4,7 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Damage</h1>
-        <p class="mb-4">Balistic Laboratory</p>
+        <p class="mb-4">Chemistry Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -34,11 +34,11 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>M13</td>
-                            <td>Balistic Lab</td>
+                            <td>AN-94</td>
+                            <td>Chemistry Lab</td>
                             <td>Damage to barrel</td>
                             <td>John Doe</td>
-                            <td>2024-13-27</td>
+                            <td>2024-03-27</td>
                             <td>
                                 <span class="badge bg-success px-2 py-2">Repaired</span>
                             </td>
