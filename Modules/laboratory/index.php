@@ -253,8 +253,13 @@ switch ($segments[0] ?? '') {
     case 'balistic-damage':
         require_once __DIR__ . '/app/controllers/BalisticDmgController.php';
         (new BalisticDmgController())->index();
-
         break;
+
+    case 'fingerprint-borrow':
+        require_once __DIR__ . '/app/controllers/FingerprintBrwController.php';
+        (new FingerprintBrwController())->index();
+        break;
+
 
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';

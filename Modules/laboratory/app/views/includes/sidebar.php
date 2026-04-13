@@ -126,7 +126,7 @@
                                 <div id="collapseCrim1" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/fingerprint-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprint_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/fingerprint-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprint_damage' ? "active" :  "" ?>">Damage</a>
-                                    <a href="<?= BASE_URL ?>/fingerprint-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/fingerprint-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'fingerprintborrow' ? "active" :  "" ?>">Borrow</a>
                                 </div>
                             </div>
 
