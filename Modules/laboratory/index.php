@@ -275,6 +275,16 @@ switch ($segments[0] ?? '') {
         (new QuestiondocumentBrwController())->index();
         break;    
 
+    case 'chemistry-borrow':
+        require_once __DIR__ . '/app/controllers/ChemistryBrwController.php';
+        (new ChemistryBrwController())->index();
+        break;
+        
+    case 'defense-tactics-borrow':
+        require_once __DIR__ . '/app/controllers/DefenseTacticsBrwController.php';
+        (new DefenseTacticsBrwController())->index();
+        break;  
+
 
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
