@@ -142,7 +142,7 @@
                                 <div id="collapseCrim2" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
                                     <a href="<?= BASE_URL ?>/crime-scene-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crime-scene-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_damage' ? "active" :  "" ?>">Damage</a>
-                                    <a href="<?= BASE_URL ?>/crime-scene-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crime_scene_borrow' ? "active" :  "" ?>">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/crimescene-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'crimescene_borrow' ? "active" :  "" ?>">Borrow</a>
                                 </div>
                             </div>
 
@@ -172,9 +172,9 @@
                                 </a>
 
                                 <div id="collapseCrim4" class="collapse ps-3" data-bs-parent="#crimLabAccordion">
-                                     <a href="<?= BASE_URL ?>/questioned-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'questioned_inventory' ? "active" :  "" ?>">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/questioned-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'questioned_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/crim-doc-damage" class="dropdown-item menu-link small text-white">Damage</a>
-                                    <a href="<?= BASE_URL ?>/crim-doc-borrow" class="dropdown-item menu-link small text-white">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/questiondocument-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'questiondocument_borrow' ? "active" :  "" ?>">Borrow</a>
                                 </div>
                             </div>
 

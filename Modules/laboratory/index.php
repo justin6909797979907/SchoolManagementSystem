@@ -260,6 +260,21 @@ switch ($segments[0] ?? '') {
         (new FingerprintBrwController())->index();
         break;
 
+    case 'crimescene-borrow':
+        require_once __DIR__ . '/app/controllers/CrimesceneBrwController.php';
+        (new CrimesceneBrwController())->index();
+        break;
+
+    case 'balistic-borrow':
+        require_once __DIR__ . '/app/controllers/BalisticBrwController.php';
+        (new BalisticBrwController())->index();
+        break;
+
+    case 'questiondocument-borrow':
+        require_once __DIR__ . '/app/controllers/QuestiondocumentBrwController.php';
+        (new QuestiondocumentBrwController())->index();
+        break;    
+
 
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
