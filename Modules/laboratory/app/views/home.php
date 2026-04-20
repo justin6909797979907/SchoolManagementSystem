@@ -17,7 +17,8 @@
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-1">
                             <h1 class="h3 mb-0 text-gray-800 fw-bold">Dashboard</h1>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                         </div>
                         <p class="text-muted small mb-4">Welcome back! Here's what's happening today.</p>
 
@@ -26,7 +27,8 @@
 
                             <!-- Schedule today -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-0 border-start border-primary border-4 shadow-sm h-100 py-2">
+                                <div
+                                    class="card dashboard-card border-0 border-start border-primary border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -45,7 +47,8 @@
 
                             <!-- total lab -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-0 border-start border-success border-4 shadow-sm h-100 py-2">
+                                <div
+                                    class="card dashboard-card border-0 border-start border-success border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -64,7 +67,8 @@
 
                             <!-- Pending report -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-0 border-start border-danger border-4 shadow-sm h-100 py-2">
+                                <div
+                                    class="card dashboard-card border-0 border-start border-danger border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -83,7 +87,8 @@
 
                             <!-- Active user -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-0 border-start border-info border-4 shadow-sm h-100 py-2">
+                                <div
+                                    class="card dashboard-card border-0 border-start border-info border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -103,7 +108,8 @@
 
                             <!-- task -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-0 border-start border-secondary border-4 shadow-sm h-100 py-2">
+                                <div
+                                    class="card dashboard-card border-0 border-start border-secondary border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -132,7 +138,8 @@
 
                             <!-- Pending Requests Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-0 border-start border-warning border-4 shadow-sm h-100 py-2">
+                                <div
+                                    class="card dashboard-card border-0 border-start border-warning border-4 shadow-sm h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -160,8 +167,7 @@
                                         <h6 class="m-0 fw-bold text-primary">Overview</h6>
 
                                         <div class="dropdown">
-                                            <a class="btn btn-sm btn-light"
-                                                data-bs-toggle="dropdown"
+                                            <a class="btn btn-sm btn-light" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v text-gray-400"></i>
                                             </a>
@@ -193,8 +199,7 @@
                                         <h6 class="m-0 fw-bold text-primary">Sources</h6>
 
                                         <div class="dropdown">
-                                            <a class="btn btn-sm btn-light"
-                                                data-bs-toggle="dropdown"
+                                            <a class="btn btn-sm btn-light" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v text-gray-400"></i>
                                             </a>
@@ -245,7 +250,8 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="small font-weight-bold">Damage Equipment <span class="float-right">20%</span></h4>
+                                        <h4 class="small font-weight-bold">Damage Equipment <span
+                                                class="float-right">20%</span></h4>
                                         <div class="progress mb-4">
                                             <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
                                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
@@ -256,8 +262,8 @@
                                             <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
                                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <h4 class="small font-weight-bold">Users<span
-                                                class="float-right">60%</span></h4>
+                                        <h4 class="small font-weight-bold">Users<span class="float-right">60%</span>
+                                        </h4>
                                         <div class="progress mb-4">
                                             <div class="progress-bar" role="progressbar" style="width: 60%"
                                                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
@@ -363,7 +369,8 @@
                                                 target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
                                             constantly updated collection of beautiful svg images that you can use
                                             completely free and without attribution!</p>
-                                        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations
+                                            on
                                             unDraw &rarr;</a>
                                     </div>
                                 </div>
@@ -374,8 +381,14 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                                     </div>
                                     <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptas, fugiat minima odio repellendus recusandae ex quas laudantium, suscipit ipsam nam architecto qui dignissimos. Explicabo necessitatibus ullam voluptates temporibus totam?</p>
-                                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, eius ipsa! Hic quae aperiam iste perspiciatis, magni reprehenderit officiis ut rerum nihil quia, impedit, dolorum voluptatibus cum. Corporis, quam voluptas.</p>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, voluptas,
+                                            fugiat minima odio repellendus recusandae ex quas laudantium, suscipit ipsam
+                                            nam architecto qui dignissimos. Explicabo necessitatibus ullam voluptates
+                                            temporibus totam?</p>
+                                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
+                                            eius ipsa! Hic quae aperiam iste perspiciatis, magni reprehenderit officiis
+                                            ut rerum nihil quia, impedit, dolorum voluptatibus cum. Corporis, quam
+                                            voluptas.</p>
                                     </div>
                                 </div>
                             </div>
@@ -407,5 +420,23 @@
             ease: "power3.out"
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        gsap.fromTo(".dashboard-card",
+            {
+                x: (i) => i % 2 === 0 ? 100 : 100,
+                opacity: 0
+            },
+            {
+                x: 0,
+                opacity: 3,
+                duration: 1,
+                stagger: 0.15,
+                ease: "power3.out"
+            }
+        );
+    });
+
+
 </script>
 <?php include 'includes/footer.php'; ?>
