@@ -66,6 +66,7 @@
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage' ? "active" :  "" ?>">Damage</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
                     </div>
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"
@@ -82,6 +83,7 @@
                         <a href="<?= BASE_URL ?>/he-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
+                        <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
                     </div>
 
                     <!-- Crim Lab with Submenu -->
@@ -270,6 +272,7 @@
                                     <a href="<?= BASE_URL ?>/it_damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_damage' ? "active" :  "" ?>">Damage</a>
 
                                     <a href="<?= BASE_URL ?>/it_borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_borrow' ? "active" :  "" ?>">Borrow</a>
+                                    <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
                                 </div>
 
                             </div>
@@ -291,6 +294,7 @@
                                     <a href="#" class="dropdown-item small menu-link text-white">Inventory</a>
                                     <a href="#" class="dropdown-item small menu-link text-white">Borrow</a>
                                     <a href="#" class="dropdown-item small menu-link text-white">Damage</a>
+                                    <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
                                 </div>
 
                             </div>
@@ -312,6 +316,7 @@
                                     <a href="#" class="dropdown-item menu-link small text-white">Inventory</a>
                                     <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
                                 </div>
 
                             </div>
