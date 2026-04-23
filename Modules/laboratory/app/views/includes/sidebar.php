@@ -272,7 +272,7 @@
                                     <a href="<?= BASE_URL ?>/it_damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_damage' ? "active" :  "" ?>">Damage</a>
 
                                     <a href="<?= BASE_URL ?>/it_borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_borrow' ? "active" :  "" ?>">Borrow</a>
-                                    <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
+                                    <a href="<?= BASE_URL ?>/lab1-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab1-monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
 
                             </div>
@@ -294,7 +294,7 @@
                                     <a href="#" class="dropdown-item small menu-link text-white">Inventory</a>
                                     <a href="#" class="dropdown-item small menu-link text-white">Borrow</a>
                                     <a href="#" class="dropdown-item small menu-link text-white">Damage</a>
-                                    <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
+                                    <a href="<?= BASE_URL ?>/lab2-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab2-monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
 
                             </div>
@@ -316,7 +316,7 @@
                                     <a href="#" class="dropdown-item menu-link small text-white">Inventory</a>
                                     <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
                                     <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
-                                    <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
+                                    <a href="<?= BASE_URL ?>/lab3-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab3-monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
 
                             </div>

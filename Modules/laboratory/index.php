@@ -300,6 +300,20 @@ switch ($segments[0] ?? '') {
         (new QuestionDocumentDmgController())->index();
         break;
 
+    case 'lab1-monitoring':
+        require_once __DIR__ . '/app/controllers/Lab1MonitoringController.php';
+        (new Lab1MonitoringController())->index();
+        break;
+
+    case 'lab2-monitoring':
+        require_once __DIR__ . '/app/controllers/Lab2MonitoringController.php';
+        (new Lab2MonitoringController())->index();
+        break;
+
+    case 'lab3-monitoring':
+        require_once __DIR__ . '/app/controllers/Lab3MonitoringController.php';
+        (new Lab3MonitoringController())->index();
+        break;
 
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
