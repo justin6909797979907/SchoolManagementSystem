@@ -1,45 +1,47 @@
 <?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
 <?php include __DIR__ . '/../../../includes/header.php'; ?>
 
-
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
-        <p class="mb-4">Criminology Laboratory</p>
+        <p class="mb-4">Fingerprint Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Inventory
+                    Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="crimInventoryBtn">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
             <div class="card-body">
-                <table id="crimEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Photo</th>
+                            <th>Item Name</th>
                             <th>Category</th>
-                            <th>total</th>
-                            <th>Available</th>
+                            <th>Laboratory</th>
+                            <th>Total Quantity</th>
+                            <th>Available Quantity</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach( $inventories as $inventory )  { ?>
                         <tr>
-                            <td><?= $inventory['id'] ?></td>
+                            <td>1</td>
+                            <td>Fingerprint Kit</td>
+                            <td>Fingerprint Kit</td>
+                            <td>Fingerprint Lab</td>
+                            <td>10</td>
+                            <td>5</td>
                             <td>
-                                <img src="<?= BASE_URL ?>/public/<?= $inventory['item_img'] ?>" class="img-fluid rounded" style="max-width: 100px;">
+                                <span class="badge bg-success px-2 py-2">Working</span>
                             </td>
-                            <td><?= $inventory['category'] ?></td>
-                            <td><?= $inventory['total'] ?></td>
-                            <td><?= $inventory['available'] ?></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -47,27 +49,29 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item crimViewBtn" data-id="<?= $inventory['id'] ?>">
-                                                 <i class="fas fa-eye me-2"></i> View
-                                            </button>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
+                                                <i class="fas fa-eye me-2"></i> View
+                                            </a>
                                         </li>
+
                                         <li>
-                                            <button class="dropdown-item crimEdit" data-id="<?= $inventory['id'] ?>">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
-                                            </button>
+                                            </a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $inventory['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
+                                                onclick="return confirm('Are you sure you want to delete this record?')">
+                                                <i class="fas fa-trash me-2"></i> Delete
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
-
-                        <?php }?>
                     </tbody>
                 </table>
             </div>
@@ -76,22 +80,18 @@
     </div>
 </main>
 
-
 <?php include  __DIR__ . '/../../../includes//footer.php'; ?>
 
 <script>
     $(document).ready(function() {
-        $('#crimEquipmentTable').DataTable({
+        $('#labEquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
 
-<!-- <?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?> -->
-
-<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
-<script src="<?= BASE_URL ?>/js/crimInventory.js"></script>
+<!-- <?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
+<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
+<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?> -->
 
