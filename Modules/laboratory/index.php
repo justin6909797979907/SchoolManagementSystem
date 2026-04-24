@@ -315,6 +315,11 @@ switch ($segments[0] ?? '') {
         (new Lab3MonitoringController())->index();
         break;
 
+    case 'lab2-inventory':
+        require_once __DIR__ . '/app/controllers/Lab2InvController.php';
+        (new Lab2InvController())->index();
+        break;
+
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
         $controller = new PsychoDmgController();
