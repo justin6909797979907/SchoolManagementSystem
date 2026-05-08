@@ -66,7 +66,7 @@
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage' ? "active" :  "" ?>">Damage</a>
                         <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
+                        <a href="<?= BASE_URL ?>/psy_monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psy_monitoring' ? "active" :  "" ?>">Monitoring</a>
                     </div>
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"

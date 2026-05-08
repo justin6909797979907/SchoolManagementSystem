@@ -49,12 +49,12 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item crimViewBtn" data-id="<?= $inventory['id'] ?>">
+                                            <button class="dropdown-item crimViewBtn" data-id="">
                                                  <i class="fas fa-eye me-2"></i> View
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="dropdown-item crimEdit" data-id="<?= $inventory['id'] ?>">
+                                            <button class="dropdown-item crimEdit" data-id="">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </button>
                                         </li>
@@ -62,7 +62,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $inventory['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                            <li><a class="dropdown-item text-danger deleteBtn" data-id=""><i class="fas fa-trash me-2"></i>Delete</a></li>
                                         </li>
                                     </ul>
                                 </div>
