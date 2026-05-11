@@ -65,7 +65,7 @@
                     <div class="collapse ps-3" id="collapsePsychology" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/psycho-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/psycho-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psycho-damage' ? "active" :  "" ?>">Damage</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
+                        <a href="<?= BASE_URL ?>/psy_borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psy_borrow' ? "active" :  "" ?>">Borrow</a>
                         <a href="<?= BASE_URL ?>/psy_monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'psy_monitoring' ? "active" :  "" ?>">Monitoring</a>
                     </div>
 
@@ -81,9 +81,9 @@
 
                     <div id="collapseHE" class="collapse ps-3" data-bs-parent="#collapseUtilities">
                         <a href="<?= BASE_URL ?>/he-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he-inventory' ? "active" :  "" ?>">Inventory</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
-                        <a href="#" class="dropdown-item menu-link small text-white">Monitoring</a>
+                        <a href="<?= BASE_URL ?>/he_damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he_damage' ? "active" :  "" ?>">Damage</a>
+                        <a href="<?= BASE_URL ?>/he_borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he_borrow' ? "active" :  "" ?>">Borrow</a>
+                        <a href="<?= BASE_URL ?>/he_monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'he_monitoring' ? "active" :  "" ?>">Monitoring</a>
                     </div>
 
                     <!-- Crim Lab with Submenu -->

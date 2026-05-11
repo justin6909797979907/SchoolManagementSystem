@@ -145,7 +145,7 @@ switch ($segments[0] ?? '') {
 
         break;
 
-        
+
 
     case 'crime-scene-inventory':
         require_once __DIR__ . '/app/controllers/CrimeSceneInvController.php';
@@ -157,7 +157,7 @@ switch ($segments[0] ?? '') {
 
         break;
 
-        
+
 
     case 'balistic-inventory':
         require_once __DIR__ . '/app/controllers/BalisticInvController.php';
@@ -169,7 +169,7 @@ switch ($segments[0] ?? '') {
 
         break;
 
-        
+
 
     case 'questioned-inventory':
         require_once __DIR__ . '/app/controllers/QuestionedInvController.php';
@@ -232,12 +232,12 @@ switch ($segments[0] ?? '') {
         $labId = $segments[2] ?? 1;
         (new ItDmgController())->index($labId);
         break;
-        
+
     case 'it_borrow':
         require_once __DIR__ . '/app/controllers/ItBrwController.php';
         $labId = $segments[2] ?? 1;
         (new ItBrwController())->index($labId);
-        break; 
+        break;
 
     case 'fingerprint-damage':
         require_once __DIR__ . '/app/controllers/FingerprintDmgController.php';
@@ -248,8 +248,8 @@ switch ($segments[0] ?? '') {
         require_once __DIR__ . '/app/controllers/CrimeSceneDmgController.php';
         (new CrimeSceneDmgController())->index();
         break;
-        
-        
+
+
     case 'balistic-damage':
         require_once __DIR__ . '/app/controllers/BalisticDmgController.php';
         (new BalisticDmgController())->index();
@@ -273,13 +273,13 @@ switch ($segments[0] ?? '') {
     case 'questiondocument-borrow':
         require_once __DIR__ . '/app/controllers/QuestiondocumentBrwController.php';
         (new QuestiondocumentBrwController())->index();
-        break;    
+        break;
 
     case 'chemistry-borrow':
         require_once __DIR__ . '/app/controllers/ChemistryBrwController.php';
         (new ChemistryBrwController())->index();
         break;
-        
+
     case 'defense-tactics-borrow':
         require_once __DIR__ . '/app/controllers/DefenseTacticsBrwController.php';
         (new DefenseTacticsBrwController())->index();
@@ -320,10 +320,32 @@ switch ($segments[0] ?? '') {
         (new Lab2InvController())->index();
         break;
 
-     case 'psy_monitoring':
-         require_once __DIR__ . '/app/controllers/PsyMonitoringController.php';
-         (new PsyMonitoringController())->index();
-         break;
+    case 'psy_monitoring':
+        require_once __DIR__ . '/app/controllers/PsyMonitoringController.php';
+        (new PsyMonitoringController())->index();
+        break;
+
+    case 'psy_borrow':
+         require_once __DIR__ . '/app/controllers/PsyBorrowController.php';
+        (new PsyBorrowController())->index();
+        break;
+
+    case 'he_monitoring':
+        require_once __DIR__ . '/app/controllers/HeMonitoringController.php';
+        (new HeMonitoringController())->index();
+        break;
+
+    case 'he_damage':
+        require_once __DIR__ . '/app/controllers/HeDamageController.php';
+        (new HeDamageController())->index();
+        break; 
+        
+    case 'he_borrow':
+        require_once __DIR__ . '/app/controllers/HeBorrowController.php';
+        (new HeBorrowController())->index();
+        break;
+
+
 
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
@@ -354,7 +376,8 @@ switch ($segments[0] ?? '') {
             $controller->updateDecision();
         } elseif ($segments[1] === 'delete') {
             $controller->delete();
-        };
+        }
+        ;
         break;
 
     case 'concern-issue-tracking':
@@ -369,7 +392,8 @@ switch ($segments[0] ?? '') {
             $controller->resolve();
         } elseif ($segments[1] === 'delete') {
             $controller->delete();
-        };
+        }
+        ;
         break;
 
     case 'report-submission-management':
@@ -382,7 +406,8 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'delete') {
             $controller->delete();
-        };
+        }
+        ;
         break;
 
     default:
