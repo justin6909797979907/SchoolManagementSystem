@@ -23,11 +23,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Item</th>
+                            <th>Item Name</th>
                             <th>Laboratory</th>
-                            <th>Condition</th>
-                            <th>Last Checked</th>
-                            <th>Checked By</th>
+                            <th>Issue</th>
+                            <th>Reported By</th>
+                            <th>Date Reported</th>
                             <th>Remarks</th>
                             <th>Action</th>
                         </tr>
@@ -36,11 +36,11 @@
                         
                         <tr>
                             <td>1</td>
-                            <td>Test</td>
+                            <td>Tongs</td>
                             <td>HE Laboratory</td>
-                            <td>Working</td>
-                            <td>April 1, 2026</td>
+                            <td>Damage</td>
                             <td>John Doe</td>
+                            <td>April 1, 2026</td>
                             <td>Item is functioning properly.</td>
                             <td>
                                 <div class="dropdown">

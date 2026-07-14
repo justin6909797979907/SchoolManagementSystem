@@ -6,13 +6,13 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Damages</h1>
-        <p class="mb-4">Criminology Laboratory</p>
+        <p class="mb-4">IT Lab 1 Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Barrow Equipment
+                    Damage Equipment
                 </div>
 
                 <a href="create.php" class="btn btn-primary btn-sm" id="crimAddDamageBtn" data-bs-toggle="modal" data-bs-target="#crimAddDamageModal">
@@ -24,20 +24,26 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Category</th>
-                            <th>Code</th>
-                            <th>Status</th>
+                            <th>Item Name</th>
+                            <th>Laboratory</th>
+                            <th>Issue</th>
+                            <th>Reported By</th>
+                            <th>Date Reported</th>
+                            <th>Remarks</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Balistic</td>
-                            <td>L-001</td>
+                            <td>Mouse</td>
+                            <td>IT Lab 1</td>
                             <td>
-                                <span class="badge bg-success">Fixed</span>
+                                <span class="badge bg-danger">Damaged</span>
                             </td>
+                            <td>John Doe</td>
+                            <td>2023-10-01</td>
+                            <td>Item is not working properly.</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
