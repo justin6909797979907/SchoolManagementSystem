@@ -345,7 +345,40 @@ switch ($segments[0] ?? '') {
         (new HeBorrowController())->index();
         break;
 
+    case 'fingerprint-monitoring':
+        require_once __DIR__ . '/app/controllers/FingerprintMonitoringController.php';
+        (new FingerprintMonitoringController())->index();
+        break;
 
+    case 'crime-scene-monitoring':
+        require_once __DIR__ . '/app/controllers/CrimeSceneMonitoringController.php';
+        (new CrimeSceneMonitoringController())->index();
+        break;
+
+    case 'ballistic-monitoring':
+        require_once __DIR__ . '/app/controllers/BallisticMonitoringController.php';
+        (new BallisticMonitoringController())->index();
+        break;
+
+    case 'question-document-monitoring':
+        require_once __DIR__ . '/app/controllers/QuestionDocumentMonitoringController.php';
+        (new QuestionDocumentMonitoringController())->index();
+        break;
+
+    case 'chemistry-monitoring':
+        require_once __DIR__ . '/app/controllers/ChemistryMonitoringController.php';
+        (new ChemistryMonitoringController())->index();
+        break;
+        
+    case 'defense-tactics-monitoring':
+        require_once __DIR__ . '/app/controllers/DefenseTacticsMonitoringController.php';
+        (new DefenseTacticsMonitoringController())->index();
+        break;
+
+    case 'it-lab3-inventory':
+        require_once __DIR__ . '/app/controllers/Itlab3InventoryController.php';
+        (new Itlab3InventoryController())->index();
+        break;
 
     case 'psycho-damage':
         require_once __DIR__ . '/app/controllers/PsychoDmgController.php';
