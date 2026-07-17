@@ -271,7 +271,7 @@
 
                                     <a href="<?= BASE_URL ?>/it_damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_damage' ? "active" :  "" ?>">Damage</a>
 
-                                    <a href="<?= BASE_URL ?>/it_borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_borrow' ? "active" :  "" ?>">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/lab1-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab1-borrow' ? "active" :  "" ?>">Borrow</a>
 
                                     <a href="<?= BASE_URL ?>/lab1-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab1-monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
@@ -293,8 +293,8 @@
                                     class="collapse ps-3"
                                     data-bs-parent="#itLabAccordion">
                                     <a href="<?= BASE_URL ?>/lab2-inventory" class="dropdown-item small menu-link text-white <?php echo CURRENT_URI == 'lab2-inventory' ? "active" :  "" ?>">Inventory</a>
-                                    <a href="#" class="dropdown-item small menu-link text-white">Borrow</a>
-                                    <a href="#" class="dropdown-item small menu-link text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/lab2-damage" class="dropdown-item small menu-link text-white <?php echo CURRENT_URI == 'lab2-damage' ? "active" :  "" ?>">Damage</a>
+                                    <a href="<?= BASE_URL ?>/lab2-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab2-borrow' ? "active" :  "" ?>">Borrow</a>
                                     <a href="<?= BASE_URL ?>/lab2-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab2-monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
 
@@ -315,8 +315,8 @@
                                     class="collapse ps-3"
                                     data-bs-parent="#itLabAccordion">
                                     <a href="<?= BASE_URL ?>/it-lab3-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-lab3-inventory' ? "active" :  "" ?>">Inventory</a>
-                                    <a href="#" class="dropdown-item menu-link small text-white">Borrow</a>
-                                    <a href="#" class="dropdown-item menu-link small text-white">Damage</a>
+                                    <a href="<?= BASE_URL ?>/lab3-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab3-borrow' ? "active" :  "" ?>">Borrow</a>
+                                    <a href="<?= BASE_URL ?>/lab3-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab3-damage' ? "active" :  "" ?>">Damage</a>
                                     <a href="<?= BASE_URL ?>/lab3-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab3-monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
 

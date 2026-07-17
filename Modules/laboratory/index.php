@@ -233,11 +233,11 @@ switch ($segments[0] ?? '') {
         (new ItDmgController())->index($labId);
         break;
 
-    case 'it_borrow':
-        require_once __DIR__ . '/app/controllers/ItBrwController.php';
-        $labId = $segments[2] ?? 1;
-        (new ItBrwController())->index($labId);
-        break;
+    // case 'it_borrow':
+    //     require_once __DIR__ . '/app/controllers/ItBrwController.php';
+    //     $labId = $segments[2] ?? 1;
+    //     (new ItBrwController())->index($labId);
+    //     break;
 
     case 'fingerprint-damage':
         require_once __DIR__ . '/app/controllers/FingerprintDmgController.php';
@@ -378,6 +378,31 @@ switch ($segments[0] ?? '') {
     case 'it-lab3-inventory':
         require_once __DIR__ . '/app/controllers/Itlab3InventoryController.php';
         (new Itlab3InventoryController())->index();
+        break;
+
+    case 'lab2-damage':
+        require_once __DIR__ . '/app/controllers/Itlab2DamageController.php';
+        (new Itlab2DamageController())->index();
+        break;
+
+    case 'lab3-damage':
+        require_once __DIR__ . '/app/controllers/Itlab3DamageController.php';
+        (new Itlab3DamageController())->index();
+        break;
+
+    case 'lab1-borrow':
+        require_once __DIR__ . '/app/controllers/Itlab1BorrowController.php';
+        (new Itlab1BorrowController())->index();
+        break;
+
+    case 'lab2-borrow':
+        require_once __DIR__ . '/app/controllers/Itlab2BorrowController.php';
+        (new Itlab2BorrowController())->index();
+        break;
+
+    case 'lab3-borrow':
+        require_once __DIR__ . '/app/controllers/Itlab3BorrowController.php';
+        (new Itlab3BorrowController())->index();
         break;
 
     case 'psycho-damage':

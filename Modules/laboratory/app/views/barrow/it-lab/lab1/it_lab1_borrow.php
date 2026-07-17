@@ -1,6 +1,5 @@
-<?php include __DIR__ . '/../../includes/sidebar.php'; ?>
-<?php include __DIR__ . '/../../includes/header.php'; ?>
-
+<?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
+<?php include __DIR__ . '/../../../includes/header.php'; ?>
 
 
 <main class="main-content">
@@ -12,10 +11,10 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Barrow Equipment
+                    Borrow Equipment
                 </div>
 
-                <a href="create.php" class="btn btn-primary btn-sm">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBorrowModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -24,9 +23,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Borrower Name</th>
+                            <th>Laboratory</th>
+                            <th>Borrower</th>
+                            <th>Item</th>
                             <th>Quantity</th>
-                            <th>Barrowed Date</th>
+                            <th>Borrowed Date</th>
                             <th>Returned Date</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -35,7 +36,9 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Test</td>
+                            <td>IT Lab 1</td>
+                            <td>Juan</td>
+                            <td>Balistic Kit</td>
                             <td>5</td>
                             <td>2024-03-27</td>
                             <td>2024-03-27</td>
@@ -49,16 +52,19 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
+
                                         <li>
-                                            <a class="dropdown-item" href="edit.php?id=1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
-                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
@@ -77,9 +83,7 @@
     </div>
 </main>
 
-<!-- Add New Damage Modal -->
-
-
+<?php include  __DIR__ . '/../../../includes//footer.php'; ?>
 
 <script>
     $(document).ready(function() {
@@ -89,4 +93,8 @@
         });
     });
 </script>
-<?php include  __DIR__ .'/../includes/footer.php'; ?>
+
+<!-- <?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
+<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
+<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?> -->
+
