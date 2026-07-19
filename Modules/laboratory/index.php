@@ -395,6 +395,11 @@ switch ($segments[0] ?? '') {
         (new Itlab1BorrowController())->index();
         break;
 
+    case 'lab1-inventory':
+        require_once __DIR__ . '/app/controllers/Itlab1InventoryController.php';
+        (new Itlab1InventoryController())->index();
+        break;
+
     case 'lab2-borrow':
         require_once __DIR__ . '/app/controllers/Itlab2BorrowController.php';
         (new Itlab2BorrowController())->index();

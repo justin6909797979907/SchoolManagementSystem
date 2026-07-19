@@ -1,9 +1,6 @@
 <?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
 <?php include __DIR__ . '/../../../includes/header.php'; ?>
 
-<?php include  __DIR__ . '/../../../includes//footer.php'; ?><?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
-<?php include __DIR__ . '/../../../includes/header.php'; ?>
-
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
@@ -16,7 +13,7 @@
                     Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#dtAddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -39,7 +36,7 @@
                             <td>1</td>
                             <td>Defense and Tactics Kit</td>
                             <td>Defense and Tactics Kit</td>
-                            <td>Defense and Tactics Lab</td>
+                            <td>Defense and Tactics Laboratory</td>
                             <td>10</td>
                             <td>5</td>
                             <td>
@@ -52,13 +49,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#dtViewInventoryModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#dtEditInventoryModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
@@ -94,7 +91,7 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?> -->
+<?php require __DIR__ . '/dtAddInventoryModal.php'; ?>
+<?php require __DIR__ . '/dtEditInventoryModal.php'; ?>
+<?php require __DIR__ . '/dtViewInventoryModal.php'; ?>
 

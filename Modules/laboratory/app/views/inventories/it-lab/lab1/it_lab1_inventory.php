@@ -4,7 +4,7 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
-        <p class="mb-4">Crime Scene Laboratory</p>
+        <p class="mb-4">IT Laboratory 1</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -13,7 +13,7 @@
                     Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#csAddInventoryModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#itLab1AddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -34,9 +34,9 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Crime Scene Kit</td>
-                            <td>Crime Scene Kit</td>
-                            <td>Crime Scene Laboratory</td>
+                            <td>Lab 1 kit</td>
+                            <td>IT Kit</td>
+                            <td>IT Lab 1</td>
                             <td>10</td>
                             <td>5</td>
                             <td>
@@ -49,13 +49,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#csViewInventoryModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#itLab1ViewInventoryModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#csEditInventoryModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#itLab1EditInventoryModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
@@ -91,6 +91,6 @@
     });
 </script>
 
-<?php require __DIR__ . '/csAddInventoryModal.php'; ?>
-<?php require __DIR__ . '/csEditInventoryModal.php'; ?>
-<?php require __DIR__ . '/csViewInventoryModal.php'; ?>
+<?php require __DIR__ . '/itLab1AddInventoryModal.php'; ?>
+<?php require __DIR__ . '/itLab1EditInventoryModal.php'; ?>
+<?php require __DIR__ . '/itLab1ViewInventoryModal.php'; ?>

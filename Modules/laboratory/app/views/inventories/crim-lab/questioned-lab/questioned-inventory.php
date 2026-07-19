@@ -13,7 +13,7 @@
                     Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#qdAddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -49,13 +49,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#qdViewInventoryModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#qdEditInventoryModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
@@ -91,7 +91,7 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?> -->
+<?php require __DIR__ . '/qdAddInventoryModal.php'; ?>
+<?php require __DIR__ . '/qdEditInventoryModal.php'; ?>
+<?php require __DIR__ . '/qdViewInventoryModal.php'; ?>
 

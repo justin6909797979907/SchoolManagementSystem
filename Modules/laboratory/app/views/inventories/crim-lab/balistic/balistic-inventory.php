@@ -4,7 +4,7 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
-        <p class="mb-4">Balistic Laboratory</p>
+        <p class="mb-4">Ballistic Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -13,7 +13,7 @@
                     Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#balAddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -49,13 +49,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balViewBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balViewInventoryModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balEditBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balEditInventoryModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
@@ -90,3 +90,7 @@
         });
     });
 </script>
+
+<?php require __DIR__ . '/balAddInventoryModal.php'; ?>
+<?php require __DIR__ . '/balEditInventoryModal.php'; ?>
+<?php require __DIR__ . '/balViewInventoryModal.php'; ?>
