@@ -13,7 +13,7 @@
                     Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#itLab3AddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -49,13 +49,13 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balViewBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#itLab3ViewInventoryModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balEditBorrowModal">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#itLab3EditInventoryModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
@@ -90,3 +90,7 @@
         });
     });
 </script>
+
+<?php require __DIR__ . '/itLab3AddInventoryModal.php'; ?>
+<?php require __DIR__ . '/itLab3EditInventoryModal.php'; ?>
+<?php require __DIR__ . '/itLab3ViewInventoryModal.php'; ?>
