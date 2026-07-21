@@ -14,12 +14,15 @@
                     Monitoring
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="crimInventoryBtn">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#lab1AddMonitoringModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
             </div>
             <div class="card-body">
-                <table id="crimEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="lab1MonitoringTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -49,15 +52,23 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item crimViewBtn" data-id="">
-                                                 <i class="fas fa-eye me-2"></i> View
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab1ViewMonitoringModal">
+                                                <i class="fas fa-eye me-2"></i> View
                                             </button>
                                         </li>
+
                                         <li>
-                                            <button class="dropdown-item crimEdit" data-id="">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab1EditMonitoringModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </button>
                                         </li>
+
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
@@ -87,9 +98,9 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?> -->
+<?php require __DIR__ . '/lab1AddMonitoringModal.php'; ?>
+<?php require __DIR__ . '/lab1ViewMonitoringModal.php'; ?>
+<?php require __DIR__ . '/lab1EditMonitoringModal.php'; ?>
 
 
 <?php include  __DIR__ . '/../../../includes/footer.php'; ?>

@@ -14,12 +14,15 @@
                     Monitoring
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="crimInventoryBtn">
+                 <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#lab2AddMonitoringModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
             </div>
             <div class="card-body">
-                <table id="crimEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="lab2EquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -50,12 +53,24 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item crimViewBtn" data-id="<?= $inventory['id'] ?>">
+                                            <!-- <button class="dropdown-item crimViewBtn" data-id="<?= $inventory['id'] ?>">
                                                  <i class="fas fa-eye me-2"></i> View
+                                            </button> -->
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab2ViewMonitoringModal">
+                                                <i class="fas fa-eye me-2"></i> View
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="dropdown-item crimEdit" data-id="<?= $inventory['id'] ?>">
+                                            <!-- <button class="dropdown-item crimEdit" data-id="<?= $inventory['id'] ?>">
+                                                <i class="fas fa-edit me-2"></i> Edit
+                                            </button> -->
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab2EditMonitoringModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </button>
                                         </li>
@@ -83,16 +98,16 @@
 
 <script>
     $(document).ready(function() {
-        $('#crimEquipmentTable').DataTable({
+        $('#lab2EquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
 
-<!-- <?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?> -->
+<?php require __DIR__ . '/lab2AddMonitoringModal.php'; ?>
+<?php require __DIR__ . '/lab2ViewMonitoringModal.php'; ?>
+<?php require __DIR__ . '/lab2EditMonitoringModal.php'; ?>
 
 
 <?php include  __DIR__ . '/../../../includes/footer.php'; ?>

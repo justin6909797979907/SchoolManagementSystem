@@ -14,9 +14,12 @@
                     Monitoring
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="heInventoryBtn">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#heAddMonitoringModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
             </div>
             <div class="card-body">
                 <table id="heEquipmentTable" class="table table-striped table-bordered" style="width:100%">
@@ -33,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         <tr>
                             <td>1</td>
                             <td>Test</td>
@@ -49,12 +52,19 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item psyViewBtn" data-id="">
-                                                 <i class="fas fa-eye me-2"></i> View
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#heViewMonitoringModal">
+                                                <i class="fas fa-eye me-2"></i> View
                                             </button>
                                         </li>
+
                                         <li>
-                                            <button class="dropdown-item psyEdit" data-id="">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#heEditMonitoringModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </button>
                                         </li>
@@ -62,7 +72,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id=""><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                        <li><a class="dropdown-item text-danger deleteBtn" data-id=""><i class="fas fa-trash me-2"></i>Delete</a></li>
                                         </li>
                                     </ul>
                                 </div>
@@ -87,9 +97,8 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/heAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/heView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/heEdit-inventory-modal.php'; ?> -->
+<?php require __DIR__ . '/heAddMonitoringModal.php'; ?>
+<?php require __DIR__ . '/heViewMonitoringModal.php'; ?>
+<?php require __DIR__ . '/heEditMonitoringModal.php'; ?>
 
-
-<?php include  __DIR__ . '/../../includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>
