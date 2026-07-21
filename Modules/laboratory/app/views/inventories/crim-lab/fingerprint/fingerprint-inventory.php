@@ -8,12 +8,12 @@
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
 
-            <div class="card-header d-flex justify-content-between align-items-center">
+            <div  class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
                     Inventory Management
                 </div>
-                <a href="#" class="btn btn-primary btn-sm"
+                <a href="#" id="fpAddBtn" class="btn btn-primary btn-sm"
                     data-bs-toggle="modal"
                     data-bs-target="#fpAddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
@@ -35,15 +35,17 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                    <?php foreach( $fingerprint_inventories as $fp_inventory )  { ?>
                         <tr>
-                            <td>1</td>
-                            <td>Fingerprint Kit</td>
-                            <td>Fingerprint Kit</td>
-                            <td>Fingerprint Lab</td>
-                            <td>10</td>
-                            <td>5</td>
+                            <td><?= $fp_inventory['id'] ?></td>
+                            <td><?= $fp_inventory['item_name'] ?></td>
+                            <td><?= $fp_inventory['category'] ?></td>
+                            <td><?= $fp_inventory['laboratory'] ?></td>
+                            <td><?= $fp_inventory['total_item'] ?></td>
+                            <td><?= $fp_inventory['available_item'] ?></td>
                             <td>
-                                <span class="badge bg-success px-2 py-2">Working</span>
+                                <?= $fp_inventory['status'] ?>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -75,6 +77,8 @@
                                 </div>
                             </td>
                         </tr>
+
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
@@ -93,6 +97,9 @@ $(document).ready(function () {
     });
 });
 </script>
+
+<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script src="<?= BASE_URL ?>/js/fingerprintInventory.js"></script>
 
 <?php require __DIR__ . '/fpAddInventoryModal.php'; ?>
 <?php require __DIR__ . '/fpEditInventoryModal.php'; ?>

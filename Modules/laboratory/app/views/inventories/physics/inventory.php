@@ -22,11 +22,13 @@
                 <table id="psyEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Photo</th>
+                             <th>ID</th>
+                            <th>Item Name</th>
                             <th>Category</th>
-                            <th>total</th>
-                            <th>Available</th>
+                            <th>Laboratory</th>
+                            <th>Total Quantity</th>
+                            <th>Available Quantity</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,12 +36,12 @@
                        <?php foreach( $inventories as $inventory )  { ?>
                         <tr>
                             <td><?= $inventory['id'] ?></td>
-                            <td>
-                                <img src="<?= BASE_URL ?>/public/<?= $inventory['item_img'] ?>" class="img-fluid rounded" style="max-width: 100px;">
-                            </td>
+                            <td><?= $inventory['item_name'] ?></td>
                             <td><?= $inventory['category'] ?></td>
-                            <td><?= $inventory['total'] ?></td>
-                            <td><?= $inventory['available'] ?></td>
+                            <td><?= $inventory['laboratory'] ?></td>
+                            <td><?= $inventory['total_item'] ?></td>
+                            <td><?= $inventory['available_item'] ?></td>
+                            <td><?= $inventory['status'] ?></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">

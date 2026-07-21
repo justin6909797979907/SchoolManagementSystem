@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="fpAddInventoryForm" method="POST" enctype="multipart/form-data">
+            <form id="fpAddInventoryForm" method="POST" action="<?= BASE_URL ?>/fingerprint-inventory/create" enctype="multipart/form-data">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="fpAddInventoryModalLabel">
@@ -41,7 +41,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Total Quantity</label>
                             <input type="number"
-                                name="total_quantity"
+                                name="total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -51,7 +51,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Available Quantity</label>
                             <input type="number"
-                                name="available_quantity"
+                                name="available_item"
                                 class="form-control"
                                 min="0"
                                 required>
@@ -69,14 +69,7 @@
                             </select>
                         </div>
 
-                        <!-- Photo -->
-                        <!-- <div class="col-md-12">
-                            <label class="form-label">Item Photo (Optional)</label>
-                            <input type="file"
-                                name="item_img"
-                                class="form-control"
-                                accept="image/*">
-                        </div> -->
+                       
 
                     </div>
 

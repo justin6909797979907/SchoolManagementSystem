@@ -1,103 +1,89 @@
-<?php 
+<?php
 
-class InventoryController {
+class InventoryController
+{
 
 
-    
+    protected $tableName = 'phys_lab_inventory';
+
+
     public function index()
     {
 
-         require __DIR__ . '/../../config/database.php';
-          try {
-                $db = Database::connect();
+        require __DIR__ . '/../../config/database.php';
+        try {
+            $db = Database::connect();
 
-                $stmt = $db->prepare("SELECT * FROM lab_physic_inventory");
-                $stmt->execute();
+            $stmt = $db->prepare("SELECT * FROM $this->tableName");
+            $stmt->execute();
 
-                $inventories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $inventories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                 require __DIR__ . '/../views/inventories/physics/inventory.php';
-
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-
+            require __DIR__ . '/../views/inventories/physics/inventory.php';
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
 
-    
+
 
     public function create()
     {
 
-         require __DIR__ . '/../../config/database.php';
+    
+
+        require __DIR__ . '/../../config/database.php';
 
 
-        if(isset($_FILES['item_img']) && $_FILES['item_img']['error'] == 0){
-
-          $imagePath = null;
-
-         $uploadDir = __DIR__ . '/../../public/uploads/';
-
-            if(!is_dir($uploadDir)){
-                mkdir($uploadDir, 0777, true);
-            }
-
-            $fileName = time() . '_' . basename($_FILES['item_img']['name']);
-            $targetFile = $uploadDir . $fileName;
-
-            if(move_uploaded_file($_FILES['item_img']['tmp_name'], $targetFile)){
-                $imagePath = 'uploads/' . $fileName;
-            }
-        }
-
-         $category = $_POST['category'] ?? '';
-        $total = $_POST['total'] ?? '';
-        $available =$_POST['available'] ?? '';
+        $item_name = $_POST['item_name'] ?? '';
+        $category = $_POST['category'] ?? '';
+        $total = $_POST['total_item'] ?? '';
+        $available = $_POST['available_quantity'] ?? '';
+        $laboratory = $_POST['laboratory'] ?? 'Physics Lab';
+        $status = $_POST['status'] ?? '';
 
 
-         try {
+        try {
 
             $db = Database::connect();
 
             $stmt = $db->prepare("
-                INSERT INTO lab_physic_inventory(category, total, available, item_img)
-                VALUES(:category, :total, :available, :image)
+                INSERT INTO $this->tableName(item_name, category, total_item, available_item, laboratory, status)
+                VALUES(:item_name, :category, :total, :available, :laboratory, :status)
             ");
 
             $stmt->execute([
+                ':item_name' => $item_name,
                 ':category' => $category,
+                ':laboratory' => $laboratory,
                 ':total' => $total,
                 ':available' => $available,
-                ':image' => $imagePath
+                ':status' => $status,
             ]);
 
-             header('Location: ' . BASE_URL . '/inventory');
-             exit();
-            
-        } catch(PDOException $e) {
+            header('Location: ' . BASE_URL . '/inventory');
+            exit();
+        } catch (PDOException $e) {
 
             echo json_encode([
                 'success' => false,
                 'error' => $e->getMessage()
             ]);
-
         }
-
-
     }
 
 
-     public function view($id)
+    public function view($id)
     {
 
-         header('Content-Type: application/json');
+        header('Content-Type: application/json');
 
         require __DIR__ . '/../../config/database.php';
 
         try {
             $db = Database::connect();
-            $stmt = $db->prepare("SELECT * FROM lab_physic_inventory WHERE id = :id");
+            $stmt = $db->prepare("SELECT * FROM $this->tableName WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -111,29 +97,28 @@ class InventoryController {
         } catch (PDOException $e) {
             echo json_encode(['error' => $e->getMessage()]);
         }
-
     }
 
     public function update()
     {
 
-    header('Content-Type: application/json');
+        header('Content-Type: application/json');
 
-    require __DIR__ . '/../../config/database.php';
+        require __DIR__ . '/../../config/database.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-        $id = $_POST['id'] ?? null;
-        $category = $_POST['edit_category'] ?? '';
-        $available = $_POST['edit_available'] ?? '';
-        $total = $_POST['edit_total'] ?? '';
+            $id = $_POST['id'] ?? null;
+            $category = $_POST['edit_category'] ?? '';
+            $available = $_POST['edit_available'] ?? '';
+            $total = $_POST['edit_total'] ?? '';
 
-        try {
-            $db = Database::connect();
+            try {
+                $db = Database::connect();
 
-            $stmt = $db->prepare("
-                    UPDATE  physic_inventory
+                $stmt = $db->prepare("
+                    UPDATE  $this->tableName    
                     SET category = :category,
                         total = :total,
                         available = :available
@@ -147,51 +132,37 @@ class InventoryController {
                     ':id' => $id,
                 ]);
 
-            echo json_encode(['success' => true, 'message' => 'Damage updated successfully']);
-
-        } catch (PDOException $e) {
-            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+                echo json_encode(['success' => true, 'message' => 'Damage updated successfully']);
+            } catch (PDOException $e) {
+                echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+            }
         }
-
-
     }
 
 
-    }
-
-
-     public function destroy($id)
+    public function destroy($id)
     {
 
         header('Content-Type: application/json');
 
-         require __DIR__ . '/../../config/database.php';
-        
-    
+        require __DIR__ . '/../../config/database.php';
+
+
         try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("DELETE FROM lab_physic_inventory WHERE id = :id");
+            $stmt = $db->prepare("DELETE FROM $this->tableName WHERE id = :id");
             $stmt->execute([':id' => $id]);
 
             echo json_encode([
                 'success' => true,
                 'message' => 'Damage deleted successfully'
             ]);
-
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo json_encode([
                 'success' => false,
                 'error' => $e->getMessage()
             ]);
         }
-
-
     }
-
-
-
-
-
-
 }

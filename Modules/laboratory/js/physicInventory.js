@@ -3,7 +3,7 @@
 
         let phyAddModal = new bootstrap.Modal(document.getElementById("phyAddModal"));
         phyAddModal.show();
-
+  
     });
 
 

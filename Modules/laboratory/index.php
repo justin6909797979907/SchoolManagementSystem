@@ -141,6 +141,8 @@ switch ($segments[0] ?? '') {
 
         if (!isset($segments[1])) {
             $controller->index();
+        }else if ($segments[1] === 'create') {
+            $controller->create();
         }
 
         break;
