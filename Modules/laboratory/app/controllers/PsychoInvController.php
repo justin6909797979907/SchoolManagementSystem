@@ -15,7 +15,7 @@ class PsychoInvController {
         try {
                 $db = Database::connect();
 
-                $stmt = $db->prepare("SELECT * FROM lab_psych_inventory");
+                $stmt = $db->prepare("SELECT * FROM psy_lab_inventory");
                 $stmt->execute();
 
                 $inventories = $stmt->fetchAll(PDO::FETCH_ASSOC);

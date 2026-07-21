@@ -22,7 +22,7 @@
                 <table id="psyEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                             <th>ID</th>
+                            <th>ID</th>
                             <th>Item Name</th>
                             <th>Category</th>
                             <th>Laboratory</th>

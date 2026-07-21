@@ -1,47 +1,90 @@
-<div class="modal fade" id="addPsychInventoryModal" tabindex="-1">
+<div class="modal fade" id="addPsychInventoryModal" tabindex="-1" aria-labelledby="psyAdd-inventory-modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Create Equipments</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+            <form  action="<?= BASE_URL ?>/inventory/create" method="POST" enctype="multipart/form-data">
 
-            <div class="modal-body">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="psyAdd-inventory-modalLabel">
+                        Add Psychology Inventory
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-                <form action="<?= BASE_URL ?>/psycho-inventory/create" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
 
-                    <div class="row">
+                    <div class="row g-3">
 
-                        <div class="col-md-6 mb-3">
+                        <!-- Item Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Item Name</label>
+                            <input type="text" name="item_name" class="form-control" required>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="col-md-6">
                             <label class="form-label">Category</label>
-                            <input type="text" class="form-control" name="category">
+                            <input type="text" name="category" class="form-control" required>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Total</label>
-                            <input type="number" class="form-control" name="total">
+                        <!-- Laboratory -->
+                        <div class="col-md-6">
+                            <label class="form-label">Laboratory</label>
+                            <input type="text"
+                                name="laboratory"
+                                class="form-control"
+                                value="Psychology Lab"
+                                readonly>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Available</label>
-                            <input type="number" class="form-control" name="available">
+                        <!-- Total Quantity -->
+                        <div class="col-md-6">
+                            <label class="form-label">Total Quantity</label>
+                            <input type="number"
+                                name="total_item"
+                                class="form-control"
+                                min="1"
+                                required>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Photo</label>
-                            <input type="file" class="form-control" name="item_img">
+                        <!-- Available Quantity -->
+                        <div class="col-md-6">
+                            <label class="form-label">Available Quantity</label>
+                            <input type="number"
+                                name="available_quantity"
+                                class="form-control"
+                                min="0"
+                                required>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="col-md-6">
+                            <label class="form-label">Status</label>
+                            <select name="status" class="form-select" required>
+                                <option value="">-- Select Status --</option>
+                                <option value="Working">Working</option>
+                                <option value="Under Maintenance">Under Maintenance</option>
+                                <option value="Damaged">Damaged</option>
+                                <option value="Unavailable">Unavailable</option>
+                            </select>
                         </div>
 
                     </div>
 
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
+                </div>
 
-                </form>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Save
+                    </button>
 
-            </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>

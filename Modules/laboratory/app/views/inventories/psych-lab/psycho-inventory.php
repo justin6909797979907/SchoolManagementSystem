@@ -23,23 +23,66 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Photo</th>
+                            <th>Item Name</th>
                             <th>Category</th>
-                            <th>total</th>
-                            <th>Available</th>
+                            <th>Laboratory</th>
+                            <th>Total Quantity</th>
+                            <th>Available Quantity</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                          <?php foreach( $inventories as $inventory )  { ?>
+                        <?php foreach ($inventories as $inventory) { ?>
+                            <tr>
+                                <td><?= $inventory['id'] ?></td>
+                                <td><?= $inventory['item_name'] ?></td>
+                                <td><?= $inventory['category'] ?></td>
+                                <td><?= $inventory['laboratory'] ?></td>
+                                <td><?= $inventory['total_item'] ?></td>
+                                <td><?= $inventory['available_item'] ?></td>
+                                <td><?= $inventory['status'] ?></td>
+
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <button class="dropdown-item psychViewBtn" data-id="<?= $inventory['id'] ?>">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="dropdown-item psychEditBtn" data-id="<?= $inventory['id'] ?>">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $inventory['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        <?php } ?>
+
+                        <!-- example row -->
                         <tr>
-                            <td><?= $inventory['id'] ?></td>
+                            <td>1</td>
+                            <td>Psychology Kit</td>
+                            <td>Psychology Kit</td>
+                            <td>Psychology Lab</td>
+                            <td>10</td>
+                            <td>5</td>
                             <td>
-                                <img src="<?= BASE_URL ?>/public/<?= $inventory['item_img'] ?>" class="img-fluid rounded" style="max-width: 100px;">
+                                <span class="badge bg-success px-2 py-2">Working</span>
                             </td>
-                            <td><?= $inventory['category'] ?></td>
-                            <td><?= $inventory['total'] ?></td>
-                            <td><?= $inventory['available'] ?></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -47,29 +90,31 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item psychViewBtn" data-id="<?= $inventory['id'] ?>">
-                                                 <i class="fas fa-eye me-2"></i> View
-                                            </button>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#psyViewInventoryModal">
+                                                <i class="fas fa-eye me-2"></i> View
+                                            </a>
                                         </li>
+
                                         <li>
-                                            <button class="dropdown-item psychEditBtn" data-id="<?= $inventory['id'] ?>">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#psyEditInventoryModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
-                                            </button>
+                                            </a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $inventory['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
+                                                onclick="return confirm('Are you sure you want to delete this record?')">
+                                                <i class="fas fa-trash me-2"></i> Delete
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
 
-                        <?php }?>
 
-                        
                     </tbody>
                 </table>
             </div>
@@ -91,7 +136,9 @@
 <?php require __DIR__ . '/psyView-inventory-modal.php'; ?>
 <?php require __DIR__ . '/psyEdit-inventory-modal.php'; ?>
 
-<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
 <script src="<?= BASE_URL ?>/js/psychInventory.js"></script>
 
 

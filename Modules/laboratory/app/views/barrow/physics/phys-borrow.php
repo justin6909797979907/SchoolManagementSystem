@@ -1,5 +1,5 @@
-<?php include  __DIR__ .'/../../includes/sidebar.php'; ?>
-<?php include  __DIR__ .'/../../includes/header.php'; ?>
+<?php include  __DIR__ . '/../../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../../includes/header.php'; ?>
 
 <link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
 
@@ -26,9 +26,9 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Borrower</th>
+                            <th>Laboratory</th>
                             <th>Borrower Name</th>
-                            <th>Item</th>
+                            <th>Item Name</th>
                             <th>Quantity</th>
                             <th>Barrowed Date</th>
                             <th>Returned Date</th>
@@ -39,12 +39,12 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Student</td>
+                            <td>Physics Lab</td>
                             <td>Juan</td>
-                            <td>Microscope</td>
+                            <td>Physics Equipment</td>
                             <td>5</td>
-                            <td>2024-03-27</td>
-                            <td>2024-03-27</td>
+                            <td>2026-03-27</td>
+                            <td>2026-03-27</td>
                             <td>
                                 <span class="badge bg-success">Returned</span>
                             </td>
@@ -55,16 +55,26 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1">
+                                              <a class="dropdown-item physEditBtn"
+                                                href="#"
+                                                data-id="1"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#physViewBorrowModal">
                                                 <i class="fas fa-eye me-2"></i> View
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="edit.php?id=1">
+                                            <a class="dropdown-item physEditBtn"
+                                                href="#"
+                                                data-id="1"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#physEditBorrowModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </a>
                                         </li>
-                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
@@ -95,5 +105,7 @@
 </script>
 
 <?php require __DIR__ . '/physAdd-borrow-modal.php'; ?>
+<?php require __DIR__ . '/physEdit-borrow-modal.php'; ?>
+<?php require __DIR__ . '/physView-borrow-modal.php'; ?>
 
-<?php include  __DIR__ .'/../../includes/footer.php'; ?>
+<?php include  __DIR__ . '/../../includes/footer.php'; ?>
