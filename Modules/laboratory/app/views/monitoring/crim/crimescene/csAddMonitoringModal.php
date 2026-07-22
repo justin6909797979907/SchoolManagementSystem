@@ -1,16 +1,13 @@
-<div class="modal fade" id="lab1EditMonitoringModal" tabindex="-1" aria-labelledby="lab1EditMonitoringModalLabel" aria-hidden="true">
+<div class="modal fade" id="csAddMonitoringModal" tabindex="-1" aria-labelledby="csAddMonitoringModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="lab1EditMonitoringForm" action="<?= BASE_URL ?>/monitoring/update" method="POST">
-
-                <!-- Hidden ID -->
-                <input type="hidden" name="id" id="lab1_edit_id">
+            <form id="csAddMonitoringForm" action="<?= BASE_URL ?>/monitoring/create" method="POST">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="lab1EditMonitoringModalLabel">
-                        <i class="fas fa-edit me-2"></i>
-                        Edit IT Laboratory 1 Monitoring Record
+                    <h5 class="modal-title" id="csAddMonitoringModalLabel">
+                        <i class="fas fa-plus me-2"></i>
+                        Add Crime Scene Monitoring Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -25,7 +22,6 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="lab1_edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,9 +32,8 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="lab1_edit_laboratory"
                                 class="form-control"
-                                value="IT Laboratory 1"
+                                value="Crime Scene Laboratory"
                                 readonly>
                         </div>
 
@@ -47,10 +42,9 @@
                             <label class="form-label">Condition</label>
                             <select
                                 name="condition"
-                                id="lab1_edit_condition"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Condition --</option>
+                                <option value="">-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
@@ -64,7 +58,6 @@
                             <input
                                 type="date"
                                 name="last_checked"
-                                id="lab1_edit_last_checked"
                                 class="form-control"
                                 required>
                         </div>
@@ -75,7 +68,6 @@
                             <input
                                 type="text"
                                 name="checked_by"
-                                id="lab1_edit_checked_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -85,9 +77,9 @@
                             <label class="form-label">Remarks</label>
                             <textarea
                                 name="remarks"
-                                id="lab1_edit_remarks"
                                 class="form-control"
                                 rows="3"
+                                placeholder="Enter remarks..."
                                 required></textarea>
                         </div>
 
@@ -96,8 +88,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-save me-1"></i> Update
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Save
                     </button>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

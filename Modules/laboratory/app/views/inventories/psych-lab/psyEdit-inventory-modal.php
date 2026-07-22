@@ -85,7 +85,7 @@
                                 id="psy_edit_status"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Status --</option>
+                                <option value="" selected disabled>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>

@@ -1,16 +1,16 @@
-<div class="modal fade" id="lab1EditMonitoringModal" tabindex="-1" aria-labelledby="lab1EditMonitoringModalLabel" aria-hidden="true">
+<div class="modal fade" id="qdEditMonitoringModal" tabindex="-1" aria-labelledby="qdEditMonitoringModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="lab1EditMonitoringForm" action="<?= BASE_URL ?>/monitoring/update" method="POST">
+            <form id="qdEditMonitoringForm" action="<?= BASE_URL ?>/monitoring/update" method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="lab1_edit_id">
+                <input type="hidden" name="id" id="qd_edit_id">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="lab1EditMonitoringModalLabel">
+                    <h5 class="modal-title" id="qdEditMonitoringModalLabel">
                         <i class="fas fa-edit me-2"></i>
-                        Edit IT Laboratory 1 Monitoring Record
+                        Edit Question Document Monitoring Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -25,7 +25,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="lab1_edit_item_name"
+                                id="qd_edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,9 +36,9 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="lab1_edit_laboratory"
+                                id="qd_edit_laboratory"
                                 class="form-control"
-                                value="IT Laboratory 1"
+                                value="Question Document Laboratory"
                                 readonly>
                         </div>
 
@@ -47,7 +47,7 @@
                             <label class="form-label">Condition</label>
                             <select
                                 name="condition"
-                                id="lab1_edit_condition"
+                                id="qd_edit_condition"
                                 class="form-select"
                                 required>
                                 <option value="" selected disabled>-- Select Condition --</option>
@@ -64,7 +64,7 @@
                             <input
                                 type="date"
                                 name="last_checked"
-                                id="lab1_edit_last_checked"
+                                id="qd_edit_last_checked"
                                 class="form-control"
                                 required>
                         </div>
@@ -75,7 +75,7 @@
                             <input
                                 type="text"
                                 name="checked_by"
-                                id="lab1_edit_checked_by"
+                                id="qd_edit_checked_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -85,7 +85,7 @@
                             <label class="form-label">Remarks</label>
                             <textarea
                                 name="remarks"
-                                id="lab1_edit_remarks"
+                                id="qd_edit_remarks"
                                 class="form-control"
                                 rows="3"
                                 required></textarea>

@@ -1,11 +1,11 @@
-<div class="modal fade" id="chemViewMonitoringModal" tabindex="-1" aria-labelledby="chemViewMonitoringModalLabel" aria-hidden="true">
+<div class="modal fade" id="csViewMonitoringModal" tabindex="-1" aria-labelledby="csViewMonitoringModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="chemViewMonitoringModalLabel">
+                <h5 class="modal-title" id="csViewMonitoringModalLabel">
                     <i class="fas fa-eye me-2"></i>
-                    View Chemistry Monitoring Record
+                    View Crime Scene Monitoring Record
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
@@ -19,7 +19,7 @@
                         <label class="form-label">Item Name</label>
                         <input
                             type="text"
-                            id="chem_view_item_name"
+                            id="cs_view_item_name"
                             class="form-control"
                             readonly>
                     </div>
@@ -29,7 +29,7 @@
                         <label class="form-label">Laboratory</label>
                         <input
                             type="text"
-                            id="chem_view_laboratory"
+                            id="cs_view_laboratory"
                             class="form-control"
                             readonly>
                     </div>
@@ -38,7 +38,7 @@
                     <div class="col-md-6">
                         <label class="form-label">Condition</label>
                         <select
-                            id="chem_view_condition"
+                            id="cs_view_condition"
                             class="form-select"
                             disabled>
                             <option value="Working">Working</option>
@@ -53,7 +53,7 @@
                         <label class="form-label">Last Checked</label>
                         <input
                             type="date"
-                            id="chem_view_last_checked"
+                            id="cs_view_last_checked"
                             class="form-control"
                             readonly>
                     </div>
@@ -63,7 +63,7 @@
                         <label class="form-label">Checked By</label>
                         <input
                             type="text"
-                            id="chem_view_checked_by"
+                            id="cs_view_checked_by"
                             class="form-control"
                             readonly>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="col-12">
                         <label class="form-label">Remarks</label>
                         <textarea
-                            id="chem_view_remarks"
+                            id="cs_view_remarks"
                             class="form-control"
                             rows="3"
                             readonly></textarea>

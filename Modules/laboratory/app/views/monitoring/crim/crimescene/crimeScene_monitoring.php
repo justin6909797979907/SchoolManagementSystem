@@ -14,9 +14,13 @@
                     Monitoring
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="crimInventoryBtn">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#csAddMonitoringModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
+
             </div>
             <div class="card-body">
                 <table id="crimEquipmentTable" class="table table-striped table-bordered" style="width:100%">
@@ -33,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         <tr>
                             <td>1</td>
                             <td>Test</td>
@@ -49,12 +53,18 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <button class="dropdown-item crimViewBtn" data-id="">
-                                                 <i class="fas fa-eye me-2"></i> View
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#csViewMonitoringModal">
+                                                <i class="fas fa-eye me-2"></i> View
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="dropdown-item crimEdit" data-id="">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#csEditMonitoringModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </button>
                                         </li>
@@ -62,7 +72,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id=""><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                        <li><a class="dropdown-item text-danger deleteBtn" data-id=""><i class="fas fa-trash me-2"></i>Delete</a></li>
                                         </li>
                                     </ul>
                                 </div>
@@ -87,9 +97,9 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/crimAdd-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimView-inventory-modal.php'; ?>
-<?php require __DIR__ . '/crimEdit-inventory-modal.php'; ?> -->
+<?php require __DIR__ . '/csAddMonitoringModal.php'; ?>
+<?php require __DIR__ . '/csViewMonitoringModal.php'; ?>
+<?php require __DIR__ . '/csEditMonitoringModal.php'; ?>
 
 
 <?php include  __DIR__ . '/../../../includes/footer.php'; ?>
