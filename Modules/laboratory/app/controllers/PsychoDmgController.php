@@ -14,7 +14,7 @@ class PsychoDmgController {
          try {
             $db = Database::connect();
 
-            $stmt = $db->prepare("SELECT * FROM lab_psych_damage");
+            $stmt = $db->prepare("SELECT * FROM psy_lab_damage");
             $stmt->execute();
 
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

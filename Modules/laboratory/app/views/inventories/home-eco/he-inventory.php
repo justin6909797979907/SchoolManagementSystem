@@ -14,8 +14,11 @@
                     Inventory
                 </div>
 
-                <button class="btn btn-primary btn-sm" id="createNewBtn">
-                    <i class="fas fa-plus me-1"></i> Create News
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#heAddInventoryModal">
+                    <i class="fas fa-plus me-1"></i> Create New
                 </button>
             </div>
             <div class="card-body">
@@ -23,16 +26,18 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Photo</th>
+                            <th>Item Name</th>
                             <th>Category</th>
-                            <th>total</th>
-                            <th>Available</th>
+                            <th>Laboratory</th>
+                            <th>Total Quantity</th>
+                            <th>Available Items</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                    <?php foreach( $inventories as $inventory )  { ?>
+                        <!-- <?php foreach ($inventories as $inventory) { ?>
                         <tr>
                             <td><?= $inventory['id'] ?></td>
                             <td>
@@ -67,8 +72,55 @@
                                 </div>
                             </td>
                         </tr>
+                        <?php } ?> -->
 
-                        <?php }?>
+                        <tr>
+                            <td>1</td>
+                            <td>HE Kit</td>
+                            <td>HE Kit</td>
+                            <td>HE Lab</td>
+                            <td>10</td>
+                            <td>5</td>
+                            <td>
+                                <span class="badge bg-success px-2 py-2">Working</span>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#heViewInventoryModal">
+                                                <i class="fas fa-eye me-2"></i> View
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#heEditInventoryModal">
+                                                <i class="fas fa-edit me-2"></i> Edit
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
+                                                onclick="return confirm('Are you sure you want to delete this record?')">
+                                                <i class="fas fa-trash me-2"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -81,6 +133,7 @@
 <?php require __DIR__ . '/view-inventory-modal.php'; ?>
 <?php require __DIR__ . '/edit-inventory-modal.php'; ?>
 
+
 <script>
     $(document).ready(function() {
         $('#heEquipmentTable').DataTable({
@@ -90,7 +143,9 @@
     });
 </script>
 
-<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
 <script src="<?= BASE_URL ?>/js/heInventory.js"></script>
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>
