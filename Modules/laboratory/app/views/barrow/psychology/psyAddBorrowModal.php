@@ -1,16 +1,13 @@
-<div class="modal fade" id="psychoEditDamageModal" tabindex="-1" aria-labelledby="psychoEditDamageModalLabel" aria-hidden="true">
+<div class="modal fade" id="psyAddBorrowModal" tabindex="-1" aria-labelledby="psyAddBorrowModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="psychoEditDamageForm" action="<?= BASE_URL ?>/damages/update" method="POST">
-
-                <!-- Hidden ID -->
-                <input type="hidden" name="id" id="psycho_edit_id">
+            <form id="psyAddBorrowForm" action="<?= BASE_URL ?>/borrow/create" method="POST">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="psychoEditDamageModalLabel">
-                        <i class="fas fa-edit me-2"></i>
-                        Edit Damage Record
+                    <h5 class="modal-title" id="psyAddBorrowModalLabel">
+                        <i class="fas fa-hand-holding me-2"></i>
+                        Add Borrow Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -19,60 +16,65 @@
 
                     <div class="row g-3">
 
-                        <!-- Item Name -->
-                        <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
-                            <input
-                                type="text"
-                                name="item_name"
-                                id="psycho_edit_item_name"
-                                class="form-control"
-                                required>
-                        </div>
-
                         <!-- Laboratory -->
                         <div class="col-md-6">
                             <label class="form-label">Laboratory</label>
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="psycho_edit_laboratory"
                                 class="form-control"
                                 value="Psychology Laboratory"
                                 readonly>
                         </div>
 
-                        <!-- Issue -->
+                        <!-- Borrower Name -->
                         <div class="col-md-6">
-                            <label class="form-label">Issue</label>
+                            <label class="form-label">Borrower Name</label>
                             <input
                                 type="text"
-                                name="issue"
-                                id="psycho_edit_issue"
+                                name="borrower_name"
                                 class="form-control"
                                 required>
                         </div>
 
-                        <!-- Reported By -->
+                        <!-- Item Name -->
                         <div class="col-md-6">
-                            <label class="form-label">Reported By</label>
+                            <label class="form-label">Item Name</label>
                             <input
                                 type="text"
-                                name="reported_by"
-                                id="psycho_edit_reported_by"
+                                name="item_name"
                                 class="form-control"
                                 required>
                         </div>
 
-                        <!-- Date Reported -->
+                        <!-- Quantity -->
                         <div class="col-md-6">
-                            <label class="form-label">Date Reported</label>
+                            <label class="form-label">Quantity</label>
+                            <input
+                                type="number"
+                                name="quantity"
+                                class="form-control"
+                                min="1"
+                                required>
+                        </div>
+
+                        <!-- Borrowed Date -->
+                        <div class="col-md-6">
+                            <label class="form-label">Borrowed Date</label>
                             <input
                                 type="date"
-                                name="date_reported"
-                                id="psycho_edit_date_reported"
+                                name="borrowed_date"
                                 class="form-control"
                                 required>
+                        </div>
+
+                        <!-- Returned Date -->
+                        <div class="col-md-6">
+                            <label class="form-label">Returned Date</label>
+                            <input
+                                type="date"
+                                name="returned_date"
+                                class="form-control">
                         </div>
 
                         <!-- Status -->
@@ -80,14 +82,12 @@
                             <label class="form-label">Status</label>
                             <select
                                 name="status"
-                                id="psycho_edit_status"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Status --</option>
-                                <option value="Working">Working</option>
-                                <option value="Under Maintenance">Under Maintenance</option>
-                                <option value="Damaged">Damaged</option>
-                                <option value="Unavailable">Unavailable</option>
+                                <option value="" disabled selected>-- Select Status --</option>
+                                <option value="Borrowed">Borrowed</option>
+                                <option value="Returned">Returned</option>
+                                <option value="Overdue">Overdue</option>
                             </select>
                         </div>
 
@@ -96,8 +96,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-save me-1"></i> Update
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Save
                     </button>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

@@ -91,7 +91,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#crimEquipmentTable').DataTable({
+        $('#lab1MonitoringTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });

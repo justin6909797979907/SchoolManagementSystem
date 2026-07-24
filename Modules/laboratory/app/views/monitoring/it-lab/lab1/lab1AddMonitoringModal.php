@@ -44,7 +44,7 @@
                                 name="condition"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Condition --</option>
+                                <option value="" selected disabled>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>

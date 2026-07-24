@@ -1,11 +1,11 @@
-<div class="modal fade" id="psyViewDamageModal" tabindex="-1" aria-labelledby="psyViewDamageModalLabel" aria-hidden="true">
+<div class="modal fade" id="csViewBorrowModal" tabindex="-1" aria-labelledby="csViewBorrowModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="psyViewDamageModalLabel">
+                <h5 class="modal-title" id="csViewBorrowModalLabel">
                     <i class="fas fa-eye me-2"></i>
-                    View Damage Record
+                    View Borrow Record
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
@@ -14,53 +14,62 @@
 
                 <div class="row g-3">
 
-                    <!-- Item Name -->
-                    <div class="col-md-6">
-                        <label class="form-label">Item Name</label>
-                        <input
-                            type="text"
-                            id="psy_view_item_name"
-                            class="form-control"
-                            readonly>
-                    </div>
-
                     <!-- Laboratory -->
                     <div class="col-md-6">
                         <label class="form-label">Laboratory</label>
                         <input
                             type="text"
-                            id="psy_view_laboratory"
+                            id="cs_view_laboratory"
                             class="form-control"
-                            value="Psychology Laboratory"
                             readonly>
                     </div>
 
-                    <!-- Issue -->
+                    <!-- Borrower Name -->
                     <div class="col-md-6">
-                        <label class="form-label">Issue</label>
+                        <label class="form-label">Borrower Name</label>
                         <input
                             type="text"
-                            id="psy_view_issue"
+                            id="cs_view_borrower_name"
                             class="form-control"
                             readonly>
                     </div>
 
-                    <!-- Reported By -->
+                    <!-- Item Name -->
                     <div class="col-md-6">
-                        <label class="form-label">Reported By</label>
+                        <label class="form-label">Item Name</label>
                         <input
                             type="text"
-                            id="psy_view_reported_by"
+                            id="cs_view_item_name"
                             class="form-control"
                             readonly>
                     </div>
 
-                    <!-- Date Reported -->
+                    <!-- Quantity -->
                     <div class="col-md-6">
-                        <label class="form-label">Date Reported</label>
+                        <label class="form-label">Quantity</label>
+                        <input
+                            type="number"
+                            id="cs_view_quantity"
+                            class="form-control"
+                            readonly>
+                    </div>
+
+                    <!-- Borrowed Date -->
+                    <div class="col-md-6">
+                        <label class="form-label">Borrowed Date</label>
                         <input
                             type="date"
-                            id="psy_view_date_reported"
+                            id="cs_view_borrowed_date"
+                            class="form-control"
+                            readonly>
+                    </div>
+
+                    <!-- Returned Date -->
+                    <div class="col-md-6">
+                        <label class="form-label">Returned Date</label>
+                        <input
+                            type="date"
+                            id="cs_view_returned_date"
                             class="form-control"
                             readonly>
                     </div>
@@ -69,13 +78,12 @@
                     <div class="col-md-6">
                         <label class="form-label">Status</label>
                         <select
-                            id="psy_view_status"
+                            id="cs_view_status"
                             class="form-select"
                             disabled>
-                            <option value="Working">Working</option>
-                            <option value="Under Maintenance">Under Maintenance</option>
-                            <option value="Damaged">Damaged</option>
-                            <option value="Unavailable">Unavailable</option>
+                            <option value="Borrowed">Borrowed</option>
+                            <option value="Returned">Returned</option>
+                            <option value="Overdue">Overdue</option>
                         </select>
                     </div>
 
