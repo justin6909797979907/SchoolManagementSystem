@@ -11,21 +11,25 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Borrow Equipment
+                    Borrowing
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBorrowModal">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#lab3AddBorrowModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
+
             </div>
             <div class="card-body">
-                <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="lab3EquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Laboratory</th>
-                            <th>Borrower</th>
-                            <th>Item</th>
+                            <th>Borrower Name</th>
+                            <th>Item Name</th>
                             <th>Quantity</th>
                             <th>Borrowed Date</th>
                             <th>Returned Date</th>
@@ -36,12 +40,12 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>IT Lab 3</td>
-                            <td>Juan</td>
-                            <td>Balistic Kit</td>
+                            <td>IT Laboratory 1</td>
+                            <td>Juan Dela Cruz</td>
+                            <td>Chemistry Kit</td>
                             <td>5</td>
                             <td>2024-03-27</td>
-                            <td>2024-03-27</td>
+                            <td>2024-04-27</td>
                             <td>
                                 <span class="badge bg-success">Returned</span>
                             </td>
@@ -52,15 +56,21 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab3ViewBorrowModal">
                                                 <i class="fas fa-eye me-2"></i> View
-                                            </a>
+                                            </button>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab3EditBorrowModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
@@ -87,14 +97,14 @@
 
 <script>
     $(document).ready(function() {
-        $('#labEquipmentTable').DataTable({
+        $('#lab3EquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
 
-<!-- <?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?> -->
+<?php require __DIR__ . '/lab3AddBorrowModal.php'; ?>
+<?php require __DIR__ . '/lab3ViewBorrowModal.php'; ?>
+<?php require __DIR__ . '/lab3EditBorrowModal.php'; ?>
 

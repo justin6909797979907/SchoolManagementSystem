@@ -1,16 +1,13 @@
-<div class="modal fade" id="csEditBorrowModal" tabindex="-1" aria-labelledby="csEditBorrowModalLabel" aria-hidden="true">
+    <div class="modal fade" id="lab3AddBorrowModal" tabindex="-1" aria-labelledby="lab3AddBorrowModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="csEditBorrowForm" action="<?= BASE_URL ?>/borrow/update" method="POST">
-
-                <!-- Hidden ID -->
-                <input type="hidden" name="id" id="cs_edit_id">
+            <form id="lab3AddBorrowForm" action="<?= BASE_URL ?>/borrow/create" method="POST">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="csEditBorrowModalLabel">
-                        <i class="fas fa-edit me-2"></i>
-                        Edit Borrow Record
+                    <h5 class="modal-title" id="lab3AddBorrowModalLabel">
+                        <i class="fas fa-hand-holding me-2"></i>
+                        Add Borrow Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -25,9 +22,8 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="cs_edit_laboratory"
                                 class="form-control"
-                                value="Crime Scene Laboratory"
+                                value="IT Laboratory 3"
                                 readonly>
                         </div>
 
@@ -37,7 +33,6 @@
                             <input
                                 type="text"
                                 name="borrower_name"
-                                id="cs_edit_borrower_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -48,7 +43,6 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="cs_edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -59,7 +53,6 @@
                             <input
                                 type="number"
                                 name="quantity"
-                                id="cs_edit_quantity"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -71,7 +64,6 @@
                             <input
                                 type="date"
                                 name="borrowed_date"
-                                id="cs_edit_borrowed_date"
                                 class="form-control"
                                 required>
                         </div>
@@ -82,7 +74,7 @@
                             <input
                                 type="date"
                                 name="returned_date"
-                                id="cs_edit_returned_date"
+                                id="lab3_edit_returned_date"
                                 class="form-control">
                         </div>
 
@@ -91,10 +83,10 @@
                             <label class="form-label">Status</label>
                             <select
                                 name="status"
-                                id="cs_edit_status"
+                                id="lab3_edit_status"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Status --</option>
+                                <option value="" disabled selected>-- Select Status --</option>
                                 <option value="Borrowed">Borrowed</option>
                                 <option value="Returned">Returned</option>
                                 <option value="Overdue">Overdue</option>
@@ -106,8 +98,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-save me-1"></i> Update
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Save
                     </button>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

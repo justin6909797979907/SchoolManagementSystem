@@ -5,28 +5,33 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Borrows</h1>
-        <p class="mb-4">Questioned Document Laboratory</p>
+        <p class="mb-4">Question Document Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Borrow Equipment
+                    Borrowing
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBorrowModal">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#qdAddBorrowModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
+
             </div>
             <div class="card-body">
                 <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Borrower</th>
-                            <th>Item</th>
+                            <th>Laboratory</th>
+                            <th>Borrower Name</th>
+                            <th>Item Name</th>
                             <th>Quantity</th>
-                            <th>Barrowed Date</th>
+                            <th>Borrowed Date</th>
                             <th>Returned Date</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -35,11 +40,12 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Juan</td>
-                            <td>Questioned Document Kit</td>
+                            <td>Question Document Laboratory</td>
+                            <td>Juan Dela Cruz</td>
+                            <td>Question Document Kit</td>
                             <td>5</td>
                             <td>2024-03-27</td>
-                            <td>2024-03-27</td>
+                            <td>2024-04-27</td>
                             <td>
                                 <span class="badge bg-success">Returned</span>
                             </td>
@@ -50,15 +56,21 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimViewBorrowModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#qdViewBorrowModal">
                                                 <i class="fas fa-eye me-2"></i> View
-                                            </a>
+                                            </button>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crimEditBorrowModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#qdEditBorrowModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
@@ -92,6 +104,7 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/../inventories/crim-lab/crimAdd-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimView-borrow-modal.php'; ?>
-<?php require __DIR__ . '/../inventories/crim-lab/crimEdit-borrow-modal.php'; ?> -->
+<?php require __DIR__ . '/qdAddBorrowModal.php'; ?>
+<?php require __DIR__ . '/qdViewBorrowModal.php'; ?>
+<?php require __DIR__ . '/qdEditBorrowModal.php'; ?>
+
