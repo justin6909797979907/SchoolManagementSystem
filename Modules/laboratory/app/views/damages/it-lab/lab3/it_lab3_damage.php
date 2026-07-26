@@ -1,5 +1,6 @@
-<?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
-<?php include __DIR__ . '/../../../includes/header.php'; ?>
+<?php include  __DIR__ . '/../../../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../../../includes/header.php'; ?>
+
 
 <main class="main-content">
     <div class="container-fluid px-4">
@@ -10,15 +11,18 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Damage Management
+                    Damages
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addDamageModal">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#lab3AddDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
             </div>
             <div class="card-body">
-                <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="lab3DamageTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -32,14 +36,15 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <tr>
                             <td>1</td>
-                            <td>IT Kit</td>
-                            <td>IT Lab 3</td>
-                            <td>Broken Screen</td>
+                            <td>IT Laboratory 1 Kit</td>
+                            <td>IT Laboratory 1</td>
+                            <td>Damage</td>
                             <td>John Doe</td>
-                            <td>2023-10-01</td>
-                            <td><span class="badge bg-danger">Broken</span></td>
+                            <td>07-26-2026</td>
+                            <td>Item is functioning properly but needs repair.</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -47,15 +52,21 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balViewBorrowModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab3ViewDamageModal">
                                                 <i class="fas fa-eye me-2"></i> View
-                                            </a>
+                                            </button>
                                         </li>
 
                                         <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#balEditBorrowModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab3EditDamageModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
@@ -78,13 +89,20 @@
     </div>
 </main>
 
-<?php include  __DIR__ . '/../../../includes//footer.php'; ?>
+
 
 <script>
     $(document).ready(function() {
-        $('#labEquipmentTable').DataTable({
+        $('#lab3DamageTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
+
+<?php require __DIR__ . '/lab3AddDamageModal.php'; ?>
+<?php require __DIR__ . '/lab3EditDamageModal.php'; ?>
+<?php require __DIR__ . '/lab3ViewDamageModal.php'; ?>
+
+
+<?php include  __DIR__ . '/../../../includes/footer.php'; ?>

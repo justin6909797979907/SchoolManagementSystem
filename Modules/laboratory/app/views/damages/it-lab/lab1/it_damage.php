@@ -1,26 +1,28 @@
-<?php include __DIR__ . '/../../includes/sidebar.php'; ?>
-<?php include __DIR__ . '/../../includes/header.php'; ?>
-
+<?php include  __DIR__ . '/../../../includes/sidebar.php'; ?>
+<?php include  __DIR__ . '/../../../includes/header.php'; ?>
 
 
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Damages</h1>
-        <p class="mb-4">IT Lab 1 Laboratory</p>
+        <p class="mb-4">IT Laboratory 1</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Damage Equipment
+                    Damages
                 </div>
 
-                <a href="create.php" class="btn btn-primary btn-sm" id="crimAddDamageBtn" data-bs-toggle="modal" data-bs-target="#crimAddDamageModal">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#lab1AddDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
             </div>
             <div class="card-body">
-                <table id="labEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="lab1DamageTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -29,21 +31,20 @@
                             <th>Issue</th>
                             <th>Reported By</th>
                             <th>Date Reported</th>
-                            <th>Remarks</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
                         <tr>
                             <td>1</td>
-                            <td>Mouse</td>
-                            <td>IT Lab 1</td>
-                            <td>
-                                <span class="badge bg-danger">Damaged</span>
-                            </td>
+                            <td>IT Laboratory 1 Kit</td>
+                            <td>IT Laboratory 1</td>
+                            <td>Damage</td>
                             <td>John Doe</td>
-                            <td>2023-10-01</td>
-                            <td>Item is not working properly.</td>
+                            <td>07-26-2026</td>
+                            <td>Item is functioning properly but needs repair.</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -51,16 +52,25 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="view.php?id=1" id="psychoViewDamageBtn" data-bs-toggle="modal" data-bs-target="#crimViewDamageModal">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab1ViewDamageModal">
                                                 <i class="fas fa-eye me-2"></i> View
-                                            </a>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#lab1EditDamageModal">
+                                                <i class="fas fa-edit me-2"></i> Edit
+                                            </button>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="edit.php?id=1" id="psychoEditDamageBtn" data-bs-toggle="modal" data-bs-target="#crimEditDamageModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
+                                            <hr class="dropdown-divider">
                                         </li>
-                                        <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <a class="dropdown-item text-danger" href="delete.php?id=1"
                                                 onclick="return confirm('Are you sure you want to delete this record?')">
@@ -79,17 +89,20 @@
     </div>
 </main>
 
-<!-- Add New Damage Modal -->
-
 
 
 <script>
     $(document).ready(function() {
-        $('#labEquipmentTable').DataTable({
+        $('#lab1DamageTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
 
-<?php include __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/lab1AddDamageModal.php'; ?>
+<?php require __DIR__ . '/lab1EditDamageModal.php'; ?>
+<?php require __DIR__ . '/lab1ViewDamageModal.php'; ?>
+
+
+<?php include  __DIR__ . '/../../../includes/footer.php'; ?>

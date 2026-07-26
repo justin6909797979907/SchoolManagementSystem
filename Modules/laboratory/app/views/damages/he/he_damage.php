@@ -14,9 +14,12 @@
                     Damages
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" id="heDamageBtn">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#heAddDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
-                </a>
+                </button>
             </div>
             <div class="card-body">
                 <table id="heDamageTable" class="table table-striped table-bordered" style="width:100%">
@@ -28,7 +31,7 @@
                             <th>Issue</th>
                             <th>Reported By</th>
                             <th>Date Reported</th>
-                            <th>Remarks</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -36,25 +39,32 @@
                         
                         <tr>
                             <td>1</td>
-                            <td>Tongs</td>
-                            <td>HE Laboratory</td>
+                            <td>Home Economics Kit</td>
+                            <td>Home Economics Laboratory</td>
                             <td>Damage</td>
                             <td>John Doe</td>
-                            <td>April 1, 2026</td>
-                            <td>Item is functioning properly.</td>
+                            <td>07-26-2026</td>
+                            <td>Item is functioning properly but needs repair.</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                         Action
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <button class="dropdown-item heViewBtn" data-id="">
-                                                 <i class="fas fa-eye me-2"></i> View
+                                       <li>
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#heViewDamageModal">
+                                                <i class="fas fa-eye me-2"></i> View
                                             </button>
                                         </li>
+
                                         <li>
-                                            <button class="dropdown-item heEdit" data-id="">
+                                            <button
+                                                class="dropdown-item"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#heEditDamageModal">
                                                 <i class="fas fa-edit me-2"></i> Edit
                                             </button>
                                         </li>
@@ -87,9 +97,9 @@
     });
 </script>
 
-<!-- <?php require __DIR__ . '/heAdd-damage-modal.php'; ?>
-<?php require __DIR__ . '/heView-damage-modal.php'; ?>
-<?php require __DIR__ . '/heEdit-damage-modal.php'; ?> -->
+<?php require __DIR__ . '/heAddDamageModal.php'; ?>
+<?php require __DIR__ . '/heEditDamageModal.php'; ?>
+<?php require __DIR__ . '/heViewDamageModal.php'; ?>
 
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>
