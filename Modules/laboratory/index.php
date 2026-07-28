@@ -141,7 +141,7 @@ switch ($segments[0] ?? '') {
 
         if (!isset($segments[1])) {
             $controller->index();
-        }else if ($segments[1] === 'create') {
+        } else if ($segments[1] === 'create') {
             $controller->create();
         }
 
@@ -328,7 +328,7 @@ switch ($segments[0] ?? '') {
         break;
 
     case 'psy_borrow':
-         require_once __DIR__ . '/app/controllers/PsyBorrowController.php';
+        require_once __DIR__ . '/app/controllers/PsyBorrowController.php';
         (new PsyBorrowController())->index();
         break;
 
@@ -340,8 +340,8 @@ switch ($segments[0] ?? '') {
     case 'he_damage':
         require_once __DIR__ . '/app/controllers/HeDamageController.php';
         (new HeDamageController())->index();
-        break; 
-        
+        break;
+
     case 'he_borrow':
         require_once __DIR__ . '/app/controllers/HeBorrowController.php';
         (new HeBorrowController())->index();
@@ -371,15 +371,29 @@ switch ($segments[0] ?? '') {
         require_once __DIR__ . '/app/controllers/ChemistryMonitoringController.php';
         (new ChemistryMonitoringController())->index();
         break;
-        
+
     case 'defense-tactics-monitoring':
         require_once __DIR__ . '/app/controllers/DefenseTacticsMonitoringController.php';
         (new DefenseTacticsMonitoringController())->index();
         break;
 
-    case 'it-lab3-inventory':
+   case 'it-lab3-inventory':
         require_once __DIR__ . '/app/controllers/Itlab3InventoryController.php';
-        (new Itlab3InventoryController())->index();
+        $controller = new Itlab3InventoryController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+    break;
+
         break;
 
     case 'lab2-damage':
@@ -441,8 +455,7 @@ switch ($segments[0] ?? '') {
             $controller->updateDecision();
         } elseif ($segments[1] === 'delete') {
             $controller->delete();
-        }
-        ;
+        };
         break;
 
     case 'concern-issue-tracking':
@@ -457,8 +470,7 @@ switch ($segments[0] ?? '') {
             $controller->resolve();
         } elseif ($segments[1] === 'delete') {
             $controller->delete();
-        }
-        ;
+        };
         break;
 
     case 'report-submission-management':
@@ -471,8 +483,7 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'delete') {
             $controller->delete();
-        }
-        ;
+        };
         break;
 
     default:

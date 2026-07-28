@@ -13,7 +13,7 @@
                     Inventory Management
                 </div>
 
-                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#itLab3AddInventoryModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#itLab3AddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -32,46 +32,52 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>IT Kit</td>
-                            <td>IT Kit</td>
-                            <td>IT Lab 3</td>
-                            <td>10</td>
-                            <td>5</td>
-                            <td>
-                                <span class="badge bg-success px-2 py-2">Working</span>
-                            </td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#itLab3ViewInventoryModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </a>
-                                        </li>
+                        <?php foreach ($inventories as $row): ?>
+                            <tr>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['item_name'] ?></td>
+                                <td><?= $row['category'] ?></td>
+                                <td><?= $row['laboratory'] ?></td>
+                                <td><?= $row['total_item'] ?></td>
+                                <td><?= $row['available_item'] ?></td>
+                                <td><?= $row['status'] ?></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item viewBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </a>
+                                            </li>
 
-                                        <li>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#itLab3EditInventoryModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
-                                                onclick="return confirm('Are you sure you want to delete this record?')">
-                                                <i class="fas fa-trash me-2"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item editBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -90,6 +96,12 @@
         });
     });
 </script>
+
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+
+<script src="<?= BASE_URL ?>/js/lab3Inventory.js"></script>
 
 <?php require __DIR__ . '/itLab3AddInventoryModal.php'; ?>
 <?php require __DIR__ . '/itLab3EditInventoryModal.php'; ?>

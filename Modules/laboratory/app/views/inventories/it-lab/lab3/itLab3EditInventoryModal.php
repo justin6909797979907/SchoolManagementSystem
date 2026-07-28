@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="itLab3EditInventoryForm" method="POST" enctype="multipart/form-data">
+            <form
+                id="itLab3EditInventoryForm"
+                action="<?= BASE_URL ?>/it-lab3-inventory/update"
+                method="POST">
 
                 <!-- Hidden ID -->
                 <input type="hidden" name="id" id="edit_id">
@@ -57,8 +60,8 @@
                             <label class="form-label">Total Quantity</label>
                             <input
                                 type="number"
-                                name="total_quantity"
-                                id="edit_total_quantity"
+                                name="total_item"
+                                id="edit_total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -69,8 +72,8 @@
                             <label class="form-label">Available Quantity</label>
                             <input
                                 type="number"
-                                name="available_quantity"
-                                id="edit_available_quantity"
+                                name="available_item"
+                                id="edit_available_item"
                                 class="form-control"
                                 min="0"
                                 required>
