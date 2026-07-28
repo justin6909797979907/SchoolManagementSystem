@@ -148,18 +148,6 @@ switch ($segments[0] ?? '') {
         break;
 
 
-    case 'balistic-inventory':
-        require_once __DIR__ . '/app/controllers/BalisticInvController.php';
-        $controller = new BalisticInvController();
-
-        if (!isset($segments[1])) {
-            $controller->index();
-        }
-
-        break;
-
-
-
     case 'questioned-inventory':
         require_once __DIR__ . '/app/controllers/QuestionedInvController.php';
         $controller = new QuestionedInvController();
@@ -430,6 +418,24 @@ switch ($segments[0] ?? '') {
             $controller->delete($segments[2]);
         }
 
+        break;
+
+
+    case 'balistic-inventory':
+        require_once __DIR__ . '/app/controllers/BalisticInvController.php';
+        $controller = new BalisticInvController();
+
+         if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
         break;
 
 
