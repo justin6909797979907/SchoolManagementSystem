@@ -403,7 +403,26 @@ switch ($segments[0] ?? '') {
         } elseif ($segments[1] === 'delete' && isset($segments[2])) {
             $controller->delete($segments[2]);
         }
-        break;  
+        break;
+
+    case 'it-lab1-inventory':
+
+        require_once __DIR__ . '/app/controllers/Itlab1InventoryController.php';
+
+        $controller = new Itlab1InventoryController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+        break;
 
 
     case 'lab2-damage':
@@ -419,11 +438,6 @@ switch ($segments[0] ?? '') {
     case 'lab1-borrow':
         require_once __DIR__ . '/app/controllers/Itlab1BorrowController.php';
         (new Itlab1BorrowController())->index();
-        break;
-
-    case 'lab1-inventory':
-        require_once __DIR__ . '/app/controllers/Itlab1InventoryController.php';
-        (new Itlab1InventoryController())->index();
         break;
 
     case 'lab2-borrow':

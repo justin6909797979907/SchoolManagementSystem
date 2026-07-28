@@ -267,7 +267,7 @@
                                     class="collapse ps-3"
                                     data-bs-parent="#itLabAccordion">
 
-                                    <a href="<?= BASE_URL ?>/lab1-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab1-inventory' ? "active" :  "" ?>">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/it-lab1-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it-lab1-inventoryy' ? "active" :  "" ?>">Inventory</a>
 
                                     <a href="<?= BASE_URL ?>/it_damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'it_damage' ? "active" :  "" ?>">Damage</a>
 
