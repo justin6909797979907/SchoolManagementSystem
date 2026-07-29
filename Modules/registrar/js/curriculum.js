@@ -4,12 +4,11 @@
    const selectAll = document.getElementById('select-all');
    const tbody = document.querySelector('tbody');
    const deleteBtn = document.getElementById('delete-btn');
-   const addStrandBtn = document.getElementById('addStrand');
+   const curriculumBtn = document.getElementById('curriculumBtn');
 
-   const addStrandModal = new bootstrap.Modal(document.getElementById('addStrandModal'));
+   const curriculumModal = new bootstrap.Modal(document.getElementById('curriculumModal'));
    const showCourseModal = new bootstrap.Modal(document.getElementById('showCourseModal'));
-   const editStrandModal =  new bootstrap.Modal(document.getElementById('editStrandModal'))
-
+   
 
 
     let currentOrder = 'desc';
@@ -136,7 +135,7 @@
             }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`${BASE_URL}/strand/delete`, {
+                fetch(`${BASE_URL}/curriculum/delete`, {
                     method: 'POST',
                     headers: {'Content-Type':'application/json'},
                     body: JSON.stringify({ ids })
@@ -172,18 +171,18 @@
 
     // show  
 
-    addStrandBtn.addEventListener('click',function(){
+    curriculumBtn.addEventListener('click',function(){
 
-        addStrandModal.show();
+        curriculumModal.show();
     
     });
 
 
     // submit button connect to form
 
-    document.getElementById('addStrandSubmit').addEventListener('click', function() {
+    document.getElementById('curriculumSubmitBtn').addEventListener('click', function() {
 
-    document.getElementById('strandForm').requestSubmit();
+    document.getElementById('curriculumForm').requestSubmit();
        
     });
 
@@ -192,7 +191,7 @@
 
     document.getElementById('closeBtn').addEventListener('click',function(){
 
-    resetForm('strandForm');
+    resetForm('curriculumForm');
 
     });
 
@@ -237,7 +236,7 @@
    
     // form action
 
-    document.getElementById('strandForm').addEventListener('submit', function(e) {
+    document.getElementById('curriculumForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
 
         const formData = new FormData(this);
@@ -271,7 +270,7 @@
 
         } else if (data.status === 'success') {
 
-            const form = document.getElementById('strandForm'); 
+            const form = document.getElementById('curriculumForm'); 
             
             form.reset();
             document.querySelectorAll('.invalid-feedback').forEach(el => el.innerText = '');
@@ -279,7 +278,7 @@
 
             getData(currentOrder, currentLimit, currentPage);
 
-            addStrandModal.hide();
+            curriculumModal.hide();
 
             Swal.fire({
                 title: "Success!",
@@ -302,15 +301,17 @@
 
     if (e.target.classList.contains("view-btn")) {
 
-        const studentId = e.target.dataset.id;
+        const curriculum_id = e.target.dataset.id;
 
-        fetch(`${BASE_URL}/strand/${studentId}`)
+        fetch(`${BASE_URL}/curriculum/${curriculum_id}`)
         .then(response => response.json())
          .then(result => {
           
-            document.getElementById('showModalTitle').textContent = result.code;
-            document.getElementById('show_strand_code').value = result.code;
-            document.getElementById('show_strand_name').textContent = result.name;
+            document.getElementById('showModalTitle').textContent = 'Curriculum';
+            document.getElementById('curr_curriculum_name').textContent = result.curriculum_name;
+            document.getElementById('curr_effective_year').textContent = result.effective_year;
+            document.getElementById('show_course_code').textContent = result.course_code;
+            document.getElementById('show_strand_name').textContent = result.course_name;
 
              showCourseModal.show();
 
@@ -320,109 +321,132 @@
     }
     });
 
+        // automated section name 
+ let course_name = document.getElementById('course_id');
+ let effective_year = document.getElementById('effective_year');
+ let curriculum_name = document.getElementById('curriculum_name');
 
-    // ---- logic for edit and update modal -----
+const updateValue = () => {
+    const courseText = course_name.options[course_name.selectedIndex]?.dataset.course ?? '';
+    const effective_yearText = effective_year.options[effective_year.selectedIndex]?.value ?? '';
+    
+    curriculum_name.value = `${courseText} Curriculum ${effective_yearText}`.trim();
+};
 
-    document.getElementById("studentsTableBody").addEventListener("click", function(e) {
-
-         if (e.target.classList.contains("edit-btn")) {
-
-            const studentId = e.target.dataset.id;
-
-             fetch(`${BASE_URL}/strand/${studentId}/edit`)
-            .then(response => response.json())
-            .then(result => {
-            
-            // prepare the form action with the id 
-
-            let form = document.getElementById('editStrandForm');
-            form.action = `${BASE_URL}/strand/${studentId}/update`;
-            
-            document.getElementById('edit_strand_code').value = result.code;
-            document.getElementById('edit_strand_name').value = result.name;
-
-            editStrandModal.show();
-
-         });
-
-         }
-    });
-
-    // editCourseSubmit
+   course_name.addEventListener('change', updateValue);
+   effective_year.addEventListener('change',updateValue);
+  
 
 
-    document.getElementById('editStrandSubmit').addEventListener('click', function() {
+   // toggle status 
 
-    document.getElementById('editStrandForm').requestSubmit();
-       
-    });
+   tbody.addEventListener('change',function(e){
+  
+     if(e.target.classList.contains('status-toggle'))
+     {
 
-    // reset the edit modal form when close 
-
-    document.getElementById('editCloseBtn').addEventListener('click',function(){
-
-        resetForm('editStrandForm');
-
-    });
-
-
-    // edit form action
-
-    document.getElementById('editStrandForm').addEventListener('submit', function(e) {
-       e.preventDefault(); 
-
-        const formData = new FormData(this);
-
-        fetch(this.action, { 
-            method: 'POST',    
-            body: formData,
-        })
-        .then(res => res.json())
-        .then(data => {
-               
-        document.querySelectorAll('.error').forEach(el => el.innerText = '');
-
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.classList.remove('is-invalid');
-        });
-
-
-        document.querySelectorAll('.invalid-feedback').forEach(el => el.innerText = '');
-
-        if (data.status === 'error') {
-            for (let field in data.errors) {
-
-                const input = document.getElementById(field);
-                const feedback = document.getElementById('error-' + field);
-                
-                input.classList.add('is-invalid');        
-                feedback.innerText = data.errors[field]; 
-
-            }
-
-           
-
-        } else if (data.status === 'success') {
-
-            const form = document.getElementById('editStrandForm'); 
-            form.reset();
-            document.querySelectorAll('.invalid-feedback').forEach(el => el.innerText = '');
-            document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
-
-            getData(currentOrder, currentLimit, currentPage);
-
-            editStrandModal.hide();
+        if(e.target.checked)
+        {
+         
+           const checkedToggleId = e.target.dataset.id;
+           const courseId = e.target.dataset.courseId;
 
             Swal.fire({
-                title: "Success!",
-                text: data.message,
-                icon: "success"
-             });
-        }
+            title: "Are you sure?",
+            text: "This will permanently modify important data. Do you wish to proceed?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: `Yes, I understand`,
+            }).then((result) => {
+            if (result.isConfirmed) {
+            
+              fetch(`${BASE_URL}/curriculum/${checkedToggleId}/update`, 
+                    {
+                        method: 'POST',
+                        headers: {'Content-Type':'application/json'},
+                        body: JSON.stringify({ checkedToggleId })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(result => {
 
-        })
-        .catch(err => console.log(err));
-    });
+                        const allSameCourse = document.querySelectorAll(`.status-toggle[data-course-id="${courseId}"]`);
+
+                     allSameCourse.forEach(toggle => {
+
+                    
+                    if(toggle.dataset.id !== checkedToggleId){
+                        toggle.checked = false;
+                    }
+
+                    });
+
+                        console.log(result.message);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                    
+                }else{
+                     e.target.checked = false;
+                }
+             });
+
+        }else{
+            
+             const checkedToggleId = e.target.dataset.id;
+
+            Swal.fire({
+            title: "Are you sure?",
+            text: "This will permanently modify important data. Do you wish to proceed?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: `Yes, I understand`,
+            }).then((result) => {
+            if (result.isConfirmed) {
+            
+              fetch(`${BASE_URL}/curriculum/${checkedToggleId}/update`, 
+                    {
+                        method: 'POST',
+                        headers: {'Content-Type':'application/json'},
+                        body: JSON.stringify({ checkedToggleId })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(result => {
+                      
+
+                        console.log(result.message);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                    
+                }else{
+                     e.target.checked = false;
+                }
+             });
+            
+        }
+  
+     }
+
+
+   });
+
+  
 
 
 
@@ -435,6 +459,10 @@
        |                                                                                         |
        ========================================================================================= 
     */
+
+
+
+  
 
 
     function resetForm(formId)
@@ -468,7 +496,7 @@
         // take this if you dont want redirection confirmation 
 
         window.open(
-        `${BASE_URL}/strand/pdf?order=${order}&search=${encodeURIComponent(search)}`,
+        `${BASE_URL}/course/pdf?order=${order}&search=${encodeURIComponent(search)}`,
         "_blank"
         );
     }
@@ -477,14 +505,14 @@
     function getExcel(order)
     {
         const search = document.getElementById("search").value;
-        window.location.href = `${BASE_URL}/strand/excel?range=${order}&search=${encodeURIComponent(search)}`;
+        window.location.href = `${BASE_URL}/course/excel?range=${order}&search=${encodeURIComponent(search)}`;
     }
 
 
     function getCsv(order)
     {
         const search = document.getElementById("search").value;
-        window.location.href = `${BASE_URL}/strand/csv?order=${order}&search=${encodeURIComponent(search)}`;
+        window.location.href = `${BASE_URL}/course/csv?order=${order}&search=${encodeURIComponent(search)}`;
     }
 
 
@@ -497,7 +525,7 @@
     const search = document.getElementById("search").value;
     const tbody = document.getElementById("studentsTableBody");
 
-    fetch(`${BASE_URL}/strand/all?order=${order}&limit=${limit}&page=${page}&search=${encodeURIComponent(search)}`)
+    fetch(`${BASE_URL}/curriculum/all?order=${order}&limit=${limit}&page=${page}&search=${encodeURIComponent(search)}`)
         .then(response => response.json())
         .then(result => {
 
@@ -508,24 +536,60 @@
                 return;
             }
 
-            result.data.forEach((strand,index) => {
+            result.data.forEach(curriculum => {
                 tbody.innerHTML += `
                     <tr class="activity-row">
 
-                     <td><input type="checkbox" class="activity-checkbox" value="${strand.id}"></td>
-                        <td>${index + 1 }</td>
-                        <td>${strand.code}</td>
-                        <td>${strand.name} </td>
+                     <td><input type="checkbox" class="activity-checkbox" value="${curriculum.id}"></td>
+                        <td>${curriculum.curriculum_name} </td>
+                        <td>${curriculum.course_name}</td>
+                         <td>${curriculum.effective_year}</td>
 
-                        <td>
-                            <button class="btn btn-sm btn-secondary view-btn" data-id="${strand.id}">
-                                View
-                            </button>
-                            <button class="btn btn-sm btn-primary edit-btn" data-id="${strand.id}">
-                                Edit
-                            </button>
-                        </td>
+                          <td>
+
+                         <div class="form-check form-switch">
+                            <input class="form-check-input status-toggle"
+                                type="checkbox"
+                                data-id="${curriculum.id}"
+                                data-course-id="${curriculum.course_id}"
+                                ${curriculum.is_active == 1 ? 'checked' : ''}>
+                            </div>
                         
+                        
+                        </td>
+
+                      
+                        <td>
+    <div class="dropdown">
+        <button class="btn btn-sm btn-primary dropdown-toggle"
+               data-bs-toggle="dropdown"
+               data-bs-strategy="fixed">
+            Actions
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <button class="dropdown-item view-btn" data-id="${curriculum.id}" type="button">
+                    View Details
+                </button>
+            </li>
+
+            <li>
+                <a class="dropdown-item" href="${BASE_URL}/curriculum/${curriculum.id}/subject" target="_blank">
+                    View Subjects
+                </a>
+            </li>
+
+            <li>
+                <a class="dropdown-item" href="${BASE_URL}/curriculum-subject/${curriculum.id}/pdf" target="_blank">
+                    Export to PDF
+                </a>
+            </li>
+        </ul>
+    </div>
+</td>
+                       
+                       
                     </tr>
                 `;
             });

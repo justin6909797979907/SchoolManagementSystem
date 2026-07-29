@@ -4,17 +4,47 @@
 
 
            <div class="sidebar-icons d-flex align-items-center gap-3">
-
-                <button type="button"  id="notif-btn" class="btn position-relative p-0 border-0 bg-transparent">
+    
+                <button type="button" id="notif-btn" class="btn position-relative p-0 border-0 bg-transparent">
                     <i class="fa-regular fa-bell fs-5"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        5
+                    <span id="notifCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        
                     </span>
                 </button>
 
-                <button type="button" class="btn p-0 border-0 bg-transparent">
-                    <i class="fa-regular fa-circle-user fs-5"></i>
-                </button>
+        <div class="dropdown">
+               <button
+                type="button"
+                id="user-btn"
+                class="btn p-0 border-0 bg-transparent"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+               >
+               <i class="fa-regular fa-circle-user fs-5"></i>
+             </button>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+           <li>
+             <a class="dropdown-item" href="#">
+                Profile
+            </a>
+           </li>
+
+           <li>
+            <a class="dropdown-item" href="#">
+                Settings
+            </a>
+           </li>
+
+           <li><hr class="dropdown-divider"></li>
+
+           <li>
+            <a class="dropdown-item text-danger" href="#">
+                Logout
+            </a>
+          </li>
+         </ul>
+        </div>
 
             </div>
        
@@ -22,8 +52,8 @@
         </div>
         <div class="sidebar-header">
             <div class="user-avatar">UA</div>
-            <h1>Username</h1>
-            <p class="user-id">SAMPLEID123456789</p>
+            <h1><?=  $user['first_name']." ".$user['last_name'] ?? 'Username' ?> </h1>
+            <p class="user-id"><?=  $user['employee_id'] ?? 'SAMPLEID123456789' ?> </p>
         </div>
 
 
@@ -40,38 +70,40 @@
 
         <hr>
         <h2>
-            <a data-bs-toggle="collapse" href="#studentMenu" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white">
+            <a data-bs-toggle="collapse" href="#studentMenu" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white" id="StudentDriver">
             Student Management
             <i class="fa-solid fa-chevron-down"></i>
             </a>
         </h2>
 
-        <div id="studentMenu" class="collapse <?php echo in_array(CURRENT_URI, ['students','enrollees']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
+        <div id="studentMenu" class="collapse <?php echo in_array(CURRENT_URI, ['students','enrollees','subject-loading','class-offering','curriculum','curriculum-subject']) || str_contains(CURRENT_URI,'section-schedule')  || str_contains(CURRENT_URI,'class-offering') ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
         <ul>
              <li><a href="<?php echo BASE_URL?>/students" class="menu-link <?php echo CURRENT_URI  === "students" ? 'active' : '' ?>" id="student">Students</a></li>
-             <li><a href="<?php echo BASE_URL?>/enrollees" class="menu-link <?php echo CURRENT_URI  === "Enrollees" ? 'active' : '' ?>" id="Enrollees">Enrollees</a></li>
-             
+             <li><a href="<?php echo BASE_URL?>/enrollees" class="menu-link <?php echo CURRENT_URI  === "enrollees" ? 'active' : '' ?>" id="Enrollees">Enrollees</a></li>
+              <li><a href="<?php echo BASE_URL?>/class-offering" class="menu-link <?php echo str_contains(CURRENT_URI,'class-offering') ? 'active' : ''?>" id="Enrollees">Class Offering</a></li>
+               <li><a href="<?php echo BASE_URL?>/section-schedule" class="menu-link <?php echo str_contains(CURRENT_URI,'section-schedule') ? 'active' : '' ?>" id="Enrollees">Section Schedule</a></li>
+                <li><a href="<?php echo BASE_URL?>/curriculum" class="menu-link <?php echo CURRENT_URI  === "curriculum" ? 'active' : '' ?>" id="Enrollees">Curriculum</a></li>
         </ul>
         </div>
 
-        <!-- school management -->
+        <!-- Academic Management -->
 
         <hr>
         <h2>
-            <a data-bs-toggle="collapse" href="#schoolMenu" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white">
+            <a data-bs-toggle="collapse" href="#schoolMenu" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white" id="AcademicDriver">
              Academic Management
              <i class="fa-solid fa-chevron-down"></i>
             </a>
         </h2>
-         <div id="schoolMenu" class="collapse <?php echo in_array(CURRENT_URI, ['course','school-year','semester','strand']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
+         <div id="schoolMenu" class="collapse <?php echo in_array(CURRENT_URI, ['course','school-year','semester','subject','room','teacher','section']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
         <ul>
             <li><a href="<?php echo BASE_URL?>/course" class="menu-link <?php echo CURRENT_URI  === "course" ? 'active' : '' ?>" id="course">Courses</a></li>
             <li><a href="<?php echo BASE_URL?>/school-year" class="menu-link <?php echo CURRENT_URI  === "school-year" ? 'active' : '' ?>" id="course">School Year</a></li>
             <li><a href="<?php echo BASE_URL?>/semester" class="menu-link <?php echo CURRENT_URI  === "semester" ? 'active' : '' ?>" id="semester">Semesters</a></li>
-            <li><a href="<?php echo BASE_URL?>/strand" class="menu-link <?php echo CURRENT_URI  === "strand" ? 'active' : '' ?>" id="strand">Strands</a></li>
             <li><a href="<?php echo BASE_URL?>/subject" class="menu-link <?php echo CURRENT_URI  === "subject" ? 'active' : '' ?>" id="course">Subjects</a></li>
-            <li><a href="<?php echo BASE_URL?>/room" class="menu-link <?php echo CURRENT_URI  === "room" ? 'active' : '' ?>" id="course">Rooms</a></li>
-              
+            <li><a href="<?php echo BASE_URL?>/room" class="menu-link <?php echo CURRENT_URI  === "room" ? 'active' : '' ?>" id="rooms">Rooms</a></li>
+            <li><a href="<?php echo BASE_URL?>/teacher" class="menu-link <?php echo CURRENT_URI  === "teacher" ? 'active' : '' ?>" id="teacher">Teachers</a></li>
+             <li><a href="<?php echo BASE_URL?>/section" class="menu-link <?php echo CURRENT_URI  === "section" ? 'active' : '' ?>" id="teacher">Sections</a></li>
         </ul>
         </div>
 
@@ -79,15 +111,17 @@
 
         <hr>
         <h2>
-             <a data-bs-toggle="collapse" href="#schoolReports" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white">
+             <a data-bs-toggle="collapse" href="#schoolReports" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white" id="ReportDriver">
              Reports and Requests
              <i class="fa-solid fa-chevron-down"></i>
             </a>
         </h2>
-         <div id="schoolReports" class="collapse <?php echo in_array(CURRENT_URI, ['reports','file']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
+         <div id="schoolReports" class="collapse <?php echo in_array(CURRENT_URI, ['reports','file','reports-approval','reports-submit']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
         <ul>
              <li><a href="<?php echo BASE_URL?>/reports" class="menu-link <?php echo CURRENT_URI  === "reports" ? 'active' : '' ?>" id="reports">Reports</a></li>
-              <li><a href="<?php echo BASE_URL?>/file" class="menu-link <?php echo CURRENT_URI  === "file" ? 'active' : '' ?>" id="file">File Requests</a></li>
+              <li><a href="<?php echo BASE_URL?>/file" class="menu-link <?php echo CURRENT_URI  === "file" ? 'active' : '' ?>" id="file">File Requests</a></li> 
+              <li><a href="<?php echo BASE_URL?>/reports-approval" class="menu-link <?php echo CURRENT_URI  === "reports-approval" ? 'active' : '' ?>" id="reports-approval">Approval & Decision Support</a></li>
+               <li><a href="<?php echo BASE_URL?>/reports-submit" class="menu-link <?php echo CURRENT_URI  === "reports-submit" ? 'active' : '' ?>" id="reports-submit">Report Submission Management</a></li>
         </ul>
         </div>
 
@@ -95,7 +129,7 @@
 
         <hr>
         <h2>
-             <a data-bs-toggle="collapse" href="#schoolTools" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white">
+             <a data-bs-toggle="collapse" href="#schoolTools" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white" id="ToolDriver"> 
              Tools 
              <i class="fa-solid fa-chevron-down"></i>
             </a>
@@ -111,13 +145,14 @@
              <!-- settings  -->
         <hr>
         <h2>
-          <a data-bs-toggle="collapse" href="#schoolSettings" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white">
+          <a data-bs-toggle="collapse" href="#schoolSettings" class="menu-toggle d-flex justify-content-between align-items-center text-decoration-none text-white" id="SettingDriver">
              Settings
              <i class="fa-solid fa-chevron-down"></i>
             </a>
         </h2>
-        <div id="schoolSettings" class="collapse <?php echo in_array(CURRENT_URI, ['activity']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
+        <div id="schoolSettings" class="collapse <?php echo in_array(CURRENT_URI, ['activity','profile','']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
             <ul>
+                 <li><a href="<?php echo BASE_URL?>/settings/concerns" class="menu-link <?php echo CURRENT_URI  === "concerns" ? 'active' : '' ?>"" id="concerns">Concerns & Issue Tracking</a></li>    
                 <li><a href="<?php echo BASE_URL?>students" class="menu-link" id="profile">Profile</a></li>      
                 <li><a href="<?php echo BASE_URL?>/settings/activity" class="menu-link <?php echo CURRENT_URI  === "activity" ? 'active' : '' ?>"" id="profile">Activity Logs</a></li>      
             </ul>

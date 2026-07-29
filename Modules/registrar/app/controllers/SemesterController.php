@@ -4,6 +4,7 @@
 
   use App\Core\Controller;
   use App\Helper\Logger;
+  use App\Models\Employee;
   use App\Models\SchoolYear;
   use App\Models\Semester;
   use Dompdf\Dompdf;
@@ -18,10 +19,16 @@
     {
 
         $school_year = SchoolYear::all();
+        $user = Employee::find('1003'); 
+        $semester = Semester::activeSemester();
+        $schoolYear = SchoolYear::activeSchoolYear();
 
-        $this->render('/acad/semester',[
-          'school_year' => $school_year
-        ]);
+      
+        $this->render('/acad/semester', ['user' => $user,
+        'school_year' => $school_year,
+        'semester' => $semester,
+        'schoolYear' => $schoolYear
+      ]);
 
     }
 
@@ -241,11 +248,15 @@
         
          Semester::updateStatus();
 
+         
+
          Semester::update($id,[
 
             'is_active' => true,
 
          ]);
+
+
 
         echo json_encode([
             'status' => 'success',

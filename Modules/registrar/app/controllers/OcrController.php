@@ -4,6 +4,9 @@
    namespace App\Controllers;
 
    use App\Core\Controller;
+   use App\Models\Employee;
+   use App\Models\SchoolYear;
+   use App\Models\Semester;
    use CURLFile;
 
 
@@ -13,7 +16,18 @@
 
         public function index()
         {
-            $this->render('/tools/recog');
+           
+            $user = Employee::find('1003'); 
+            $semester = Semester::activeSemester();
+            $schoolYear = SchoolYear::activeSchoolYear();
+      
+           $this->render('/tools/recog', 
+           [
+                 'user' => $user,
+                 'semester' => $semester,
+                 'schoolYear' => $schoolYear
+             ]);
+            
         }
 
 

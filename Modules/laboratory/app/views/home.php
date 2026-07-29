@@ -365,7 +365,7 @@
                                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                                 src="assets/img1.png" alt="...">
                                         </div>
-                                        <p>Add some quality, svg illustrations to your project courtesy of <a
+                                        <p>"A well-managed lab is not just a room—it’s a launchpad for curiosity and discovery." <a
                                                 target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
                                             constantly updated collection of beautiful svg images that you can use
                                             completely free and without attribution!</p>

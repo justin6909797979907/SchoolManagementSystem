@@ -1,21 +1,21 @@
 <?php 
 
+  namespace App\Models;
 
-namespace App\Models;
+  use App\Core\Model;
+  use PDO;
 
-use App\Core\Model;
-use PDO;
-
-class Strand extends Model
+class Approval extends Model 
 {
 
-     public $tableName = 'strands';
-     public $primaryKey = 'id';
+    public $tableName = 'sd_approvals';
+    public $primaryKey = 'approval_id';
 
 
-  protected function allStrands($paginate = true)
-  {
-    $perPage = isset($_GET['limit']) ? (int) $_GET['limit'] : 10;
+    protected function allApproval($paginate = true)
+    {
+
+         $perPage = isset($_GET['limit']) ? (int) $_GET['limit'] : 10;
     $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
     if ($page < 1) $page = 1;
 
@@ -29,20 +29,20 @@ class Strand extends Model
 
     $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-    $where = " WHERE 1=1 ";
+    $where = " WHERE s.submit = 1017 ";
     $params = [];
 
 
     if (!empty($search)) {
         $where .= " AND (
-            name LIKE :search OR
-            code LIKE :search
+            title LIKE :search OR
+            decision LIKE :search
         )";
         $params[':search'] = "%{$search}%";
     }
 
   
-    $countSql = "SELECT COUNT(*) as total FROM {$this->tableName} $where ORDER BY name $order ";
+    $countSql = "SELECT COUNT(*) as total FROM {$this->tableName} $where ORDER BY approved_at $order ";
     $countStmt = $this->pdo->prepare($countSql);
 
     foreach ($params as $key => $value) {
@@ -53,7 +53,15 @@ class Strand extends Model
     $total = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
     // Base query
-    $dataSql = "SELECT * FROM {$this->tableName} $where ORDER BY name $order";
+   $dataSql = "SELECT 
+            s.*,
+            CONCAT(se.first_name,' ',se.last_name) AS submitter,
+            CONCAT(ae.first_name,' ',ae.last_name) AS approver
+        FROM {$this->tableName} s
+        LEFT JOIN sms_employee se ON s.submit_by = se.employee_id
+        LEFT JOIN sms_employee ae ON s.approver_id = ae.employee_id
+        $where
+        ORDER BY s.approved_at $order";
 
     if ($paginate) {
         $dataSql .= " LIMIT :limit OFFSET :offset";
@@ -83,17 +91,18 @@ class Strand extends Model
         'current_page' => $page,
         'last_page' => ceil($total / $perPage)
     ];
-        
 
-     }
-     
+    }
 
-
+    
     public static function __callStatic($name, $arguments)
     {
             $instance = new self();     
             return $instance->$name(...$arguments);
     }
+
+
+
 
 
 }

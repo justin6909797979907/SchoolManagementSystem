@@ -6,7 +6,7 @@ use App\Core\Model;
 
 class Event extends Model {
 
-    public $tableName = 'events';
+    public $tableName = 'rgr_events';
     public $primaryKey = 'id';
 
 

@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="qdAddInventoryForm" method="POST" enctype="multipart/form-data">
+            <form
+                id="qdAddInventoryForm"
+                action="<?= BASE_URL ?>/questioned-inventory/create"
+                method="POST">  
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="qdAddInventoryModalLabel">
@@ -14,7 +17,7 @@
                 <div class="modal-body">
 
                     <div class="row g-3">
-
+ 
                         <!-- Item Name -->
                         <div class="col-md-6">
                             <label class="form-label">Item Name</label>
@@ -41,7 +44,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Total Quantity</label>
                             <input type="number"
-                                name="total_quantity"
+                                name="total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -51,7 +54,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Available Quantity</label>
                             <input type="number"
-                                name="available_quantity"
+                                name="available_item"
                                 class="form-control"
                                 min="0"
                                 required>
@@ -61,7 +64,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
                             <select name="status" class="form-select" required>
-                                <option value="">-- Select Status --</option>
+                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>

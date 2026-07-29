@@ -33,8 +33,8 @@
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
-                                <div class="text-xs fw-bold text-success text-uppercase mb-1">Subjects Offered</div>
-                                <div class="h5 mb-0 fw-bold text-gray-800">21</div>
+                                <div class="text-xs fw-bold text-success text-uppercase mb-1" >Subjects Offered</div>
+                                <div class="h5 mb-0 fw-bold text-gray-800" id="subject-offered">21</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -50,7 +50,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-xs fw-bold text-info text-uppercase mb-1">New Enrollees</div>
-                                <div class="h5 mb-0 fw-bold text-gray-800">12</div>
+                                <div class="h5 mb-0 fw-bold text-gray-800" id="enrollee">12</div>
                             </div>
                             <div class="col-auto">
                                 <i class="bi bi-people-fill fs-2 text-gray-300"></i>
@@ -118,7 +118,7 @@
 
                  <select id="period" class="form-select form-select-sm w-auto">
                     <option value="7days" selected>7 Days</option>
-                    <option value="this_week">Last Week</option>
+                    <option value="last_week">Last Week</option>
                     <option value="this_month">This Month</option>
                     <option value="last_month">Last Month</option>
                 </select>
@@ -133,58 +133,7 @@
     </div>
 </div>
 
-  <div class="card shadow-sm mb-4">
-    <div class="card-header bg-white py-3">
-        <h6 class="m-0 fw-bold text-primary">Quick Actions</h6>
-    </div>
-    <div class="card-body">
-        <div class="row g-3">
-        
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card h-100 text-center shadow-sm border-0">
-                    <div class="card-body py-3">
-                        <div class="icon-circle bg-light text-primary mb-2 mx-auto d-inline-block p-3 rounded-circle">
-                            <i class="fas fa-plus fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold mb-1">Enroll New Student</h6>
-                        <p class="text-muted small mb-0">Open registration form</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card h-100 text-center shadow-sm border-0">
-                    <div class="card-body py-3">
-                        <div class="icon-circle bg-light text-success mb-2 mx-auto d-inline-block p-3 rounded-circle">
-                            <i class="fas fa-file-export fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold mb-1">Export Grade Sheet</h6>
-                        <p class="text-muted small mb-0">Generate CSV/PDF</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card h-100 text-center shadow-sm border-0">
-                    <div class="card-body py-3">
-                        <div class="icon-circle bg-light text-warning mb-2 mx-auto d-inline-block p-3 rounded-circle">
-                            <i class="fas fa-user-edit fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold mb-1">Update Student Info</h6>
-                        <p class="text-muted small mb-0">Edit student records</p>
-                    </div>
-                </div>
-            </div>
-
-          
-        </div>
-    </div>
-    <div class="card-footer bg-white border-0 text-center pb-3">
-        <a href="#" class="small text-decoration-none text-muted">View all shortcuts</a>
-    </div>
-</div>
+  
 
     </div> 
 

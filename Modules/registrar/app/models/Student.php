@@ -8,7 +8,7 @@
     class Student extends Model
     {
         
-        public $tableName = 'students';
+        public $tableName = 'rgr_students';
         public $primaryKey = 'student_number';
 
 
@@ -81,7 +81,7 @@
 
     // school year
 
-    $schoolYearSql = "SELECT name as school_year FROM school_years WHERE is_active = true";
+    $schoolYearSql = "SELECT name as school_year FROM rgr_school_years WHERE is_active = true";
     $schoolYearStmt = $this->pdo->prepare($schoolYearSql);
 
     $schoolYearStmt->execute();

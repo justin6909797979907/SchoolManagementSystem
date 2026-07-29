@@ -5,6 +5,9 @@
  use App\Core\Controller;
  use App\Helper\Response;
  use App\Models\Activity;
+ use App\Models\Employee;
+ use App\Models\SchoolYear;
+ use App\Models\Semester;
  use Dompdf\Dompdf;
  use PhpOffice\PhpSpreadsheet\Spreadsheet;
  use PhpOffice\PhpSpreadsheet\Writer\Csv;
@@ -17,8 +20,16 @@
 
       public function index()
       {
-
-        $this->render('/settings/activity');
+        $user = Employee::find('1003'); 
+        $semester = Semester::activeSemester();
+        $schoolYear = SchoolYear::activeSchoolYear();
+        
+        $this->render('/settings/activity',
+         [
+            'user' => $user,
+            'schoolYear' => $schoolYear,
+            'semester' => $semester
+        ]);
       }  
     
       public function show($id)

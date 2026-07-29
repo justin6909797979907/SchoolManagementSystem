@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Helper\Logger;
+use App\Models\Employee;
 use App\Models\Student;
 use Dompdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -19,9 +20,10 @@ class StudentController extends Controller {
 
     public function index()
     {   
-
-        $this->render('/students/index');
-
+        $user = Employee::find('1003'); 
+        
+        $this->render('/students/index', ['user' => $user]);
+    
     }
 
     public function studentData()

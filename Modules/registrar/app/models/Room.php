@@ -1,17 +1,19 @@
 <?php 
 
+
  namespace App\Models;
 
  use App\Core\Model;
  use PDO;
 
- class Room extends Model
+ class Room extends Model 
  {
 
-    public $tableName = 'rooms';
+    public $tableName = 'rgr_rooms';
     public $primaryKey = 'id';
 
-    protected function allSchoolYear($paginate=true)
+
+     protected function allRoom($paginate=true)
     {
 
     $perPage = isset($_GET['limit']) ? (int) $_GET['limit'] : 10;
@@ -85,12 +87,17 @@
 
 
     }
+
+
+
+
     
     public static function __callStatic($name, $arguments)
     {
-                $instance = new self();     
-                return $instance->$name(...$arguments);
+        $instance = new self();     
+        return $instance->$name(...$arguments);
     }
+
 
 
 

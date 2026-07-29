@@ -14,7 +14,7 @@ class Logger
         $ip = $_SERVER['REMOTE_ADDR'];
 
         $stmt = $pdo->prepare("
-            INSERT INTO activity_log (user_id, action, description, ip_address)
+            INSERT INTO rgr_activity_log (user_id, action, description, ip_address)
             VALUES (?, ?, ?, ?)
         ");
 

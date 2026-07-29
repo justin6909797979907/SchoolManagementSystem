@@ -6,6 +6,9 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Helper\Logger;
 use App\Models\Course;
+use App\Models\Employee;
+use App\Models\SchoolYear;
+use App\Models\Semester;
 use Dompdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
@@ -19,7 +22,16 @@ class CourseController extends Controller {
     public function index()
     {
 
-        $this->render('/acad/course');
+        $user = Employee::find('1003'); 
+        $semester = Semester::activeSemester();
+        $schoolYear = SchoolYear::activeSchoolYear();
+      
+        $this->render('/acad/course',
+         [
+            'user' => $user,
+            'semester' => $semester,
+            'schoolYear' => $schoolYear
+        ]);
 
     }
 
@@ -37,7 +49,7 @@ class CourseController extends Controller {
         
         header('Content-Type: application/json');
         $course = Course::find($id);
-        echo json_encode($course );       
+        echo json_encode($course);       
 
     }
 

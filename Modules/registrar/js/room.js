@@ -4,9 +4,9 @@
    const selectAll = document.getElementById('select-all');
    const tbody = document.querySelector('tbody');
    const deleteBtn = document.getElementById('delete-btn');
-   const addRoomBtn = document.getElementById('addRoomBtn');
+   const addRooms = document.getElementById('addRooms');
 
-   const addRoomModal = new bootstrap.Modal(document.getElementById('addRoomModal'));
+    const addRoomsModal = new bootstrap.Modal(document.getElementById('addRoomsModal'));
 
 
 
@@ -134,7 +134,7 @@
             }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`${BASE_URL}/school-year/delete`, {
+                fetch(`${BASE_URL}/room/delete`, {
                     method: 'POST',
                     headers: {'Content-Type':'application/json'},
                     body: JSON.stringify({ ids })
@@ -170,16 +170,16 @@
 
     // show  
 
-    addRoomBtn.addEventListener('click',function(){
+    addRooms.addEventListener('click',function(){
 
-        addRoomModal.show();
+        addRoomsModal.show();
     
     });
 
 
     // submit button connect to form
 
-    document.getElementById('addRoomSubmit').addEventListener('click', function() {
+    document.getElementById('addRoomsSubmit').addEventListener('click', function() {
 
     document.getElementById('roomForm').requestSubmit();
        
@@ -190,7 +190,7 @@
 
     document.getElementById('closeBtn').addEventListener('click',function(){
 
-    resetForm('schoolYearForm');
+    resetForm('roomForm');
 
     });
 
@@ -235,7 +235,7 @@
    
     // form action
 
-    document.getElementById('schoolYearForm').addEventListener('submit', function(e) {
+    document.getElementById('roomForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
 
         const formData = new FormData(this);
@@ -268,7 +268,7 @@
 
         } else if (data.status === 'success') {
 
-            const form = document.getElementById('schoolYearForm'); 
+            const form = document.getElementById('roomForm'); 
             
             form.reset();
             document.querySelectorAll('.invalid-feedback').forEach(el => el.innerText = '');
@@ -276,7 +276,7 @@
 
             getData(currentOrder, currentLimit, currentPage);
 
-            addSchoolYearModal.hide();
+            addRoomsModal.hide();
 
             Swal.fire({
                 title: "Success!",
@@ -422,7 +422,7 @@
     const search = document.getElementById("search").value;
     const tbody = document.getElementById("studentsTableBody");
 
-    fetch(`${BASE_URL}/school-year/all?order=${order}&limit=${limit}&page=${page}&search=${encodeURIComponent(search)}`)
+    fetch(`${BASE_URL}/room/all?order=${order}&limit=${limit}&page=${page}&search=${encodeURIComponent(search)}`)
         .then(response => response.json())
         .then(result => {
 
@@ -433,22 +433,16 @@
                 return;
             }
 
-            result.data.forEach((sy,index)=> {
+            result.data.forEach((room,index)=> {
                 tbody.innerHTML += `
                     <tr class="activity-row">
 
-                     <td><input type="checkbox" class="activity-checkbox" value="${sy.id}"></td>
+                    <td><input type="checkbox" class="activity-checkbox" value="${room.id}"></td>
                         <td>${index + 1}</td>
-                        <td>${sy.name}</td>
-                        <td>
-                            <div class="form-check form-switch">
-                            <input class="form-check-input status-toggle"
-                                type="checkbox"
-                                data-id="${sy.id}"
-                                ${sy.is_active == 1 ? 'checked' : ''}>
-                            </div>
-                        </td>
-                        
+                        <td>${room.name}</td>
+                        <td>${room.building}</td>
+                        <td>${room.capacity}</td>
+                        <td>${room.type}</td>
                     </tr>
                 `;
             });
