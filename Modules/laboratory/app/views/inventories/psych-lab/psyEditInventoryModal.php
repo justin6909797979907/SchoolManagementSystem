@@ -2,15 +2,17 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="psyEditInventoryForm" action="<?= BASE_URL ?>/inventory/update" method="POST" enctype="multipart/form-data">
+            <form
+                id="psyEditInventoryForm"
+                action="<?= BASE_URL ?>/psycho-inventory/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="psy_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyEditInventoryModalLabel">
-                        <i class="fas fa-edit me-2"></i>
-                        Edit Psychology Inventory
+                        Edit HE Inventory
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -25,7 +27,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="psy_edit_item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,7 +38,7 @@
                             <input
                                 type="text"
                                 name="category"
-                                id="psy_edit_category"
+                                id="edit_category"
                                 class="form-control"
                                 required>
                         </div>
@@ -47,9 +49,9 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="psy_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
-                                value="Psychology Laboratory"
+                                value="Psychology Lab"
                                 readonly>
                         </div>
 
@@ -59,7 +61,7 @@
                             <input
                                 type="number"
                                 name="total_item"
-                                id="psy_edit_total_item"
+                                id="edit_total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -71,7 +73,7 @@
                             <input
                                 type="number"
                                 name="available_item"
-                                id="psy_edit_available_item"
+                                id="edit_available_item"
                                 class="form-control"
                                 min="0"
                                 required>
@@ -82,10 +84,9 @@
                             <label class="form-label">Status</label>
                             <select
                                 name="status"
-                                id="psy_edit_status"
+                                id="edit_status"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>

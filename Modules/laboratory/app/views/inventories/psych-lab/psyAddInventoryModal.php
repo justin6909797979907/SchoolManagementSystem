@@ -1,12 +1,15 @@
-<div class="modal fade" id="addPsychInventoryModal" tabindex="-1" aria-labelledby="psyAdd-inventory-modalLabel" aria-hidden="true">
+<div class="modal fade" id="psyAddInventoryModal" tabindex="-1" aria-labelledby="psyAddInventoryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form  action="<?= BASE_URL ?>/psycho-inventory/create" method="POST" enctype="multipart/form-data">
+            <form
+                id="psyAddInventoryForm"
+                action="<?= BASE_URL ?>/psycho-inventory/create"
+                method="POST">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="psyAdd-inventory-modalLabel">
-                        Add Psychology Inventory
+                    <h5 class="modal-title" id="psyAddInventoryModalLabel">
+                        Add Home Economics Inventory
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -33,13 +36,13 @@
                             <input type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Psychology Lab"
+                                value="Psychology Laboratory"
                                 readonly>
                         </div>
 
-                        <!-- Total Quantity -->
+                        <!-- Total item -->
                         <div class="col-md-6">
-                            <label class="form-label">Total Quantity</label>
+                            <label class="form-label">Total item</label>
                             <input type="number"
                                 name="total_item"
                                 class="form-control"
@@ -47,11 +50,11 @@
                                 required>
                         </div>
 
-                        <!-- Available Quantity -->
+                        <!-- Available item -->
                         <div class="col-md-6">
-                            <label class="form-label">Available Quantity</label>
+                            <label class="form-label">Available item</label>
                             <input type="number"
-                                name="available_quantity"
+                                name="available_item"
                                 class="form-control"
                                 min="0"
                                 required>
@@ -61,7 +64,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
                             <select name="status" class="form-select" required>
-                                <option value="">-- Select Status --</option>
+                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
