@@ -4,7 +4,7 @@
 
             <div class="modal-header">
                 <h5 class="modal-title" id="heViewInventoryModalLabel">
-                    View Home Economics Inventory
+                    View HE Inventory
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
@@ -18,7 +18,7 @@
                         <label class="form-label">ID</label>
                         <input
                             type="text"
-                            id="he_view_id"
+                            id="view_id"
                             class="form-control"
                             readonly>
                     </div>
@@ -28,7 +28,7 @@
                         <label class="form-label">Item Name</label>
                         <input
                             type="text"
-                            id="he_view_item_name"
+                            id="view_item_name"
                             class="form-control"
                             readonly>
                     </div>
@@ -38,7 +38,7 @@
                         <label class="form-label">Category</label>
                         <input
                             type="text"
-                            id="he_view_category"
+                            id="view_category"
                             class="form-control"
                             readonly>
                     </div>
@@ -48,7 +48,7 @@
                         <label class="form-label">Laboratory</label>
                         <input
                             type="text"
-                            id="he_view_laboratory"
+                            id="view_laboratory"
                             class="form-control"
                             readonly>
                     </div>
@@ -58,7 +58,7 @@
                         <label class="form-label">Total Quantity</label>
                         <input
                             type="number"
-                            id="he_view_total_quantity"
+                            id="view_total_quantity"
                             class="form-control"
                             readonly>
                     </div>
@@ -68,7 +68,7 @@
                         <label class="form-label">Available Quantity</label>
                         <input
                             type="number"
-                            id="he_view_available_quantity"
+                            id="view_available_quantity"
                             class="form-control"
                             readonly>
                     </div>
@@ -78,7 +78,7 @@
                         <label class="form-label">Status</label>
                         <input
                             type="text"
-                            id="he_view_status"
+                            id="view_status"
                             class="form-control"
                             readonly>
                     </div>

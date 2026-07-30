@@ -5,7 +5,7 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
-        <p class="mb-4">HE Laboratory</p>
+        <p class="mb-4">Physics Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -14,7 +14,7 @@
                     Inventory Management
                 </div>
 
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#heAddInventoryModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#phyAddInventoryModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </a>
             </div>
@@ -87,23 +87,20 @@
     </div>
 </main>
 
+<?php require __DIR__ . '/phyAddInventoryModal.php'; ?>
+<?php require __DIR__ . '/phyEditInventoryModal.php'; ?>
+<?php require __DIR__ . '/phyViewInventoryModal.php'; ?>
+
 <script>
     $(document).ready(function() {
-        $('#heEquipmentTable').DataTable({
+        $('#psyEquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
     });
 </script>
 
-<script>
-    const BASE_URL = "<?= BASE_URL ?>";
-</script>
-
-<script src="<?= BASE_URL ?>/js/heInventory.js"></script>
-
-<?php require __DIR__ . '/heAddInventoryModal.php'; ?>
-<?php require __DIR__ . '/heEditInventoryModal.php'; ?>
-<?php require __DIR__ . '/heViewInventoryModal.php'; ?>
+<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script src="<?= BASE_URL ?>/js/physicInventory.js"></script>
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>

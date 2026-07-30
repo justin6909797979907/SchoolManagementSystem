@@ -1,12 +1,18 @@
-<div class="modal fade" id="heAddInventoryModal" tabindex="-1" aria-labelledby="heAddInventoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="phyEditInventoryModal" tabindex="-1" aria-labelledby="phyEditInventoryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="heAddInventoryForm" method="POST" enctype="multipart/form-data">
+            <form
+                id="phyEditInventoryForm"
+                action="<?= BASE_URL ?>/physics-inventory/update"
+                method="POST">
+
+                <!-- Hidden ID -->
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="heAddInventoryModalLabel">
-                        Add Home Economics Inventory
+                    <h5 class="modal-title" id="phyEditInventoryModalLabel">
+                        Edit Physics Inventory
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -18,30 +24,44 @@
                         <!-- Item Name -->
                         <div class="col-md-6">
                             <label class="form-label">Item Name</label>
-                            <input type="text" name="item_name" class="form-control" required>
+                            <input
+                                type="text"
+                                name="item_name"
+                                id="edit_item_name"
+                                class="form-control"
+                                required>
                         </div>
 
                         <!-- Category -->
                         <div class="col-md-6">
                             <label class="form-label">Category</label>
-                            <input type="text" name="category" class="form-control" required>
+                            <input
+                                type="text"
+                                name="category"
+                                id="edit_category"
+                                class="form-control"
+                                required>
                         </div>
 
                         <!-- Laboratory -->
                         <div class="col-md-6">
                             <label class="form-label">Laboratory</label>
-                            <input type="text"
+                            <input
+                                type="text"
                                 name="laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
-                                value="Home Economics Laboratory"
+                                value="Physics Lab"
                                 readonly>
                         </div>
 
                         <!-- Total Quantity -->
                         <div class="col-md-6">
                             <label class="form-label">Total Quantity</label>
-                            <input type="number"
-                                name="total_quantity"
+                            <input
+                                type="number"
+                                name="total_item"
+                                id="edit_total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -50,8 +70,10 @@
                         <!-- Available Quantity -->
                         <div class="col-md-6">
                             <label class="form-label">Available Quantity</label>
-                            <input type="number"
-                                name="available_quantity"
+                            <input
+                                type="number"
+                                name="available_item"
+                                id="edit_available_item"
                                 class="form-control"
                                 min="0"
                                 required>
@@ -60,8 +82,12 @@
                         <!-- Status -->
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
-                            <select name="status" class="form-select" required>
-                                <option value="" selected disabled>-- Select Status --</option>
+                            <select
+                                name="status"
+                                id="edit_status"
+                                class="form-select"
+                                required>
+                                <option value="select" selected disabled>--Select--</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
@@ -74,8 +100,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save me-1"></i> Save
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i> Update
                     </button>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

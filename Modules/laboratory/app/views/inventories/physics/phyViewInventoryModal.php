@@ -1,10 +1,9 @@
-<div class="modal fade" id="phyViewModal" tabindex="-1" aria-labelledby="phyViewModalLabel" aria-hidden="true">
+<div class="modal fade" id="phyViewInventoryModal" tabindex="-1" aria-labelledby="phyViewInventoryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="phyViewModalLabel">
-                    <i class="fas fa-eye me-2"></i>
+                <h5 class="modal-title" id="phyViewInventoryModalLabel">
                     View Physics Inventory
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -13,6 +12,16 @@
             <div class="modal-body">
 
                 <div class="row g-3">
+
+                    <!-- ID -->
+                    <div class="col-md-6">
+                        <label class="form-label">ID</label>
+                        <input
+                            type="text"
+                            id="view_id"
+                            class="form-control"
+                            readonly>
+                    </div>
 
                     <!-- Item Name -->
                     <div class="col-md-6">
@@ -49,7 +58,7 @@
                         <label class="form-label">Total Quantity</label>
                         <input
                             type="number"
-                            id="view_total_item"
+                            id="view_total_quantity"
                             class="form-control"
                             readonly>
                     </div>
@@ -67,15 +76,11 @@
                     <!-- Status -->
                     <div class="col-md-6">
                         <label class="form-label">Status</label>
-                        <select
+                        <input
+                            type="text"
                             id="view_status"
-                            class="form-select"
-                            disabled>
-                            <option value="Working">Working</option>
-                            <option value="Under Maintenance">Under Maintenance</option>
-                            <option value="Damaged">Damaged</option>
-                            <option value="Unavailable">Unavailable</option>
-                        </select>
+                            class="form-control"
+                            readonly>
                     </div>
 
                 </div>
@@ -84,7 +89,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    <i class="fas fa-times me-1"></i> Close
+                    Close
                 </button>
             </div>
 

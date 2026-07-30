@@ -53,9 +53,9 @@ switch ($segments[0] ?? '') {
 
         break;
 
-    case 'inventory':
-        require_once __DIR__ . '/app/controllers/InventoryController.php';
-        $controller = new InventoryController();
+    case 'physics-inventory':
+        require_once __DIR__ . '/app/controllers/PhysInventoryController.php';
+        $controller = new PhysInventoryController();
 
         if (!isset($segments[1])) {
             $controller->index();
@@ -64,7 +64,7 @@ switch ($segments[0] ?? '') {
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->destroy($segments[2]);
+            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
         }
@@ -100,7 +100,7 @@ switch ($segments[0] ?? '') {
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->destroy($segments[2]);
+            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
         }
