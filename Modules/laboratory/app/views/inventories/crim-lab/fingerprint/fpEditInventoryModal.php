@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="fpEditInventoryForm" method="POST" enctype="multipart/form-data">
+            <form
+                id="fpEditInventoryForm"
+                action="<?= BASE_URL ?>/fingerprint-inventory/update"
+                method="POST">
 
                 <!-- Hidden ID -->
                 <input type="hidden" name="id" id="edit_id">
@@ -48,7 +51,7 @@
                                 name="laboratory"
                                 id="edit_laboratory"
                                 class="form-control"
-                                value="Fingerprint Laboratory"
+                                value="Fingerprint Lab"
                                 readonly>
                         </div>
 
@@ -57,8 +60,8 @@
                             <label class="form-label">Total Quantity</label>
                             <input
                                 type="number"
-                                name="total_quantity"
-                                id="edit_total_quantity"
+                                name="total_item"
+                                id="edit_total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -69,8 +72,8 @@
                             <label class="form-label">Available Quantity</label>
                             <input
                                 type="number"
-                                name="available_quantity"
-                                id="edit_available_quantity"
+                                name="available_item"
+                                id="edit_available_item"
                                 class="form-control"
                                 min="0"
                                 required>
@@ -84,7 +87,6 @@
                                 id="edit_status"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>

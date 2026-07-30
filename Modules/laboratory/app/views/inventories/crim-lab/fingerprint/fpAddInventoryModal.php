@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="fpAddInventoryForm" method="POST" action="<?= BASE_URL ?>/fingerprint-inventory/create" enctype="multipart/form-data">
+            <form
+                id="fpAddInventoryForm"
+                action="<?= BASE_URL ?>/fingerprint-inventory/create"
+                method="POST">  
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="fpAddInventoryModalLabel">
@@ -14,7 +17,7 @@
                 <div class="modal-body">
 
                     <div class="row g-3">
-
+ 
                         <!-- Item Name -->
                         <div class="col-md-6">
                             <label class="form-label">Item Name</label>
@@ -61,15 +64,13 @@
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
                             <select name="status" class="form-select" required>
-                                <option value="">-- Select Status --</option>
+                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
                                 <option value="Unavailable">Unavailable</option>
                             </select>
                         </div>
-
-                       
 
                     </div>
 

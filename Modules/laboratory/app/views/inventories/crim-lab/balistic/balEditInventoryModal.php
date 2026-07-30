@@ -51,7 +51,7 @@
                                 name="laboratory"
                                 id="edit_laboratory"
                                 class="form-control"
-                                value="IT Lab 3"
+                                value="Ballistic Lab"
                                 readonly>
                         </div>
 

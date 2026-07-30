@@ -141,8 +141,14 @@ switch ($segments[0] ?? '') {
 
         if (!isset($segments[1])) {
             $controller->index();
-        } else if ($segments[1] === 'create') {
+        } elseif ($segments[1] === 'create') {
             $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
         }
 
         break;
@@ -170,7 +176,7 @@ switch ($segments[0] ?? '') {
         require_once __DIR__ . '/app/controllers/ChemestryInvController.php';
         $controller = new ChemestryInvController();
 
-         if (!isset($segments[1])) {
+        if (!isset($segments[1])) {
             $controller->index();
         } elseif ($segments[1] === 'create') {
             $controller->create();
@@ -189,8 +195,15 @@ switch ($segments[0] ?? '') {
 
         if (!isset($segments[1])) {
             $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
         }
-
         break;
 
     case 'crim-borrow':
