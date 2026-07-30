@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="chemistryEditInventoryForm" method="POST" enctype="multipart/form-data">
+            <form
+                id="chemistryEditInventoryForm"
+                action="<?= BASE_URL ?>/chemestry-inventory/update"
+                method="POST">
 
                 <!-- Hidden ID -->
                 <input type="hidden" name="id" id="edit_id">
@@ -54,11 +57,11 @@
 
                         <!-- Total Quantity -->
                         <div class="col-md-6">
-                            <label class="form-label">Total Quantity</label>
+                            <label class="form-label">Total Item</label>
                             <input
                                 type="number"
-                                name="total_quantity"
-                                id="edit_total_quantity"
+                                name="total_item"
+                                id="edit_total_item"
                                 class="form-control"
                                 min="1"
                                 required>
@@ -66,11 +69,11 @@
 
                         <!-- Available Quantity -->
                         <div class="col-md-6">
-                            <label class="form-label">Available Quantity</label>
+                            <label class="form-label">Available Item</label>
                             <input
                                 type="number"
-                                name="available_quantity"
-                                id="edit_available_quantity"
+                                name="available_item"
+                                id="edit_available_item"
                                 class="form-control"
                                 min="0"
                                 required>

@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form  action="<?= BASE_URL ?>/inventory/create" method="POST" enctype="multipart/form-data">
+            <form  action="<?= BASE_URL ?>/psycho-inventory/create" method="POST" enctype="multipart/form-data">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyAdd-inventory-modalLabel">

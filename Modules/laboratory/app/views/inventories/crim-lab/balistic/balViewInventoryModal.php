@@ -58,7 +58,7 @@
                         <label class="form-label">Total Quantity</label>
                         <input
                             type="number"
-                            id="view_total_quantity"
+                            id="view_total_item"
                             class="form-control"
                             readonly>
                     </div>
@@ -68,7 +68,7 @@
                         <label class="form-label">Available Quantity</label>
                         <input
                             type="number"
-                            id="view_available_quantity"
+                            id="view_available_item"
                             class="form-control"
                             readonly>
                     </div>
