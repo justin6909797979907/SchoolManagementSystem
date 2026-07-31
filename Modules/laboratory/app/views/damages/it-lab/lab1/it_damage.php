@@ -36,51 +36,53 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        <?php foreach($damages as $row): ?>
                         <tr>
-                            <td>1</td>
-                            <td>IT Laboratory 1 Kit</td>
-                            <td>IT Laboratory 1</td>
-                            <td>Damage</td>
-                            <td>John Doe</td>
-                            <td>07-26-2026</td>
-                            <td>Item is functioning properly but needs repair.</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <button
-                                                class="dropdown-item"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#lab1ViewDamageModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </button>
-                                        </li>
+                            <td><?= $row['id'] ?></td>
+                            <td><?= $row['item_name'] ?></td>
+                            <td><?= $row['laboratory'] ?></td>
+                            <td><?= $row['issue'] ?></td>
+                            <td><?= $row['reported_by'] ?></td>
+                            <td><?= $row['date_reported'] ?></td>
+                            <td><?= $row['status'] ?></td>
 
-                                        <li>
-                                            <button
-                                                class="dropdown-item"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#lab1EditDamageModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
-                                                onclick="return confirm('Are you sure you want to delete this record?')">
-                                                <i class="fas fa-trash me-2"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
+                            <td>
+                               <div class="dropdown">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Action
+                                    </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item viewBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item editBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
                                 </div>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -99,6 +101,12 @@
         });
     });
 </script>
+
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+
+<script src="<?= BASE_URL ?>/js/lab1Damage.js"></script>
 
 <?php require __DIR__ . '/lab1AddDamageModal.php'; ?>
 <?php require __DIR__ . '/lab1EditDamageModal.php'; ?>
