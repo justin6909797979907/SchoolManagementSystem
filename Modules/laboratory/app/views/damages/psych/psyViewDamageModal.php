@@ -19,7 +19,7 @@
                         <label class="form-label">Item Name</label>
                         <input
                             type="text"
-                            id="psy_view_item_name"
+                            id="view_item_name"
                             class="form-control"
                             readonly>
                     </div>
@@ -29,7 +29,7 @@
                         <label class="form-label">Laboratory</label>
                         <input
                             type="text"
-                            id="psy_view_laboratory"
+                            id="view_laboratory"
                             class="form-control"
                             value="Psychology Laboratory"
                             readonly>
@@ -40,7 +40,7 @@
                         <label class="form-label">Issue</label>
                         <input
                             type="text"
-                            id="psy_view_issue"
+                            id="view_issue"
                             class="form-control"
                             readonly>
                     </div>
@@ -50,7 +50,7 @@
                         <label class="form-label">Reported By</label>
                         <input
                             type="text"
-                            id="psy_view_reported_by"
+                            id="view_reported_by"
                             class="form-control"
                             readonly>
                     </div>
@@ -59,8 +59,8 @@
                     <div class="col-md-6">
                         <label class="form-label">Date Reported</label>
                         <input
-                            type="date"
-                            id="psy_view_date_reported"
+                            type="text"
+                            id="view_date_reported"
                             class="form-control"
                             readonly>
                     </div>
@@ -69,9 +69,10 @@
                     <div class="col-md-6">
                         <label class="form-label">Status</label>
                         <select
-                            id="psy_view_status"
+                            id="view_status"
                             class="form-select"
                             disabled>
+                            <option value="" selected disabled>-- Select Status --</option>
                             <option value="Working">Working</option>
                             <option value="Under Maintenance">Under Maintenance</option>
                             <option value="Damaged">Damaged</option>

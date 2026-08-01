@@ -1,8 +1,6 @@
 <?php include  __DIR__ . '/../../includes/sidebar.php'; ?>
 <?php include  __DIR__ . '/../../includes/header.php'; ?>
 
-<link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
-
 
 <main class="main-content">
     <div class="container-fluid px-4">
@@ -13,7 +11,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Damages List
+                    Damages
                 </div>
 
                 <button
@@ -22,7 +20,6 @@
                     data-bs-target="#psyAddDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </button>
-
             </div>
             <div class="card-body">
                 <table id="psyDamageTable" class="table table-striped table-bordered" style="width:100%">
@@ -39,52 +36,53 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($users as $user) { ?>
-                            <tr>
-                                <td><?= $user['id'] ?></td>
-                                <td><?= $user['item_name'] ?></td>
-                                <td><?= $user['laboratory'] ?></td>
-                                <td><?= $user['issue'] ?></td>
-                                <td><?= $user['reported_by'] ?></td>
-                                <td><?= $user['date_reported'] ?></td>
-                                <td>
-                                    <span class="badge <?= $user['status'] === 'Fixed' ? 'bg-success' : 'bg-danger' ?>"><?= $user['status'] ?></span>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <?php foreach($damages as $row): ?>
+                        <tr>
+                            <td><?= $row['id'] ?></td>
+                            <td><?= $row['item_name'] ?></td>
+                            <td><?= $row['laboratory'] ?></td>
+                            <td><?= $row['issue'] ?></td>
+                            <td><?= $row['reported_by'] ?></td>
+                            <td><?= $row['date_reported'] ?></td>
+                            <td><?= $row['status'] ?></td>
+
+                            <td>
+                               <div class="dropdown">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                             Action
-                                        </button>
+                                    </button>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <button
-                                                    class="dropdown-item viewPsychoDamageBtn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#psyViewDamageModal"
-                                                    data-id="<?= $user['id'] ?>">
+                                                <a href="#"
+                                                    class="dropdown-item viewBtn"
+                                                    data-id="<?= $row['id']; ?>">
                                                     <i class="fas fa-eye me-2"></i> View
-                                                </button>
+                                                </a>
                                             </li>
 
                                             <li>
-                                                <button
-                                                    class="dropdown-item editPsychoDamageBtn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#psychoEditDamageModal"
-                                                    data-id="<?= $user['id'] ?>">
+                                                <a href="#"
+                                                    class="dropdown-item editBtn"
+                                                    data-id="<?= $row['id']; ?>">
                                                     <i class="fas fa-edit me-2"></i> Edit
-                                                </button>
+                                                </a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $user['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
                                         </ul>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        <?php } ?>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -93,14 +91,7 @@
     </div>
 </main>
 
-<!-- Add New Damage Modal -->
-<?php require __DIR__ . '/psychoAdd-damage-modal.php'; ?>
 
-<!-- Edit Damage Modal -->
-<?php require __DIR__ . '/psychoEdit-damage-modal.php'; ?>
-
-<!-- View Damage Modal -->
-<?php require __DIR__ . '/psychoView-damage-modal.php'; ?>
 
 <script>
     $(document).ready(function() {
@@ -114,6 +105,12 @@
 <script>
     const BASE_URL = "<?= BASE_URL ?>";
 </script>
+
 <script src="<?= BASE_URL ?>/js/psychDamage.js"></script>
+
+<?php require __DIR__ . '/psyAddDamageModal.php'; ?>
+<?php require __DIR__ . '/psyEditDamageModal.php'; ?>
+<?php require __DIR__ . '/psyViewDamageModal.php'; ?>
+
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>
