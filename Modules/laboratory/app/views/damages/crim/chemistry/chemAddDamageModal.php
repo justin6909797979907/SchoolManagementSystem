@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="chemAddDamageForm" action="<?= BASE_URL ?>/damages/create" method="POST">
+            <form
+                id="chemAddDamageForm"
+                action="<?= BASE_URL ?>/chemistry-damage/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="chemAddDamageModalLabel">
