@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="balAddDamageForm" action="<?= BASE_URL ?>/damages/create" method="POST">
+            <form
+                id="balAddDamageForm"
+                action="<?= BASE_URL ?>/balistic-damage/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="balAddDamageModalLabel">
@@ -33,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Balistic Laboratory"
+                                value="Ballistic Laboratory"
                                 readonly>
                         </div>
 
