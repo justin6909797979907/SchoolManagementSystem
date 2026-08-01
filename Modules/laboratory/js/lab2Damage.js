@@ -7,7 +7,7 @@ document.addEventListener("click", function (e) {
 
   let id = btn.dataset.id;
 
-  fetch(`${BASE_URL}/it_damage/view/${id}`)
+  fetch(`${BASE_URL}/lab2-damage/view/${id}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -38,7 +38,7 @@ document.addEventListener("click", function (e) {
 
   let id = btn.dataset.id;
 
-  fetch(`${BASE_URL}/it_damage/view/${id}`)
+  fetch(`${BASE_URL}/lab2-damage/view/${id}`)
     .then((response) => response.json())
     .then((data) => {
         document.getElementById("view_item_name").value = data.item_name;
@@ -69,6 +69,6 @@ document.addEventListener("click", function (e) {
   let id = btn.dataset.id;
 
   if (confirm("Are you sure you want to delete this inventory?")) {
-    window.location.href = `${BASE_URL}/it_damage/delete/${id}`;
+    window.location.href = `${BASE_URL}/lab2-damage/delete/${id}`;
   }
 });
