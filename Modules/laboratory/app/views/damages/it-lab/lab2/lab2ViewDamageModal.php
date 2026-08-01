@@ -31,7 +31,7 @@
                             type="text"
                             id="view_laboratory"
                             class="form-control"
-                            value="IT Laboratory 1"
+                            value="IT Laboratory 2"
                             readonly>
                     </div>
 
