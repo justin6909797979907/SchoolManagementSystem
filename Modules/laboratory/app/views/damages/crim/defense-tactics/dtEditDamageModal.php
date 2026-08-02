@@ -2,10 +2,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="dtEditDamageForm" action="<?= BASE_URL ?>/damages/update" method="POST">
+             <form
+                id="dtEditDamageForm"
+                action="<?= BASE_URL ?>/defense-tactics-damage/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="dt_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="dtEditDamageModalLabel">
@@ -25,7 +28,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="dt_edit_item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,7 +39,7 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="dt_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
                                 value="Defense Tactics Laboratory"
                                 readonly>
@@ -48,7 +51,7 @@
                             <input
                                 type="text"
                                 name="issue"
-                                id="dt_edit_issue"
+                                id="edit_issue"
                                 class="form-control"
                                 required>
                         </div>
@@ -59,7 +62,7 @@
                             <input
                                 type="text"
                                 name="reported_by"
-                                id="dt_edit_reported_by"
+                                id="edit_reported_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -70,7 +73,7 @@
                             <input
                                 type="date"
                                 name="date_reported"
-                                id="dt_edit_date_reported"
+                                id="edit_date_reported"
                                 class="form-control"
                                 required>
                         </div>
@@ -80,7 +83,7 @@
                             <label class="form-label">Status</label>
                             <select
                                 name="status"
-                                id="dt_edit_status"
+                                id="edit_status"
                                 class="form-select"
                                 required>
                                 <option value="" selected disabled>-- Select Status --</option>
