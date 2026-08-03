@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="qdAddDamageForm" action="<?= BASE_URL ?>/damages/create" method="POST">
+            <form
+                id="qdAddDamageForm"
+                action="<?= BASE_URL ?>/question-document-damage/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="qdAddDamageModalLabel">
@@ -33,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Questioned Document Laboratory"
+                                value="Question Document Laboratory"
                                 readonly>
                         </div>
 
