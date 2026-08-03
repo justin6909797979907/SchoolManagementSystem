@@ -2,10 +2,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="fpEditDamageForm" action="<?= BASE_URL ?>/damages/update" method="POST">
+             <form
+                id="fpEditDamageForm"
+                action="<?= BASE_URL ?>/fingerprint-damage/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="fp_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="fpEditDamageModalLabel">
@@ -25,7 +28,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="fp_edit_item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,7 +39,7 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="fp_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
                                 value="Fingerprint Laboratory"
                                 readonly>
@@ -48,7 +51,7 @@
                             <input
                                 type="text"
                                 name="issue"
-                                id="fp_edit_issue"
+                                id="edit_issue"
                                 class="form-control"
                                 required>
                         </div>
@@ -59,7 +62,7 @@
                             <input
                                 type="text"
                                 name="reported_by"
-                                id="fp_edit_reported_by"
+                                id="edit_reported_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -70,7 +73,7 @@
                             <input
                                 type="date"
                                 name="date_reported"
-                                id="fp_edit_date_reported"
+                                id="edit_date_reported"
                                 class="form-control"
                                 required>
                         </div>
@@ -80,10 +83,10 @@
                             <label class="form-label">Status</label>
                             <select
                                 name="status"
-                                id="fp_edit_status"
+                                id="edit_status"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Status --</option>
+                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
