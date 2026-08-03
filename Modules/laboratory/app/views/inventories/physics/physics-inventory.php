@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="card-body">
-                <table id="heEquipmentTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="phyEquipmentTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -93,7 +93,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#psyEquipmentTable').DataTable({
+        $('#phyEquipmentTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
