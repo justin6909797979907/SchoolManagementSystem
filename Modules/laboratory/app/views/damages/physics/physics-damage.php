@@ -5,7 +5,7 @@
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Damages</h1>
-        <p class="mb-4">Home Economics Laboratory</p>
+        <p class="mb-4">Physics Laboratory</p>
 
         <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -17,12 +17,12 @@
                 <button
                     class="btn btn-primary btn-sm"
                     data-bs-toggle="modal"
-                    data-bs-target="#heAddDamageModal">
+                    data-bs-target="#phyAddDamageModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </button>
             </div>
             <div class="card-body">
-                <table id="heDamageTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="phyDamageTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -95,7 +95,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#heDamageTable').DataTable({
+        $('#phyDamageTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
         });
@@ -106,11 +106,11 @@
     const BASE_URL = "<?= BASE_URL ?>";
 </script>
 
-<script src="<?= BASE_URL ?>/js/heDamage.js"></script>
+<script src="<?= BASE_URL ?>/js/phyDamage.js"></script>
 
-<?php require __DIR__ . '/heAddDamageModal.php'; ?>
-<?php require __DIR__ . '/heEditDamageModal.php'; ?>
-<?php require __DIR__ . '/heViewDamageModal.php'; ?>
+<?php require __DIR__ . '/phyAddDamageModal.php'; ?>
+<?php require __DIR__ . '/phyEditDamageModal.php'; ?>
+<?php require __DIR__ . '/phyViewDamageModal.php'; ?>
 
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>

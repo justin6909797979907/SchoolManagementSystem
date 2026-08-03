@@ -1,14 +1,14 @@
-<div class="modal fade" id="heAddDamageModal" tabindex="-1" aria-labelledby="heAddDamageModalLabel" aria-hidden="true">
+<div class="modal fade" id="phyAddDamageModal" tabindex="-1" aria-labelledby="phyAddDamageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <form
-                id="heAddDamageForm"
-                action="<?= BASE_URL ?>/he_damage/create"
+                id="phyAddDamageForm"
+                action="<?= BASE_URL ?>/physics-damage/create"
                 method="POST">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="heAddDamageModalLabel">
+                    <h5 class="modal-title" id="phyAddDamageModalLabel">
                         <i class="fas fa-plus-square me-2"></i>
                         Add New Damage
                     </h5>
@@ -36,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Home Economics Laboratory"
+                                value="Physics Laboratory"
                                 readonly>
                         </div>
 

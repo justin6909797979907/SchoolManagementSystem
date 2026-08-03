@@ -1,9 +1,9 @@
-<div class="modal fade" id="heViewDamageModal" tabindex="-1" aria-labelledby="heViewDamageModalLabel" aria-hidden="true">
+<div class="modal fade" id="phyViewDamageModal" tabindex="-1" aria-labelledby="phyViewDamageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="heViewDamageModalLabel">
+                <h5 class="modal-title" id="phyViewDamageModalLabel">
                     <i class="fas fa-eye me-2"></i>
                     View Damage Record
                 </h5>
@@ -31,7 +31,7 @@
                             type="text"
                             id="view_laboratory"
                             class="form-control"
-                            value="Home Economics Laboratory"
+                            value="Physics Laboratory"
                             readonly>
                     </div>
 

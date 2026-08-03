@@ -30,12 +30,11 @@ switch ($segments[0] ?? '') {
         }
 
 
-        break;
+        break;  
 
-    case 'damages':
-
-        require_once __DIR__ . '/app/controllers/DamageController.php';
-        $controller = new DamageController();
+    case 'physics-damage':
+        require_once __DIR__ . '/app/controllers/PhyDamageController.php';
+        $controller = new PhyDamageController();
 
         if (!isset($segments[1])) {
             $controller->index();
@@ -46,7 +45,7 @@ switch ($segments[0] ?? '') {
         } elseif ($segments[1] === 'edit' && isset($segments[2])) {
             $controller->edit($segments[2]);
         } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->destroy($segments[2]);
+            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
         }
@@ -400,7 +399,7 @@ switch ($segments[0] ?? '') {
         }
 
         break;
-        
+
 
     case 'lab1-monitoring':
         require_once __DIR__ . '/app/controllers/Lab1MonitoringController.php';
@@ -432,9 +431,23 @@ switch ($segments[0] ?? '') {
         (new HeMonitoringController())->index();
         break;
 
+
     case 'he_damage':
         require_once __DIR__ . '/app/controllers/HeDamageController.php';
-        (new HeDamageController())->index();
+        $controller = new HeDamageController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] == 'create') {
+            $controller->create();
+        } elseif ($segments[1] == 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] == 'update') {
+            $controller->update();
+        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+
         break;
 
     case 'he_borrow':

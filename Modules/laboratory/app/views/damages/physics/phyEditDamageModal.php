@@ -1,16 +1,19 @@
-<div class="modal fade" id="heAddDamageModal" tabindex="-1" aria-labelledby="heAddDamageModalLabel" aria-hidden="true">
+<div class="modal fade" id="phyEditDamageModal" tabindex="-1" aria-labelledby="phyEditDamageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form
-                id="heAddDamageForm"
-                action="<?= BASE_URL ?>/he_damage/create"
+             <form
+                id="phyEditDamageForm"
+                action="<?= BASE_URL ?>/physics-damage/update"
                 method="POST">
 
+                <!-- Hidden ID -->
+                <input type="hidden" name="id" id="edit_id">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="heAddDamageModalLabel">
-                        <i class="fas fa-plus-square me-2"></i>
-                        Add New Damage
+                    <h5 class="modal-title" id="phyEditDamageModalLabel">
+                        <i class="fas fa-edit me-2"></i>
+                        Edit Damage Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -25,6 +28,7 @@
                             <input
                                 type="text"
                                 name="item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -35,8 +39,9 @@
                             <input
                                 type="text"
                                 name="laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
-                                value="Home Economics Laboratory"
+                                value="Physics Laboratory"
                                 readonly>
                         </div>
 
@@ -46,6 +51,7 @@
                             <input
                                 type="text"
                                 name="issue"
+                                id="edit_issue"
                                 class="form-control"
                                 required>
                         </div>
@@ -56,6 +62,7 @@
                             <input
                                 type="text"
                                 name="reported_by"
+                                id="edit_reported_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -66,6 +73,7 @@
                             <input
                                 type="date"
                                 name="date_reported"
+                                id="edit_date_reported"
                                 class="form-control"
                                 required>
                         </div>
@@ -73,7 +81,11 @@
                         <!-- Status -->
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
-                            <select name="status" class="form-select" required>
+                            <select
+                                name="status"
+                                id="edit_status"
+                                class="form-select"
+                                required>
                                 <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
@@ -87,8 +99,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save me-1"></i> Save
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i> Update
                     </button>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
