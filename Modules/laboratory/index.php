@@ -42,8 +42,6 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'edit' && isset($segments[2])) {
-            $controller->edit($segments[2]);
         } elseif ($segments[1] === 'delete' && isset($segments[2])) {
             $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
@@ -465,9 +463,22 @@ switch ($segments[0] ?? '') {
         (new CrimeSceneMonitoringController())->index();
         break;
 
+
     case 'ballistic-monitoring':
         require_once __DIR__ . '/app/controllers/BallisticMonitoringController.php';
-        (new BallisticMonitoringController())->index();
+        $controller = new BallisticMonitoringController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
         break;
 
     case 'question-document-monitoring':
