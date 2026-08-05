@@ -519,9 +519,23 @@ switch ($segments[0] ?? '') {
         }
         break;
 
+
+
     case 'defense-tactics-monitoring':
         require_once __DIR__ . '/app/controllers/DefenseTacticsMonitoringController.php';
-        (new DefenseTacticsMonitoringController())->index();
+        $controller = new DefenseTacticsMonitoringController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
         break;
 
    case 'it-lab3-inventory':

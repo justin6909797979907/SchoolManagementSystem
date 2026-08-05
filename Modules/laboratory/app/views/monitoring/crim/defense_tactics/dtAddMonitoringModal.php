@@ -2,12 +2,15 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="dtAddMonitoringForm" action="<?= BASE_URL ?>/monitoring/create" method="POST">
+            <form
+                id="dtAddMonitoringForm"
+                action="<?= BASE_URL ?>/defense-tactics-monitoring/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="dtAddMonitoringModalLabel">
                         <i class="fas fa-plus me-2"></i>
-                        Add Defense and Tactics Monitoring Record
+                        Add Defense Tactics Monitoring Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -33,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Defense and Tactics Laboratory"
+                                value="Defense Tactics Laboratory"
                                 readonly>
                         </div>
 
@@ -41,10 +44,10 @@
                         <div class="col-md-6">
                             <label class="form-label">Condition</label>
                             <select
-                                name="condition"
+                                name="equipment_condition"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Condition --</option>
+                                <option value="" disabled selected>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
