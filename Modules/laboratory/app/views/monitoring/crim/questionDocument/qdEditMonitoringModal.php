@@ -2,10 +2,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="qdEditMonitoringForm" action="<?= BASE_URL ?>/monitoring/update" method="POST">
+            <form id="qdEditMonitoringForm"
+                action="<?= BASE_URL ?>/question-document-monitoring/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="qd_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="qdEditMonitoringModalLabel">
@@ -25,7 +27,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="qd_edit_item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,7 +38,7 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="qd_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
                                 value="Question Document Laboratory"
                                 readonly>
@@ -46,8 +48,8 @@
                         <div class="col-md-6">
                             <label class="form-label">Condition</label>
                             <select
-                                name="condition"
-                                id="qd_edit_condition"
+                                name="equipment_condition"
+                                id="edit_equipment_condition"
                                 class="form-select"
                                 required>
                                 <option value="" selected disabled>-- Select Condition --</option>
@@ -64,7 +66,7 @@
                             <input
                                 type="date"
                                 name="last_checked"
-                                id="qd_edit_last_checked"
+                                id="edit_last_checked"
                                 class="form-control"
                                 required>
                         </div>
@@ -75,7 +77,7 @@
                             <input
                                 type="text"
                                 name="checked_by"
-                                id="qd_edit_checked_by"
+                                id="edit_checked_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -85,7 +87,7 @@
                             <label class="form-label">Remarks</label>
                             <textarea
                                 name="remarks"
-                                id="qd_edit_remarks"
+                                id="edit_remarks"
                                 class="form-control"
                                 rows="3"
                                 required></textarea>
