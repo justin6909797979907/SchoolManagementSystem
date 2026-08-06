@@ -3,7 +3,7 @@
 
 
 <main class="main-content">
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"> 
         <h1 class="h3 mb-2 text-gray-800">Monitoring</h1>
         <p class="mb-4">IT Laboratory 2</p>
 
@@ -14,7 +14,7 @@
                     Monitoring
                 </div>
 
-                 <button
+                <button
                     class="btn btn-primary btn-sm"
                     data-bs-toggle="modal"
                     data-bs-target="#lab2AddMonitoringModal">
@@ -26,7 +26,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Item</th>
+                            <th>Item Name</th>
                             <th>Laboratory</th>
                             <th>Condition</th>
                             <th>Last Checked</th>
@@ -35,58 +35,55 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-
-                    <tbody>  
+                    <tbody>
+                        <?php foreach($monitorings as $row): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Test</td>
-                            <td>IT Laboratory 2</td>
-                            <td>Working</td>
-                            <td>April 1, 2026</td>
-                            <td>John Doe</td>
-                            <td>Item is functioning properly.</td>
+                            <td><?= $row['id'] ?></td>
+                            <td><?= $row['item_name'] ?></td>
+                            <td><?= $row['laboratory'] ?></td>
+                            <td><?= $row['equipment_condition'] ?></td>
+                            <td><?= $row['last_checked'] ?></td>
+                            <td><?= $row['checked_by'] ?></td>
+                            <td><?= $row['remarks'] ?></td>
 
                             <td>
-                                <div class="dropdown">
+                               <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        Action
+                                            Action
                                     </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <!-- <button class="dropdown-item crimViewBtn" data-id="<?= $inventory['id'] ?>">
-                                                 <i class="fas fa-eye me-2"></i> View
-                                            </button> -->
-                                            <button
-                                                class="dropdown-item"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#lab2ViewMonitoringModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <!-- <button class="dropdown-item crimEdit" data-id="<?= $inventory['id'] ?>">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </button> -->
-                                            <button
-                                                class="dropdown-item"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#lab2EditMonitoringModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <li><a class="dropdown-item text-danger deleteBtn" data-id="<?= $inventory['id'] ?>"><i class="fas fa-trash me-2"></i>Delete</a></li>
-                                        </li>
-                                    </ul>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item viewBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item editBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
                                 </div>
                             </td>
-                            
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
-
                 </table>
             </div>
         </div>
@@ -104,6 +101,12 @@
         });
     });
 </script>
+
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+
+<script src="<?= BASE_URL ?>/js/lab2Monitoring.js"></script>
 
 <?php require __DIR__ . '/lab2AddMonitoringModal.php'; ?>
 <?php require __DIR__ . '/lab2ViewMonitoringModal.php'; ?>

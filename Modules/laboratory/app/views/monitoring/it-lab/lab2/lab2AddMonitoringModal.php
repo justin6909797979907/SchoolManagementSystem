@@ -2,12 +2,15 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="lab2AddMonitoringForm" action="<?= BASE_URL ?>/monitoring/create" method="POST">
+            <form
+                id="lab2AddMonitoringForm"
+                action="<?= BASE_URL ?>/lab2-monitoring/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="lab2AddMonitoringModalLabel">
                         <i class="fas fa-plus me-2"></i>
-                        Add IT Laboratory 2 Monitoring Record
+                        Add Lab 2 Monitoring Record
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -33,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="IT Laboratory 2"
+                                value="IT Lab 2"
                                 readonly>
                         </div>
 
@@ -41,10 +44,10 @@
                         <div class="col-md-6">
                             <label class="form-label">Condition</label>
                             <select
-                                name="condition"
+                                name="equipment_condition"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Condition --</option>
+                                <option value="" disabled selected>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
