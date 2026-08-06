@@ -2,10 +2,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="heEditMonitoringForm" action="<?= BASE_URL ?>/monitoring/update" method="POST">
+            <form id="heEditMonitoringForm"
+                action="<?= BASE_URL ?>/he_monitoring/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="he_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="heEditMonitoringModalLabel">
@@ -25,7 +27,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="he_edit_item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,9 +38,9 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="he_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
-                                value="HE Laboratory"
+                                value="HE Lab"
                                 readonly>
                         </div>
 
@@ -46,11 +48,11 @@
                         <div class="col-md-6">
                             <label class="form-label">Condition</label>
                             <select
-                                name="condition"
-                                id="he_edit_condition"
+                                name="equipment_condition"
+                                id="edit_equipment_condition"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Condition --</option>
+                                <option value="" selected disabled>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
@@ -64,7 +66,7 @@
                             <input
                                 type="date"
                                 name="last_checked"
-                                id="he_edit_last_checked"
+                                id="edit_last_checked"
                                 class="form-control"
                                 required>
                         </div>
@@ -75,7 +77,7 @@
                             <input
                                 type="text"
                                 name="checked_by"
-                                id="he_edit_checked_by"
+                                id="edit_checked_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -85,7 +87,7 @@
                             <label class="form-label">Remarks</label>
                             <textarea
                                 name="remarks"
-                                id="he_edit_remarks"
+                                id="edit_remarks"
                                 class="form-control"
                                 rows="3"
                                 required></textarea>
