@@ -2,10 +2,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="psyEditMonitoringForm" action="<?= BASE_URL ?>/monitoring/update" method="POST">
+            <form id="psyEditMonitoringForm"
+                action="<?= BASE_URL ?>/psy_monitoring/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="psy_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyEditMonitoringModalLabel">
@@ -25,7 +27,7 @@
                             <input
                                 type="text"
                                 name="item_name"
-                                id="psy_edit_item_name"
+                                id="edit_item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -36,9 +38,9 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="psy_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
-                                value="Psychology Laboratory"
+                                value="Psychology Lab"
                                 readonly>
                         </div>
 
@@ -46,8 +48,8 @@
                         <div class="col-md-6">
                             <label class="form-label">Condition</label>
                             <select
-                                name="condition"
-                                id="psy_edit_condition"
+                                name="equipment_condition"
+                                id="edit_equipment_condition"
                                 class="form-select"
                                 required>
                                 <option value="" selected disabled>-- Select Condition --</option>
@@ -64,7 +66,7 @@
                             <input
                                 type="date"
                                 name="last_checked"
-                                id="psy_edit_last_checked"
+                                id="edit_last_checked"
                                 class="form-control"
                                 required>
                         </div>
@@ -75,7 +77,7 @@
                             <input
                                 type="text"
                                 name="checked_by"
-                                id="psy_edit_checked_by"
+                                id="edit_checked_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -85,7 +87,7 @@
                             <label class="form-label">Remarks</label>
                             <textarea
                                 name="remarks"
-                                id="psy_edit_remarks"
+                                id="edit_remarks"
                                 class="form-control"
                                 rows="3"
                                 required></textarea>

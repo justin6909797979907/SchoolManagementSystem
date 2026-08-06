@@ -19,7 +19,7 @@
                         <label class="form-label">Item Name</label>
                         <input
                             type="text"
-                            id="psy_view_item_name"
+                            id="view_item_name"
                             class="form-control"
                             readonly>
                     </div>
@@ -29,7 +29,7 @@
                         <label class="form-label">Laboratory</label>
                         <input
                             type="text"
-                            id="psy_view_laboratory"
+                            id="view_laboratory"
                             class="form-control"
                             readonly>
                     </div>
@@ -37,11 +37,15 @@
                     <!-- Condition -->
                     <div class="col-md-6">
                         <label class="form-label">Condition</label>
-                        <input
-                            type="text"
-                            id="psy_view_condition"
-                            class="form-control"
-                            readonly>
+                        <select
+                            id="view_condition"
+                            class="form-select"
+                            disabled>
+                            <option value="Working">Working</option>
+                            <option value="Under Maintenance">Under Maintenance</option>
+                            <option value="Damaged">Damaged</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
                     </div>
 
                     <!-- Last Checked -->
@@ -49,7 +53,7 @@
                         <label class="form-label">Last Checked</label>
                         <input
                             type="date"
-                            id="psy_view_last_checked"
+                            id="view_last_checked"
                             class="form-control"
                             readonly>
                     </div>
@@ -59,7 +63,7 @@
                         <label class="form-label">Checked By</label>
                         <input
                             type="text"
-                            id="psy_view_checked_by"
+                            id="view_checked_by"
                             class="form-control"
                             readonly>
                     </div>
@@ -68,7 +72,7 @@
                     <div class="col-12">
                         <label class="form-label">Remarks</label>
                         <textarea
-                            id="psy_view_remarks"
+                            id="view_remarks"
                             class="form-control"
                             rows="3"
                             readonly></textarea>

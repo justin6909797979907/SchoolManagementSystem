@@ -49,7 +49,7 @@
                         <a href="<?= BASE_URL ?>/physics-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'physics-inventory' ? "active" :  "" ?>">Inventory</a>
                         <a href="<?= BASE_URL ?>/physics-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'physics-damage' ? "active" :  "" ?>">Damage</a>
                         <a href="<?= BASE_URL ?>/borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'borrow' ? "active" :  "" ?>">Borrow</a>
-                        <a href="<?= BASE_URL ?>/phys_monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'phys_monitoring' ? "active" :  "" ?>">Monitoring</a>
+                        <a href="<?= BASE_URL ?>/phys-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'phys-monitoring' ? "active" :  "" ?>">Monitoring</a>
                     </div>
 
                     <a class="dropdown-item menu-link text-white d-flex justify-content-between align-items-center collapsed"

@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="psyAddMonitoringForm" action="<?= BASE_URL ?>/monitoring/create" method="POST">
+            <form
+                id="psyAddMonitoringForm"
+                action="<?= BASE_URL ?>/psy_monitoring/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyAddMonitoringModalLabel">
@@ -33,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Psychology Laboratory"
+                                value="Psychology Lab"
                                 readonly>
                         </div>
 
@@ -41,10 +44,10 @@
                         <div class="col-md-6">
                             <label class="form-label">Condition</label>
                             <select
-                                name="condition"
+                                name="equipment_condition"
                                 class="form-select"
                                 required>
-                                <option value="">-- Select Condition --</option>
+                                <option value="" disabled selected>-- Select Condition --</option>
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>

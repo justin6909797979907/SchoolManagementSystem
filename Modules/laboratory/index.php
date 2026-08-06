@@ -122,12 +122,20 @@ switch ($segments[0] ?? '') {
 
         break;
 
-    case 'phys_monitoring':
-        require_once __DIR__ . '/app/controllers/PhysMonitorController.php';
-        $controller = new PhysMonitorController();
+    case 'phys-monitoring':
+        require_once __DIR__ . '/app/controllers/PhysMonitoringController.php';
+        $controller = new PhysMonitoringController();
 
         if (!isset($segments[1])) {
             $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
         }
 
         break;
@@ -453,10 +461,24 @@ switch ($segments[0] ?? '') {
 
         break;
 
+
     case 'psy_monitoring':
-        require_once __DIR__ . '/app/controllers/PsyMonitoringController.php';
-        (new PsyMonitoringController())->index();
-        break;
+         require_once __DIR__ . '/app/controllers/PsyMonitoringController.php';
+        $controller = new PsyMonitoringController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+
+        break;    
 
     case 'psy_borrow':
         require_once __DIR__ . '/app/controllers/PsyBorrowController.php';
