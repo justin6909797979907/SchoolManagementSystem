@@ -7,7 +7,10 @@
                     <i class="fas fa-eye me-2"></i>
                     View Borrow Record
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body">
@@ -83,7 +86,7 @@
                             disabled>
                             <option value="Borrowed">Borrowed</option>
                             <option value="Returned">Returned</option>
-                            <option value="Overdue">Overdue</option>
+                            <option value="Unavailable">Unavailable</option>
                         </select>
                     </div>
 
@@ -92,9 +95,15 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    <i class="fas fa-times me-1"></i> Close
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i>
+                    Close
                 </button>
+
             </div>
 
         </div>

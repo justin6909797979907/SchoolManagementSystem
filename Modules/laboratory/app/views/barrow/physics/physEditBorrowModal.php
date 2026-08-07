@@ -2,22 +2,39 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="physEditBorrowForm" action="<?= BASE_URL ?>/borrow/update" method="POST">
+            <form
+                id="physEditBorrowForm"
+                action="<?= BASE_URL ?>/borrow/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="physEdit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="physEditBorrowModalLabel">
                         <i class="fas fa-edit me-2"></i>
                         Edit Borrow Record
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                    <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
 
                     <div class="row g-3">
+
+                        <!-- Item Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Item Name</label>
+                            <input
+                                type="text"
+                                name="item_name"
+                                id="edit_item_name"
+                                class="form-control"
+                                required>
+                        </div>
 
                         <!-- Laboratory -->
                         <div class="col-md-6">
@@ -27,7 +44,6 @@
                                 name="laboratory"
                                 id="edit_laboratory"
                                 class="form-control"
-                                value="Physics Laboratory"
                                 readonly>
                         </div>
 
@@ -42,13 +58,13 @@
                                 required>
                         </div>
 
-                        <!-- Item Name -->
+                        <!-- Reported By -->
                         <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
+                            <label class="form-label">Reported By</label>
                             <input
                                 type="text"
-                                name="item_name"
-                                id="edit_item_name"
+                                name="reported_by"
+                                id="edit_reported_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -61,7 +77,6 @@
                                 name="quantity"
                                 id="edit_quantity"
                                 class="form-control"
-                                min="1"
                                 required>
                         </div>
 
@@ -94,10 +109,11 @@
                                 id="edit_status"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Condition --</option>
+
                                 <option value="Borrowed">Borrowed</option>
                                 <option value="Returned">Returned</option>
-                                <option value="Overdue">Overdue</option>
+                                <option value="Unavailable">Unavailable</option>
+
                             </select>
                         </div>
 
@@ -106,13 +122,21 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-save me-1"></i> Update
+
+                    <button
+                        type="submit"
+                        class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i>
+                        Update
                     </button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
                         Cancel
                     </button>
+
                 </div>
 
             </form>

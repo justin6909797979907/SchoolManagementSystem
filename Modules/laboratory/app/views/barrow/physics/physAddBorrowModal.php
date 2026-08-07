@@ -1,13 +1,16 @@
-<div class="modal fade" id="createBorrowModal" tabindex="-1" aria-labelledby="createBorrowModalLabel" aria-hidden="true">
+<div class="modal fade" id="physAddBorrowModal" tabindex="-1" aria-labelledby="physAddBorrowModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="createBorrowForm" action="<?= BASE_URL ?>/borrow/create" method="POST">
+            <form
+                id="physAddBorrowForm"
+                action="<?= BASE_URL ?>/borrow/create"
+                method="POST">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="physCreateBorrowModalLabel">
-                        <i class="fas fa-hand-holding me-2"></i>
-                        Add Borrow Record
+                    <h5 class="modal-title" id="physAddBorrowModalLabel">
+                        <i class="fas fa-plus-square me-2"></i>
+                        Add New Borrow
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -16,6 +19,16 @@
 
                     <div class="row g-3">
 
+                        <!-- Item Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Item Name</label>
+                            <input
+                                type="text"
+                                name="item_name"
+                                class="form-control"
+                                required>
+                        </div>
+
                         <!-- Laboratory -->
                         <div class="col-md-6">
                             <label class="form-label">Laboratory</label>
@@ -23,7 +36,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Ballistics Laboratory"
+                                value="Physics Laboratory"
                                 readonly>
                         </div>
 
@@ -37,12 +50,12 @@
                                 required>
                         </div>
 
-                        <!-- Item Name -->
+                        <!-- Reported By -->
                         <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
+                            <label class="form-label">Reported By</label>
                             <input
                                 type="text"
-                                name="item_name"
+                                name="reported_by"
                                 class="form-control"
                                 required>
                         </div>
@@ -80,14 +93,11 @@
                         <!-- Status -->
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
-                            <select
-                                name="status"
-                                class="form-select"
-                                required>
-                                <option value="">-- Select Status --</option>
-                                <option value="Borrowed">Borrowed</option>
+                            <select name="status" class="form-select" required>
+                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Returned">Returned</option>
-                                <option value="Overdue">Overdue</option>
+                                <option value="Borrowed">Borrowed</option>
+                                <option value="Unavailable">Unavailable</option>
                             </select>
                         </div>
 

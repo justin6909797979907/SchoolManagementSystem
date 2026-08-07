@@ -5,18 +5,21 @@
 
 
 <main class="main-content">
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4"> 
         <h1 class="h3 mb-2 text-gray-800">Borrows</h1>
         <p class="mb-4">Physics Laboratory</p>
 
-        <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3" id="#createBorrowModal">
+        <div class="card mb-4 card shadow-sm border-0 border-top border-4 border-secondary shadow-lg p-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <i class="fas fa-table me-1"></i>
-                    Barrow Equipment
+                    Borrows
                 </div>
 
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createBorrowModal">
+                <button
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#physAddBorrowModal">
                     <i class="fas fa-plus me-1"></i> Create New
                 </button>
 
@@ -30,61 +33,73 @@
                             <th>Borrower Name</th>
                             <th>Item Name</th>
                             <th>Quantity</th>
-                            <th>Barrowed Date</th>
+                            <th>Borrowed Date</th>
                             <th>Returned Date</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($borrows as $row): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Physics Lab</td>
-                            <td>Juan</td>
-                            <td>Physics Equipment</td>
-                            <td>5</td>
-                            <td>2026-03-27</td>
-                            <td>2026-03-27</td>
+                            <td><?= $row['id'] ?></td>
+                            <td><?= $row['laboratory'] ?></td>
+                            <td><?= $row['borrower_name'] ?></td>
+                            <td><?= $row['item_name'] ?></td>
+                            <td><?= $row['quantity'] ?></td>
+                            <td><?= $row['borrowed_date'] ?></td>
+                            <td><?= $row['returned_date'] ?></td>
                             <td>
-                                <span class="badge bg-success">Returned</span>
+                                <?php if ($row['status'] == 'Returned'): ?>
+                                    <span class="badge bg-success">Returned</span>
+                                <?php elseif ($row['status'] == 'Borrowed'): ?>
+                                    <span class="badge bg-warning text-dark">Borrowed</span>
+                                <?php else: ?>
+                                    <span class="badge bg-secondary"><?= $row['status'] ?></span>
+                                <?php endif; ?>
                             </td>
+
                             <td>
-                                <div class="dropdown">
+                               <div class="dropdown">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        Action
+                                            Action
                                     </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                              <a class="dropdown-item physEditBtn"
-                                                href="#"
-                                                data-id="1"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#physViewBorrowModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item physEditBtn"
-                                                href="#"
-                                                data-id="1"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#physEditBorrowModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
-                                                onclick="return confirm('Are you sure you want to delete this record?')">
-                                                <i class="fas fa-trash me-2"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item viewBtn"
+                                                    data-id="<?= $row['id']; ?>"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#physViewBorrowModal">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item editBtn"
+                                                    data-id="<?= $row['id']; ?>"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#physEditBorrowModal">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
                                 </div>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -104,8 +119,15 @@
     });
 </script>
 
-<?php require __DIR__ . '/physAdd-borrow-modal.php'; ?>
-<?php require __DIR__ . '/physEdit-borrow-modal.php'; ?>
-<?php require __DIR__ . '/physView-borrow-modal.php'; ?>
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+
+<script src="<?= BASE_URL ?>/js/physBorrow.js"></script>
+
+<?php require __DIR__ . '/physAddBorrowModal.php'; ?>
+<?php require __DIR__ . '/physViewBorrowModal.php'; ?>
+<?php require __DIR__ . '/physEditBorrowModal.php'; ?>
+
 
 <?php include  __DIR__ . '/../../includes/footer.php'; ?>
