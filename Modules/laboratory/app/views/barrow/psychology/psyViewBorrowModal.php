@@ -7,7 +7,10 @@
                     <i class="fas fa-eye me-2"></i>
                     View Borrow Record
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body">
@@ -19,7 +22,7 @@
                         <label class="form-label">Laboratory</label>
                         <input
                             type="text"
-                            id="psy_view_laboratory"
+                            id="view_laboratory"
                             class="form-control"
                             readonly>
                     </div>
@@ -29,7 +32,7 @@
                         <label class="form-label">Borrower Name</label>
                         <input
                             type="text"
-                            id="psy_view_borrower_name"
+                            id="view_borrower_name"
                             class="form-control"
                             readonly>
                     </div>
@@ -39,7 +42,7 @@
                         <label class="form-label">Item Name</label>
                         <input
                             type="text"
-                            id="psy_view_item_name"
+                            id="view_item_name"
                             class="form-control"
                             readonly>
                     </div>
@@ -49,7 +52,7 @@
                         <label class="form-label">Quantity</label>
                         <input
                             type="number"
-                            id="psy_view_quantity"
+                            id="view_quantity"
                             class="form-control"
                             readonly>
                     </div>
@@ -59,7 +62,7 @@
                         <label class="form-label">Borrowed Date</label>
                         <input
                             type="date"
-                            id="psy_view_borrowed_date"
+                            id="view_borrowed_date"
                             class="form-control"
                             readonly>
                     </div>
@@ -69,7 +72,7 @@
                         <label class="form-label">Returned Date</label>
                         <input
                             type="date"
-                            id="psy_view_returned_date"
+                            id="view_returned_date"
                             class="form-control"
                             readonly>
                     </div>
@@ -78,12 +81,12 @@
                     <div class="col-md-6">
                         <label class="form-label">Status</label>
                         <select
-                            id="psy_view_status"
+                            id="view_status"
                             class="form-select"
                             disabled>
                             <option value="Borrowed">Borrowed</option>
                             <option value="Returned">Returned</option>
-                            <option value="Overdue">Overdue</option>
+                            <option value="Unavailable">Unavailable</option>
                         </select>
                     </div>
 
@@ -92,12 +95,15 @@
             </div>
 
             <div class="modal-footer">
+
                 <button
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal">
-                    <i class="fas fa-times me-1"></i> Close
+                    <i class="fas fa-times me-1"></i>
+                    Close
                 </button>
+
             </div>
 
         </div>

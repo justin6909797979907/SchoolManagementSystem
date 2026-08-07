@@ -58,17 +58,6 @@
                                 required>
                         </div>
 
-                        <!-- Reported By -->
-                        <div class="col-md-6">
-                            <label class="form-label">Reported By</label>
-                            <input
-                                type="text"
-                                name="reported_by"
-                                id="edit_reported_by"
-                                class="form-control"
-                                required>
-                        </div>
-
                         <!-- Quantity -->
                         <div class="col-md-6">
                             <label class="form-label">Quantity</label>

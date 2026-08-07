@@ -2,12 +2,15 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="psyAddBorrowForm" action="<?= BASE_URL ?>/borrow/create" method="POST">
+            <form
+                id="psyAddBorrowForm"
+                action="<?= BASE_URL ?>/psy_borrow/create"
+                method="POST">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyAddBorrowModalLabel">
-                        <i class="fas fa-hand-holding me-2"></i>
-                        Add Borrow Record
+                        <i class="fas fa-plus-square me-2"></i>
+                        Add New Borrow
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -15,6 +18,16 @@
                 <div class="modal-body">
 
                     <div class="row g-3">
+
+                        <!-- Item Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Item Name</label>
+                            <input
+                                type="text"
+                                name="item_name"
+                                class="form-control"
+                                required>
+                        </div>
 
                         <!-- Laboratory -->
                         <div class="col-md-6">
@@ -33,16 +46,6 @@
                             <input
                                 type="text"
                                 name="borrower_name"
-                                class="form-control"
-                                required>
-                        </div>
-
-                        <!-- Item Name -->
-                        <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
-                            <input
-                                type="text"
-                                name="item_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -80,14 +83,11 @@
                         <!-- Status -->
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
-                            <select
-                                name="status"
-                                class="form-select"
-                                required>
-                                <option value="" disabled selected>-- Select Status --</option>
-                                <option value="Borrowed">Borrowed</option>
+                            <select name="status" class="form-select" required>
+                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Returned">Returned</option>
-                                <option value="Overdue">Overdue</option>
+                                <option value="Borrowed">Borrowed</option>
+                                <option value="Unavailable">Unavailable</option>
                             </select>
                         </div>
 

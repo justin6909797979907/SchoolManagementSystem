@@ -2,22 +2,39 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <form id="psyEditBorrowForm" action="<?= BASE_URL ?>/borrow/update" method="POST">
+            <form
+                id="psyEditBorrowForm"
+                action="<?= BASE_URL ?>/psy_borrow/update"
+                method="POST">
 
                 <!-- Hidden ID -->
-                <input type="hidden" name="id" id="psy_edit_id">
+                <input type="hidden" name="id" id="edit_id">
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyEditBorrowModalLabel">
                         <i class="fas fa-edit me-2"></i>
                         Edit Borrow Record
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                    <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
 
                     <div class="row g-3">
+
+                        <!-- Item Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Item Name</label>
+                            <input
+                                type="text"
+                                name="item_name"
+                                id="edit_item_name"
+                                class="form-control"
+                                required>
+                        </div>
 
                         <!-- Laboratory -->
                         <div class="col-md-6">
@@ -25,9 +42,8 @@
                             <input
                                 type="text"
                                 name="laboratory"
-                                id="psy_edit_laboratory"
+                                id="edit_laboratory"
                                 class="form-control"
-                                value="Psychology Laboratory"
                                 readonly>
                         </div>
 
@@ -37,18 +53,7 @@
                             <input
                                 type="text"
                                 name="borrower_name"
-                                id="psy_edit_borrower_name"
-                                class="form-control"
-                                required>
-                        </div>
-
-                        <!-- Item Name -->
-                        <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
-                            <input
-                                type="text"
-                                name="item_name"
-                                id="psy_edit_item_name"
+                                id="edit_borrower_name"
                                 class="form-control"
                                 required>
                         </div>
@@ -59,9 +64,8 @@
                             <input
                                 type="number"
                                 name="quantity"
-                                id="psy_edit_quantity"
+                                id="edit_quantity"
                                 class="form-control"
-                                min="1"
                                 required>
                         </div>
 
@@ -71,7 +75,7 @@
                             <input
                                 type="date"
                                 name="borrowed_date"
-                                id="psy_edit_borrowed_date"
+                                id="edit_borrowed_date"
                                 class="form-control"
                                 required>
                         </div>
@@ -82,7 +86,7 @@
                             <input
                                 type="date"
                                 name="returned_date"
-                                id="psy_edit_returned_date"
+                                id="edit_returned_date"
                                 class="form-control">
                         </div>
 
@@ -91,13 +95,13 @@
                             <label class="form-label">Status</label>
                             <select
                                 name="status"
-                                id="psy_edit_status"
+                                id="edit_status"
                                 class="form-select"
                                 required>
-                                <option value="" selected disabled>-- Select Status --</option>
                                 <option value="Borrowed">Borrowed</option>
                                 <option value="Returned">Returned</option>
                                 <option value="Overdue">Overdue</option>
+
                             </select>
                         </div>
 
@@ -106,13 +110,21 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-save me-1"></i> Update
+
+                    <button
+                        type="submit"
+                        class="btn btn-warning">
+                        <i class="fas fa-save me-1"></i>
+                        Update
                     </button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
                         Cancel
                     </button>
+
                 </div>
 
             </form>

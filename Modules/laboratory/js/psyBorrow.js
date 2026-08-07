@@ -7,7 +7,7 @@ document.addEventListener("click", function (e) {
 
   let id = btn.dataset.id;
 
-  fetch(`${BASE_URL}/borrow/view/${id}`)
+  fetch(`${BASE_URL}/psy_borrow/view/${id}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -22,7 +22,7 @@ document.addEventListener("click", function (e) {
       document.getElementById("edit_status").value = data.status;
 
       let editModal = new bootstrap.Modal(
-        document.getElementById("physEditMonitoringModal"),
+        document.getElementById("psyEditBorrowModal"),
       );
 
       editModal.show();
@@ -40,7 +40,7 @@ document.addEventListener("click", function (e) {
 
   let id = btn.dataset.id;
 
-  fetch(`${BASE_URL}/borrow/view/${id}`)
+  fetch(`${BASE_URL}/psy_borrow/view/${id}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -54,7 +54,7 @@ document.addEventListener("click", function (e) {
       document.getElementById("view_status").value = data.status;
 
       const viewModal = new bootstrap.Modal(
-        document.getElementById("physViewMonitoringModal"),
+        document.getElementById("psyViewBorrowModal"),
       );
 
       viewModal.show();
@@ -73,6 +73,6 @@ document.addEventListener("click", function (e) {
   let id = btn.dataset.id;
 
   if (confirm("Are you sure you want to delete this inventory?")) {
-    window.location.href = `${BASE_URL}/borrow/delete/${id}`;
+    window.location.href = `${BASE_URL}/psy_borrow/delete/${id}`;
   }
 });
