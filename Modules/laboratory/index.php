@@ -238,11 +238,50 @@ switch ($segments[0] ?? '') {
         (new PhysBrwController())->index();
         break;
 
-    case 'schedule':
-        require_once __DIR__ . '/app/controllers/ScheduleController.php';
-        (new ScheduleController())->index();
-        break;
 
+    case 'schedule':
+
+    require_once __DIR__ . '/app/controllers/ScheduleController.php';
+
+    $controller = new ScheduleController();
+
+    // /schedule
+    if (!isset($segments[1])) {
+
+        $controller->index();
+
+    }
+
+    // /schedule/create
+    elseif ($segments[1] === 'create') {
+
+        $controller->create();
+
+    }
+
+    // /schedule/view/5
+    elseif ($segments[1] === 'view' && isset($segments[2])) {
+
+        $controller->view($segments[2]);
+
+    }
+
+    // /schedule/update/5
+    elseif ($segments[1] === 'update' && isset($segments[2])) {
+
+        $controller->update($segments[2]);
+
+    }
+
+    // /schedule/delete/5
+    elseif ($segments[1] === 'delete' && isset($segments[2])) {
+
+        $controller->delete($segments[2]);
+
+    }
+
+    break;
+    
 
     case 'it_damage':
         require_once __DIR__ . '/app/controllers/ItDmgController.php';
