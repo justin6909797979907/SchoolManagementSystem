@@ -174,5 +174,6 @@
 
 <?php require __DIR__ . '/addScheduleModal.php'; ?>
 <?php require __DIR__ . '/scheduleEditModal.php'; ?>
+<?php require __DIR__ . '/scheduleViewModal.php'; ?>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
