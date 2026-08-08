@@ -329,3 +329,65 @@ function formatTime(time) {
 
   return `${hours}:${minutes} ${ampm}`;
 }
+
+//delete schedule
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".deleteBtn");
+
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const id = btn.dataset.id;
+
+  console.log("Deleting schedule ID:", id);
+
+  if (!id) {
+    alert("Schedule ID is missing.");
+    return;
+  }
+
+  if (!confirm("Are you sure you want to delete this schedule?")) {
+    return;
+  }
+
+  fetch(`${BASE_URL}/schedule/delete/${id}`, {
+    method: "POST",
+  })
+    .then(async (response) => {
+      const text = await response.text();
+
+      console.log("HTTP STATUS:", response.status);
+      console.log("SERVER RESPONSE:", text);
+
+      let data;
+
+      try {
+        data = JSON.parse(text);
+      } catch (error) {
+        throw new Error("Server returned invalid JSON:\n\n" + text);
+      }
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to delete schedule.");
+      }
+
+      return data;
+    })
+    .then((data) => {
+      console.log("DELETE RESPONSE:", data);
+
+      if (data.success) {
+        alert("Schedule deleted successfully!");
+
+        location.reload();
+      } else {
+        alert(data.message || data.error || "Failed to delete schedule.");
+      }
+    })
+    .catch((error) => {
+      console.error("DELETE SCHEDULE ERROR:", error);
+
+      alert(error.message);
+    });
+});
