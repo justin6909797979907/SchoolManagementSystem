@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2026 at 12:31 PM
+-- Generation Time: Aug 08, 2026 at 07:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -165,6 +165,14 @@ CREATE TABLE `chemistry_lab_monitoring` (
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `chemistry_lab_monitoring`
+--
+
+INSERT INTO `chemistry_lab_monitoring` (`id`, `item_name`, `laboratory`, `equipment_condition`, `last_checked`, `checked_by`, `remarks`) VALUES
+(1, 'fgnhjgkljhd', 'Chemistry Laboratory', 'Working', '2026-08-05', 'ertheklrthjsdfads', 'oreitjuyioptyhitorehg'),
+(2, 'asdfasd', 'Chemistry Laboratory', 'Unavailable', '2026-08-05', 'dffadscvzcx', 'sdfasdfads');
+
 -- --------------------------------------------------------
 
 --
@@ -237,6 +245,13 @@ CREATE TABLE `crime_lab_monitoring` (
   `remarks` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `crime_lab_monitoring`
+--
+
+INSERT INTO `crime_lab_monitoring` (`id`, `item_name`, `laboratory`, `equipment_condition`, `last_checked`, `checked_by`, `remarks`) VALUES
+(1, 'afdasdf', 'Crime Scene Laboratory', 'Working', '2026-08-06', 'asdfsda', 'try');
+
 -- --------------------------------------------------------
 
 --
@@ -308,6 +323,13 @@ CREATE TABLE `defense_lab_monitoring` (
   `checked_by` varchar(100) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `defense_lab_monitoring`
+--
+
+INSERT INTO `defense_lab_monitoring` (`id`, `item_name`, `laboratory`, `equipment_condition`, `last_checked`, `checked_by`, `remarks`) VALUES
+(1, 'sdfsda', 'Defense Tactics Laboratory', 'Working', '2026-08-06', 'asdfads', 'sdfgsfdg');
 
 -- --------------------------------------------------------
 
@@ -391,6 +413,14 @@ CREATE TABLE `fingerprint_lab_monitoring` (
   `checked_by` varchar(100) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fingerprint_lab_monitoring`
+--
+
+INSERT INTO `fingerprint_lab_monitoring` (`id`, `item_name`, `laboratory`, `equipment_condition`, `last_checked`, `checked_by`, `remarks`) VALUES
+(1, 'saddfasd', 'Fingerprint Laboratory', 'Under Maintenance', '2026-08-06', 'sdfadsczdcascsac', 'asdfxcsdffEW'),
+(2, 'ADSFADSCASD', 'Fingerprint Laboratory', 'Working', '2026-08-06', 'sadffsdfvxdv', 'dfsdcddvgrzs');
 
 -- --------------------------------------------------------
 
@@ -691,13 +721,84 @@ INSERT INTO `it_lab3_inventory` (`id`, `item_name`, `category`, `laboratory`, `t
 
 CREATE TABLE `it_lab3_monitoring` (
   `id` int(11) NOT NULL,
-  `item_name` varchar(100) NOT NULL,
-  `laboratory` varchar(100) NOT NULL,
-  `equipment_condition` varchar(100) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `laboratory` varchar(255) NOT NULL,
+  `equipment_condition` varchar(255) NOT NULL,
   `last_checked` date NOT NULL DEFAULT current_timestamp(),
-  `checked_by` varchar(100) NOT NULL,
+  `checked_by` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laboratories`
+--
+
+CREATE TABLE `laboratories` (
+  `lab_id` int(11) NOT NULL,
+  `laboratory_name` varchar(100) NOT NULL,
+  `building` varchar(100) DEFAULT NULL,
+  `floor` varchar(20) DEFAULT NULL,
+  `room_number` varchar(20) DEFAULT NULL,
+  `capacity` int(11) DEFAULT NULL,
+  `status` enum('Available','Maintenance','Closed') DEFAULT 'Available',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `laboratories`
+--
+
+INSERT INTO `laboratories` (`lab_id`, `laboratory_name`, `building`, `floor`, `room_number`, `capacity`, `status`, `created_at`) VALUES
+(1, 'IT Laboratory 1', NULL, '2nd Floor', NULL, NULL, 'Available', '2026-08-08 02:44:27'),
+(2, 'Psychology Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(3, 'HE Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(4, 'Chemistry Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(5, 'Fingerprint Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(6, 'Crime Scene Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(7, 'Ballistics Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(8, 'Questioned Documents Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(9, 'Defense and Tactics Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(10, 'Physics Laboratory', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(11, 'IT Laboratory 2', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27'),
+(12, 'IT Laboratory 3', NULL, NULL, NULL, NULL, 'Available', '2026-08-08 10:13:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laboratory_schedule`
+--
+
+CREATE TABLE `laboratory_schedule` (
+  `schedule_id` int(11) NOT NULL,
+  `lab_id` int(11) NOT NULL,
+  `subject_code` varchar(20) DEFAULT NULL,
+  `subject_name` varchar(100) DEFAULT NULL,
+  `instructor` varchar(100) DEFAULT NULL,
+  `section` varchar(50) DEFAULT NULL,
+  `day` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') DEFAULT NULL,
+  `start_time` time DEFAULT NULL,
+  `end_time` time DEFAULT NULL,
+  `semester` enum('1st','2nd','Summer') DEFAULT NULL,
+  `school_year` varchar(20) DEFAULT NULL,
+  `status` enum('Scheduled','Completed','Cancelled') DEFAULT 'Scheduled',
+  `remarks` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `laboratory_schedule`
+--
+
+INSERT INTO `laboratory_schedule` (`schedule_id`, `lab_id`, `subject_code`, `subject_name`, `instructor`, `section`, `day`, `start_time`, `end_time`, `semester`, `school_year`, `status`, `remarks`, `created_at`) VALUES
+(5, 1, 'Cap2', 'Capstone', 'Doe John', 'BSIS 1101', 'Tuesday', '22:00:00', '13:00:00', '2nd', '2025-2026', 'Scheduled', 'This is thesis', '2026-08-08 08:31:37'),
+(9, 1, 'sdfasdf', 'dsffadsf', 'dfadsfasd', 'asdfads', 'Wednesday', '07:00:00', '10:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasd', '2026-08-08 08:59:48'),
+(14, 2, 'asdfad', 'dfgadfs', 'asdfasd', 'asdfas', 'Monday', '06:00:00', '07:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasfas', '2026-08-08 10:03:54'),
+(15, 1, 'sadfasd', 'sdfasd', 'asdfasd', 'asdfads', 'Monday', '18:00:00', '07:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasddasd', '2026-08-08 10:04:38'),
+(16, 2, 'Pasdfa', 'asdfa', 'asdfa', 'asdfa', 'Thursday', '11:00:00', '13:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasfdas', '2026-08-08 10:14:16'),
+(17, 12, 'asdfasdf', 'sdfas', 'fasddfdasd', 'dafasd', 'Tuesday', '06:26:00', '07:26:00', '1st', '2025-2026', 'Completed', 'asdfasdf', '2026-08-08 10:26:15'),
+(18, 10, 'asddfasd', 'fafsdgasd', 'sadfasd', 'sdfgadgfa', 'Monday', '06:42:00', '07:43:00', '2nd', '2025-2026', 'Scheduled', 'sdfSDFASF', '2026-08-08 10:43:11');
 
 -- --------------------------------------------------------
 
@@ -707,7 +808,7 @@ CREATE TABLE `it_lab3_monitoring` (
 
 CREATE TABLE `phys_lab_borrow` (
   `id` int(11) NOT NULL,
-  `laboratory` int(100) NOT NULL,
+  `laboratory` varchar(255) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
@@ -715,6 +816,13 @@ CREATE TABLE `phys_lab_borrow` (
   `returned_date` date NOT NULL DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `phys_lab_borrow`
+--
+
+INSERT INTO `phys_lab_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `quantity`, `borrowed_date`, `returned_date`, `status`) VALUES
+(8, 'Physics Laboratory', 'asdfadsf', 'fafdasd', 2, '2026-08-08', '2026-08-08', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -737,8 +845,7 @@ CREATE TABLE `phys_lab_damage` (
 --
 
 INSERT INTO `phys_lab_damage` (`id`, `item_name`, `laboratory`, `issue`, `reported_by`, `date_reported`, `status`) VALUES
-(3, 'adf', 'fsdf', 'adfad', 'aafad', '2026-08-03', 'Working'),
-(8, 'sfdgsdfg', 'Questioned Document Laboratory', 'sdfgdsfg', 'fgsdfgsdf', '2026-08-03', 'Under Maintenance');
+(10, 'wefasd', 'Physics Laboratory', 'asdfasd', 'asdfadsf', '2026-08-08', 'Damaged');
 
 -- --------------------------------------------------------
 
@@ -787,6 +894,13 @@ CREATE TABLE `phys_lab_monitoring` (
   `remarks` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `phys_lab_monitoring`
+--
+
+INSERT INTO `phys_lab_monitoring` (`id`, `item_name`, `laboratory`, `equipment_condition`, `last_checked`, `checked_by`, `remarks`) VALUES
+(1, 'sdfasdf', 'Physics Lab', 'Damaged', '2026-08-08', 'asdfads', 'asdfasddsfasd');
+
 -- --------------------------------------------------------
 
 --
@@ -803,6 +917,16 @@ CREATE TABLE `psy_lab_borrow` (
   `returned_date` date NOT NULL DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `psy_lab_borrow`
+--
+
+INSERT INTO `psy_lab_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `quantity`, `borrowed_date`, `returned_date`, `status`) VALUES
+(1, 'Physics Laboratory', 'sdfggsdf', 'sdfasdf', 2, '2026-08-08', '2026-08-08', 'Returned'),
+(2, 'Psychology Laboratory', 'sdfggsdf', 'sdfasdfa', 2, '2026-08-08', '0000-00-00', 'Overdue'),
+(3, 'Psychology Laboratory', 'sdafasd', 'asfasdf', 2, '2026-08-08', '2026-08-08', 'Returned'),
+(4, 'Psychology Laboratory', 'sdfasd', 'asdfasdf', 32, '2026-08-08', '0000-00-00', 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -1168,6 +1292,19 @@ ALTER TABLE `it_lab3_monitoring`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `laboratories`
+--
+ALTER TABLE `laboratories`
+  ADD PRIMARY KEY (`lab_id`);
+
+--
+-- Indexes for table `laboratory_schedule`
+--
+ALTER TABLE `laboratory_schedule`
+  ADD PRIMARY KEY (`schedule_id`),
+  ADD KEY `lab_id` (`lab_id`);
+
+--
 -- Indexes for table `phys_lab_borrow`
 --
 ALTER TABLE `phys_lab_borrow`
@@ -1289,7 +1426,7 @@ ALTER TABLE `chemistry_lab_inventory`
 -- AUTO_INCREMENT for table `chemistry_lab_monitoring`
 --
 ALTER TABLE `chemistry_lab_monitoring`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `crime_lab_borrow`
@@ -1313,7 +1450,7 @@ ALTER TABLE `crime_lab_inventory`
 -- AUTO_INCREMENT for table `crime_lab_monitoring`
 --
 ALTER TABLE `crime_lab_monitoring`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `defense_lab_borrow`
@@ -1337,7 +1474,7 @@ ALTER TABLE `defense_lab_inventory`
 -- AUTO_INCREMENT for table `defense_lab_monitoring`
 --
 ALTER TABLE `defense_lab_monitoring`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `fingeprint_lab_borrow`
@@ -1361,7 +1498,7 @@ ALTER TABLE `fingerprint_lab_inventory`
 -- AUTO_INCREMENT for table `fingerprint_lab_monitoring`
 --
 ALTER TABLE `fingerprint_lab_monitoring`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `he_lab_borrow`
@@ -1460,16 +1597,28 @@ ALTER TABLE `it_lab3_monitoring`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `laboratories`
+--
+ALTER TABLE `laboratories`
+  MODIFY `lab_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `laboratory_schedule`
+--
+ALTER TABLE `laboratory_schedule`
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `phys_lab_borrow`
 --
 ALTER TABLE `phys_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `phys_lab_damage`
 --
 ALTER TABLE `phys_lab_damage`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `phys_lab_inventory`
@@ -1481,13 +1630,13 @@ ALTER TABLE `phys_lab_inventory`
 -- AUTO_INCREMENT for table `phys_lab_monitoring`
 --
 ALTER TABLE `phys_lab_monitoring`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `psy_lab_borrow`
 --
 ALTER TABLE `psy_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `psy_lab_damage`
@@ -1530,6 +1679,16 @@ ALTER TABLE `question_lab_inventory`
 --
 ALTER TABLE `question_lab_monitoring`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `laboratory_schedule`
+--
+ALTER TABLE `laboratory_schedule`
+  ADD CONSTRAINT `laboratory_schedule_ibfk_1` FOREIGN KEY (`lab_id`) REFERENCES `laboratories` (`lab_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
