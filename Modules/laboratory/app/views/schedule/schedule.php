@@ -8,7 +8,7 @@
 
 
 <main class="main-content">
-    <div class="container-fluid px-4"> 
+    <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Laboratory Schedule</h1>
         <p class="mb-4">Schedule</p>
 
@@ -36,104 +36,106 @@
                             <th>Day</th>
                             <th>Time</th>
                             <th>Status</th>
-                            <th>Action</th>   
+                            <th>Action</th>
                         </tr>
                     </thead>
 
-                        <tbody>
+                    <tbody>
 
-                            <?php foreach ($schedules as $schedule): ?>
+                        <?php foreach ($schedules as $schedule): ?>
 
-                                <tr>
-                                    <td>
+                            <tr>
+                                <td>
+                                    <?= htmlspecialchars(
+                                        $schedule['laboratory_name']
+                                    ) ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars(
+                                        $schedule['subject_name']
+                                    ) ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars(
+                                        $schedule['section']
+                                    ) ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars(
+                                        $schedule['instructor']
+                                    ) ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars(
+                                        $schedule['day']
+                                    ) ?>
+                                </td>
+
+                                <td>
+                                    <?= date(
+                                        'h:i A',
+                                        strtotime($schedule['start_time'])
+                                    ) ?>
+
+                                    -
+
+                                    <?= date(
+                                        'h:i A',
+                                        strtotime($schedule['end_time'])
+                                    ) ?>
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-success">
                                         <?= htmlspecialchars(
-                                            $schedule['laboratory_name']
+                                            $schedule['status']
                                         ) ?>
-                                    </td>
-
-                                    <td>
-                                        <?= htmlspecialchars(
-                                            $schedule['subject_name']
-                                        ) ?>
-                                    </td>
-
-                                    <td>
-                                        <?= htmlspecialchars(
-                                            $schedule['section']
-                                        ) ?>
-                                    </td>
-
-                                    <td>
-                                        <?= htmlspecialchars(
-                                            $schedule['instructor']
-                                        ) ?>
-                                    </td>
-
-                                    <td>
-                                        <?= htmlspecialchars(
-                                            $schedule['day']
-                                        ) ?>
-                                    </td>
-
-                                    <td>
-                                        <?= date(
-                                            'h:i A',
-                                            strtotime($schedule['start_time'])
-                                        ) ?>
-
-                                        -
-
-                                        <?= date(
-                                            'h:i A',
-                                            strtotime($schedule['end_time'])
-                                        ) ?>
-                                    </td>
-
-                                    <td>
-                                        <span class="badge bg-success">
-                                            <?= htmlspecialchars(
-                                                $schedule['status']
-                                            ) ?>
-                                        </span>
-                                    </td>
+                                    </span>
+                                </td>
 
 
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown">
-                                                Action
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="#" class="dropdown-item viewBtn"  data-id="<?= $schedule['schedule_id'] ?>">
-                                                        <i class="fas fa-eye me-2"></i> View
-                                                    </a>
-                                                </li>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#" class="dropdown-item viewBtn"
+                                                    data-id="<?= $schedule['schedule_id'] ?>">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </a>
+                                            </li>
 
-                                                <li>
-                                                    <a href="#" class="dropdown-item editBtn" data-id="<?= $schedule['schedule_id'] ?>">
-                                                        <i class="fas fa-edit me-2"></i> Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item text-danger deleteBtn"
-                                                        data-id="<?= $schedule['schedule_id'] ?>">
-                                                        <i class="fas fa-trash me-2"></i>
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                            <li>
+                                                <a href="#" class="dropdown-item editBtn"
+                                                    data-id="<?= $schedule['schedule_id'] ?>">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a href="#" class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $schedule['schedule_id'] ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
 
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
 
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
