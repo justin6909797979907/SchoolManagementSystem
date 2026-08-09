@@ -28,61 +28,78 @@
                             <th>ID</th>
                             <th>Laboratory</th>
                             <th>Borrower Name</th>
+                            <th>Student ID</th>
+                            <th>Section</th>
                             <th>Item Name</th>
                             <th>Quantity</th>
                             <th>Borrowed Date</th>
+                            <th>Expected Return</th>
                             <th>Returned Date</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($borrows as $row): ?>
+                            <tr>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['laboratory'] ?></td>
+                                <td><?= $row['borrower_name'] ?></td>
+                                <td><?= $row['student_id'] ?></td>
+                                <td><?= $row['section'] ?></td>
+                                <td><?= $row['item_name'] ?></td>
+                                <td><?= $row['quantity'] ?></td>
+                                <td><?= $row['borrowed_date'] ?></td>
+                                <td><?= $row['expected_return'] ?></td>
+                                <td><?= $row['returned_date'] ?></td>
+                                <td>
+                                    <?php if ($row['status'] == 'Returned'): ?>
+                                        <span class="badge bg-success">Returned</span>
+                                    <?php elseif ($row['status'] == 'Borrowed'): ?>
+                                        <span class="badge bg-warning text-dark">Borrowed</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary"><?= $row['status'] ?></span>
+                                    <?php endif; ?>
+                                </td>
 
-                        <tr>
-                            <td>1</td>
-                            <td>Home Economics Laboratory</td>
-                            <td>John Doe</td>
-                            <td>Home Economics Kit</td>
-                            <td>1</td>
-                            <td>2023-04-01</td>
-                            <td>2023-04-08</td>
-                            <td>Returned</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <button
-                                                class="dropdown-item"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#heViewBorrowModal">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </button>
-                                        </li>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item viewBtn"
+                                                    data-id="<?= $row['id']; ?>"
+                                                    data-bs-toggle="modal">
+                                                    <i class="fas fa-eye me-2"></i> View
+                                                </a>
+                                            </li>
 
-                                        <li>
-                                            <button
-                                                class="dropdown-item"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#heEditBorrowModal">
-                                                <i class="fas fa-edit me-2"></i> Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item text-danger" href="delete.php?id=1"
-                                                onclick="return confirm('Are you sure you want to delete this record?')">
-                                                <i class="fas fa-trash me-2"></i> Delete
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item editBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-edit me-2"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown-item text-danger deleteBtn"
+                                                    data-id="<?= $row['id']; ?>">
+                                                    <i class="fas fa-trash me-2"></i>
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -101,6 +118,12 @@
         });
     });
 </script>
+
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+
+<script src="<?= BASE_URL ?>/js/heBorrow.js"></script>
 
 <?php require __DIR__ . '/heAddBorrowModal.php'; ?>
 <?php require __DIR__ . '/heViewBorrowModal.php'; ?>
