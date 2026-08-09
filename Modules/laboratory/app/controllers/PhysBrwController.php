@@ -4,6 +4,7 @@ require_once __DIR__ . '/../models/PhysBorrow.php';
 
 class PhysBrwController
 {
+    // DISPLAY ALL BORROWS
     public function index()
     {
         $borrow = new PhysBorrow();
@@ -13,6 +14,8 @@ class PhysBrwController
         require __DIR__ . '/../views/barrow/physics/phys-borrow.php';
     }
 
+
+    // CREATE
     public function create()
     {
         $borrow = new PhysBorrow();
@@ -23,13 +26,22 @@ class PhysBrwController
         exit;
     }
 
+
+    // VIEW
     public function view($id)
     {
         $borrow = new PhysBorrow();
 
-        echo json_encode($borrow->getById($id));
+        $data = $borrow->getById($id);
+
+        header('Content-Type: application/json');
+
+        echo json_encode($data);
+        exit;
     }
 
+
+    // UPDATE
     public function update()
     {
         $borrow = new PhysBorrow();
@@ -40,6 +52,8 @@ class PhysBrwController
         exit;
     }
 
+
+    // DELETE
     public function delete($id)
     {
         $borrow = new PhysBorrow();

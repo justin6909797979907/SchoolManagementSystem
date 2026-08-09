@@ -1,96 +1,136 @@
 <?php
 
-require_once __DIR__ . '/../../config/database.php';
-
 class PhysBorrow
 {
-    private $conn;
+    private $db;
     private $table = "phys_lab_borrow";
 
     public function __construct()
     {
-        $this->conn = Database::connect();
+        require __DIR__ . '/../../config/database.php';
+
+        $this->db = Database::connect();
     }
 
-    // Display all records
+    // GET ALL
     public function getAll()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM {$this->table} ORDER BY id DESC");
+        $stmt = $this->db->prepare(
+            "SELECT * FROM {$this->table} ORDER BY id DESC"
+        );
+
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Display one record
+    // GET BY ID
     public function getById($id)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM {$this->table} WHERE id = ?");
-        $stmt->execute([$id]);
+        $stmt = $this->db->prepare(
+            "SELECT * FROM {$this->table} WHERE id = :id"
+        );
+
+        $stmt->execute([
+            ':id' => $id
+        ]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Create
+    // CREATE
     public function create($data)
     {
         $sql = "INSERT INTO {$this->table}
-        (
-            laboratory,
-            borrower_name,
-            item_name,
-            quantity,
-            borrowed_date,
-            returned_date,
-            status
-        )
-        VALUES
-        (?, ?, ?, ?, ?, ?, ?)";
+                (
+                    laboratory,
+                    borrower_name,
+                    student_id,
+                    section,
+                    item_name,
+                    quantity,
+                    borrowed_date,
+                    expected_return,
+                    returned_date,
+                    status
+                )
+                VALUES
+                (
+                    :laboratory,
+                    :borrower_name,
+                    :student_id,
+                    :section,
+                    :item_name,
+                    :quantity,
+                    :borrowed_date,
+                    :expected_return,
+                    :returned_date,
+                    :status
+                )";
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            $data['laboratory'],
-            $data['borrower_name'],
-            $data['item_name'],
-            $data['quantity'],
-            $data['borrowed_date'],
-            $data['returned_date'],
-            $data['status']
+            ':laboratory'     => $data['laboratory'],
+            ':borrower_name'  => $data['borrower_name'],
+            ':student_id'     => $data['student_id'],
+            ':section'        => $data['section'],
+            ':item_name'      => $data['item_name'],
+            ':quantity'       => $data['quantity'],
+            ':borrowed_date'  => $data['borrowed_date'],
+            ':expected_return' => $data['expected_return'],
+            ':returned_date'  => !empty($data['returned_date'])
+                ? $data['returned_date']
+                : null,
+            ':status'         => $data['status']
         ]);
     }
 
-    // Update
+    // UPDATE
     public function update($data)
     {
         $sql = "UPDATE {$this->table}
                 SET
-                    laboratory = ?,
-                    borrower_name = ?,
-                    item_name = ?,
-                    quantity = ?,
-                    borrowed_date = ?,
-                    returned_date = ?,
-                    status = ?
-                WHERE id = ?";
+                    laboratory = :laboratory,
+                    borrower_name = :borrower_name,
+                    student_id = :student_id,
+                    section = :section,
+                    item_name = :item_name,
+                    quantity = :quantity,
+                    borrowed_date = :borrowed_date,
+                    expected_return = :expected_return,
+                    returned_date = :returned_date,
+                    status = :status
+                WHERE id = :id";
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            $data['laboratory'],
-            $data['borrower_name'],
-            $data['item_name'],
-            $data['quantity'],
-            $data['borrowed_date'],
-            $data['returned_date'],
-            $data['status'],
-            $data['id']
+            ':id'             => $data['id'],
+            ':laboratory'     => $data['laboratory'],
+            ':borrower_name'  => $data['borrower_name'],
+            ':student_id'     => $data['student_id'],
+            ':section'        => $data['section'],
+            ':item_name'      => $data['item_name'],
+            ':quantity'       => $data['quantity'],
+            ':borrowed_date'  => $data['borrowed_date'],
+            ':expected_return' => $data['expected_return'],
+            ':returned_date'  => !empty($data['returned_date'])
+                ? $data['returned_date']
+                : null,
+            ':status'         => $data['status']
         ]);
     }
 
-    // Delete
+    // DELETE
     public function delete($id)
     {
-        $stmt = $this->conn->prepare("DELETE FROM {$this->table} WHERE id = ?");
-        return $stmt->execute([$id]);
+        $stmt = $this->db->prepare(
+            "DELETE FROM {$this->table} WHERE id = :id"
+        );
+
+        return $stmt->execute([
+            ':id' => $id
+        ]);
     }
 }
