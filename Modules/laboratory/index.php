@@ -374,9 +374,24 @@ switch ($segments[0] ?? '') {
         (new CrimesceneBrwController())->index();
         break;
 
+
+
     case 'balistic-borrow':
         require_once __DIR__ . '/app/controllers/BalisticBrwController.php';
-        (new BalisticBrwController())->index();
+        $controller = new BalisticBrwController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] == 'create') {
+            $controller->create();
+        } elseif ($segments[1] == 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] == 'update') {
+            $controller->update();
+        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+
         break;
 
     case 'questiondocument-borrow':
