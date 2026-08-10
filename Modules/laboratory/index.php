@@ -399,10 +399,25 @@ switch ($segments[0] ?? '') {
         (new QuestiondocumentBrwController())->index();
         break;
 
+
     case 'chemistry-borrow':
         require_once __DIR__ . '/app/controllers/ChemistryBrwController.php';
-        (new ChemistryBrwController())->index();
+        $controller = new ChemistryBrwController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] == 'create') {
+            $controller->create();
+        } elseif ($segments[1] == 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] == 'update') {
+            $controller->update();
+        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+
         break;
+
 
     case 'defense-tactics-borrow':
         require_once __DIR__ . '/app/controllers/DefenseTacticsBrwController.php';
