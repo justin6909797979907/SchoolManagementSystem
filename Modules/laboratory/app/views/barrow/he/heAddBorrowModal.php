@@ -33,7 +33,7 @@
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Home Economics Laboratory"
+                                value="HE Lab"
                                 readonly>
                         </div>
 
