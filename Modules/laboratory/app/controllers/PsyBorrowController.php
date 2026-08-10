@@ -4,6 +4,7 @@ require_once __DIR__ . '/../models/PsyBorrow.php';
 
 class PsyBorrowController
 {
+    // DISPLAY ALL BORROWS
     public function index()
     {
         $borrow = new PsyBorrow();
@@ -13,6 +14,8 @@ class PsyBorrowController
         require __DIR__ . '/../views/barrow/psychology/psy_borrow.php';
     }
 
+
+    // CREATE
     public function create()
     {
         $borrow = new PsyBorrow();
@@ -23,13 +26,22 @@ class PsyBorrowController
         exit;
     }
 
+
+    // VIEW
     public function view($id)
     {
         $borrow = new PsyBorrow();
 
-        echo json_encode($borrow->getById($id));
+        $data = $borrow->getById($id);
+
+        header('Content-Type: application/json');
+
+        echo json_encode($data);
+        exit;
     }
 
+
+    // UPDATE
     public function update()
     {
         $borrow = new PsyBorrow();
@@ -40,6 +52,8 @@ class PsyBorrowController
         exit;
     }
 
+
+    // DELETE
     public function delete($id)
     {
         $borrow = new PsyBorrow();

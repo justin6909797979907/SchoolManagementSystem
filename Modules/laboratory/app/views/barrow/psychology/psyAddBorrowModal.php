@@ -1,4 +1,5 @@
 <div class="modal fade" id="psyAddBorrowModal" tabindex="-1" aria-labelledby="psyAddBorrowModalLabel" aria-hidden="true">
+
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -9,61 +10,98 @@
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="psyAddBorrowModalLabel">
-                        <i class="fas fa-plus-square me-2"></i>
-                        Add New Borrow
+                        <i class="fas fa-hand-holding me-2"></i>
+                        Add Borrow Record
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
                 </div>
 
                 <div class="modal-body">
 
                     <div class="row g-3">
 
-                        <!-- Item Name -->
-                        <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
-                            <input
-                                type="text"
-                                name="item_name"
-                                class="form-control"
-                                required>
-                        </div>
-
                         <!-- Laboratory -->
                         <div class="col-md-6">
                             <label class="form-label">Laboratory</label>
+
                             <input
                                 type="text"
                                 name="laboratory"
                                 class="form-control"
-                                value="Psychology Laboratory"
+                                value="Psychology Lab"
                                 readonly>
                         </div>
 
                         <!-- Borrower Name -->
                         <div class="col-md-6">
                             <label class="form-label">Borrower Name</label>
+
                             <input
                                 type="text"
                                 name="borrower_name"
                                 class="form-control"
+                                placeholder="Enter borrower name"
+                                required>
+                        </div>
+
+                        <!-- Student ID -->
+                        <div class="col-md-6">
+                            <label class="form-label">Student ID</label>
+
+                            <input
+                                type="text"
+                                name="student_id"
+                                class="form-control"
+                                placeholder="Enter student ID"
+                                required>
+                        </div>
+
+                        <!-- Section -->
+                        <div class="col-md-6">
+                            <label class="form-label">Section</label>
+
+                            <input
+                                type="text"
+                                name="section"
+                                class="form-control"
+                                placeholder="Enter section"
+                                required>
+                        </div>
+
+                        <!-- Item Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Item Name</label>
+
+                            <input
+                                type="text"
+                                name="item_name"
+                                class="form-control"
+                                placeholder="Enter item name"
                                 required>
                         </div>
 
                         <!-- Quantity -->
                         <div class="col-md-6">
                             <label class="form-label">Quantity</label>
+
                             <input
                                 type="number"
                                 name="quantity"
                                 class="form-control"
                                 min="1"
+                                placeholder="Enter quantity"
                                 required>
                         </div>
 
                         <!-- Borrowed Date -->
                         <div class="col-md-6">
                             <label class="form-label">Borrowed Date</label>
+
                             <input
                                 type="date"
                                 name="borrowed_date"
@@ -71,9 +109,21 @@
                                 required>
                         </div>
 
+                        <!-- Expected Return -->
+                        <div class="col-md-6">
+                            <label class="form-label">Expected Return</label>
+
+                            <input
+                                type="date"
+                                name="expected_return"
+                                class="form-control"
+                                required>
+                        </div>
+
                         <!-- Returned Date -->
                         <div class="col-md-6">
                             <label class="form-label">Returned Date</label>
+
                             <input
                                 type="date"
                                 name="returned_date"
@@ -83,11 +133,28 @@
                         <!-- Status -->
                         <div class="col-md-6">
                             <label class="form-label">Status</label>
-                            <select name="status" class="form-select" required>
-                                <option value="" selected disabled>-- Select Status --</option>
-                                <option value="Returned">Returned</option>
-                                <option value="Borrowed">Borrowed</option>
-                                <option value="Unavailable">Unavailable</option>
+
+                            <select
+                                name="status"
+                                class="form-select"
+                                required>
+
+                                <option value="" disabled selected>
+                                    -- Select Status --
+                                </option>
+
+                                <option value="Borrowed">
+                                    Borrowed
+                                </option>
+
+                                <option value="Returned">
+                                    Returned
+                                </option>
+
+                                <option value="Overdue">
+                                    Overdue
+                                </option>
+
                             </select>
                         </div>
 
@@ -96,13 +163,25 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save me-1"></i> Save
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        <i class="fas fa-save me-1"></i>
+                        Save
+
                     </button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
                         Cancel
+
                     </button>
+
                 </div>
 
             </form>
