@@ -462,7 +462,6 @@ switch ($segments[0] ?? '') {
         break;
 
 
-
     case 'defense-tactics-borrow':
         require_once __DIR__ . '/app/controllers/DefenseTacticsBrwController.php';
         $controller = new DefenseTacticsBrwController();
@@ -929,10 +928,25 @@ switch ($segments[0] ?? '') {
         break;
         
 
+
     case 'lab1-borrow':
         require_once __DIR__ . '/app/controllers/Itlab1BorrowController.php';
-        (new Itlab1BorrowController())->index();
+        $controller = new Itlab1BorrowController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
+            $controller->delete($segments[2]);
+        }
+
         break;
+
 
     case 'lab2-borrow':
         require_once __DIR__ . '/app/controllers/Itlab2BorrowController.php';
