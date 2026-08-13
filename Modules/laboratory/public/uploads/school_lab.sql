@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2026 at 07:41 PM
+-- Generation Time: Aug 10, 2026 at 09:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,12 +31,22 @@ CREATE TABLE `balistic_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `balistic_lab_borrow`
+--
+
+INSERT INTO `balistic_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Ballistics Lab', 'asdfads', 'asdfads', 'Crim 1001', 'Ballistic Kit', 1, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -103,12 +113,23 @@ CREATE TABLE `chemistry_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chemistry_lab_borrow`
+--
+
+INSERT INTO `chemistry_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Chemistry Lab', 'sdfad', 'asdf', 'dsffa', 'asdf', 12, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned'),
+(2, 'Chemistry Lab', 'Sim Doe', 'S1234564', 'Crim 1101', 'Chemistry Kit', 1, '2026-08-11', '2026-08-14', NULL, 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -183,12 +204,22 @@ CREATE TABLE `crime_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `crime_lab_borrow`
+--
+
+INSERT INTO `crime_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Crime Scene Lab', 'asdfasd', 'asdfas', 'asdf', 'adsfads', 1, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -262,12 +293,22 @@ CREATE TABLE `defense_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `defense_lab_borrow`
+--
+
+INSERT INTO `defense_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Defense & Tactics Lab', 'sdfas', 'asdfads', 'asdfasd', 'asdfads', 2, '2026-08-11', '2026-08-14', '2026-08-12', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -334,19 +375,29 @@ INSERT INTO `defense_lab_monitoring` (`id`, `item_name`, `laboratory`, `equipmen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fingeprint_lab_borrow`
+-- Table structure for table `fingerprint_lab_borrow`
 --
 
-CREATE TABLE `fingeprint_lab_borrow` (
+CREATE TABLE `fingerprint_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` int(12) NOT NULL,
+  `section` int(12) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fingerprint_lab_borrow`
+--
+
+INSERT INTO `fingerprint_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Fingerprint Lab', 'sdfads', 0, 0, 'asdfasd', 2, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -432,12 +483,22 @@ CREATE TABLE `he_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `he_lab_borrow`
+--
+
+INSERT INTO `he_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(3, 'HE Lab', 'Test', '123456456', 'HE 101', 'Tongs', 1, '2026-08-10', '2026-08-12', NULL, 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -511,12 +572,23 @@ CREATE TABLE `it_lab1_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
   `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `it_lab1_borrow`
+--
+
+INSERT INTO `it_lab1_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Ballistics Lab', 'sdfgdf', 'sdfgsfd', 'sdfgsfd', 'sdfgsdf', 3, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned'),
+(2, 'IT Lab 1', 'dfadsfa', 'afadsfa', 'asdfasdf', 'adsfadsf', 2, '2026-08-11', '2026-08-14', NULL, 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -592,11 +664,21 @@ CREATE TABLE `it_lab2_borrow` (
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
   `item_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `it_lab2_borrow`
+--
+
+INSERT INTO `it_lab2_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `student_id`, `section`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'IT Lab 2', 'sdfasd', 'asdfa', 'sadfasd', 'asdfas', 2, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -664,11 +746,21 @@ CREATE TABLE `it_lab3_borrow` (
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
   `item_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `it_lab3_borrow`
+--
+
+INSERT INTO `it_lab3_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `student_id`, `section`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(2, 'IT Lab 3', 'asdfads', 'asdf', 'sdfa', 'asdfa', 2, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -792,13 +884,10 @@ CREATE TABLE `laboratory_schedule` (
 --
 
 INSERT INTO `laboratory_schedule` (`schedule_id`, `lab_id`, `subject_code`, `subject_name`, `instructor`, `section`, `day`, `start_time`, `end_time`, `semester`, `school_year`, `status`, `remarks`, `created_at`) VALUES
-(5, 1, 'Cap2', 'Capstone', 'Doe John', 'BSIS 1101', 'Tuesday', '22:00:00', '13:00:00', '2nd', '2025-2026', 'Scheduled', 'This is thesis', '2026-08-08 08:31:37'),
-(9, 1, 'sdfasdf', 'dsffadsf', 'dfadsfasd', 'asdfads', 'Wednesday', '07:00:00', '10:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasd', '2026-08-08 08:59:48'),
 (14, 2, 'asdfad', 'dfgadfs', 'asdfasd', 'asdfas', 'Monday', '06:00:00', '07:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasfas', '2026-08-08 10:03:54'),
-(15, 1, 'sadfasd', 'sdfasd', 'asdfasd', 'asdfads', 'Monday', '18:00:00', '07:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasddasd', '2026-08-08 10:04:38'),
-(16, 2, 'Pasdfa', 'asdfa', 'asdfa', 'asdfa', 'Thursday', '11:00:00', '13:00:00', '1st', '2025-2026', 'Scheduled', 'sdfasfdas', '2026-08-08 10:14:16'),
 (17, 12, 'asdfasdf', 'sdfas', 'fasddfdasd', 'dafasd', 'Tuesday', '06:26:00', '07:26:00', '1st', '2025-2026', 'Completed', 'asdfasdf', '2026-08-08 10:26:15'),
-(18, 10, 'asddfasd', 'fafsdgasd', 'sadfasd', 'sdfgadgfa', 'Monday', '06:42:00', '07:43:00', '2nd', '2025-2026', 'Scheduled', 'sdfSDFASF', '2026-08-08 10:43:11');
+(18, 10, 'asddfasd', 'fafsdgasd', 'sadfasd', 'sdfgadgfa', 'Monday', '06:42:00', '07:43:00', '2nd', '2025-2026', 'Scheduled', 'sdfSDFASF', '2026-08-08 10:43:11'),
+(19, 1, 'DM', 'Data Mining', 'Johnny Doe', 'BSIS 4101', 'Monday', '13:00:00', '16:00:00', '1st', '2025-2026', 'Scheduled', '3rd Floor', '2026-08-10 15:01:44');
 
 -- --------------------------------------------------------
 
@@ -810,10 +899,13 @@ CREATE TABLE `phys_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(255) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -821,8 +913,9 @@ CREATE TABLE `phys_lab_borrow` (
 -- Dumping data for table `phys_lab_borrow`
 --
 
-INSERT INTO `phys_lab_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `quantity`, `borrowed_date`, `returned_date`, `status`) VALUES
-(8, 'Physics Laboratory', 'asdfadsf', 'fafdasd', 2, '2026-08-08', '2026-08-08', 'Returned');
+INSERT INTO `phys_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(9, 'Physics Laboratory', 'sdfgadsfs', 'dasdfasdf', 'asdfasdf', 'asdfasd', 1, '2026-08-09', '2026-08-13', '2026-08-09', 'Returned'),
+(10, 'Physics Laboratory', 'sdfgadsfs', 'adfasdf', 'asdfadf', 'waerfasd', 1, '2026-08-09', '2026-08-15', NULL, 'Borrowed');
 
 -- --------------------------------------------------------
 
@@ -911,10 +1004,13 @@ CREATE TABLE `psy_lab_borrow` (
   `id` int(11) NOT NULL,
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `item_name` varchar(100) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -922,11 +1018,8 @@ CREATE TABLE `psy_lab_borrow` (
 -- Dumping data for table `psy_lab_borrow`
 --
 
-INSERT INTO `psy_lab_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `quantity`, `borrowed_date`, `returned_date`, `status`) VALUES
-(1, 'Physics Laboratory', 'sdfggsdf', 'sdfasdf', 2, '2026-08-08', '2026-08-08', 'Returned'),
-(2, 'Psychology Laboratory', 'sdfggsdf', 'sdfasdfa', 2, '2026-08-08', '0000-00-00', 'Overdue'),
-(3, 'Psychology Laboratory', 'sdafasd', 'asfasdf', 2, '2026-08-08', '2026-08-08', 'Returned'),
-(4, 'Psychology Laboratory', 'sdfasd', 'asdfasdf', 32, '2026-08-08', '0000-00-00', 'Borrowed');
+INSERT INTO `psy_lab_borrow` (`id`, `laboratory`, `borrower_name`, `student_id`, `section`, `item_name`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(6, 'Psychology Lab', 'John Doe', 'S12345667', 'HE 01', 'Tongs', 1, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -1002,11 +1095,21 @@ CREATE TABLE `question_lab_borrow` (
   `laboratory` varchar(100) NOT NULL,
   `borrower_name` varchar(100) NOT NULL,
   `item_name` varchar(100) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
   `borrowed_date` date NOT NULL DEFAULT current_timestamp(),
-  `returned_date` date NOT NULL DEFAULT current_timestamp(),
+  `expected_return` date DEFAULT current_timestamp(),
+  `returned_date` date DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `question_lab_borrow`
+--
+
+INSERT INTO `question_lab_borrow` (`id`, `laboratory`, `borrower_name`, `item_name`, `student_id`, `section`, `quantity`, `borrowed_date`, `expected_return`, `returned_date`, `status`) VALUES
+(1, 'Question Document Lab', 'asdfadsf', 'asdfads', 'sdfasd', 'asdfafds12', 23, '2026-08-11', '2026-08-14', '2026-08-11', 'Returned');
 
 -- --------------------------------------------------------
 
@@ -1172,9 +1275,9 @@ ALTER TABLE `defense_lab_monitoring`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `fingeprint_lab_borrow`
+-- Indexes for table `fingerprint_lab_borrow`
 --
-ALTER TABLE `fingeprint_lab_borrow`
+ALTER TABLE `fingerprint_lab_borrow`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1384,7 +1487,7 @@ ALTER TABLE `question_lab_monitoring`
 -- AUTO_INCREMENT for table `balistic_lab_borrow`
 --
 ALTER TABLE `balistic_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `balistic_lab_damage`
@@ -1408,7 +1511,7 @@ ALTER TABLE `balistic_lab_monitoring`
 -- AUTO_INCREMENT for table `chemistry_lab_borrow`
 --
 ALTER TABLE `chemistry_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chemistry_lab_damage`
@@ -1432,7 +1535,7 @@ ALTER TABLE `chemistry_lab_monitoring`
 -- AUTO_INCREMENT for table `crime_lab_borrow`
 --
 ALTER TABLE `crime_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `crime_lab_damage`
@@ -1456,7 +1559,7 @@ ALTER TABLE `crime_lab_monitoring`
 -- AUTO_INCREMENT for table `defense_lab_borrow`
 --
 ALTER TABLE `defense_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `defense_lab_damage`
@@ -1477,10 +1580,10 @@ ALTER TABLE `defense_lab_monitoring`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `fingeprint_lab_borrow`
+-- AUTO_INCREMENT for table `fingerprint_lab_borrow`
 --
-ALTER TABLE `fingeprint_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `fingerprint_lab_borrow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `fingerprint_lab_damage`
@@ -1504,7 +1607,7 @@ ALTER TABLE `fingerprint_lab_monitoring`
 -- AUTO_INCREMENT for table `he_lab_borrow`
 --
 ALTER TABLE `he_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `he_lab_damage`
@@ -1528,7 +1631,7 @@ ALTER TABLE `he_lab_monitoring`
 -- AUTO_INCREMENT for table `it_lab1_borrow`
 --
 ALTER TABLE `it_lab1_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `it_lab1_damage`
@@ -1552,7 +1655,7 @@ ALTER TABLE `it_lab1_monitoring`
 -- AUTO_INCREMENT for table `it_lab2_borrow`
 --
 ALTER TABLE `it_lab2_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `it_lab2_damage`
@@ -1576,7 +1679,7 @@ ALTER TABLE `it_lab2_monitoring`
 -- AUTO_INCREMENT for table `it_lab3_borrow`
 --
 ALTER TABLE `it_lab3_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `it_lab3_damage`
@@ -1606,13 +1709,13 @@ ALTER TABLE `laboratories`
 -- AUTO_INCREMENT for table `laboratory_schedule`
 --
 ALTER TABLE `laboratory_schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `phys_lab_borrow`
 --
 ALTER TABLE `phys_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `phys_lab_damage`
@@ -1636,7 +1739,7 @@ ALTER TABLE `phys_lab_monitoring`
 -- AUTO_INCREMENT for table `psy_lab_borrow`
 --
 ALTER TABLE `psy_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `psy_lab_damage`
@@ -1660,7 +1763,7 @@ ALTER TABLE `psy_lab_monitoring`
 -- AUTO_INCREMENT for table `question_lab_borrow`
 --
 ALTER TABLE `question_lab_borrow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `question_lab_damage`
