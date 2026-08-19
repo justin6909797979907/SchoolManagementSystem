@@ -1,12 +1,6 @@
 <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 <?php include __DIR__ . '/../includes/header.php'; ?>
 
-<link rel="stylesheet" href="/SchoolManagementSystem/assets/css/style.css">
-
-
-
-
-
 <main class="main-content">
     <div class="container-fluid px-4">
         <h1 class="h3 mb-2 text-gray-800">Laboratory Schedule</h1>
@@ -162,7 +156,7 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js'></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#scheduleTable').DataTable({
             pageLength: 10,
             lengthMenu: [10, 20, 30, 40],
@@ -170,7 +164,9 @@
     });
 </script>
 
-<script> const BASE_URL = "<?= BASE_URL ?>"; </script>
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
 <script src="<?= BASE_URL ?>/js/calendar.js"></script>
 <script src="<?= BASE_URL ?>/js/schedule.js"></script>
 
