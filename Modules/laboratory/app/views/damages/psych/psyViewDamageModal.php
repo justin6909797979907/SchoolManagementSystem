@@ -45,9 +45,9 @@
                             readonly>
                     </div>
 
-                    <!-- Reported By -->
+                    <!-- Damaged By -->
                     <div class="col-md-6">
-                        <label class="form-label">Reported By</label>
+                        <label class="form-label">Damaged By</label>
                         <input
                             type="text"
                             id="view_reported_by"

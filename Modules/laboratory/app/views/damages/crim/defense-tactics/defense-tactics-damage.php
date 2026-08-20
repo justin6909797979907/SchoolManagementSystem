@@ -29,8 +29,8 @@
                             <th>Item Name</th>
                             <th>Laboratory</th>
                             <th>Issue</th>
-                            <th>Reported By</th>
-                            <th>Date Reported</th>
+                            <th>Damaged By</th>
+                            <th>Date Damaged</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
