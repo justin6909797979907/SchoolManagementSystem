@@ -87,7 +87,7 @@
                                 class="form-select"
                                 required>
                                 <option value="" selected disabled>-- Select Status --</option>
-                                <option value="Working">Working</option>
+                                <option value="Fixed">Fixed</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
                                 <option value="Unavailable">Unavailable</option>

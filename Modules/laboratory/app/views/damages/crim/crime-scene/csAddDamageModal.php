@@ -78,6 +78,7 @@
                                 <option value="Working">Working</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
+                                <option value="Fixed">Fixed</option>
                                 <option value="Unavailable">Unavailable</option>
                             </select>
                         </div>

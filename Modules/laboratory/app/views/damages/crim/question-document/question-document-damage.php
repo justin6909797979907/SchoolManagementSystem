@@ -44,7 +44,22 @@
                             <td><?= $row['issue'] ?></td>
                             <td><?= $row['reported_by'] ?></td>
                             <td><?= $row['date_reported'] ?></td>
-                            <td><?= $row['status'] ?></td>
+
+                            <td>
+                                    <?php
+                                    $status = $row['status'];
+                                    $statusClass = match ($status) {
+                                        'Damaged' => 'bg-danger text-white',
+                                        'Under Maintenance' => 'bg-warning text-dark',
+                                        'Fixed' => 'bg-success text-white',
+                                        default => 'bg-secondary'
+                                    };
+                                    ?>
+
+                                    <span class="badge <?= $statusClass ?>">
+                                        <?= htmlspecialchars($status) ?>
+                                    </span>
+                                </td>
 
                             <td>
                                <div class="dropdown">

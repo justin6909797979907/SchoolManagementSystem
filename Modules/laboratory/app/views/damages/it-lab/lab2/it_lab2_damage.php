@@ -36,21 +36,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($damages as $row): ?>
-                        <tr>
-                            <td><?= $row['id'] ?></td>
-                            <td><?= $row['item_name'] ?></td>
-                            <td><?= $row['laboratory'] ?></td>
-                            <td><?= $row['issue'] ?></td>
-                            <td><?= $row['reported_by'] ?></td>
-                            <td><?= $row['date_reported'] ?></td>
-                            <td><?= $row['status'] ?></td>
+                        <?php foreach ($damages as $row): ?>
+                            <tr>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['item_name'] ?></td>
+                                <td><?= $row['laboratory'] ?></td>
+                                <td><?= $row['issue'] ?></td>
+                                <td><?= $row['reported_by'] ?></td>
+                                <td><?= $row['date_reported'] ?></td>
 
-                            <td>
-                               <div class="dropdown">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <td>
+                                    <?php
+                                    $status = $row['status'];
+                                    $statusClass = match ($status) {
+                                        'Damaged' => 'bg-danger text-white',
+                                        'Under Maintenance' => 'bg-warning text-dark',
+                                        'Fixed' => 'bg-success text-white',
+                                        default => 'bg-secondary'
+                                    };
+                                    ?>
+
+                                    <span class="badge <?= $statusClass ?>">
+                                        <?= htmlspecialchars($status) ?>
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                             Action
-                                    </button>
+                                        </button>
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a href="#"
@@ -79,9 +94,9 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                </div>
-                            </td>
-                        </tr>
+                                    </div>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
