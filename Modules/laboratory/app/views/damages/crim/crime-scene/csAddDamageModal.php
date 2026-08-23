@@ -75,10 +75,9 @@
                             <label class="form-label">Status</label>
                             <select name="status" class="form-select" required>
                                 <option value="" selected disabled>-- Select Status --</option>
-                                <option value="Working">Working</option>
+                                <option value="Fixed">Fixed</option>
                                 <option value="Under Maintenance">Under Maintenance</option>
                                 <option value="Damaged">Damaged</option>
-                                <option value="Fixed">Fixed</option>
                                 <option value="Unavailable">Unavailable</option>
                             </select>
                         </div>
