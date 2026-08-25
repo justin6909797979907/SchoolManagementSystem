@@ -47,31 +47,69 @@ class ScheduleModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // CREATE
-    public function create($data)
+    // CHECK TIME CONFLICT
+    public function hasConflict($lab_id, $day, $start_time, $end_time)
     {
         $sql = "
-            INSERT INTO {$this->table}
-            (
-                lab_id,
-                subject_code,
-                subject_name,
-                instructor,
-                section,
-                day,
-                start_time,
-                end_time,
-                semester,
-                school_year,
-                status,
-                remarks
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ";
+        SELECT COUNT(*)
+        FROM {$this->table}
+        WHERE lab_id = ?
+        AND day = ?
+        AND status != 'Cancelled'
+        AND start_time < ?
+        AND end_time > ?
+    ";
 
         $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([
+        $stmt->execute([
+            $lab_id,
+            $day,
+            $end_time,
+            $start_time
+        ]);
+
+        return $stmt->fetchColumn() > 0;
+    }
+
+    // CREATE
+    public function create($data)
+    {
+        // Check for time conflict
+        if ($this->hasConflict(
+            $data['lab_id'],
+            $data['day'],
+            $data['start_time'],
+            $data['end_time']
+        )) {
+            return [
+                'success' => false,
+                'message' => 'There is a time conflict with an existing schedule.'
+            ];
+        }
+
+        $sql = "
+        INSERT INTO {$this->table}
+        (
+            lab_id,
+            subject_code,
+            subject_name,
+            instructor,
+            section,
+            day,
+            start_time,
+            end_time,
+            semester,
+            school_year,
+            status,
+            remarks
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ";
+
+        $stmt = $this->db->prepare($sql);
+
+        $result = $stmt->execute([
             $data['lab_id'],
             $data['subject_code'],
             $data['subject_name'],
@@ -85,8 +123,15 @@ class ScheduleModel
             $data['status'],
             $data['remarks']
         ]);
-    }
 
+        return [
+            'success' => $result,
+            'message' => $result
+                ? 'Schedule added successfully.'
+                : 'Failed to add schedule.'
+        ];
+    }
+    
     // UPDATE
     public function update($id, $data)
     {
