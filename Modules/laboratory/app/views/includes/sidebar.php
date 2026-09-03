@@ -372,7 +372,11 @@
     <div class="sidebar-header">
     </div>
 
-    <div><a href="#" class="menu-link">Settings</a></div>
-    <div><a href="#" class="menu-link">Logout</a></div>
+    <div><a href="<?= BASE_URL ?>/settings" class="menu-link">Settings</a></div>
+    
+    <div><a href="<?= BASE_URL ?>/logout"
+            onclick="return confirm('Are you sure you want to logout?')" class="menu-link">Logout
+        </a>
+    </div>
 
 </aside>
