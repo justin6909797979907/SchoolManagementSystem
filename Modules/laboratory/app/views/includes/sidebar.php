@@ -334,7 +334,7 @@
         <div><a href="" class="menu-link">Users</a></div>
         <a href="<?= BASE_URL ?>/schedule" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'schedule' ? "active" :  "" ?>">Schedule</a>
 
-        <hr class="text-white">
+        
         <!-- <div class="text-white py-2 px-3 rounded shadow-sm w-100">Reports:</div>
         <div><a href="<?= BASE_URL ?>/approval-decision-support" class="menu-link">Approval Decision Support</a></div>
         <div><a href="<?= BASE_URL ?>/concern-issue-tracking" class="menu-link">Concerns Issue Tracking</a></div>
