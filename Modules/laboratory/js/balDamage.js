@@ -68,7 +68,7 @@ document.addEventListener("click", function (e) {
 
   let id = btn.dataset.id;
 
-  if (confirm("Are you sure you want to delete this inventory?")) {
+  if (confirm("Are you sure you want to archive this?")) {
     window.location.href = `${BASE_URL}/balistic-damage/delete/${id}`;
   }
 });

@@ -44,7 +44,7 @@ class BalisticDmgController
     {
         $damage = new BalDamage();
 
-        $damage->delete($id);
+        $damage->archive($id);
 
         header("Location: " . BASE_URL . "/balistic-damage");
         exit;

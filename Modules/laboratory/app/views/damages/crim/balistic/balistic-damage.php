@@ -86,10 +86,10 @@
                                             </li>
                                             <li>
                                                 <a href="#"
-                                                    class="dropdown-item text-danger deleteBtn"
+                                                    class="dropdown-item text-warning deleteBtn"
                                                     data-id="<?= $row['id']; ?>">
-                                                    <i class="fas fa-trash me-2"></i>
-                                                    Delete
+                                                    <i class="bi bi-archive-fill me-2"></i>
+                                                    Archive
                                                 </a>
                                             </li>
                                         </ul>
