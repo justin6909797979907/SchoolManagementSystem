@@ -9,13 +9,44 @@
     {
         
         public $tableName = 'rgr_students';
-        public $primaryKey = 'student_number';
+        public $primaryKey = 'id';
+
+
+        protected function generateStudentNumber()
+        {
+    
+            $year = date('Y');
+
+            $stmt = $this->pdo->prepare("
+                SELECT student_number
+                FROM {$this->tableName}
+                WHERE student_number LIKE :year
+                ORDER BY student_number DESC
+                LIMIT 1
+            ");
+
+            $stmt->execute([
+                ':year' => $year . '-%'
+            ]);
+
+            $last = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$last) {
+                return $year . '-000001';
+            }
+
+            $parts = explode('-', $last['student_number']);
+            $next = (int)$parts[1] + 1;
+
+            return $year . '-' . str_pad($next, 6, '0', STR_PAD_LEFT);
+
+        }
 
 
    
         protected function countActiveStudents() {
 
-            $stmt = $this->pdo->query("SELECT COUNT(*) as totalActiveStudent FROM $this->tableName where academic_status = 'active' ");
+            $stmt = $this->pdo->query("SELECT COUNT(*) as totalActiveStudent FROM $this->tableName where student_status = 'active' ");
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
@@ -88,7 +119,6 @@
     $school_year = $schoolYearStmt->fetch(PDO::FETCH_ASSOC)['school_year'];
 
 
-
     // Count total
     $countSql = "SELECT COUNT(*) as total FROM {$this->tableName} $where";
     $countStmt = $this->pdo->prepare($countSql);
@@ -101,7 +131,15 @@
     $total = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
     // Base query
-    $dataSql = "SELECT * FROM {$this->tableName} $where";
+    $dataSql = "SELECT 
+    stud.*,
+    co.course_code as course_code,
+    co.course_name as course_name
+    FROM {$this->tableName} stud
+    JOIN enr_applicants app ON app.id = stud.applicant_id
+    JOIN enr_courses co ON co.id = stud.program_id
+
+     $where ";
 
     if ($paginate) {
         $dataSql .= " LIMIT :limit OFFSET :offset";

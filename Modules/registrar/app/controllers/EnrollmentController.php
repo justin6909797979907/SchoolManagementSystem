@@ -7,7 +7,7 @@
  use App\Models\SchoolYear;
  use App\Models\Semester;
 
- class SubjectLoadingController extends Controller 
+ class EnrollmentController extends Controller 
  {
 
    public function index()
@@ -18,7 +18,7 @@
         $semester = Semester::activeSemester();
         $schoolYear = SchoolYear::activeSchoolYear();
    
-       $this->render('students/subject_loading',[
+       $this->render('students/enrollment',[
             
            'user' => $user,
            'semester' => $semester,

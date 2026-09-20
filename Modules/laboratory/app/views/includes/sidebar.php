@@ -292,7 +292,7 @@
                                 <div id="collapseIT2"
                                     class="collapse ps-3"
                                     data-bs-parent="#itLabAccordion">
-                                    <a href="<?= BASE_URL ?>/lab2-inventory" class="dropdown-item small menu-link text-white <?php echo CURRENT_URI == 'lab2-inventory' ? "active" :  "" ?>">Inventory</a>
+                                    <a href="<?= BASE_URL ?>/it-lab2-inventory" class="dropdown-item small menu-link text-white <?php echo CURRENT_URI == 'it-lab2-inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/lab2-damage" class="dropdown-item small menu-link text-white <?php echo CURRENT_URI == 'lab2-damage' ? "active" :  "" ?>">Damage</a>
                                     <a href="<?= BASE_URL ?>/lab2-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab2-borrow' ? "active" :  "" ?>">Borrow</a>
                                     <a href="<?= BASE_URL ?>/lab2-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'lab2-monitoring' ? "active" :  "" ?>">Monitoring</a>

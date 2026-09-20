@@ -307,6 +307,8 @@
     });
 
 
+   
+
 
    
 
@@ -336,7 +338,7 @@
 
     // pdf data 
 
-    function getPdf(order)
+    function getPdf(id)
     {
         const search = document.getElementById("search").value;
 
@@ -352,10 +354,13 @@
         // take this if you dont want redirection confirmation 
 
         window.open(
-        `${BASE_URL}/school-year/pdf?order=${order}&search=${encodeURIComponent(search)}`,
+        `${BASE_URL}/enrollee/${id}/pdf`,
         "_blank"
         );
     }
+
+
+    
 
 
     function getExcel(order)
@@ -419,7 +424,7 @@
             </li>
 
             <li>
-                <a class="dropdown-item" href="" target="_blank">
+                <a class="dropdown-item" onclick="getPdf(${enrollee.id}); return false;" target="_blank">
                     Export to PDF
                 </a>
             </li>

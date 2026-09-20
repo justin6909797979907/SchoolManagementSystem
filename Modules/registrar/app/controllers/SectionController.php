@@ -11,6 +11,7 @@ use App\Models\SchoolYear;
 use App\Models\Section;
 use App\Models\Employee;
 use App\Models\Semester;
+use App\Models\Teacher;
 
 
 class SectionController extends Controller 
@@ -25,6 +26,7 @@ class SectionController extends Controller
         $school_year = SchoolYear::all();
         $activeSemester = Semester::activeSemester();
         $schoolYear = SchoolYear::activeSchoolYear();
+        $teacher = Teacher::all();
          
         $this->render('/acad/section',
          [
@@ -33,7 +35,8 @@ class SectionController extends Controller
              'semesters' => $semester,
              'school_year' => $school_year,
              'semester' => $activeSemester,
-             'schoolYear' => $schoolYear
+             'schoolYear' => $schoolYear,
+             'teachers' => $teacher
             ]);
 
     }
@@ -65,9 +68,38 @@ class SectionController extends Controller
         $course_name = trim($_POST['course_name'] ?? '');
         $section_capacity = trim($_POST['section_capacity'] ?? '');
         $semester_id = trim($_POST['semester_name'] ?? '');
+        $teacher_id = trim($_POST['teacher_name'] ?? '');
+
+
+
+          if( Section::isDuplicate([
+            
+          'name' => $section_name,
+          'semester_id' => $semester_id
+          
+        ]) ){
+          $errors['section_name'] = "This section is already taken.";
+   
+        }
 
         if ($section_name === '') {
         $errors['section_name'] = 'Section Name is required.';
+        }
+
+        if($teacher_id === '')
+        {
+            $errors['teacher_name'] = 'Adviser is required';
+        }
+
+         if( Section::isDuplicate([
+            
+          'teacher_id ' => $teacher_id,
+          'semester_id' => $semester_id
+          
+        ]) ){
+            
+          $errors['teacher_name'] = "This adviser is already taken.";
+   
         }
 
          if ($year_level === '') {
@@ -97,7 +129,8 @@ class SectionController extends Controller
             'year_level' => $year_level,
             'course_id' => $course_name,
             'capacity' => $section_capacity,
-            'semester_id' => $semester_id
+            'semester_id' => $semester_id,
+            'teacher_id' => $teacher_id,
         ]);
 
           

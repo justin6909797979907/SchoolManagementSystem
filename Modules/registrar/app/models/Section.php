@@ -115,6 +115,7 @@
             LEFT JOIN rgr_strands st ON s.strand_id = st.id
             LEFT JOIN rgr_semesters sem ON s.semester_id = sem.id
             LEFT JOIN rgr_school_years sy ON sem.school_year_id = sy.id
+            LEFT JOIN rgr_teachers rt ON s.teacher_id = rt.id
             $where";
 
         $countStmt = $this->pdo->prepare($countSql);
@@ -133,12 +134,14 @@
                 s.year_level,
                 c.code AS course,
                 st.name AS strand,
-                s.capacity
+                s.capacity,
+                CONCAT(rt.first_name,' ',rt.last_name) AS adviser 
             FROM {$this->tableName} s
             LEFT JOIN rgr_courses c ON s.course_id = c.id
             LEFT JOIN rgr_strands st ON s.strand_id = st.id
             LEFT JOIN rgr_semesters sem ON s.semester_id = sem.id
             LEFT JOIN rgr_school_years sy ON sem.school_year_id = sy.id
+            LEFT JOIN rgr_teachers rt ON s.teacher_id = rt.id
             $where
             ORDER BY s.name $order";
 

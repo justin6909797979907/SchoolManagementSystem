@@ -1,10 +1,130 @@
 
 
 const tbody = document.getElementById("enrollee-documents-table-body");
+const printPdf = document.getElementById("printPdf");
+const approveBtn = document.getElementById('approveBtn');
+const declineBtn = document.getElementById('declineBtn');
+
 
 loadDocuments(applicantId);
 
 
+printPdf.addEventListener('click',function(){
+
+ getPdf(applicantId);
+
+});
+
+
+ 
+declineBtn.addEventListener('click',function(){
+
+
+     Swal.fire({
+            title: `Are you sure ?`,
+            text: `The applicant will be rejected .Do you wish to proceed?`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: `Yes, I understand`,
+            }).then((result) => {
+
+              if(result.isConfirmed){
+
+                  // if confirm 
+
+        fetch(`${BASE_URL}/enrollee/${applicantId}/decline`, {
+            method: "POST",
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            if(data.status === 'success')
+            {
+
+            window.open(
+            `${BASE_URL}/enrollees`,
+             "_self"
+            );
+
+
+            loadDocuments(applicantId);
+
+            }
+
+           
+        });
+
+              }else{
+
+                return;
+
+              }
+
+            })
+
+
+});
+
+
+
+approveBtn.addEventListener('click', function () {
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "The applicant will be approved. Do you wish to proceed?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, I understand"
+    }).then((result) => {
+
+        if (!result.isConfirmed) return;
+
+        Swal.fire({
+            title: "Approving Applicant",
+            html: "Please wait while we process the approval...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        fetch(`${BASE_URL}/enrollee/${applicantId}/approve`, {
+            method: "POST"
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            Swal.close();
+
+            if (data.status === "success") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: data.message
+                }).then(() => {
+                    window.location.href = `${BASE_URL}/enrollees`;
+                });
+            }
+        })
+        .catch(err => {
+            Swal.close();
+
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Something went wrong."
+            });
+
+            console.error(err);
+        });
+
+    });
+
+});
 
 tbody.addEventListener("click", function (e) {
 
@@ -61,12 +181,6 @@ tbody.addEventListener("click", function (e) {
               }
 
             })
-
-            
-
-
-    
-
 });
 
 
@@ -135,6 +249,15 @@ function loadDocuments(applicantId) {
             });
 
         });
+}
+
+
+function getPdf(id)
+{
+       window.open(
+        `${BASE_URL}/enrollee/${id}/pdf`,
+        "_blank"
+        );
 }
 
 

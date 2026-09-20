@@ -2,9 +2,11 @@
 
 use App\Controllers\CalendarController;
 use App\Controllers\ClassOfferingController;
+use App\Controllers\CorController;
 use App\Controllers\CourseController;
 use App\Controllers\CurriculumSubjectController;
 use App\Controllers\EnrolleeController;
+use App\Controllers\EnrollmentController;
 use App\Controllers\HomeController;
 use App\Controllers\IssueTrackingController;
 use App\Controllers\NotificationController;
@@ -23,6 +25,7 @@ use App\Controllers\SubjectController;
 use App\Controllers\SubjectLoadingController;
 use App\Controllers\TeacherController;
 
+use App\Controllers\TorController;
 use App\Helper\AiHelper;
 use App\Helper\Response;
 use App\Models\SchoolYear;
@@ -179,7 +182,9 @@ use App\Models\Semester;
     $r->get('/enrollees/{id:\d+}/show',[EnrolleeController::class,'show']);
     $r->get('/enrollees/{id:\d+}/allDocs',[EnrolleeController::class,'documentShow']);
     $r->post('/enrollees/{id:\d+}/update',[EnrolleeController::class,'updateDocumentVerified']);
-
+    $r->get('/enrollee/{id:\d+}/pdf',[EnrolleeController::class,'enrolleePdf']);
+    $r->post('/enrollee/{id:\d+}/approve',[EnrolleeController::class,'enrolleeApprove']);
+    $r->post('/enrollee/{id:\d+}/decline',[EnrolleeController::class,'enrolleeDecline']);
 
 
 // setions 
@@ -244,7 +249,16 @@ use App\Models\Semester;
 
 // subject loading
 
- $r->get('/subject-loading',[SubjectLoadingController::class,'index']);
+ $r->get('/enrollment',[EnrollmentController::class,'index']);
+
+// COR 
+
+  $r->get('/COR',[CorController::class,'index']);
+
+
+// TOR 
+
+ $r->get('/TOR',[TorController::class,'index']);
 
 // for all 
 

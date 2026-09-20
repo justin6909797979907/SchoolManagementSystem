@@ -29,6 +29,21 @@
 
     }
 
+      protected function activeSemesterId()
+    {
+
+        $sql = "SELECT 
+              id
+              FROM $this->tableName 
+              WHERE is_active = 1
+        ";
+    
+         $stmt = $this->pdo->prepare($sql);
+         $stmt->execute();
+         return $stmt->fetch();
+
+    }
+
      protected function activateDefaultSemester(int $id)
     {
         $schoolYearId = $id;

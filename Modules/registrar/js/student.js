@@ -144,7 +144,7 @@
             tbody.innerHTML = "";
 
             if (result.data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="text-center">No students found</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="10" class="text-center">No students found</td></tr>`;
                 return;
             }
 
@@ -153,10 +153,11 @@
                     <tr class="student-row">
                         <td>${student.student_number}</td>
                         <td>${student.first_name} ${student.last_name}</td>
-                        <td>${student.course}</td>
-                        <td>${student.academic_status}</td>
+                        <td>${student.course_code}</td>
+                        <td>${student.year_level}</td>
+                        <td>${student.student_status}</td>
                         <td>
-                            <button class="btn btn-sm btn-primary view-btn" data-id="${student.student_number}">
+                            <button class="btn btn-sm btn-primary view-btn" data-id="${student.id}">
                                 View
                             </button>
                         </td>

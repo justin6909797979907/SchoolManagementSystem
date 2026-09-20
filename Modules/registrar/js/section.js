@@ -204,6 +204,7 @@ let course_name = document.getElementById('course_name');
 let year_level = document.getElementById('year_level');
 let semester_name = document.getElementById('semester_name');
 
+
 const updateValue = () => {
     const courseText = course_name.options[course_name.selectedIndex]?.text ?? '';
     const yearText = year_level.options[year_level.selectedIndex]?.value ?? '';
@@ -547,6 +548,7 @@ semester_name.addEventListener('change', updateValue);
                         <td>${sec.year_level}</td>
                         <td>${sec.course}</td>
                         <td>${sec.capacity}</td>
+                        <td>${sec.adviser}</td>
                     </tr>
                 `;
             });

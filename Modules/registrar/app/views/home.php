@@ -6,7 +6,7 @@
         
         <div class="py-4" >
             <div id="dashboard-title">
-                <h1 class="h3 mb-0 text-gray-800 fw-bold" >Dashboard</h1>
+                <h1 class="h3 mb-0 text-gray-800 fw-bold">Dashboard</h1>
                 <p class="text-muted small mb-0">Welcome back! Here's what's happening today.</p>
             </div>
         </div>
@@ -49,11 +49,11 @@
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
-                                <div class="text-xs fw-bold text-info text-uppercase mb-1">New Enrollees</div>
+                                <div class="text-xs fw-bold text-info text-uppercase mb-1">COR Requests</div>
                                 <div class="h5 mb-0 fw-bold text-gray-800" id="enrollee">12</div>
                             </div>
                             <div class="col-auto">
-                                <i class="bi bi-people-fill fs-2 text-gray-300"></i>
+                                <i class="fas fa-file-alt fa-2x text-gray-300" id="corRequests"></i>
                             </div>
                         </div>
                     </div>
@@ -65,8 +65,8 @@
                     <div class="card-body">
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
-                                <div class="text-xs fw-bold text-warning text-uppercase mb-1">Pending Reports</div>
-                                <div class="h5 mb-0 fw-bold text-gray-800">5</div>
+                                <div class="text-xs fw-bold text-warning text-uppercase mb-1">TOR Requests</div>
+                                <div class="h5 mb-0 fw-bold text-gray-800" id="torRequests">5</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-file-alt fa-2x text-gray-300"></i>
@@ -75,6 +75,55 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-xl-3 col-md-6" id="card-5">
+                <div class="card border-0 border-start border-warning border-4 shadow-sm h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-xs fw-bold text-warning text-uppercase mb-1">Pending Reports</div>
+                                <div class="h5 mb-0 fw-bold text-gray-800" id="pendingReports">5</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-file-alt fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <div class="col-xl-3 col-md-6" id="card-6">
+                <div class="card border-0 border-start border-danger border-4 shadow-sm h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-xs fw-bold text-danger text-uppercase mb-1">Total Students</div>
+                                <div class="h5 mb-0 fw-bold text-gray-800" id="totalStudents">12</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-people-fill fs-2 text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6" id="card-6">
+                <div class="card border-0 border-start border-Dark border-4 shadow-sm h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <div class="text-xs fw-bold text-Dark text-uppercase mb-1">Active Students</div>
+                                <div class="h5 mb-0 fw-bold text-gray-800" id="activeStudents">12</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-people-fill fs-2 text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
      <div class="row d-flex align-items-stretch">

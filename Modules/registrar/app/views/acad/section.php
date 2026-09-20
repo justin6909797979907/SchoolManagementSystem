@@ -100,7 +100,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Year Level</th>
                 <th scope="col">Course</th>
-                 <th scope="col">Capacity</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Adviser</th>
                 </tr>
             </thead>
             <tbody id="studentsTableBody">
@@ -229,13 +230,31 @@
 
              </div>
 
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <label class="form-label">Section Name</label>
                 <input type="text" class="form-control" name="section_name" id="section_name"
                 placeholder="eg. BSIS1A"
                 >
                 <div class="invalid-feedback" id="error-section_name"></div>
             </div>
+
+            <div class="col-md-6">
+             <label class="form-label">Adviser</label>
+             <select name="teacher_name" id="teacher_name" class="form-control" required>
+                <option value="">Select Adviser</option>
+
+                 <?php foreach ($teachers as $teacher): ?>
+                <option 
+                value="<?= $teacher['id']; ?>"
+               >
+                  <?= $teacher['first_name']; ?> <?= $teacher['last_name']; ?>
+                <?php endforeach; ?>
+
+
+             </select>
+               <div class="invalid-feedback" id="error-teacher_name"></div>
+             </div>
+            
 
 
         </form>

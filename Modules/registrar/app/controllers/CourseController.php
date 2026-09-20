@@ -227,9 +227,15 @@ class CourseController extends Controller {
         $course_code = trim($_POST['course_code'] ?? '');
         $course_name = trim($_POST['course_name'] ?? '');
         $course_year = trim($_POST['course_year'] ?? '');
+        $course_description = trim($_POST['course_description'] ?? '');
 
         if ($course_code === '') {
         $errors['course_code'] = 'Course Code is required.';
+        }
+
+        if($course_description === '')
+        {
+         $errors['course_description'] = 'Course Code is required.';
         }
 
         if ($course_name === '') {
@@ -248,7 +254,8 @@ class CourseController extends Controller {
 
             'code' => $course_code,
             'name' => $course_name,
-            'years' => $course_year 
+            'years' => $course_year,
+            'description' => $course_description
         ]);
 
         

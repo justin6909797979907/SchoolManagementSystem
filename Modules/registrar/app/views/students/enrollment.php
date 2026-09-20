@@ -7,18 +7,17 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
     
         <div id="dashboard-title">
-            <h1 class="h3 fw-bold mb-0">Section Schedule</h1>
+            <h1 class="h3 fw-bold mb-0">Enrollment</h1>
              <p class="text-muted small">Manage and organize academic programs for the registrar.</p>
         </div>
 
 
     </div>
 
-
-    <div class="card shadow-sm">
+      <div class="card shadow-sm">
 
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="fs-6 mb-0 text-primary">Section Schedule List</h3>
+            <h3 class="fs-6 mb-0 text-primary">Curriculum List</h3>
 
             <div class="d-flex gap-2">
 
@@ -38,7 +37,43 @@
         </div>
 
 
-       
+        <div class="card-body">
+
+            <div class="row g-2 mb-3">
+
+                <div class="col-md-2">
+                    <label class="form-label small">Per Page</label>
+                    <select class="form-select form-select-sm" id="limit">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label small">Order</label>
+                    <select class="form-select form-select-sm" id="order">
+                        <option value="desc">Descending (Z-A)</option>
+                        <option value="asc">Ascending (A-Z)</option>
+                    </select>
+                </div>
+
+                <div class="col-md-5">
+                    <label class="form-label small">Search</label>
+                    <input type="text"
+                        class="form-control form-control-sm"
+                        placeholder="Search subjects..."
+                        id="search">
+                </div>
+
+                <div class="col-md-2 d-flex align-items-end">
+                    <button class="btn btn-danger btn-sm d-none w-100" id="delete-btn">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                </div>
+
+        </div>
 
 
         <div class="table-responsive">
@@ -47,22 +82,19 @@
 
                     <thead class="table-light">
                         <tr>
-                            
-                        <th style="width:100px;">Time</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                           
+                            <th width="40">
+                                <input type="checkbox" id="select-all">
+                            </th>
+                            <th>Curriculum Name</th>   
+                            <th>Course Name</th>
+                            <th>Effective Year</th>
+                            <th>Status</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
 
-                    <tbody id="grid-body">
-                        
+                    <tbody id="studentsTableBody">
                     </tbody>
-                   
 
                 </table>
 
@@ -79,6 +111,11 @@
             </div>
 
         </div>
+
+    </div>
+
+
+
 
     </div>
 

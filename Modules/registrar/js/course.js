@@ -311,7 +311,8 @@
             document.getElementById('show_course_code').value = result.code;
             document.getElementById('show_course_year').value = result.years;
             document.getElementById('show_course_name').textContent = result.name;
-
+            document.getElementById('show_description').textContent = result.description;
+            
              showCourseModal.show();
 
 

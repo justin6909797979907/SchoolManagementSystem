@@ -64,10 +64,18 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+
         } elseif ($segments[1] === 'update') {
             $controller->update();
+
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -82,10 +90,17 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
+
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -100,10 +115,17 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
+        
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -118,10 +140,17 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
+
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -172,10 +201,17 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
+        
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -193,9 +229,17 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+        
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+
         break;
 
 
@@ -211,9 +255,17 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+        
         break;
 
     case 'defense-inventory':
@@ -228,9 +280,17 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+
         break;
 
     case 'crim-borrow':
@@ -295,6 +355,15 @@ switch ($segments[0] ?? '') {
 
     }
 
+    elseif ($segments[1] === 'getSchedules') {
+        $controller->allSchedules();
+    }
+
+    else {
+        http_response_code(404);
+        echo "404 Not Found";
+    }
+
     break;
     
 
@@ -310,8 +379,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+                   
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -335,8 +411,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -354,8 +437,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -373,8 +463,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -508,8 +605,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+         } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -528,8 +632,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -547,8 +658,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+           
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -677,8 +795,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] == 'update') {
             $controller->update();
-        } elseif ($segments[1] == 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+                   
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -753,8 +878,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
         break;
 
@@ -827,9 +959,16 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+
         break;
 
     case 'it-lab2-inventory':
@@ -843,9 +982,16 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+
         break;
 
     case 'it-lab1-inventory':
@@ -862,9 +1008,16 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+
         break;
 
         
@@ -882,8 +1035,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
 
         break;
@@ -901,9 +1061,17 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+            
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+        
         break;
 
 
@@ -919,8 +1087,15 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+                  
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
         break;
 
@@ -937,9 +1112,17 @@ switch ($segments[0] ?? '') {
             $controller->view($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
+
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
+
         break;
         
 
@@ -1011,10 +1194,17 @@ switch ($segments[0] ?? '') {
             $controller->create();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
-        } elseif ($segments[1] === 'delete' && isset($segments[2])) {
-            $controller->delete($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
+
+        } elseif ($segments[1] == 'inactive') {
+            $controller->inactive();
+
+        } elseif ($segments[1] == 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+
+        } elseif ($segments[1] == 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
         }
         break;
 

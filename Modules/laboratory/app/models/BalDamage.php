@@ -11,13 +11,13 @@ class BalDamage
         $this->db = Database::connect();
     }
 
-    // Get only active damage reports
+    //get all active records
     public function getAll()
     {
         $stmt = $this->db->prepare(
             "SELECT * FROM {$this->table}
-             WHERE archived_at IS NULL
-             ORDER BY id DESC"
+         WHERE is_active = 1
+         ORDER BY id DESC"
         );
 
         $stmt->execute();
@@ -25,15 +25,9 @@ class BalDamage
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Get one damage report
     public function getById($id)
     {
-        $stmt = $this->db->prepare(
-            "SELECT * FROM {$this->table}
-             WHERE id = :id
-             AND archived_at IS NULL"
-        );
-
+        $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE id=:id");
         $stmt->execute([
             ':id' => $id
         ]);
@@ -41,74 +35,89 @@ class BalDamage
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Create damage report
     public function create($data)
     {
         $sql = "INSERT INTO {$this->table}
-        (
-            item_name,
-            laboratory,
-            issue,
-            reported_by,
-            date_reported,
-            status
-        )
+        (item_name,laboratory,issue,reported_by,date_reported,status)
+
         VALUES
-        (
-            :item_name,
-            :laboratory,
-            :issue,
-            :reported_by,
-            :date_reported,
-            :status
-        )";
+        (:item_name,:laboratory,:issue,:reported_by,:date_reported,:status)";
 
         $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            ':item_name'     => $data['item_name'],
-            ':laboratory'    => $data['laboratory'],
-            ':issue'         => $data['issue'],
-            ':reported_by'   => $data['reported_by'],
-            ':date_reported' => $data['date_reported'],
-            ':status'        => $data['status']
+            ':item_name'=>$data['item_name'],
+            ':laboratory'=>$data['laboratory'],
+            ':issue'=>$data['issue'],
+            ':reported_by'=>$data['reported_by'],
+            ':date_reported'=>$data['date_reported'],
+            ':status'=>$data['status']
         ]);
     }
 
-    // Update damage report
     public function update($data)
     {
-        $sql = "UPDATE {$this->table}
-        SET
-            item_name = :item_name,
-            laboratory = :laboratory,
-            issue = :issue,
-            reported_by = :reported_by,
-            date_reported = :date_reported,
-            status = :status
-        WHERE id = :id
-        AND archived_at IS NULL";
+        $sql="UPDATE {$this->table}
 
-        $stmt = $this->db->prepare($sql);
+        SET
+
+        item_name=:item_name,
+        laboratory=:laboratory,
+        issue=:issue,
+        reported_by=:reported_by,
+        date_reported=:date_reported,
+        status=:status
+
+        WHERE id=:id";
+
+        $stmt=$this->db->prepare($sql);
 
         return $stmt->execute([
-            ':id'            => $data['id'],
-            ':item_name'     => $data['item_name'],
-            ':laboratory'    => $data['laboratory'],
-            ':issue'         => $data['issue'],
-            ':reported_by'   => $data['reported_by'],
-            ':date_reported' => $data['date_reported'],
-            ':status'        => $data['status']
+            ':id'=>$data['id'],
+            ':item_name'=>$data['item_name'],
+            ':laboratory'=>$data['laboratory'],
+            ':issue'=>$data['issue'],
+            ':reported_by'=>$data['reported_by'],
+            ':date_reported'=>$data['date_reported'],
+            ':status'=>$data['status']
         ]);
     }
 
-    // Archive damage report instead of permanently deleting
-    public function archive($id)
+    //inactive records
+    public function getInactive()
+    {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM {$this->table}
+         WHERE is_active = 0
+         ORDER BY id DESC"
+        );
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Deactivate a record (soft delete)
+    public function deactivate($id)
     {
         $stmt = $this->db->prepare(
             "UPDATE {$this->table}
-             SET archived_at = NOW()
-             WHERE id = :id"
+         SET is_active = 0
+         WHERE id = :id"
+        );
+
+        return $stmt->execute([
+            ':id' => $id
+        ]);
+    }
+
+    // Activate a record by setting is_active to 1
+    public function activate($id)
+    {
+        $stmt = $this->db->prepare(
+            "UPDATE {$this->table}
+         SET is_active = 1
+         WHERE id = :id"
         );
 
         return $stmt->execute([

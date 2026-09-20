@@ -45,7 +45,7 @@ use App\Models\Subject;
     {
         header('Content-Type: application/json');
          $active_count = Student::countActiveStudents();
-        echo json_encode($active_count );     
+        echo json_encode($active_count);     
 
     }
 

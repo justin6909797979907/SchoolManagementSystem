@@ -37,8 +37,9 @@ use Dompdf\Dompdf;
           'schoolYear' => $schoolYear
     ]);
 
-    
     }
+
+
 
      public function sectionSchedulerPdf()
     {   

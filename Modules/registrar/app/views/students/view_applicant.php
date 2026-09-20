@@ -34,15 +34,15 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-success btn-sm">
+                    <button class="btn btn-success btn-sm" id="approveBtn">
                         Approve
                     </button>
 
-                    <button class="btn btn-danger btn-sm">
+                    <button class="btn btn-danger btn-sm" id="declineBtn">
                         Reject
                     </button>
 
-                    <button class="btn btn-secondary btn-sm">
+                    <button class="btn btn-secondary btn-sm" id="printPdf">
                         Print
                     </button>
                 </div>

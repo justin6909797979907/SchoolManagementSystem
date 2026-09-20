@@ -79,10 +79,14 @@
         <div id="studentMenu" class="collapse <?php echo in_array(CURRENT_URI, ['students','enrollees','subject-loading','class-offering','curriculum','curriculum-subject']) || str_contains(CURRENT_URI,'section-schedule')  || str_contains(CURRENT_URI,'class-offering') ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
         <ul>
              <li><a href="<?php echo BASE_URL?>/students" class="menu-link <?php echo CURRENT_URI  === "students" ? 'active' : '' ?>" id="student">Students</a></li>
-             <li><a href="<?php echo BASE_URL?>/enrollees" class="menu-link <?php echo CURRENT_URI  === "enrollees" ? 'active' : '' ?>" id="Enrollees">Enrollees</a></li>
-              <li><a href="<?php echo BASE_URL?>/class-offering" class="menu-link <?php echo str_contains(CURRENT_URI,'class-offering') ? 'active' : ''?>" id="Enrollees">Class Offering</a></li>
-               <li><a href="<?php echo BASE_URL?>/section-schedule" class="menu-link <?php echo str_contains(CURRENT_URI,'section-schedule') ? 'active' : '' ?>" id="Enrollees">Section Schedule</a></li>
-                <li><a href="<?php echo BASE_URL?>/curriculum" class="menu-link <?php echo CURRENT_URI  === "curriculum" ? 'active' : '' ?>" id="Enrollees">Curriculum</a></li>
+             <li><a href="<?php echo BASE_URL?>/enrollees" class="menu-link d-none <?php echo CURRENT_URI  === "enrollees" ? 'active' : '' ?>" id="Enrollees">Enrollees (New Students)</a></li>
+             <li><a href="<?php echo BASE_URL?>/enrollees-old" class="menu-link d-none <?php echo CURRENT_URI  === "enrollees-old" ? 'active' : '' ?>" id="EnrolleesOld">Enrollees (Old Students)</a></li>
+             <li><a href="<?php echo BASE_URL?>/class-offering" class="menu-link d-none <?php echo str_contains(CURRENT_URI,'class-offering') ? 'active' : ''?>" id="Enrollees">Class Offering</a></li>
+             <li><a href="<?php echo BASE_URL?>/section-schedule" class="menu-link d-none <?php echo str_contains(CURRENT_URI,'section-schedule') ? 'active' : '' ?>" id="Enrollees">Section Schedule</a></li>
+             <li><a href="<?php echo BASE_URL?>/enrollment" class="menu-link <?php echo CURRENT_URI  === "enrollment" ? 'active' : '' ?>" id="Enrollment">Enrollment Records</a></li>
+             <li><a href="<?php echo BASE_URL?>/COR" class="menu-link <?php echo CURRENT_URI  === "COR" ? 'active' : '' ?>" id="Enrollees">COR</a></li>
+             <li><a href="<?php echo BASE_URL?>/TOR" class="menu-link <?php echo CURRENT_URI  === "TOR" ? 'active' : '' ?>" id="Enrollees">TOR</a></li>
+             <li><a href="<?php echo BASE_URL?>/Grades" class="menu-link <?php echo CURRENT_URI  === "Grades" ? 'active' : '' ?>" id="Enrollees">Grades</a></li>
         </ul>
         </div>
 
@@ -100,10 +104,11 @@
             <li><a href="<?php echo BASE_URL?>/course" class="menu-link <?php echo CURRENT_URI  === "course" ? 'active' : '' ?>" id="course">Courses</a></li>
             <li><a href="<?php echo BASE_URL?>/school-year" class="menu-link <?php echo CURRENT_URI  === "school-year" ? 'active' : '' ?>" id="course">School Year</a></li>
             <li><a href="<?php echo BASE_URL?>/semester" class="menu-link <?php echo CURRENT_URI  === "semester" ? 'active' : '' ?>" id="semester">Semesters</a></li>
-            <li><a href="<?php echo BASE_URL?>/subject" class="menu-link <?php echo CURRENT_URI  === "subject" ? 'active' : '' ?>" id="course">Subjects</a></li>
-            <li><a href="<?php echo BASE_URL?>/room" class="menu-link <?php echo CURRENT_URI  === "room" ? 'active' : '' ?>" id="rooms">Rooms</a></li>
-            <li><a href="<?php echo BASE_URL?>/teacher" class="menu-link <?php echo CURRENT_URI  === "teacher" ? 'active' : '' ?>" id="teacher">Teachers</a></li>
-             <li><a href="<?php echo BASE_URL?>/section" class="menu-link <?php echo CURRENT_URI  === "section" ? 'active' : '' ?>" id="teacher">Sections</a></li>
+            <li><a href="<?php echo BASE_URL?>/subject" class="menu-link <?php echo CURRENT_URI  === "subject" ? 'active' : '' ?>" id="subject">Subjects</a></li>
+            <li><a href="<?php echo BASE_URL?>/room" class="menu-link d-none <?php echo CURRENT_URI  === "room" ? 'active' : '' ?>" id="rooms">Rooms</a></li>
+             <li><a href="<?php echo BASE_URL?>/curriculum" class="menu-link <?php echo CURRENT_URI  === "curriculum" ? 'active' : '' ?>" id="Enrollees">Curriculum</a></li>
+            <li><a href="<?php echo BASE_URL?>/teacher" class="menu-link d-none <?php echo CURRENT_URI  === "teacher" ? 'active' : '' ?>" id="teacher">Teachers</a></li>
+             <li><a href="<?php echo BASE_URL?>/section" class="menu-link d-none <?php echo CURRENT_URI  === "section" ? 'active' : '' ?>" id="teacher">Sections</a></li>
         </ul>
         </div>
 
@@ -119,7 +124,7 @@
          <div id="schoolReports" class="collapse <?php echo in_array(CURRENT_URI, ['reports','file','reports-approval','reports-submit']) ? 'show' : '' ?>"  data-bs-parent="#sidebarMenu">
         <ul>
              <li><a href="<?php echo BASE_URL?>/reports" class="menu-link <?php echo CURRENT_URI  === "reports" ? 'active' : '' ?>" id="reports">Reports</a></li>
-              <li><a href="<?php echo BASE_URL?>/file" class="menu-link <?php echo CURRENT_URI  === "file" ? 'active' : '' ?>" id="file">File Requests</a></li> 
+              <li><a href="<?php echo BASE_URL?>/documents-request" class="menu-link <?php echo CURRENT_URI  === "documents-request" ? 'active' : '' ?>" id="file">Documents Requests</a></li> 
               <li><a href="<?php echo BASE_URL?>/reports-approval" class="menu-link <?php echo CURRENT_URI  === "reports-approval" ? 'active' : '' ?>" id="reports-approval">Approval & Decision Support</a></li>
                <li><a href="<?php echo BASE_URL?>/reports-submit" class="menu-link <?php echo CURRENT_URI  === "reports-submit" ? 'active' : '' ?>" id="reports-submit">Report Submission Management</a></li>
         </ul>
