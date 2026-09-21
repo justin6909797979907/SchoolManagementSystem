@@ -115,7 +115,7 @@
     const BASE_URL = "<?= BASE_URL ?>";
 </script>
 
-<script src="<?= BASE_URL ?>/js/ballistic_monitoring.js"></script>
+<script src="<?= BASE_URL ?>/js/balInventory.js"></script>
 
 <?php require __DIR__ . '/balAddMonitoringModal.php'; ?>
 <?php require __DIR__ . '/balViewMonitoringModal.php'; ?>
