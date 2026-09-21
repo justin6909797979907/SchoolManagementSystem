@@ -14,9 +14,20 @@
                     Borrowing
                 </div>
 
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#lab2AddBorrowModal">
-                    <i class="fas fa-plus me-1"></i> Create New
-                </button>
+                <div class="d-flex gap-2">
+                    <button
+                        class="btn btn-primary btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#lab2AddBorrowModal">
+                        <i class="fas fa-plus me-1"></i> Create New
+                    </button>
+
+                    <a href="<?= BASE_URL ?>/lab2-borrow/inactive"
+                        class="btn btn-secondary btn-sm">
+                        <i class="fas fa-box-archive me-2"></i>
+                        Inactive Items
+                    </a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -83,10 +94,12 @@
                                                     <hr class="dropdown-divider">
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="dropdown-item text-danger deleteBtn"
-                                                        data-id="<?= $row['id']; ?>">
-                                                        <i class="fas fa-trash me-2"></i>
-                                                        Delete
+                                                    <a href="<?= BASE_URL ?>/lab2-borrow/deactivate/<?= $row['id']; ?>"
+                                                        class="dropdown-item text-danger"
+                                                        onclick="return confirm('Are you sure you want to deactivate this borrowed item?');">
+
+                                                        <i class="fas fa-ban me-2"></i>
+                                                        Deactivate
                                                     </a>
                                                 </li>
                                             </ul>
