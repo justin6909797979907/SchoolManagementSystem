@@ -1,4 +1,3 @@
-
 <?php
 
 class DatabaseTwo
@@ -9,7 +8,7 @@ class DatabaseTwo
     private function __construct()
     {
         $this->conn = new PDO(
-            "mysql:host=localhost;dbname=sms1;charset=utf8mb4",
+            "mysql:host=localhost;dbname=sms1;charset=utf8",
             "root",
             "",
             [
@@ -24,7 +23,6 @@ class DatabaseTwo
         if (self::$instance === null) {
             self::$instance = new self();
         }
-
         return self::$instance;
     }
 
