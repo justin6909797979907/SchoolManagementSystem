@@ -1,5 +1,11 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+
+// Your PHP code starts here
+
 require_once __DIR__ . '/config/config.php';
 
 //controllers
@@ -1081,9 +1087,9 @@ switch ($segments[0] ?? '') {
 
     case 'it-lab1-inventory':
 
-        require_once __DIR__ . '/app/controllers/Itlab1InventoryController.php';
+        require_once __DIR__ . '/app/controllers/ItLab1InventoryController.php';
 
-        $controller = new Itlab1InventoryController();
+        $controller = new ItLab1InventoryController();
 
         if (!isset($segments[1])) {
             $controller->index();
@@ -1161,8 +1167,8 @@ switch ($segments[0] ?? '') {
 
 
     case 'lab2-damage':
-        require_once __DIR__ . '/app/controllers/Itlab2DamageController.php';
-        $controller = new Itlab2DamageController();
+        require_once __DIR__ . '/app/controllers/ItLab2DamageController.php';
+        $controller = new ItLab2DamageController();
 
         if (!isset($segments[1])) {
             $controller->index();
@@ -1186,8 +1192,8 @@ switch ($segments[0] ?? '') {
 
 
     case 'lab3-damage':
-        require_once __DIR__ . '/app/controllers/Itlab3DamageController.php';
-        $controller = new Itlab3DamageController();
+        require_once __DIR__ . '/app/controllers/ItLab3DamageController.php';
+        $controller = new ItLab3DamageController();
 
         if (!isset($segments[1])) {
             $controller->index();
@@ -1213,7 +1219,7 @@ switch ($segments[0] ?? '') {
 
 
     case 'lab1-borrow':
-        require_once __DIR__ . '/app/controllers/Itlab1BorrowController.php';
+        require_once __DIR__ . '/app/controllers/ItLab1BorrowController.php';
         $controller = new Itlab1BorrowController();
 
         if (!isset($segments[1])) {
@@ -1239,8 +1245,8 @@ switch ($segments[0] ?? '') {
 
 
     case 'lab2-borrow':
-        require_once __DIR__ . '/app/controllers/Itlab2BorrowController.php';
-        $controller = new Itlab2BorrowController();
+        require_once __DIR__ . '/app/controllers/ItLab2BorrowController.php';
+        $controller = new ItLab2BorrowController();
 
         if (!isset($segments[1])) {
             $controller->index();
@@ -1265,8 +1271,8 @@ switch ($segments[0] ?? '') {
 
 
     case 'lab3-borrow':
-        require_once __DIR__ . '/app/controllers/Itlab3BorrowController.php';
-        $controller = new Itlab3BorrowController();
+        require_once __DIR__ . '/app/controllers/ItLab3BorrowController.php';
+        $controller = new ItLab3BorrowController();
 
         if (!isset($segments[1])) {
             $controller->index();

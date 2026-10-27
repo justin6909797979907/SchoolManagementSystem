@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../models/Itlab2Inventory.php';
+require_once __DIR__ . '/../models/ItLab2Inventory.php';
 
 class ItLab2InventoryController
 {

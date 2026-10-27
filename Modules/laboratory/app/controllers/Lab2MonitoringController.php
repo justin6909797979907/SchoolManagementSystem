@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../models/Lab2Monitoring.php';
+require_once __DIR__ . '/../models/lab2Monitoring.php';
 
 class Lab2MonitoringController
 {

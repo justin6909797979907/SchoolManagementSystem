@@ -8,9 +8,9 @@
     </div>
 
     <div class="sidebar-header">
-        <div class="user-avatar">UA</div>
-        <h1>Username</h1>
-        <p class="user-id">SAMPLEID123456789</p>
+        <div class="user-avatar">J</div>
+        <h1>Justin</h1>
+        <p class="user-id">ID1017</p>
     </div>
 
     <h2>Laboratory</h2>
@@ -180,7 +180,7 @@
                                     <a href="<?= BASE_URL ?>/questioned-inventory" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'questioned_inventory' ? "active" :  "" ?>">Inventory</a>
                                     <a href="<?= BASE_URL ?>/question-document-damage" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'question_document_damage' ? "active" :  "" ?>">Damage</a>
                                     <!-- <a href="<?= BASE_URL ?>/questiondocument-borrow" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'questiondocument_borrow' ? "active" :  "" ?>">Borrow</a> -->
-                                     <a href="<?= BASE_URL ?>/question-document-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'question_document_monitoring' ? "active" :  "" ?>">Monitoring</a>
+                                    <a href="<?= BASE_URL ?>/question-document-monitoring" class="dropdown-item menu-link small text-white <?php echo CURRENT_URI == 'question_document_monitoring' ? "active" :  "" ?>">Monitoring</a>
                                 </div>
                             </div>
 
@@ -331,10 +331,10 @@
 
 
 
-        <div><a href="" class="menu-link">Users</a></div>
+        <!-- <div><a href="" class="menu-link">Users</a></div> -->
         <a href="<?= BASE_URL ?>/schedule" class="dropdown-item menu-link small fw-light <?php echo CURRENT_URI == 'schedule' ? "active" :  "" ?>">Schedule</a>
 
-        
+
         <!-- <div class="text-white py-2 px-3 rounded shadow-sm w-100">Reports:</div>
         <div><a href="<?= BASE_URL ?>/approval-decision-support" class="menu-link">Approval Decision Support</a></div>
         <div><a href="<?= BASE_URL ?>/concern-issue-tracking" class="menu-link">Concerns Issue Tracking</a></div>
@@ -374,9 +374,12 @@
     </div>
 
     <div><a href="<?= BASE_URL ?>/settings" class="menu-link">Settings</a></div>
-    
-    <div><a href="<?= BASE_URL ?>/logout"
-            onclick="return confirm('Are you sure you want to logout?')" class="menu-link">Logout
+
+    <div>
+        <a href="https://laboratory.bcp-sms.com/"
+            onclick="return confirm('Are you sure you want to logout?')"
+            class="menu-link">
+            Logout
         </a>
     </div>
 

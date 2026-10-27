@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../models/Itlab1Inventory.php';
+require_once __DIR__ . '/../models/ItLab1Inventory.php';
 
-class Itlab1InventoryController
+class ItLab1InventoryController
 {
     public function index()
     {
-        $inventory = new Itlab1Inventory();
+        $inventory = new ItLab1Inventory();
 
         $inventories = $inventory->getAll();
 
@@ -15,7 +15,7 @@ class Itlab1InventoryController
 
     public function create()
     {
-        $inventory = new Itlab1Inventory();
+        $inventory = new ItLab1Inventory();
 
         $inventory->create($_POST);
 
@@ -25,14 +25,14 @@ class Itlab1InventoryController
 
     public function view($id)
     {
-        $inventory = new Itlab1Inventory();
+        $inventory = new ItLab1Inventory();
 
         echo json_encode($inventory->getById($id));
     }
 
     public function update()
     {
-        $inventory = new Itlab1Inventory();
+        $inventory = new ItLab1Inventory();
 
         $inventory->update($_POST);
 

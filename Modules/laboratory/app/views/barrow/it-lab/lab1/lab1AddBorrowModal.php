@@ -122,12 +122,16 @@
 
                         <!-- Returned Date -->
                         <div class="col-md-6">
-                            <label class="form-label">Returned Date</label>
+                            <label class="form-label">Returned Date (Optional)</label>
 
                             <input
                                 type="date"
                                 name="returned_date"
                                 class="form-control">
+
+                            <small class="text-muted">
+                                Leave blank if the item has not been returned.
+                            </small>
                         </div>
 
                         <!-- Status -->
