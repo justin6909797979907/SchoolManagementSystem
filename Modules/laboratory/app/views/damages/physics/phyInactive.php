@@ -2,6 +2,43 @@
 <?php include __DIR__ . '/../../includes/header.php'; ?>
 
 <main class="main-content">
+    <?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $flashMessages = [
+        'success' => $_SESSION['success'] ?? null,
+        'error'   => $_SESSION['error'] ?? null
+    ];
+
+    unset($_SESSION['success'], $_SESSION['error']);
+    ?>
+
+    <?php foreach ($flashMessages as $type => $message): ?>
+        <?php if (!empty($message)): ?>
+            <div class="custom-toast <?= $type ?>" role="<?= $type === 'error' ? 'alert' : 'status' ?>">
+                <div class="toast-icon">
+                    <?= $type === 'success' ? '✓' : '!' ?>
+                </div>
+
+                <div class="toast-content">
+                    <div class="toast-title">
+                        <?= $type === 'success' ? 'Success!' : 'Something went wrong' ?>
+                    </div>
+
+                    <div class="toast-message">
+                        <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
+                    </div>
+                </div>
+
+                <button type="button" class="toast-close"
+                    aria-label="Close notification">&times;</button>
+
+                <div class="toast-progress"></div>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
     <div class="container-fluid px-4">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -12,10 +49,8 @@
                 </p>
             </div>
 
-            
             <a href="<?= BASE_URL ?>/physics-damage"
                 class="btn btn-secondary">
-
                 <i class="fas fa-arrow-left me-2"></i>
                 Back to Damages
             </a>
@@ -25,25 +60,26 @@
             <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fas fa-box-archive me-2"></i>
-                    Inactive Damages
+                    Inactive Damage Records
                 </h5>
             </div>
 
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="phyInactiveDamageTable"
-                        class="table table-striped table-bordered"
+                        class="table table-striped table-bordered align-middle"
                         style="width:100%">
 
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Serial Number</th>
                                 <th>Item Name</th>
                                 <th>Laboratory</th>
-                                <th>Issue</th>
-                                <th>Damaged By</th>
+                                <th>Issue Description</th>
+                                <th>Accountable Department</th>
                                 <th>Date Reported</th>
-                                <th>Status</th>
+                                <th>Repair Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -52,73 +88,116 @@
                             <?php if (!empty($rows)): ?>
                                 <?php foreach ($rows as $row): ?>
 
+                                    <?php
+                                    $repairStatus = strtolower(
+                                        $row['repair_status'] ?? 'pending'
+                                    );
+
+                                    $statusClass = match ($repairStatus) {
+                                        'pending' => 'bg-danger text-white',
+                                        'under repair' => 'bg-warning text-dark',
+                                        'repaired' => 'bg-success text-white',
+                                        'written off' => 'bg-dark text-white',
+                                        default => 'bg-secondary text-white'
+                                    };
+
+                                    $dateReported = !empty($row['date_reported'])
+                                        ? date(
+                                            'M d, Y h:i A',
+                                            strtotime($row['date_reported'])
+                                        )
+                                        : '—';
+                                    ?>
+
                                     <tr>
-                                        <td><?= htmlspecialchars($row['id']); ?></td>
-                                        <td><?= htmlspecialchars($row['item_name']); ?></td>
-                                        <td><?= htmlspecialchars($row['laboratory']); ?></td>
-                                        <td><?= htmlspecialchars($row['issue']); ?></td>
-                                        <td><?= htmlspecialchars($row['reported_by']); ?></td>
-                                        <td><?= htmlspecialchars($row['date_reported']); ?></td>
+                                        <td>
+                                            <?= (int) $row['id'] ?>
+                                        </td>
 
                                         <td>
-                                            <?php
-                                            $status = strtolower($row['status']);
+                                            <?= htmlspecialchars(
+                                                $row['serial_number'] ?? '—',
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+                                        </td>
 
-                                            if ($status === 'damage') {
-                                                $statusClass = 'bg-danger';
-                                                $statusText = 'Damage';
-                                            } elseif ($status === 'under inspection') {
-                                                $statusClass = 'bg-warning text-dark';
-                                                $statusText = 'Under Inspection';
-                                            } elseif ($status === 'fixed') {
-                                                $statusClass = 'bg-primary';
-                                                $statusText = 'Fixed';
-                                            } elseif ($status === 'working') {
-                                                $statusClass = 'bg-success';
-                                                $statusText = 'Working';
-                                            } else {
-                                                $statusClass = 'bg-secondary';
-                                                $statusText = htmlspecialchars($row['status']);
-                                            }
-                                            ?>
+                                        <td>
+                                            <?= htmlspecialchars(
+                                                $row['item_name'] ?? 'Unknown item',
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+                                        </td>
 
+                                        <td>
+                                            <?= htmlspecialchars(
+                                                $row['laboratory'] ?? 'Physics Laboratory',
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars(
+                                                $row['issue_description'] ?? '',
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars(
+                                                $row['accountable_department'] ?? 'Not assigned',
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars(
+                                                $dateReported,
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+                                        </td>
+
+                                        <td>
                                             <span class="badge <?= $statusClass ?>">
-                                                <?= $statusText ?>
+                                                <?= htmlspecialchars(
+                                                    ucwords($repairStatus),
+                                                    ENT_QUOTES,
+                                                    'UTF-8'
+                                                ) ?>
                                             </span>
                                         </td>
 
                                         <td>
                                             <div class="dropdown">
-
                                                 <button
                                                     class="btn btn-sm btn-secondary dropdown-toggle"
                                                     type="button"
-                                                    data-bs-toggle="dropdown">
-
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
                                                     Action
-
                                                 </button>
 
                                                 <ul class="dropdown-menu">
-
-                                                    <!-- VIEW -->
                                                     <li>
                                                         <a
-                                                            class="dropdown-item disabled"
-                                                            href="<?= BASE_URL ?>/physics-damage/view/<?= $row['id']; ?>">
-
+                                                            class="dropdown-item viewBtn"
+                                                            href="#"
+                                                            data-id="<?= (int) $row['id'] ?>">
                                                             <i class="fas fa-eye me-2"></i>
                                                             View
                                                         </a>
                                                     </li>
 
-                                                    <!-- ACTIVATE -->
                                                     <li>
                                                         <a
                                                             class="dropdown-item text-success"
-                                                            href="<?= BASE_URL ?>/physics-damage/activate/<?= $row['id']; ?>"
+                                                            href="<?= BASE_URL ?>/physics-damage/activate/<?= (int) $row['id'] ?>"
                                                             onclick="return confirm('Are you sure you want to activate this damage record?');">
-
                                                             <i class="fas fa-check-circle me-2"></i>
                                                             Activate
                                                         </a>
@@ -129,23 +208,20 @@
                                     </tr>
 
                                 <?php endforeach; ?>
-
                             <?php else: ?>
+
                                 <tr>
-                                    <td colspan="8"
+                                    <td colspan="9"
                                         class="text-center text-muted py-4">
-
                                         <i class="fas fa-box-open fa-2x mb-2"></i>
-
                                         <br>
-
                                         No inactive damage records found.
-
                                     </td>
                                 </tr>
-                            <?php endif; ?>
 
+                            <?php endif; ?>
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -153,17 +229,16 @@
     </div>
 </main>
 
-
 <script>
     $(document).ready(function() {
-
         $('#phyInactiveDamageTable').DataTable({
             pageLength: 10,
-            lengthMenu: [10, 20, 30, 40]
+            lengthMenu: [10, 20, 30, 40],
+            order: [
+                [0, 'desc']
+            ]
         });
-
     });
 </script>
-
 
 <?php include __DIR__ . '/../../../includes/footer.php'; ?>

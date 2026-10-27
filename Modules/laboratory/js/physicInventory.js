@@ -1,86 +1,107 @@
 document.addEventListener("click", function (e) {
+  // EDIT INVENTORY ITEM
+  const editBtn = e.target.closest(".editBtn");
 
-    const btn = e.target.closest(".editBtn");
-
-    if (!btn) return;
-
+  if (editBtn) {
     e.preventDefault();
 
-    let id = btn.dataset.id;
+    const id = editBtn.dataset.id;
 
     fetch(`${BASE_URL}/physics-inventory/view/${id}`)
-        .then(response => response.json())
-        .then(data => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch inventory item.");
+        }
 
-            console.log(data);
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !data.id) {
+          throw new Error("Inventory item not found.");
+        }
 
-            document.getElementById("edit_id").value = data.id;
-            document.getElementById("edit_item_name").value = data.item_name;
-            document.getElementById("edit_category").value = data.category;
-            document.getElementById("edit_laboratory").value = data.laboratory;
-            document.getElementById("edit_total_item").value = data.total_item;
-            document.getElementById("edit_available_item").value = data.available_item;
-            document.getElementById("edit_status").value = data.status;
+        document.getElementById("edit_id").value = data.id;
+        document.getElementById("edit_serial_number").value =
+          data.serial_number ?? "";
+        document.getElementById("edit_item_name").value = data.item_name ?? "";
+        document.getElementById("edit_category").value = data.category ?? "";
+        document.getElementById("edit_laboratory").value =
+          data.laboratory ?? "Physics Laboratory";
+        document.getElementById("edit_status").value = data.status ?? "working";
 
-            let editModal = new bootstrap.Modal(
-                document.getElementById("phyEditInventoryModal")
-            );
+        const modalElement = document.getElementById("phyEditInventoryModal");
 
-            editModal.show();
+        bootstrap.Modal.getOrCreateInstance(modalElement).show();
+      })
+      .catch((error) => {
+        console.error("Edit error:", error);
+        alert("Unable to load the inventory item. Please try again.");
+      });
 
-        })
-        .catch(error => console.error(error));
+    return;
+  }
 
-});
+  // VIEW INVENTORY ITEM
+  const viewBtn = e.target.closest(".viewBtn");
 
-document.addEventListener("click", function (e) {
-
-    const btn = e.target.closest(".viewBtn");
-
-    if (!btn) return;
-
+  if (viewBtn) {
     e.preventDefault();
 
-    let id = btn.dataset.id;
+    const id = viewBtn.dataset.id;
 
     fetch(`${BASE_URL}/physics-inventory/view/${id}`)
-        .then(response => response.json())
-        .then(data => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch inventory item.");
+        }
 
-            document.getElementById("view_id").value = data.id;
-            document.getElementById("view_item_name").value = data.item_name;
-            document.getElementById("view_category").value = data.category;
-            document.getElementById("view_laboratory").value = data.laboratory;
-            document.getElementById("view_total_quantity").value = data.total_item;
-            document.getElementById("view_available_quantity").value = data.available_item;
-            document.getElementById("view_status").value = data.status;
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !data.id) {
+          throw new Error("Inventory item not found.");
+        }
 
-            let viewModal = new bootstrap.Modal(
-                document.getElementById("phyViewInventoryModal")
-            );
+        document.getElementById("view_id").value = data.id ?? "";
+        document.getElementById("view_item_name").value = data.item_name ?? "";
+        document.getElementById("view_category").value = data.category ?? "";
+        document.getElementById("view_laboratory").value =
+          data.laboratory ?? "Physics Laboratory";
 
-            viewModal.show();
+        // Support either database column naming convention.
+        document.getElementById("view_total_quantity").value =
+          data.total_quantity ?? data.total_item ?? "";
 
-        })
-        .catch(error => console.error(error));
+        document.getElementById("view_available_quantity").value =
+          data.available_quantity ?? data.available_item ?? "";
 
-});
+        document.getElementById("view_status").value = data.status ?? "";
 
-//delete
-document.addEventListener("click", function (e) {
+        const modalElement = document.getElementById("phyViewInventoryModal");
 
-    const btn = e.target.closest(".deleteBtn");
+        bootstrap.Modal.getOrCreateInstance(modalElement).show();
+      })
+      .catch((error) => {
+        console.error("View error:", error);
+        alert("Unable to load the inventory item. Please try again.");
+      });
 
-    if (!btn) return;
+    return;
+  }
 
+  // ARCHIVE INVENTORY ITEM
+  // Use a link with class="deactivateBtn" and data-id="..."
+  const deactivateBtn = e.target.closest(".deactivateBtn");
+
+  if (deactivateBtn) {
     e.preventDefault();
 
-    let id = btn.dataset.id;
+    const id = deactivateBtn.dataset.id;
 
-    if (confirm("Are you sure you want to delete this inventory?")) {
-
-        window.location.href = `${BASE_URL}/physics-inventory/delete/${id}`;
-
+    if (confirm("Are you sure you want to deactivate this inventory item?")) {
+      window.location.href = `${BASE_URL}/physics-inventory/deactivate/${id}`;
     }
 
+    return;
+  }
 });

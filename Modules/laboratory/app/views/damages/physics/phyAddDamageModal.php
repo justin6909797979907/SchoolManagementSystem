@@ -1,5 +1,10 @@
-<div class="modal fade" id="phyAddDamageModal" tabindex="-1" aria-labelledby="phyAddDamageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade"
+    id="phyAddDamageModal"
+    tabindex="-1"
+    aria-labelledby="phyAddDamageModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 
             <form
@@ -10,88 +15,223 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="phyAddDamageModalLabel">
                         <i class="fas fa-plus-square me-2"></i>
-                        Add New Damage
+                        Add New Damage Record
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                    </button>
                 </div>
 
                 <div class="modal-body">
 
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Record the accountable department first. Do not identify
+                        an individual as responsible without sufficient evidence.
+                    </div>
+
                     <div class="row g-3">
 
-                        <!-- Item Name -->
+                        <!-- Inventory Item -->
                         <div class="col-md-6">
-                            <label class="form-label">Item Name</label>
-                            <input
-                                type="text"
-                                name="item_name"
-                                class="form-control"
+                            <label for="phy_damage_inventory_id" class="form-label">
+                                Equipment / Item <span class="text-danger">*</span>
+                            </label>
+
+                            <select
+                                name="inventory_id"
+                                id="phy_damage_inventory_id"
+                                class="form-select"
                                 required>
+
+                                <option value="" selected disabled>
+                                    -- Select Equipment --
+                                </option>
+
+                                <?php if (!empty($inventoryItems)): ?>
+                                    <?php foreach ($inventoryItems as $item): ?>
+                                        <option
+                                            value="<?= (int) $item['id'] ?>"
+                                            data-laboratory="<?= htmlspecialchars(
+                                                                    $item['laboratory'],
+                                                                    ENT_QUOTES,
+                                                                    'UTF-8'
+                                                                ) ?>">
+
+                                            <?= htmlspecialchars(
+                                                $item['serial_number'] . ' - ' . $item['item_name'],
+                                                ENT_QUOTES,
+                                                'UTF-8'
+                                            ) ?>
+
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+
+                            </select>
+
+                            <?php if (empty($inventoryItems)): ?>
+                                <small class="text-danger">
+                                    No active Physics inventory items found.
+                                    Add an item to the inventory first.
+                                </small>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Laboratory -->
                         <div class="col-md-6">
-                            <label class="form-label">Laboratory</label>
+                            <label for="phy_damage_laboratory" class="form-label">
+                                Laboratory
+                            </label>
+
                             <input
                                 type="text"
-                                name="laboratory"
+                                id="phy_damage_laboratory"
                                 class="form-control"
                                 value="Physics Laboratory"
                                 readonly>
                         </div>
 
-                        <!-- Issue -->
+                        <!-- Issue Description -->
+                        <div class="col-md-12">
+                            <label for="phy_damage_issue_description" class="form-label">
+                                Issue Description <span class="text-danger">*</span>
+                            </label>
+
+                            <textarea
+                                name="issue_description"
+                                id="phy_damage_issue_description"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Describe the damage or equipment problem..."
+                                required></textarea>
+                        </div>
+
+                        <!-- Accountable Department -->
                         <div class="col-md-6">
-                            <label class="form-label">Issue</label>
+                            <label for="phy_damage_accountable_department" class="form-label">
+                                Accountable Department <span class="text-danger">*</span>
+                            </label>
+
                             <input
                                 type="text"
-                                name="issue"
+                                name="accountable_department"
+                                id="phy_damage_accountable_department"
                                 class="form-control"
+                                placeholder="Enter department name"
                                 required>
                         </div>
 
-                        <!-- Damaged By -->
+                        <!-- Reported By -->
                         <div class="col-md-6">
-                            <label class="form-label">Damaged By</label>
+                            <label for="phy_damage_reported_by" class="form-label">
+                                Reported By
+                            </label>
+
                             <input
                                 type="text"
                                 name="reported_by"
+                                id="phy_damage_reported_by"
                                 class="form-control"
-                                required>
+                                placeholder="Name of person reporting">
                         </div>
 
                         <!-- Date Reported -->
                         <div class="col-md-6">
-                            <label class="form-label">Date Reported</label>
+                            <label for="phy_damage_date_reported" class="form-label">
+                                Date and Time Reported <span class="text-danger">*</span>
+                            </label>
+
                             <input
-                                type="date"
+                                type="datetime-local"
                                 name="date_reported"
+                                id="phy_damage_date_reported"
                                 class="form-control"
+                                value="<?= date('Y-m-d\TH:i') ?>"
                                 required>
                         </div>
 
-                        <!-- Status -->
+                        <!-- Repair Status -->
                         <div class="col-md-6">
-                            <label class="form-label">Status</label>
-                            <select name="status" class="form-select" required>
-                                <option value="" selected disabled>-- Select Status --</option>
-                                <option value="Fixed">Fixed</option>
-                                <option value="Under Maintenance">Under Maintenance</option>
-                                <option value="Damaged">Damaged</option>
-                                <option value="Unavailable">Unavailable</option>
+                            <label for="phy_damage_repair_status" class="form-label">
+                                Repair Status <span class="text-danger">*</span>
+                            </label>
+
+                            <select
+                                name="repair_status"
+                                id="phy_damage_repair_status"
+                                class="form-select"
+                                required>
+
+                                <option value="pending" selected>
+                                    Pending
+                                </option>
+
+                                <option value="under repair">
+                                    Under Repair
+                                </option>
+
+                                <option value="repaired">
+                                    Repaired
+                                </option>
+
+                                <option value="written off">
+                                    Written Off
+                                </option>
+
                             </select>
                         </div>
 
-                    </div>
+                        <!-- Action Taken -->
+                        <div class="col-md-12">
+                            <label for="phy_damage_action_taken" class="form-label">
+                                Action Taken
+                            </label>
 
+                            <textarea
+                                name="action_taken"
+                                id="phy_damage_action_taken"
+                                class="form-control"
+                                rows="2"
+                                placeholder="Describe any inspection, repair, or action taken..."></textarea>
+                        </div>
+
+                        <!-- Remarks -->
+                        <div class="col-md-12">
+                            <label for="phy_damage_remarks" class="form-label">
+                                Remarks
+                            </label>
+
+                            <textarea
+                                name="remarks"
+                                id="phy_damage_remarks"
+                                class="form-control"
+                                rows="2"
+                                placeholder="Additional information (optional)..."></textarea>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save me-1"></i> Save
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        <?= empty($inventoryItems) ? 'disabled' : '' ?>>
+
+                        <i class="fas fa-save me-1"></i>
+                        Save Damage Record
                     </button>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
                         Cancel
                     </button>
                 </div>
@@ -101,3 +241,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inventorySelect = document.getElementById('phy_damage_inventory_id');
+        const laboratoryInput = document.getElementById('phy_damage_laboratory');
+
+        if (inventorySelect && laboratoryInput) {
+            inventorySelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+
+                laboratoryInput.value =
+                    selectedOption.dataset.laboratory || 'Physics Laboratory';
+            });
+        }
+    });
+</script>
