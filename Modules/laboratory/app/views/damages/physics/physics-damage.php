@@ -183,6 +183,25 @@
                                                         <hr class="dropdown-divider">
                                                     </li>
 
+
+                                                    <?php if (!empty($row['incident_id'])): ?>
+                                                        <li>
+                                                            <a class="dropdown-item"
+                                                                href="<?= BASE_URL ?>/physics-incident/view-page/<?= (int) $row['incident_id'] ?>">
+                                                                <i class="fas fa-file-alt me-2"></i>
+                                                                View Incident Report
+                                                            </a>
+                                                        </li>
+                                                    <?php else: ?>
+                                                        <li>
+                                                            <a class="dropdown-item"
+                                                                href="<?= BASE_URL ?>/physics-incident/create-form?damage_id=<?= (int) $row['id'] ?>">
+                                                                <i class="fas fa-file-circle-plus me-2"></i>
+                                                                Incident Re..
+                                                            </a>
+                                                        </li>
+                                                    <?php endif; ?>
+
                                                     <li>
                                                         <a href="<?= BASE_URL ?>/physics-damage/deactivate/<?= (int) $row['id'] ?>"
                                                             class="dropdown-item text-danger"

@@ -84,31 +84,39 @@ class PhyDamage
     public function getAll()
     {
         $sql = "
-            SELECT
-                d.id,
-                d.inventory_id,
-                i.serial_number,
-                i.item_name,
-                i.laboratory,
-                d.issue_description,
-                d.accountable_department,
-                d.reported_by,
-                d.date_reported,
-                d.repair_status,
-                d.action_taken,
-                d.remarks
-            FROM {$this->table} AS d
-            INNER JOIN lab_phys_inventory AS i
-                ON d.inventory_id = i.id
-            WHERE d.is_active = 1
-            ORDER BY d.id DESC
-        ";
+        SELECT
+            d.id,
+            d.inventory_id,
+            i.serial_number,
+            i.item_name,
+            i.laboratory,
+            d.issue_description,
+            d.accountable_department,
+            d.reported_by,
+            d.date_reported,
+            d.repair_status,
+            d.action_taken,
+            d.remarks,
+            (
+                SELECT ir.id
+                FROM lab_phys_incidents AS ir
+                WHERE ir.damage_id = d.id
+                  AND ir.is_active = 1
+                LIMIT 1
+            ) AS incident_id
+        FROM {$this->table} AS d
+        INNER JOIN lab_phys_inventory AS i
+            ON d.inventory_id = i.id
+        WHERE d.is_active = 1
+        ORDER BY d.id DESC
+    ";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     /**
      * Get active Physics inventory items.
