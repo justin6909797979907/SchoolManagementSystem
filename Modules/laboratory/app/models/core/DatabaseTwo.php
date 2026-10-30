@@ -8,9 +8,9 @@ class DatabaseTwo
     private function __construct()
     {
         $this->conn = new PDO(
-           "mysql:host=localhost;dbname=labo_sms;charset=utf8",
-                "labo_test",
-                "1234",
+           "mysql:host=localhost;dbname=sms1;charset=utf8",
+                "root",
+                "",
             [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
