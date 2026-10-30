@@ -1,3 +1,27 @@
+const dismissToast = (toast) => {
+  let hideTimer;
+
+  function dismiss() {
+    clearTimeout(hideTimer);
+
+    if (toast.classList.contains("hiding")) return;
+
+    toast.classList.add("hiding");
+
+    setTimeout(() => toast.remove(), 500);
+  }
+
+  const closeButton = toast.querySelector(".toast-close");
+
+  if (closeButton) {
+    closeButton.addEventListener("click", dismiss);
+  }
+
+  hideTimer = setTimeout(dismiss, 5000);
+};
+
+document.querySelectorAll(".custom-toast").forEach(dismissToast);
+
 document.addEventListener("click", function (e) {
   // EDIT INVENTORY ITEM
   const editBtn = e.target.closest(".editBtn");

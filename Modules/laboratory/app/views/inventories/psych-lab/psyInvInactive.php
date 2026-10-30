@@ -14,7 +14,6 @@
 
             <a href="<?= BASE_URL ?>/psycho-inventory"
                 class="btn btn-secondary">
-
                 <i class="fas fa-arrow-left me-2"></i>
                 Back to Inventory
             </a>
@@ -30,105 +29,75 @@
             </div>
 
             <div class="card-body">
-
                 <div class="table-responsive">
 
                     <table id="psyInactiveInventoryTable"
-                        class="table table-striped table-bordered"
+                        class="table table-striped table-bordered align-middle"
                         style="width:100%">
 
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Serial Number</th>
                                 <th>Item Name</th>
                                 <th>Category</th>
                                 <th>Laboratory</th>
-                                <th>Total Quantity</th>
-                                <th>Available Quantity</th>
-                                <th>Status</th>
+                                <th>Condition</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-
                             <?php if (!empty($rows)): ?>
 
                                 <?php foreach ($rows as $row): ?>
-
                                     <tr>
-
                                         <td>
-                                            <?= htmlspecialchars($row['id']); ?>
+                                            <?= (int) $row['id'] ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['item_name']); ?>
+                                            <?= htmlspecialchars($row['serial_number'] ?? '') ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['category']); ?>
+                                            <?= htmlspecialchars($row['item_name'] ?? '') ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['laboratory']); ?>
+                                            <?= htmlspecialchars($row['category'] ?? '') ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['total_item']); ?>
-                                        </td>
-
-                                        <td>
-                                            <?= htmlspecialchars($row['available_item']); ?>
+                                            <?= htmlspecialchars($row['laboratory'] ?? '') ?>
                                         </td>
 
                                         <td>
                                             <?php
-                                            $status = strtolower($row['status']);
+                                            $status = strtolower($row['status'] ?? '');
 
-                                            if ($status === 'available') {
+                                            $statusClasses = [
+                                                'working' => 'bg-success',
+                                                'under maintenance' => 'bg-warning text-dark',
+                                                'damage' => 'bg-danger',
+                                                'unavailable' => 'bg-secondary'
+                                            ];
 
-                                                $statusClass = 'bg-success';
-                                                $statusText = 'Available';
-                                            } elseif ($status === 'working') {
-
-                                                $statusClass = 'bg-primary';
-                                                $statusText = 'Working';
-                                            } elseif ($status === 'damage' || $status === 'damaged') {
-
-                                                $statusClass = 'bg-danger';
-                                                $statusText = 'Damaged';
-                                            } elseif ($status === 'under inspection') {
-
-                                                $statusClass = 'bg-warning text-dark';
-                                                $statusText = 'Under Inspection';
-                                            } elseif ($status === 'unavailable') {
-
-                                                $statusClass = 'bg-secondary';
-                                                $statusText = 'Unavailable';
-                                            } else {
-
-                                                $statusClass = 'bg-secondary';
-                                                $statusText = htmlspecialchars($row['status']);
-                                            }
+                                            $statusClass = $statusClasses[$status] ?? 'bg-secondary';
                                             ?>
 
                                             <span class="badge <?= $statusClass ?>">
-                                                <?= $statusText ?>
+                                                <?= htmlspecialchars(ucwords($status)) ?>
                                             </span>
                                         </td>
 
                                         <td>
-
                                             <div class="dropdown">
-
                                                 <button
                                                     class="btn btn-sm btn-secondary dropdown-toggle"
                                                     type="button"
                                                     data-bs-toggle="dropdown">
-
                                                     Action
-
                                                 </button>
 
                                                 <ul class="dropdown-menu">
@@ -136,12 +105,10 @@
                                                     <!-- VIEW -->
                                                     <li>
                                                         <a
-                                                            class="dropdown-item disabled"
-                                                            href="<?= BASE_URL ?>/psycho-inventory/view/<?= $row['id']; ?>">
-
+                                                            class="dropdown-item"
+                                                            href="<?= BASE_URL ?>/psycho-inventory/view/<?= (int) $row['id'] ?>">
                                                             <i class="fas fa-eye me-2"></i>
                                                             View
-
                                                         </a>
                                                     </li>
 
@@ -149,68 +116,49 @@
                                                     <li>
                                                         <a
                                                             class="dropdown-item text-success"
-                                                            href="<?= BASE_URL ?>/psycho-inventory/activate/<?= $row['id']; ?>"
-                                                            onclick="return confirm('Are you sure you want to activate this inventory item?');">
-
+                                                            href="<?= BASE_URL ?>/psycho-inventory/activate/<?= (int) $row['id'] ?>"
+                                                            onclick="return confirm('Are you sure you want to activate this item?');">
                                                             <i class="fas fa-check-circle me-2"></i>
                                                             Activate
-
                                                         </a>
                                                     </li>
 
                                                 </ul>
-
                                             </div>
-
                                         </td>
-
                                     </tr>
 
                                 <?php endforeach; ?>
 
                             <?php else: ?>
-
                                 <tr>
-
-                                    <td colspan="8"
-                                        class="text-center text-muted py-4">
-
+                                    <td colspan="7" class="text-center text-muted py-4">
                                         <i class="fas fa-box-open fa-2x mb-2"></i>
-
                                         <br>
-
                                         No inactive inventory items found.
-
                                     </td>
-
                                 </tr>
-
                             <?php endif; ?>
-
                         </tbody>
 
                     </table>
 
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </main>
 
-
 <script>
     $(document).ready(function() {
-
         $('#psyInactiveInventoryTable').DataTable({
             pageLength: 10,
-            lengthMenu: [10, 20, 30, 40]
+            lengthMenu: [10, 20, 30, 40],
+            order: [
+                [0, 'desc']
+            ]
         });
-
     });
 </script>
-
 
 <?php include __DIR__ . '/../../includes/footer.php'; ?>

@@ -7,140 +7,157 @@ class PsyInventory
 
     public function __construct()
     {
-        require __DIR__ . '/../../config/database.php';
+        require_once __DIR__ . '/../../config/database.php';
         $this->db = Database::connect();
     }
 
-    // Get all ACTIVE inventory records
+    // Get all ACTIVE inventory items
     public function getAll()
     {
-        $stmt = $this->db->prepare(
-            "SELECT * FROM {$this->table}
-             WHERE is_active = 1
-             ORDER BY id DESC"
-        );
+        $sql = "SELECT *
+                FROM {$this->table}
+                WHERE is_active = 1
+                ORDER BY id DESC";
 
+        $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Get all INACTIVE inventory records
+    // Get all INACTIVE inventory items
     public function getInactive()
     {
-        $stmt = $this->db->prepare(
-            "SELECT * FROM {$this->table}
-             WHERE is_active = 0
-             ORDER BY id DESC"
-        );
+        $sql = "SELECT *
+                FROM {$this->table}
+                WHERE is_active = 0
+                ORDER BY id DESC";
 
+        $stmt = $this->db->prepare($sql);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Get inventory by ID
+    // Get one inventory item by ID
     public function getById($id)
     {
-        $stmt = $this->db->prepare(
-            "SELECT * FROM {$this->table}
-             WHERE id = :id"
-        );
+        $sql = "SELECT *
+                FROM {$this->table}
+                WHERE id = :id
+                LIMIT 1";
 
+        $stmt = $this->db->prepare($sql);
         $stmt->execute([
-            ':id' => $id
+            ':id' => (int) $id
         ]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Create inventory
+    // Create ONE physical inventory item
     public function create($data)
     {
         $sql = "INSERT INTO {$this->table}
-            (
-                item_name,
-                category,
-                laboratory,
-                total_item,
-                available_item,
-                status,
-                is_active
-            )
-            VALUES
-            (
-                :item_name,
-                :category,
-                :laboratory,
-                :total_item,
-                :available_item,
-                :status,
-                1
-            )";
+                (
+                    serial_number,
+                    item_name,
+                    category,
+                    laboratory,
+                    status,
+                    is_active
+                )
+                VALUES
+                (
+                    :serial_number,
+                    :item_name,
+                    :category,
+                    :laboratory,
+                    :status,
+                    1
+                )";
 
         $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            ':item_name'      => $data['item_name'],
-            ':category'       => $data['category'],
-            ':laboratory'     => $data['laboratory'],
-            ':total_item'     => $data['total_item'],
-            ':available_item' => $data['available_item'],
-            ':status'         => $data['status']
+            ':serial_number' => trim($data['serial_number']),
+            ':item_name'     => trim($data['item_name']),
+            ':category'      => trim($data['category']),
+            ':laboratory'    => 'Psychology Laboratory',
+            ':status'        => strtolower(trim($data['status']))
         ]);
     }
 
-    // Update inventory
+    // Update ONE physical inventory item
     public function update($data)
     {
         $sql = "UPDATE {$this->table}
-            SET
-                item_name = :item_name,
-                category = :category,
-                laboratory = :laboratory,
-                total_item = :total_item,
-                available_item = :available_item,
-                status = :status
-            WHERE id = :id";
+                SET
+                    serial_number = :serial_number,
+                    item_name = :item_name,
+                    category = :category,
+                    laboratory = :laboratory,
+                    status = :status
+                WHERE id = :id";
 
         $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            ':id'             => $data['id'],
-            ':item_name'      => $data['item_name'],
-            ':category'       => $data['category'],
-            ':laboratory'     => $data['laboratory'],
-            ':total_item'     => $data['total_item'],
-            ':available_item' => $data['available_item'],
-            ':status'         => $data['status']
+            ':id'            => (int) $data['id'],
+            ':serial_number' => trim($data['serial_number']),
+            ':item_name'     => trim($data['item_name']),
+            ':category'      => trim($data['category']),
+            ':laboratory'    => 'Psychology Laboratory',
+            ':status'        => strtolower(trim($data['status']))
         ]);
     }
 
-    // Deactivate inventory (soft delete)
+    // Deactivate an item without deleting it
     public function deactivate($id)
     {
-        $stmt = $this->db->prepare(
-            "UPDATE {$this->table}
-             SET is_active = 0
-             WHERE id = :id"
-        );
+        $sql = "UPDATE {$this->table}
+                SET is_active = 0
+                WHERE id = :id";
+
+        $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            ':id' => $id
+            ':id' => (int) $id
         ]);
     }
 
-    // Activate inventory
+    // Reactivate an archived item
     public function activate($id)
     {
-        $stmt = $this->db->prepare(
-            "UPDATE {$this->table}
-             SET is_active = 1
-             WHERE id = :id"
-        );
+        $sql = "UPDATE {$this->table}
+                SET is_active = 1
+                WHERE id = :id";
+
+        $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
-            ':id' => $id
+            ':id' => (int) $id
         ]);
+    }
+
+    // Get active damaged items for the Damage module
+    public function getDamagedItems()
+    {
+        $sql = "SELECT
+                    id,
+                    serial_number,
+                    item_name,
+                    category,
+                    laboratory,
+                    status
+                FROM {$this->table}
+                WHERE status = 'damage'
+                  AND is_active = 1
+                ORDER BY id DESC";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

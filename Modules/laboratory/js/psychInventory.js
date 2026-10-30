@@ -1,86 +1,152 @@
+const dismissToast = (toast) => {
+  let hideTimer;
+
+  function dismiss() {
+    clearTimeout(hideTimer);
+
+    if (toast.classList.contains("hiding")) return;
+
+    toast.classList.add("hiding");
+
+    setTimeout(() => toast.remove(), 500);
+  }
+
+  const closeButton = toast.querySelector(".toast-close");
+
+  if (closeButton) {
+    closeButton.addEventListener("click", dismiss);
+  }
+
+  hideTimer = setTimeout(dismiss, 5000);
+};
+
+document.querySelectorAll(".custom-toast").forEach(dismissToast);
+
 document.addEventListener("click", function (e) {
+  // EDIT INVENTORY ITEM
+  const editBtn = e.target.closest(".editBtn");
 
-    const btn = e.target.closest(".editBtn");
-
-    if (!btn) return;
-
+  if (editBtn) {
     e.preventDefault();
 
-    let id = btn.dataset.id;
+    const id = editBtn.dataset.id;
 
     fetch(`${BASE_URL}/psycho-inventory/view/${id}`)
-        .then(response => response.json())
-        .then(data => {
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
 
-            console.log(data);
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !data.id) {
+          throw new Error("Inventory item not found.");
+        }
 
-            document.getElementById("edit_id").value = data.id;
-            document.getElementById("edit_item_name").value = data.item_name;
-            document.getElementById("edit_category").value = data.category;
-            document.getElementById("edit_laboratory").value = data.laboratory;
-            document.getElementById("edit_total_item").value = data.total_item;
-            document.getElementById("edit_available_item").value = data.available_item;
-            document.getElementById("edit_status").value = data.status;
+        const fields = {
+          edit_id: data.id,
+          edit_serial_number: data.serial_number ?? "",
+          edit_item_name: data.item_name ?? "",
+          edit_category: data.category ?? "",
+          edit_laboratory: data.laboratory ?? "Psychology Laboratory",
+          edit_status: data.status ?? "working",
+        };
 
-            let editModal = new bootstrap.Modal(
-                document.getElementById("psyEditInventoryModal")
-            );
+        Object.entries(fields).forEach(([id, value]) => {
+          const element = document.getElementById(id);
 
-            editModal.show();
+          if (!element) {
+            throw new Error(`Missing element: ${id}`);
+          }
 
-        })
-        .catch(error => console.error(error));
+          element.value = value;
+        });
 
-});
+        const modalElement = document.getElementById("psyEditInventoryModal");
 
-document.addEventListener("click", function (e) {
+        if (!modalElement) {
+          throw new Error("Psychology Edit modal not found.");
+        }
 
-    const btn = e.target.closest(".viewBtn");
+        bootstrap.Modal.getOrCreateInstance(modalElement).show();
+      })
+      .catch((error) => {
+        console.error("Edit error:", error);
+        alert("Unable to load the inventory item. Check the browser console.");
+      });
 
-    if (!btn) return;
+    return;
+  }
 
+  // VIEW INVENTORY ITEM
+  const viewBtn = e.target.closest(".viewBtn");
+
+  if (viewBtn) {
     e.preventDefault();
 
-    let id = btn.dataset.id;
+    const id = viewBtn.dataset.id;
 
-    fetch(`${BASE_URL}/he-inventory/view/${id}`)
-        .then(response => response.json())
-        .then(data => {
+    fetch(`${BASE_URL}/psycho-inventory/view/${id}`)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
 
-            document.getElementById("view_id").value = data.id;
-            document.getElementById("view_item_name").value = data.item_name;
-            document.getElementById("view_category").value = data.category;
-            document.getElementById("view_laboratory").value = data.laboratory;
-            document.getElementById("view_total_item").value = data.total_item;
-            document.getElementById("view_available_item").value = data.available_item;
-            document.getElementById("view_status").value = data.status;
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !data.id) {
+          throw new Error("Inventory item not found.");
+        }
 
-            let viewModal = new bootstrap.Modal(
-                document.getElementById("psyViewInventoryModal")
-            );
+        const fields = {
+          view_id: data.id,
+          view_serial_number: data.serial_number ?? "",
+          view_item_name: data.item_name ?? "",
+          view_category: data.category ?? "",
+          view_laboratory: data.laboratory ?? "Psychology Laboratory",
+          view_status: data.status ?? "",
+        };
 
-            viewModal.show();
+        Object.entries(fields).forEach(([id, value]) => {
+          const element = document.getElementById(id);
 
-        })
-        .catch(error => console.error(error));
+          if (!element) {
+            throw new Error(`Missing element: ${id}`);
+          }
 
-});
+          element.value = value;
+        });
 
-//delete
-document.addEventListener("click", function (e) {
+        const modalElement = document.getElementById("psyViewInventoryModal");
 
-    const btn = e.target.closest(".deleteBtn");
+        if (!modalElement) {
+          throw new Error("Psychology View modal not found.");
+        }
 
-    if (!btn) return;
+        bootstrap.Modal.getOrCreateInstance(modalElement).show();
+      })
+      .catch((error) => {
+        console.error("View error:", error);
+        alert("Unable to load the inventory item. Check the browser console.");
+      });
 
+    return;
+  }
+
+  // ARCHIVE INVENTORY ITEM
+  const deactivateBtn = e.target.closest(".deactivateBtn");
+
+  if (deactivateBtn) {
     e.preventDefault();
 
-    let id = btn.dataset.id;
+    const id = deactivateBtn.dataset.id;
 
-    if (confirm("Are you sure you want to delete this inventory?")) {
-
-        window.location.href = `${BASE_URL}/psycho-inventory/delete/${id}`;
-
+    if (confirm("Are you sure you want to deactivate this inventory item?")) {
+      window.location.href = `${BASE_URL}/psycho-inventory/deactivate/${id}`;
     }
 
+    return;
+  }
 });
