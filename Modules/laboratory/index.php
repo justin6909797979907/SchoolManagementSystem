@@ -1193,6 +1193,7 @@ switch ($segments[0] ?? '') {
         }
         break;
 
+
     case 'physics-incident':
         require_once __DIR__ . '/app/controllers/PhyIncidentController.php';
 
@@ -1206,6 +1207,8 @@ switch ($segments[0] ?? '') {
             $controller->createForm();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
             $controller->view($segments[2]);
+        } elseif ($segments[1] === 'edit-form' && isset($segments[2])) {
+            $controller->editForm($segments[2]);
         } elseif ($segments[1] === 'update') {
             $controller->update();
         } elseif ($segments[1] === 'inactive') {
@@ -1218,6 +1221,37 @@ switch ($segments[0] ?? '') {
             $controller->printReport($segments[2]);
         }
 
+        break;
+
+
+    case 'psycho-incident':
+        require_once __DIR__ . '/app/controllers/PsyIncidentController.php';
+
+        $controller = new PsyIncidentController();
+
+        if (!isset($segments[1])) {
+            $controller->index();
+        } elseif ($segments[1] === 'create') {
+            $controller->create();
+        } elseif ($segments[1] === 'create-form') {
+            $controller->createForm();
+        } elseif ($segments[1] === 'view' && isset($segments[2])) {
+            $controller->view($segments[2]);
+        } elseif ($segments[1] === 'update') {
+            $controller->update();
+        } elseif ($segments[1] === 'edit-form' && isset($segments[2])) {
+            $controller->editForm($segments[2]);
+        } elseif ($segments[1] === 'inactive') {
+            $controller->inactive();
+        } elseif ($segments[1] === 'view-inactive' && isset($segments[2])) {
+            $controller->viewInactive($segments[2]);
+        } elseif ($segments[1] === 'deactivate' && isset($segments[2])) {
+            $controller->deactivate($segments[2]);
+        } elseif ($segments[1] === 'activate' && isset($segments[2])) {
+            $controller->activate($segments[2]);
+        } elseif ($segments[1] === 'report' && isset($segments[2])) {
+            $controller->printReport($segments[2]);
+        }
         break;
 
 

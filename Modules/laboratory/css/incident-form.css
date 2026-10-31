@@ -1,908 +1,241 @@
-
-/* Scrollbar Hidden */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--color4);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color5);
-}
-
-/* Hide scrollbar for sidebar */
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
-
-/* ============================================
-   RESPONSIVE BREAKPOINTS
-   ============================================ */
-
-/* Large Tablets and Small Desktops (1024px and below) */
-@media (max-width: 1024px) {
-    .container {
-        max-width: 960px;
-    }
-
-    .module-content {
-        max-width: 100%;
-        padding: 1.5rem;
-    }
-}
-
-/* Tablets (768px and below) */
-@media (max-width: 768px) {
-    :root {
-        --sidebar-width: 0px;
-    }
-
-    /* Hide sidebar by default on mobile */
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    /* Show sidebar when active */
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    /* Adjust header */
-    header {
-        left: 0;
-        width: 100%;
-    }
-
-    /* Show hamburger menu */
-    .hamburger {
-        display: flex;
-    }
-
-    /* Adjust main content */
-    .main-content {
-        margin-left: 0;
-        padding: 1rem;
-    }
-
-    /* Adjust footer */
-    footer {
-        margin-left: 0;
-    }
-
-    /* Adjust module header */
-    .module-header {
-        padding: 1rem;
-        min-height: 80px;
-    }
-
-    /* Adjust module content */
-    .module-content {
-        padding: 1rem;
-        margin-top: 1rem;
-        min-height: 400px;
-    }
-
-    .container {
-        padding: 0 0.5rem;
-    }
-}
-
-/* Mobile Phones (480px and below) */
-@media (max-width: 480px) {
-    header {
-        height: 50px;
-    }
-
-    header div i {
-        font-size: 1.2rem;
-        margin: 0.5rem;
-    }
-
-    .main-content {
-        margin-top: 50px;
-        padding: 0.75rem;
-        min-height: calc(100vh - 50px);
-    }
-
-    .module-header {
-        padding: 0.75rem;
-        min-height: 60px;
-        margin-bottom: 1rem;
-    }
-
-    .module-header h1 {
-        font-size: 1.2rem;
-    }
-
-    .module-content {
-        padding: 0.75rem;
-        min-height: 300px;
-    }
-
-    .sidebar {
-        width: 280px;
-    }
-
-    .user-avatar {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    .sidebar-header h1 {
-        font-size: 1.1rem;
-    }
-
-    footer {
-        padding: 0.75rem;
-        font-size: 0.85rem;
-    }
-}
-
-/* Extra Small Devices (360px and below) */
-@media (max-width: 360px) {
-    .sidebar {
-        width: 100%;
-    }
-
-    .module-header h1 {
-        font-size: 1rem;
-    }
-
-    .sidebar .menu-link {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* Print Styles */
-@media print {
-
-    .sidebar,
-    header,
-    footer,
-    .hamburger {
-        display: none;
-    }
-
-    .main-content {
-        margin-left: 0;
-        margin-top: 0;
-    }
-}
-
-.dropdown-icon {
-    transition: transform 0.3s ease;
-}
-
-/* Arrow animation */
-.dropdown-icon {
-    transition: transform 0.3s ease;
-}
-
-/* Rotate arrow when collapse is open */
-a[aria-expanded="true"] .dropdown-icon {
-    transform: rotate(90deg);
-}
-
-/* Fix long text wrapping */
-.dropdown-item {
-    white-space: normal !important;
-    word-break: break-word;
-    line-height: 1.3;
-    padding-right: 10px;
-}
-
-/* Optional: indent nested items cleaner */
-.collapse .dropdown-item {
-    padding-left: 1.5rem;
-}
-
-/* Card styling */
-.card {
-    border: none;
-    border-radius: 0.75rem;
-}
-
-.card-header {
-    background-color: #f8f9fc;
-    border-bottom: 1px solid #e3e6f0;
-}
-
-/* Chart canvas limit */
-canvas {
-    max-height: 320px;
-}
-
-
-/* for warning and error messages */
-
-.custom-toast {
-    position: fixed;
-    top: 70px;
-    right: 20px;
-    z-index: 9999;
-    min-width: 300px;
-    max-width: 420px;
-    padding: 16px 18px;
-    border: none;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    animation: toastSlideIn 0.4s ease forwards;
-    overflow: hidden;
-}
-
-.custom-toast.success {
-    border-left: 5px solid #16a34a;
-}
-
-.custom-toast.error {
-    border-left: 5px solid #dc2626;
-}
-
-.toast-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.success .toast-icon {
-    color: #16a34a;
-    background: #dcfce7;
-}
-
-.error .toast-icon {
-    color: #dc2626;
-    background: #fee2e2;
-}
-
-.toast-content {
-    flex: 1;
-    padding-top: 2px;
-}
-
-.toast-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 4px;
-}
-
-.toast-message {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #4b5563;
-    overflow-wrap: anywhere;
-}
-
-.toast-close {
-    border: none;
-    background: transparent;
-    color: #9ca3af;
-    font-size: 21px;
-    line-height: 1;
-    cursor: pointer;
-    padding: 0 0 0 5px;
-}
-
-.toast-close:hover {
-    color: #111827;
-}
-
-.toast-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    width: 100%;
-    transform-origin: left;
-    animation: toastProgress 3s linear forwards;
-}
-
-.success .toast-progress {
-    background: #16a34a;
-}
-
-.error .toast-progress {
-    background: #dc2626;
-}
-
-.custom-toast.hiding {
-    animation: toastSlideOut 0.3s ease forwards;
-}
-
-@keyframes toastSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes toastSlideOut {
-    to {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-}
-
-@keyframes toastProgress {
-    from {
-        transform: scaleX(1);
-    }
-
-    to {
-        transform: scaleX(0);
-    }
-}
-
-@media (max-width: 480px) {
-    .custom-toast {
-        top: 12px;
-        right: 12px;
-        left: 12px;
-        min-width: 0;
-        max-width: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .custom-toast,
-    .custom-toast.hiding,
-    .toast-progress {
-        animation-duration: 0.01ms;
-    }
-}
-
-/* Official BCP document layout */
-body {
-    margin: 0;
-    background: #fff;
-    color: #222;
-    font-family: "Times New Roman", serif;
-    font-size: 13px;
-}
-
-.report-toolbar {
-    max-width: 780px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.report-paper {
-    width: 100%;
-    max-width: 850px;
-    min-height: 297mm;
-    margin: 20px auto;
-    padding: 35px 45px;
-    background: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* College heading */
-.school-header {
-    width: 100%;
-    padding: 8px 0 15px;
-    margin-bottom: 22px;
-    border-top: 3px solid #dedede;
-    border-bottom: 1px solid #b8b8b8;
-}
-
-.school-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 65px;
-}
-
-.school-logo {
-    width: 60px;
-    height: 60px;
-    flex: 0 0 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.school-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.school-information {
-    flex: 1;
-}
-
-.school-information h1 {
-    margin: 0 0 5px;
-    font-family: "Times New Roman", serif;
-    font-size: 17px;
-    font-weight: normal;
-    letter-spacing: 0.2px;
-    color: #454545;
-}
-
-.school-information p {
-    margin: 0;
-    font-family: "Times New Roman", serif;
-    font-size: 11px;
-    color: #555;
-}
-
-.form-heading {
-    margin-top: 18px;
-    padding-left: 4px;
-    font-family: "Times New Roman", serif;
-    font-size: 12px;
-    font-weight: normal;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
-    color: #333;
-}
-
-/* Main report heading */
-.report-title {
-    margin: 0 0 18px;
-    padding: 0 0 8px;
-    text-align: left;
-    font-family: "Times New Roman", serif;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.3px;
-    border-bottom: 1px solid #999;
-}
-
-/* Traditional form sections */
-.section-title {
-    margin: 22px 0 0;
-    padding: 7px 9px;
-    background: #f2f2f2;
-    color: #222;
-    border: 1px solid #999;
-    font-family: "Times New Roman", serif;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Form fields */
-.detail-row {
-    display: grid;
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: 12px;
-    padding: 9px 10px;
-    border: 1px solid #bbb;
-    border-top: none;
-}
-
-.detail-label {
-    font-family: "Times New Roman", serif;
-    font-weight: bold;
-    color: #333;
-}
-
-.detail-value {
-    min-width: 0;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-}
-
-.description-box {
-    min-height: 75px;
-    padding: 10px;
-    border: 1px solid #bbb;
-    border-top: none;
-    border-radius: 0;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 2px 7px;
-    border: 1px solid #999;
-    border-radius: 0;
-    background: #fff !important;
-    color: #222 !important;
-    font-family: "Times New Roman", serif;
-    font-size: 11px;
-    font-weight: normal;
-    text-transform: uppercase;
-}
-
-.signature-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 45px;
-    margin-top: 65px;
-}
-
-.signature-line {
-    min-height: 35px;
-    border-top: 1px solid #333;
-    padding-top: 7px;
-    text-align: center;
-    font-family: "Times New Roman", serif;
-    font-size: 12px;
-}
-
-.report-footer {
-    margin-top: 35px;
-    padding-top: 8px;
-    border-top: 1px solid #bbb;
-    text-align: center;
-    color: #555;
-    font-family: "Times New Roman", serif;
-    font-size: 10px;
-}
-
-/* Mobile display */
-@media (max-width: 600px) {
-    .report-paper {
-        width: auto;
-        min-height: auto;
-        margin: 10px;
-        padding: 18px;
-    }
-
-    .school-brand {
-        gap: 9px;
-    }
-
-    .school-logo {
-        width: 48px;
-        height: 48px;
-        flex-basis: 48px;
-    }
-
-    .school-information h1 {
-        font-size: 14px;
-    }
-
-    .school-information p {
-        font-size: 10px;
-    }
-
-    .detail-row {
-        grid-template-columns: 1fr;
-        gap: 5px;
-    }
-}
-
-/* A4 print settings */
-@page {
-    size: A4;
-    margin: 15mm;
-}
-
-@media print {
-    body {
-        background: #fff;
-        font-family: "Times New Roman", serif;
-        font-size: 12px;
-    }
-
-    .no-print,
-    .report-toolbar {
-        display: none !important;
-    }
-
-    .report-paper {
-        width: 100%;
-        max-width: none;
-        min-height: auto;
-        margin: 0;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-    }
-
-    .school-header,
-    .detail-row,
-    .description-box,
-    .signature-section {
-        break-inside: avoid;
-    }
-
-    .section-title {
-        break-after: avoid;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-
-    .report-footer {
-        margin-top: 25px;
-    }
-}
-
-        /* Official BCP document layout */
         body {
-            margin: 0;
-            background: #fff;
-            color: #222;
+            background: #e9ecef;
             font-family: "Times New Roman", serif;
-            font-size: 13px;
+            color: #000;
+            margin: 0;
+            padding: 0;
         }
 
-        .report-toolbar {
-            max-width: 780px;
-            margin: 20px auto;
+        /* Toolbar */
+
+        .toolbar {
+            max-width: 850px;
+            margin: 25px auto 15px;
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
+
+        /* Report Paper */
 
         .report-paper {
-            width: 100%;
-            max-width: 850px;
-            min-height: 297mm;
-            margin: 20px auto;
-            padding: 35px 45px;
             background: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            width: 850px;
+            min-height: 1100px;
+            margin: 0 auto 40px;
+            padding: 55px 65px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, .12);
         }
 
-        /* College heading */
+        /* School Header */
+
         .school-header {
-            width: 100%;
-            padding: 8px 0 15px;
-            margin-bottom: 22px;
-            border-top: 3px solid #dedede;
-            border-bottom: 1px solid #b8b8b8;
+            border-bottom: 3px double #000;
+            padding-bottom: 18px;
+            margin-bottom: 25px;
         }
 
         .school-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            min-height: 65px;
-        }
-
-        .school-logo {
-            width: 60px;
-            height: 60px;
-            flex: 0 0 60px;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            gap: 18px;
+            text-align: center;
         }
 
         .school-logo img {
-            width: 100%;
-            height: 100%;
+            width: 85px;
+            height: 85px;
             object-fit: contain;
         }
 
-        .school-information {
-            flex: 1;
-        }
-
         .school-information h1 {
+            font-size: 19px;
+            font-weight: bold;
             margin: 0 0 5px;
-            font-family: "Times New Roman", serif;
-            font-size: 17px;
-            font-weight: normal;
-            letter-spacing: 0.2px;
-            color: #454545;
         }
 
         .school-information p {
+            font-size: 12px;
             margin: 0;
-            font-family: "Times New Roman", serif;
-            font-size: 11px;
-            color: #555;
         }
 
         .form-heading {
-            margin-top: 18px;
-            padding-left: 4px;
-            font-family: "Times New Roman", serif;
-            font-size: 12px;
-            font-weight: normal;
-            letter-spacing: 0.2px;
-            text-transform: uppercase;
-            color: #333;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            text-decoration: underline;
         }
 
-        /* Main report heading */
+        /* Titles */
+
         .report-title {
-            margin: 0 0 18px;
-            padding: 0 0 8px;
-            text-align: left;
-            font-family: "Times New Roman", serif;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #000;
+        }
+
+        .section-title {
             font-size: 14px;
             font-weight: bold;
-            letter-spacing: 0.3px;
-            border-bottom: 1px solid #999;
-        }
-
-        /* Traditional form sections */
-        .section-title {
-            margin: 22px 0 0;
-            padding: 7px 9px;
-            background: #f2f2f2;
-            color: #222;
-            border: 1px solid #999;
-            font-family: "Times New Roman", serif;
-            font-size: 12px;
-            font-weight: bold;
+            background: #e9e9e9;
+            border: 1px solid #000;
+            padding: 9px 12px;
+            margin-top: 25px;
+            margin-bottom: 0;
             text-transform: uppercase;
         }
 
-        /* Form fields */
+        /* Detail Rows */
+
         .detail-row {
-            display: grid;
-            grid-template-columns: 180px minmax(0, 1fr);
-            gap: 12px;
-            padding: 9px 10px;
-            border: 1px solid #bbb;
+            display: flex;
+            width: 100%;
+            border: 1px solid #000;
             border-top: none;
+            min-height: 42px;
         }
 
         .detail-label {
-            font-family: "Times New Roman", serif;
+            width: 35%;
+            flex-shrink: 0;
+            padding: 10px 12px;
+            font-size: 13px;
             font-weight: bold;
-            color: #333;
+            background: #f7f7f7;
+            border-right: 1px solid #000;
         }
 
         .detail-value {
-            min-width: 0;
+            flex: 1;
+            padding: 10px 12px;
+            font-size: 13px;
             overflow-wrap: anywhere;
-            white-space: pre-wrap;
         }
 
-        .description-box {
-            min-height: 75px;
-            padding: 10px;
-            border: 1px solid #bbb;
-            border-top: none;
-            border-radius: 0;
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-        }
+        /* Severity and Status Badges */
 
         .status-badge {
             display: inline-block;
-            padding: 2px 7px;
-            border: 1px solid #999;
-            border-radius: 0;
-            background: #fff !important;
-            color: #222 !important;
-            font-family: "Times New Roman", serif;
+            padding: 5px 12px;
+            border-radius: 4px;
             font-size: 11px;
-            font-weight: normal;
+            font-weight: bold;
             text-transform: uppercase;
         }
+
+        /* Description */
+
+        .description-box {
+            border: 1px solid #000;
+            min-height: 100px;
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        /* Signatures */
 
         .signature-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            margin-top: 65px;
+            gap: 60px;
+            margin-top: 75px;
+            text-align: center;
+            font-size: 13px;
         }
 
         .signature-line {
+            border-top: 1px solid #000;
+            padding-top: 8px;
             min-height: 35px;
-            border-top: 1px solid #333;
-            padding-top: 7px;
-            text-align: center;
-            font-family: "Times New Roman", serif;
-            font-size: 12px;
         }
 
+        /* Footer */
+
         .report-footer {
-            margin-top: 35px;
-            padding-top: 8px;
-            border-top: 1px solid #bbb;
+            margin-top: 50px;
+            border-top: 1px solid #000;
+            padding-top: 10px;
             text-align: center;
-            color: #555;
-            font-family: "Times New Roman", serif;
             font-size: 10px;
         }
 
-        /* Mobile display */
-        @media (max-width: 600px) {
+        /* Responsive */
+
+        @media screen and (max-width: 900px) {
+
             .report-paper {
-                width: auto;
-                min-height: auto;
-                margin: 10px;
-                padding: 18px;
+                width: 95%;
+                padding: 30px 20px;
+            }
+
+            .toolbar {
+                width: 95%;
             }
 
             .school-brand {
-                gap: 9px;
+                flex-wrap: wrap;
             }
 
-            .school-logo {
-                width: 48px;
-                height: 48px;
-                flex-basis: 48px;
-            }
-
-            .school-information h1 {
-                font-size: 14px;
-            }
-
-            .school-information p {
-                font-size: 10px;
-            }
-
-            .detail-row {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
         }
 
-        /* A4 print settings */
-        @page {
-            size: A4;
-            margin: 15mm;
-        }
+        /* Print Layout */
 
         @media print {
-            body {
-                background: #fff;
-                font-family: "Times New Roman", serif;
-                font-size: 12px;
+
+            @page {
+                size: A4 portrait;
+                margin: 12mm;
             }
 
-            .no-print,
-            .report-toolbar {
+            body {
+                background: #fff;
+            }
+
+            .toolbar {
                 display: none !important;
             }
 
             .report-paper {
                 width: 100%;
-                max-width: none;
                 min-height: auto;
                 margin: 0;
                 padding: 0;
-                border: none;
                 box-shadow: none;
             }
 
-            .school-header,
+            .section-title,
+            .detail-label {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-title {
+                background: #e9e9e9 !important;
+            }
+
+            .detail-label {
+                background: #f7f7f7 !important;
+            }
+
+            .status-badge {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
             .detail-row,
             .description-box,
             .signature-section {
                 break-inside: avoid;
             }
 
-            .section-title {
-                break-after: avoid;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .report-footer {
-                margin-top: 25px;
-            }
         }
