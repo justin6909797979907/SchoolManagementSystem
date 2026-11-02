@@ -234,11 +234,10 @@ include __DIR__ . '/../../includes/header.php';
                                                     <?php else: ?>
 
                                                         <li>
-                                                            <a class="dropdown-item"
-                                                                href="<?= BASE_URL ?>/psycho-incident/create-form?damage_id=<?= (int) $row['id'] ?>">
-
+                                                            <a href="<?= BASE_URL ?>/psycho-incident?damage_id=<?= (int) $row['id'] ?>"
+                                                                class="dropdown-item">
                                                                 <i class="fas fa-file-circle-plus me-2"></i>
-                                                                Create Incident Report
+                                                                Make Incident Report
                                                             </a>
                                                         </li>
 
