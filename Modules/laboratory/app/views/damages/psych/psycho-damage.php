@@ -223,10 +223,11 @@ include __DIR__ . '/../../includes/header.php';
                                                     <?php if (!empty($row['incident_id'])): ?>
 
                                                         <li>
-                                                            <a class="dropdown-item"
-                                                                href="<?= BASE_URL ?>/psycho-incident/view-page/<?= (int) $row['incident_id'] ?>">
+                                                            <a href="<?= BASE_URL ?>/psycho-incident/report/<?= (int) $row['incident_id'] ?>"
+                                                                class="dropdown-item"
+                                                                target="_blank">
 
-                                                                <i class="fas fa-file-alt me-2"></i>
+                                                                <i class="fas fa-eye me-2"></i>
                                                                 View Incident Report
                                                             </a>
                                                         </li>
@@ -234,8 +235,9 @@ include __DIR__ . '/../../includes/header.php';
                                                     <?php else: ?>
 
                                                         <li>
-                                                            <a href="<?= BASE_URL ?>/psycho-incident?damage_id=<?= (int) $row['id'] ?>"
+                                                            <a href="<?= BASE_URL ?>/psycho-incident/make-from-damage/<?= (int) $row['id'] ?>"
                                                                 class="dropdown-item">
+
                                                                 <i class="fas fa-file-circle-plus me-2"></i>
                                                                 Make Incident Report
                                                             </a>

@@ -1233,6 +1233,8 @@ switch ($segments[0] ?? '') {
             $controller->index();
         } elseif ($segments[1] === 'create') {
             $controller->create();
+        } elseif ($segments[1] === 'make-from-damage' && isset($segments[2])) {
+            $controller->makeFromDamage($segments[2]);
         } elseif ($segments[1] === 'create-form') {
             $controller->createForm();
         } elseif ($segments[1] === 'view' && isset($segments[2])) {
@@ -1252,6 +1254,7 @@ switch ($segments[0] ?? '') {
         } elseif ($segments[1] === 'report' && isset($segments[2])) {
             $controller->printReport($segments[2]);
         }
+
         break;
 
 

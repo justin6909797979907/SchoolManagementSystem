@@ -138,6 +138,87 @@ class PsyIncidentController
     }
 
     /**
+     * Automatically create an Incident Report from a Damage record.
+     */
+    public function makeFromDamage($damageId)
+    {
+        $damageId = filter_var(
+            $damageId,
+            FILTER_VALIDATE_INT,
+            ['options' => ['min_range' => 1]]
+        );
+
+        if ($damageId === false) {
+            $this->setFlash('error', 'Invalid damage record ID.');
+            $this->redirect('/psycho-damage');
+        }
+
+        require_once __DIR__ . '/../models/PsyDamage.php';
+
+        $damageModel = new PsyDamage();
+        $incident = new PsyIncident();
+
+        // Get the existing damage record.
+        $damage = $damageModel->getById($damageId);
+
+        if (!$damage) {
+            $this->setFlash('error', 'Damage record not found or inactive.');
+            $this->redirect('/psycho-damage');
+        }
+
+        // Prevent duplicate incident reports.
+        if ($incident->hasIncidentForDamage($damageId)) {
+            $this->setFlash(
+                'error',
+                'An incident report already exists for this damage record.'
+            );
+
+            $this->redirect('/psycho-incident');
+        }
+
+        // Generate incident number.
+        $incidentNumber = 'INC-' . date('Ymd-His') . '-' .
+            strtoupper(bin2hex(random_bytes(3)));
+
+        // Prepare incident data using the existing damage record.
+        $data = [
+            'incident_number' => $incidentNumber,
+            'inventory_id'    => $damage['inventory_id'],
+            'damage_id'       => $damage['id'],
+            'incident_type'   => 'equipment damage',
+            'incident_date'   => $damage['date_reported'],
+            'laboratory'      => $damage['laboratory'],
+            'location_details' => '',
+            'description'     => $damage['issue_description'],
+            'reported_by'     => $damage['reported_by'],
+            'people_involved' => '',
+            'action_taken'    => $damage['action_taken'] ?? '',
+            'severity'        => 'medium',
+            'report_status'   => 'pending'
+        ];
+
+        try {
+            if (!$incident->create($data)) {
+                throw new RuntimeException('Failed to create incident report.');
+            }
+
+            $this->setFlash(
+                'success',
+                'Incident report successfully created from the damage record.'
+            );
+        } catch (Throwable $e) {
+            error_log('Psychology incident creation from damage failed: ' . $e->getMessage());
+
+            $this->setFlash(
+                'error',
+                'Unable to create the incident report.'
+            );
+        }
+
+        $this->redirect('/psycho-incident');
+    }
+
+    /**
      * Return one active Psychology Incident as JSON.
      */
     public function view($id)

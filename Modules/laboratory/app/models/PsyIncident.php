@@ -1,3 +1,4 @@
+
 <?php
 
 class PsyIncident
@@ -84,58 +85,115 @@ class PsyIncident
     }
 
     /**
+     * Check whether a damage record already has
+     * an active incident report.
+     */
+    public function hasIncidentForDamage($damageId, $excludeId = null)
+    {
+        if (empty($damageId)) {
+            return false;
+        }
+
+        $sql = "
+            SELECT COUNT(*)
+            FROM {$this->table}
+            WHERE damage_id = :damage_id
+              AND is_active = 1
+        ";
+
+        $params = [
+            ':damage_id' => (int) $damageId
+        ];
+
+        if ($excludeId !== null) {
+            $sql .= " AND id != :exclude_id";
+            $params[':exclude_id'] = (int) $excludeId;
+        }
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+
+        return (int) $stmt->fetchColumn() > 0;
+    }
+
+    /**
      * Create a new Psychology incident report.
      */
     public function create($data)
     {
-        $sql = "
-            INSERT INTO {$this->table} (
-                incident_number,
-                inventory_id,
-                incident_type,
-                incident_date,
-                laboratory,
-                location_details,
-                description,
-                reported_by,
-                people_involved,
-                action_taken,
-                severity,
-                report_status,
-                is_active
-            ) VALUES (
-                :incident_number,
-                :inventory_id,
-                :incident_type,
-                :incident_date,
-                :laboratory,
-                :location_details,
-                :description,
-                :reported_by,
-                :people_involved,
-                :action_taken,
-                :severity,
-                :report_status,
-                1
-            )
-        ";
+        try {
 
-        $stmt = $this->db->prepare($sql);
+            $damageId = !empty($data['damage_id'])
+                ? (int) $data['damage_id']
+                : null;
 
-        return $stmt->execute([
-            ':incident_number' => $data['incident_number'],
-            ':inventory_id' => $data['inventory_id'],
-            ':incident_type' => $data['incident_type'],
-            ':incident_date' => $data['incident_date'],
-            ':laboratory' => $data['laboratory'],
-            ':location_details' => $data['location_details'],
-            ':description' => $data['description'],
-            ':reported_by' => $data['reported_by'],
-            ':people_involved' => $data['people_involved'],
-            ':action_taken' => $data['action_taken'],
-            ':severity' => $data['severity'],
-            ':report_status' => $data['report_status']
-        ]);
+            // Prevent duplicate incident reports.
+            if (
+                $damageId !== null &&
+                $this->hasIncidentForDamage($damageId)
+            ) {
+                return false;
+            }
+
+            $sql = "
+                INSERT INTO {$this->table} (
+                    incident_number,
+                    inventory_id,
+                    damage_id,
+                    incident_type,
+                    incident_date,
+                    laboratory,
+                    location_details,
+                    description,
+                    reported_by,
+                    people_involved,
+                    action_taken,
+                    severity,
+                    report_status,
+                    is_active
+                ) VALUES (
+                    :incident_number,
+                    :inventory_id,
+                    :damage_id,
+                    :incident_type,
+                    :incident_date,
+                    :laboratory,
+                    :location_details,
+                    :description,
+                    :reported_by,
+                    :people_involved,
+                    :action_taken,
+                    :severity,
+                    :report_status,
+                    1
+                )
+            ";
+
+            $stmt = $this->db->prepare($sql);
+
+            return $stmt->execute([
+                ':incident_number' => $data['incident_number'],
+                ':inventory_id' => $data['inventory_id'],
+                ':damage_id' => $damageId,
+                ':incident_type' => $data['incident_type'],
+                ':incident_date' => $data['incident_date'],
+                ':laboratory' => $data['laboratory'],
+                ':location_details' => $data['location_details'],
+                ':description' => $data['description'],
+                ':reported_by' => $data['reported_by'],
+                ':people_involved' => $data['people_involved'],
+                ':action_taken' => $data['action_taken'],
+                ':severity' => $data['severity'],
+                ':report_status' => $data['report_status']
+            ]);
+        } catch (PDOException $e) {
+
+            error_log(
+                'Psychology incident creation failed: ' . $e->getMessage()
+            );
+
+            return false;
+        }
     }
 
     /**
@@ -204,7 +262,6 @@ class PsyIncident
 
     /**
      * Get one archived Psychology incident.
-     * Used by the View button in the inactive records page.
      */
     public function getInactiveById($id)
     {
@@ -250,7 +307,7 @@ class PsyIncident
     }
 
     /**
-     * Restore an archived Psychology incident report.
+     * Restore a Psychology incident report.
      */
     public function activate($id)
     {
