@@ -1,4 +1,3 @@
-```php
 <div class="modal fade" id="psyAddInventoryModal" tabindex="-1"
     aria-labelledby="psyAddInventoryModalLabel" aria-hidden="true">
 
@@ -135,4 +134,3 @@
         </div>
     </div>
 </div>
-```
