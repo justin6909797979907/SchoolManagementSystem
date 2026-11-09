@@ -1,12 +1,57 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <?php include __DIR__ . '/../../../includes/sidebar.php'; ?>
 <?php include __DIR__ . '/../../../includes/header.php'; ?>
 
 <main class="main-content">
+
+    <!-- Success and Error Notifications -->
+    <?php
+    $flashMessages = [
+        'success' => $_SESSION['success'] ?? null,
+        'error'   => $_SESSION['error'] ?? null
+    ];
+
+    unset($_SESSION['success'], $_SESSION['error']);
+    ?>
+
+    <?php foreach ($flashMessages as $type => $message): ?>
+        <?php if (!empty($message)): ?>
+            <div class="custom-toast <?= $type ?>"
+                role="<?= $type === 'error' ? 'alert' : 'status' ?>">
+
+                <div class="toast-icon">
+                    <?= $type === 'success' ? '✓' : '!' ?>
+                </div>
+
+                <div class="toast-content">
+                    <div class="toast-title">
+                        <?= $type === 'success' ? 'Success!' : 'Something went wrong' ?>
+                    </div>
+
+                    <div class="toast-message">
+                        <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
+                    </div>
+                </div>
+
+                <button type="button"
+                    class="toast-close"
+                    aria-label="Close notification">&times;</button>
+
+                <div class="toast-progress"></div>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
     <div class="container-fluid px-4">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h3 class="mb-1">Inactive IT Lab 2 Inventory</h3>
+                <h3 class="mb-1">Inactive IT Laboratory 2 Inventory</h3>
                 <p class="text-muted mb-0">
                     Inventory items that have been deactivated.
                 </p>
@@ -30,22 +75,20 @@
             </div>
 
             <div class="card-body">
-
                 <div class="table-responsive">
 
                     <table id="itLab2InactiveInventoryTable"
-                        class="table table-striped table-bordered"
+                        class="table table-striped table-bordered align-middle"
                         style="width:100%">
 
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Serial Number</th>
                                 <th>Item Name</th>
                                 <th>Category</th>
                                 <th>Laboratory</th>
-                                <th>Total Quantity</th>
-                                <th>Available Quantity</th>
-                                <th>Status</th>
+                                <th>Condition</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -57,160 +100,131 @@
                                 <?php foreach ($rows as $row): ?>
 
                                     <tr>
-
                                         <td>
-                                            <?= htmlspecialchars($row['id']); ?>
+                                            <?= htmlspecialchars((string) $row['id']) ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['item_name']); ?>
+                                            <?= htmlspecialchars($row['serial_number'] ?? '') ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['category']); ?>
+                                            <?= htmlspecialchars($row['item_name'] ?? '') ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['laboratory']); ?>
+                                            <?= htmlspecialchars($row['category'] ?? '') ?>
                                         </td>
 
                                         <td>
-                                            <?= htmlspecialchars($row['total_item']); ?>
-                                        </td>
-
-                                        <td>
-                                            <?= htmlspecialchars($row['available_item']); ?>
+                                            <?= htmlspecialchars($row['laboratory'] ?? '') ?>
                                         </td>
 
                                         <td>
                                             <?php
-                                            $status = strtolower($row['status']);
+                                            $status = strtolower($row['status'] ?? 'working');
 
-                                            if ($status === 'available') {
+                                            $statusClasses = [
+                                                'working' => 'success',
+                                                'under maintenance' => 'warning',
+                                                'damage' => 'danger',
+                                                'unavailable' => 'secondary'
+                                            ];
 
-                                                $statusClass = 'bg-success';
-                                                $statusText = 'Available';
-                                            } elseif ($status === 'working') {
-
-                                                $statusClass = 'bg-primary';
-                                                $statusText = 'Working';
-                                            } elseif ($status === 'damage' || $status === 'damaged') {
-
-                                                $statusClass = 'bg-danger';
-                                                $statusText = 'Damaged';
-                                            } elseif ($status === 'under inspection') {
-
-                                                $statusClass = 'bg-warning text-dark';
-                                                $statusText = 'Under Inspection';
-                                            } elseif ($status === 'unavailable') {
-
-                                                $statusClass = 'bg-secondary';
-                                                $statusText = 'Unavailable';
-                                            } else {
-
-                                                $statusClass = 'bg-secondary';
-                                                $statusText = htmlspecialchars($row['status']);
-                                            }
+                                            $badgeClass = $statusClasses[$status] ?? 'secondary';
                                             ?>
 
-                                            <span class="badge <?= $statusClass ?>">
-                                                <?= $statusText ?>
+                                            <span class="badge bg-<?= $badgeClass ?>">
+                                                <?= htmlspecialchars(ucwords($status)) ?>
                                             </span>
                                         </td>
 
                                         <td>
-
                                             <div class="dropdown">
 
                                                 <button
-                                                    class="btn btn-sm btn-secondary dropdown-toggle"
+                                                    class="btn btn-secondary btn-sm dropdown-toggle"
                                                     type="button"
                                                     data-bs-toggle="dropdown">
 
                                                     Action
-
                                                 </button>
 
                                                 <ul class="dropdown-menu">
 
                                                     <!-- VIEW -->
                                                     <li>
-                                                        <a
-                                                            class="dropdown-item disabled"
-                                                            href="<?= BASE_URL ?>/it-lab2-inventory/view/<?= $row['id']; ?>">
+                                                        <a href="#"
+                                                            class="dropdown-item viewBtn"
+                                                            data-id="<?= (int) $row['id'] ?>">
 
                                                             <i class="fas fa-eye me-2"></i>
                                                             View
-
                                                         </a>
                                                     </li>
 
-                                                    <!-- ACTIVATE -->
+                                                    <!-- RESTORE -->
                                                     <li>
-                                                        <a
+                                                        <a href="<?= BASE_URL ?>/it-lab2-inventory/activate/<?= (int) $row['id'] ?>"
                                                             class="dropdown-item text-success"
-                                                            href="<?= BASE_URL ?>/it-lab2-inventory/activate/<?= $row['id']; ?>"
-                                                            onclick="return confirm('Are you sure you want to activate this inventory item?');">
+                                                            onclick="return confirm('Are you sure you want to restore this item?');">
 
-                                                            <i class="fas fa-check-circle me-2"></i>
-                                                            Activate
-
+                                                            <i class="fas fa-undo me-2"></i>
+                                                            Restore
                                                         </a>
                                                     </li>
 
                                                 </ul>
-
                                             </div>
-
                                         </td>
-
                                     </tr>
 
                                 <?php endforeach; ?>
 
-                            <?php else: ?>
-
-                                <tr>
-
-                                    <td colspan="8"
-                                        class="text-center text-muted py-4">
-
-                                        <i class="fas fa-box-open fa-2x mb-2"></i>
-
-                                        <br>
-
-                                        No inactive inventory items found.
-
-                                    </td>
-
-                                </tr>
-
                             <?php endif; ?>
 
                         </tbody>
-
                     </table>
 
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </main>
 
-
+<!-- DataTables -->
 <script>
     $(document).ready(function() {
 
+        if ($.fn.DataTable.isDataTable('#itLab2InactiveInventoryTable')) {
+            $('#itLab2InactiveInventoryTable').DataTable().destroy();
+        }
+
         $('#itLab2InactiveInventoryTable').DataTable({
             pageLength: 10,
-            lengthMenu: [10, 20, 30, 40]
+            lengthMenu: [10, 20, 30, 40],
+            order: [
+                [0, 'desc']
+            ],
+            columnDefs: [{
+                targets: 6,
+                orderable: false,
+                searchable: false
+            }],
+            language: {
+                emptyTable: "No inactive IT Lab 2 inventory items found.",
+                zeroRecords: "No matching inventory items found."
+            }
         });
 
     });
 </script>
 
+<!-- Base URL and Lab 2 JavaScript -->
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+
+<script src="<?= BASE_URL ?>/js/lab2Inventory.js"></script>
 
 <?php include __DIR__ . '/../../../includes/footer.php'; ?>
