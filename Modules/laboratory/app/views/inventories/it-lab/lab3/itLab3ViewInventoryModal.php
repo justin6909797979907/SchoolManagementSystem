@@ -1,12 +1,17 @@
-<div class="modal fade" id="itLab3ViewInventoryModal" tabindex="-1" aria-labelledby="itLab3ViewInventoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="itLab3ViewInventoryModal" tabindex="-1"
+    aria-labelledby="itLab3ViewInventoryModalLabel" aria-hidden="true">
+
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
                 <h5 class="modal-title" id="itLab3ViewInventoryModalLabel">
-                    View IT Lab 3 Inventory
+                    <i class="fas fa-eye me-2"></i>
+                    View IT Laboratory 3 Inventory
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
@@ -15,7 +20,10 @@
 
                     <!-- ID -->
                     <div class="col-md-6">
-                        <label class="form-label">ID</label>
+                        <label for="view_id" class="form-label">
+                            ID
+                        </label>
+
                         <input
                             type="text"
                             id="view_id"
@@ -23,9 +31,25 @@
                             readonly>
                     </div>
 
+                    <!-- Serial Number -->
+                    <div class="col-md-6">
+                        <label for="view_serial_number" class="form-label">
+                            Serial Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="view_serial_number"
+                            class="form-control"
+                            readonly>
+                    </div>
+
                     <!-- Item Name -->
                     <div class="col-md-6">
-                        <label class="form-label">Item Name</label>
+                        <label for="view_item_name" class="form-label">
+                            Item Name
+                        </label>
+
                         <input
                             type="text"
                             id="view_item_name"
@@ -35,7 +59,10 @@
 
                     <!-- Category -->
                     <div class="col-md-6">
-                        <label class="form-label">Category</label>
+                        <label for="view_category" class="form-label">
+                            Category
+                        </label>
+
                         <input
                             type="text"
                             id="view_category"
@@ -45,7 +72,10 @@
 
                     <!-- Laboratory -->
                     <div class="col-md-6">
-                        <label class="form-label">Laboratory</label>
+                        <label for="view_laboratory" class="form-label">
+                            Laboratory
+                        </label>
+
                         <input
                             type="text"
                             id="view_laboratory"
@@ -53,29 +83,12 @@
                             readonly>
                     </div>
 
-                    <!-- Total Quantity -->
+                    <!-- Condition -->
                     <div class="col-md-6">
-                        <label class="form-label">Total Quantity</label>
-                        <input
-                            type="number"
-                            id="view_total_quantity"
-                            class="form-control"
-                            readonly>
-                    </div>
+                        <label for="view_status" class="form-label">
+                            Condition
+                        </label>
 
-                    <!-- Available Quantity -->
-                    <div class="col-md-6">
-                        <label class="form-label">Available Quantity</label>
-                        <input
-                            type="number"
-                            id="view_available_quantity"
-                            class="form-control"
-                            readonly>
-                    </div>
-
-                    <!-- Status -->
-                    <div class="col-md-6">
-                        <label class="form-label">Status</label>
                         <input
                             type="text"
                             id="view_status"
@@ -88,7 +101,12 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    <i class="fas fa-times me-1"></i>
                     Close
                 </button>
             </div>
