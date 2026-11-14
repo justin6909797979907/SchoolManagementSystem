@@ -1,4 +1,3 @@
-
 <?php
 
 class ItLab3Inventory

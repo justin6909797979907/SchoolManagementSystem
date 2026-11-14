@@ -4,76 +4,204 @@ require_once __DIR__ . '/../models/BalInventory.php';
 
 class BalisticInvController
 {
+    // Start session when needed
+    private function startSession()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
+    // Display active Ballistic inventory items
     public function index()
     {
-        $inventory = new BalInventory();
+        $this->startSession();
 
+        $inventory = new BalInventory();
         $inventories = $inventory->getAll();
 
         require __DIR__ . '/../views/inventories/crim-lab/balistic/balistic-inventory.php';
     }
 
+    // Create one physical inventory item
     public function create()
     {
+        $this->startSession();
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: " . BASE_URL . "/balistic-inventory");
+            exit;
+        }
+
+        $data = [
+            'serial_number' => trim($_POST['serial_number'] ?? ''),
+            'item_name'     => trim($_POST['item_name'] ?? ''),
+            'category'      => trim($_POST['category'] ?? ''),
+            'laboratory'    => 'Ballistics Laboratory',
+            'status'        => strtolower(trim($_POST['status'] ?? ''))
+        ];
+
+        if (
+            $data['serial_number'] === '' ||
+            $data['item_name'] === '' ||
+            $data['category'] === '' ||
+            !in_array($data['status'], [
+                'working',
+                'under maintenance',
+                'damage',
+                'unavailable'
+            ], true)
+        ) {
+            $_SESSION['error'] = 'Invalid input. Please complete all fields and select a valid condition.';
+
+            header("Location: " . BASE_URL . "/balistic-inventory");
+            exit;
+        }
+
         $inventory = new BalInventory();
 
-        $inventory->create($_POST);
+        try {
+            $inventory->create($data);
 
-        header("Location: " . BASE_URL . "/balistic-inventory");
-        exit;
+            $_SESSION['success'] = 'Ballistic inventory item successfully added!';
+
+            header("Location: " . BASE_URL . "/balistic-inventory");
+            exit;
+        } catch (PDOException $e) {
+            if ($e->getCode() === '23000') {
+                $_SESSION['error'] = 'That serial number already exists. Please use a unique serial number.';
+
+                header("Location: " . BASE_URL . "/balistic-inventory");
+                exit;
+            }
+
+            throw $e;
+        }
     }
 
+    // Return item details for View/Edit modals
     public function view($id)
     {
         $inventory = new BalInventory();
+        $item = $inventory->getById((int) $id);
 
-        $data = $inventory->getById($id);
+        header('Content-Type: application/json; charset=utf-8');
 
-        header('Content-Type: application/json');
+        if (!$item) {
+            http_response_code(404);
 
-        echo json_encode($data);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Inventory item not found.'
+            ]);
+
+            exit;
+        }
+
+        echo json_encode($item);
         exit;
     }
 
+    // Update one Ballistic inventory item
     public function update()
     {
+        $this->startSession();
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: " . BASE_URL . "/balistic-inventory");
+            exit;
+        }
+
+        $data = [
+            'id'            => (int) ($_POST['id'] ?? 0),
+            'serial_number' => trim($_POST['serial_number'] ?? ''),
+            'item_name'     => trim($_POST['item_name'] ?? ''),
+            'category'      => trim($_POST['category'] ?? ''),
+            'laboratory'    => 'Ballistics Laboratory',
+            'status'        => strtolower(trim($_POST['status'] ?? ''))
+        ];
+
+        if (
+            $data['id'] <= 0 ||
+            $data['serial_number'] === '' ||
+            $data['item_name'] === '' ||
+            $data['category'] === '' ||
+            !in_array($data['status'], [
+                'working',
+                'under maintenance',
+                'damage',
+                'unavailable'
+            ], true)
+        ) {
+            $_SESSION['error'] = 'Invalid input. Please check the item details.';
+
+            header("Location: " . BASE_URL . "/balistic-inventory");
+            exit;
+        }
+
         $inventory = new BalInventory();
 
-        $inventory->update($_POST);
+        try {
+            $inventory->update($data);
 
-        header("Location: " . BASE_URL . "/balistic-inventory");
-        exit;
+            $_SESSION['success'] = 'Ballistic inventory item successfully updated!';
+
+            header("Location: " . BASE_URL . "/balistic-inventory");
+            exit;
+        } catch (PDOException $e) {
+            if ($e->getCode() === '23000') {
+                $_SESSION['error'] = 'That serial number is already assigned to another item.';
+
+                header("Location: " . BASE_URL . "/balistic-inventory");
+                exit;
+            }
+
+            throw $e;
+        }
     }
 
-    // Inactive records
+    // Display inactive Ballistic inventory items
     public function inactive()
     {
-        $inventory = new BalInventory();
+        $this->startSession();
 
+        $inventory = new BalInventory();
         $rows = $inventory->getInactive();
 
-        require_once __DIR__ . '/../views/inventories/crim-lab/balistic/balInvInactive.php';
+        require __DIR__ . '/../views/inventories/crim-lab/balistic/balInvInactive.php';
     }
 
-    // Deactivate a record
+    // Archive an inventory item without deleting it
     public function deactivate($id)
     {
+        $this->startSession();
+
         $inventory = new BalInventory();
 
-        $inventory->deactivate($id);
+        if ($inventory->deactivate((int) $id)) {
+            $_SESSION['success'] = 'Ballistic inventory item successfully deactivated!';
+        } else {
+            $_SESSION['error'] = 'Unable to deactivate the inventory item.';
+        }
 
         header("Location: " . BASE_URL . "/balistic-inventory");
         exit;
     }
 
-    // Activate a record
+    // Restore an archived inventory item
     public function activate($id)
     {
+        $this->startSession();
+
         $inventory = new BalInventory();
 
-        $inventory->activate($id);
+        if ($inventory->activate((int) $id)) {
+            $_SESSION['success'] = 'Ballistic inventory item successfully restored!';
+        } else {
+            $_SESSION['error'] = 'Unable to restore the inventory item.';
+        }
 
-        header("Location: " . BASE_URL . "/balistic-inventory");
+        header("Location: " . BASE_URL . "/balistic-inventory/inactive");
         exit;
     }
 }
