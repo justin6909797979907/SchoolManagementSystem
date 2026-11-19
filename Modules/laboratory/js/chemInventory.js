@@ -1,3 +1,29 @@
+// TOAST NOTIFICATIONS
+const dismissToast = (toast) => {
+  let hideTimer;
+
+  function dismiss() {
+    clearTimeout(hideTimer);
+
+    if (toast.classList.contains("hiding")) return;
+
+    toast.classList.add("hiding");
+
+    setTimeout(() => toast.remove(), 500);
+  }
+
+  const closeButton = toast.querySelector(".toast-close");
+
+  if (closeButton) {
+    closeButton.addEventListener("click", dismiss);
+  }
+
+  hideTimer = setTimeout(dismiss, 5000);
+};
+
+document.querySelectorAll(".custom-toast").forEach(dismissToast);
+
+// EDIT CHEMISTRY INVENTORY
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".editBtn");
 
@@ -5,31 +31,41 @@ document.addEventListener("click", function (e) {
 
   e.preventDefault();
 
-  let id = btn.dataset.id;
+  const id = btn.dataset.id;
 
   fetch(`${BASE_URL}/chemestry-inventory/view/${id}`)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to retrieve inventory details.");
+      }
+
+      return response.json();
+    })
     .then((data) => {
       console.log(data);
 
-      document.getElementById("edit_id").value = data.id;
-      document.getElementById("edit_item_name").value = data.item_name;
-      document.getElementById("edit_category").value = data.category;
-      document.getElementById("edit_laboratory").value = data.laboratory;
-      document.getElementById("edit_total_item").value = data.total_item;
-      document.getElementById("edit_available_item").value =
-        data.available_item;
-      document.getElementById("edit_status").value = data.status;
+      document.getElementById("edit_id").value = data.id ?? "";
+      document.getElementById("edit_serial_number").value =
+        data.serial_number ?? "";
+      document.getElementById("edit_item_name").value = data.item_name ?? "";
+      document.getElementById("edit_category").value = data.category ?? "";
+      document.getElementById("edit_laboratory").value =
+        data.laboratory ?? "Chemistry Laboratory";
+      document.getElementById("edit_status").value = data.status ?? "";
 
-      let editModal = new bootstrap.Modal(
+      const editModal = bootstrap.Modal.getOrCreateInstance(
         document.getElementById("chemistryEditInventoryModal"),
       );
 
       editModal.show();
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error("Edit Error:", error);
+      alert("Unable to load inventory details. Please try again.");
+    });
 });
 
+// VIEW CHEMISTRY INVENTORY
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".viewBtn");
 
@@ -37,30 +73,38 @@ document.addEventListener("click", function (e) {
 
   e.preventDefault();
 
-  let id = btn.dataset.id;
+  const id = btn.dataset.id;
 
   fetch(`${BASE_URL}/chemestry-inventory/view/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("view_id").value = data.id;
-      document.getElementById("view_item_name").value = data.item_name;
-      document.getElementById("view_category").value = data.category;
-      document.getElementById("view_laboratory").value = data.laboratory;
-      document.getElementById("view_total_quantity").value = data.total_item;
-      document.getElementById("view_available_quantity").value =
-        data.available_item;
-      document.getElementById("view_status").value = data.status;
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to retrieve inventory details.");
+      }
 
-      let viewModal = new bootstrap.Modal(
+      return response.json();
+    })
+    .then((data) => {
+      document.getElementById("view_id").value = data.id ?? "";
+      document.getElementById("view_serial_number").value =
+        data.serial_number ?? "";
+      document.getElementById("view_item_name").value = data.item_name ?? "";
+      document.getElementById("view_category").value = data.category ?? "";
+      document.getElementById("view_laboratory").value = data.laboratory ?? "";
+      document.getElementById("view_status").value = data.status ?? "";
+
+      const viewModal = bootstrap.Modal.getOrCreateInstance(
         document.getElementById("chemistryViewInventoryModal"),
       );
 
       viewModal.show();
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error("View Error:", error);
+      alert("Unable to load inventory details. Please try again.");
+    });
 });
 
-//delete
+// DELETE CHEMISTRY INVENTORY
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".deleteBtn");
 
@@ -68,9 +112,9 @@ document.addEventListener("click", function (e) {
 
   e.preventDefault();
 
-  let id = btn.dataset.id;
+  const id = btn.dataset.id;
 
-  if (confirm("Are you sure you want to delete this inventory?")) {
+  if (confirm("Are you sure you want to delete this inventory item?")) {
     window.location.href = `${BASE_URL}/chemestry-inventory/delete/${id}`;
   }
 });
